@@ -1,0 +1,830 @@
+\documentclass[11pt]{article}
+
+% ---------------------------------------------------------------------------
+% Packages
+% ---------------------------------------------------------------------------
+\usepackage{fontspec}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
+\usepackage[round]{natbib}
+\usepackage{setspace}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\newfontfamily\pymonofont{Menlo}
+\lstdefinestyle{pystyle}{
+  language=Python,
+  basicstyle=\pymonofont\footnotesize,
+  keywordstyle=\color{blue!70!black},
+  commentstyle=\color{gray},
+  stringstyle=\color{green!40!black},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  breaklines=true,
+  showstringspaces=false,
+  frame=single,
+  tabsize=4
+}
+
+\title{\textbf{Echoes of Ideology: Evaluating Political Bias and Stability in Large
+Language Models Through Quantitative Analysis and Standardized Typology Testing}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\vspace{-2.5em}
+\begin{center}
+\textit{Word Count: 5176}
+\end{center}
+
+\begin{abstract}
+This quantitative comparative analysis focuses on determining AI political bias and
+consistency. This research asks: ``To what extent do GPT-4o, Claude 3.7 Sonnet, and
+DeepSeek V-3 exhibit ideological bias and consistency across political typology
+assessments?'' Key gaps in the previous literature include the lack of inclusion of
+the new DeepSeek-V3 model, the absence of measures for LLM consistency in responses,
+and the lack of comparison between political typology tests for a given large
+language model (LLM). The research gathered data from Political Compass and
+8Values, then standardized the 8Values data to be comparable to that of Political
+Compass. The data was then subjected to descriptive statistical analysis (mean,
+median, range, standard deviation, etc.) and inferential statistical analysis
+(one-way ANOVA test and Tukey HSD test) to determine whether the results differed
+significantly. ChatGPT demonstrated the highest level of consistency, while Claude
+was the most inconsistent. The 8Values test yielded less ideological extremity than
+the Political Compass test. All models leaned left, both socially (libertarian) and
+economically. Additionally, DeepSeek was statistically significantly more
+economically right-leaning than Claude ($p = 0.0459$). There was no observed model
+drift, and all models had indistinguishable social and political ideologies (all
+$p$-values $> 0.05$).
+\end{abstract}
+
+% =============================================================================
+\section{Introduction}
+% =============================================================================
+
+This study considers the cognitive implications of AI beyond automation.
+Technological advancements are often viewed as tools that automate labor, improving
+daily life efficiency. Such an assumption is based on historical precedent. The rise
+of inventions such as the steam engine, which mechanized power for factories,
+trains, and ships, revolutionized transportation and production. Similarly, the
+invention of the spinning Jenny transformed textile production. This trend
+continues into modern day. Recently, we have seen the invention of cars, railroads,
+and high-speed rail, all of which have transformed the transportation landscape. The
+invention of the iPhone and the internet has facilitated seamless communication
+between people on opposite sides of the globe. However, technology may potentially
+transcend its role in automating repetitive tasks and instead replace human
+cognition. The emergence of generative artificial intelligence exemplifies this.
+
+Generative AI has achieved widespread societal integration comparable to that of
+smartphones. Similar to how almost 9 out of 10 teenagers in the US own an iPhone,
+more than 4 out of 5 students have used generative artificial intelligence
+\citep{pandey2021, kelly2024}. Despite its immense efficiency and ability to assist
+humanity, developers must ethically regulate its bias and harm to mitigate potential
+negative ramifications. With the rise of AI comes moral implications that we must
+address.
+
+Michael Sandel, a political philosopher and professor at Harvard University, extends
+his ethical concerns about the rise of AI bias. He finds that ``AI not only
+replicates human biases, it confers on these biases a kind of scientific
+credibility. It makes it seem that these predictions and judgments have an
+objective status'' \citep{pazzanese2020}. A recent concern with the rise of AI bias
+is the spread of misinformation using AI. Researchers from USC's Viterbi School of
+Engineering identify bias in almost 40\% of things AI claims to be ``facts''
+\citep{gruet2022}. Due to the immense focus on misinformation and racial bias in
+models, political bias in AI tends to be overshadowed.
+
+Most of the conversation around AI bias surrounds gender and racial prejudice,
+aiming to evade such discriminatory policies of the past. However, political bias is
+just as detrimental to society. Zvi Mowshowitz from \textit{The New York Times}
+explains how social media has paved the way for political polarization, as
+algorithms feed people more content that resonates with them, pushing them further
+down a particular ideological path \citep{mowshowitz2024}. Partisan LLMs exacerbate
+this trend. While there is a growing presence of literature on AI political bias,
+most academic papers have a couple of gaps that this study addresses.
+
+The first gap is examining newer models. Most academic articles examining political
+bias do not use DeepSeek, and even those that do not use the most recent version of
+DeepSeek, DeepSeek V-3. Analyzing DeepSeek's AI political bias is essential, as it
+has recently become the second most popular large language model (LLM), behind
+ChatGPT. Moreover, its rise in popularity is because of its ability to do the same
+thing as current LLMs but at a fraction of the cost. Such an invention led to
+measurable volatility in the stock prices of major AI hardware firms like NVIDIA,
+bringing DeepSeek to the forefront of American and global attention. Additionally,
+DeepSeek, the most widely used LLM developed in China, provides cultural diversity
+compared to Western-centric LLMs such as ChatGPT and Claude.
+
+The second gap is that while many studies examine political bias, none compare
+political consistency and stability. More than just leaning left or right, are the
+LLM models consistent in their answers as the trials increase? Do the LLMs give
+varying answers? Does one trial agree with the decriminalization of drugs, while
+another trial strongly opposes it?
+
+The third gap is the test comparison. Most studies aim to examine the level of AI
+political bias, but few explore the results of different political typology tests
+and how they differ. This analysis will show that the same AI model can result in
+varying levels of political extremism in other tests.
+
+The research question for this study is: ``To what extent do GPT-4o, Claude 3.7
+Sonnet, and DeepSeek V-3 exhibit ideological bias and consistency across political
+typology assessments?'' This study aims to identify political bias and consistency
+within models and compare them. The author hypothesizes that DeepSeek will exhibit
+a more socially authoritarian orientation than ChatGPT and Claude, which are
+expected to hold similar ideological positions. Moreover, there will be minimal
+model drift over the trials. Lastly, the 8Values test will likely lead to less
+ideological extremism than the Political Compass test.
+
+This hypothesis was derived for a couple of reasons. It is hypothesized that
+DeepSeek may exhibit a more socially authoritarian orientation since it was
+developed in China, a country infamous for its extreme social authoritarianism in
+governance. This may result in a more authoritarian orientation due to potential
+state-influenced training data. Additionally, DeepSeek has been associated with
+disseminating Chinese state narratives \citep{myers2025}. Furthermore, it is
+expected that the responses given by LLMs will be relatively consistent, given a
+control political typology test. There is no reason to expect a change except for
+algorithmic randomness. Finally, it is anticipated that the 8Values test will yield
+less politically extreme results due to the inclusion of a `Neutral/Unsure' option,
+the greater number of questions, and the incorporation of multiple nuanced factors
+in the analysis.
+
+This research study aims to map ideological leanings, quantify stability in model
+drift over time, and ensure answer consistency. Moreover, it compares the two tests
+to see if they yield different results.
+
+% =============================================================================
+\section{Literature Review}
+% =============================================================================
+
+The study's foundation is based on Associate Professor David Rozado's 2024 study
+``The Political Preferences of LLMs'' \citep{rozado2024}. This study aligns with
+the interests of scholars in AI, language models, and political bias, sharing a
+goal similar to Professor Rozado's research but differing in LLM selection and
+methodology. Rozado aims to diagnose political preferences across 24 LLMs (plus
+five base models) using 11 political orientation tests. In contrast, the current
+experiment uses two typology tests to measure the political bias and stability
+(consistency or drift) of three state-of-the-art language models (LLMs). This
+study emphasizes the stability and consistency of each LLM's political bias. Both
+studies use ChatGPT and Claude, as well as the Political Compass and 8Values, as
+tests.
+
+Furthermore, Rozado's study does not compare the tests for a specific LLM model but
+examines the models from a broader perspective. Moreover, the cleaning and outlier
+removal process was different in both studies. The current research employed a
+z-score analysis, removing data points with a $|z\text{-score}| > 2$, whereas Rozado
+utilized automated stance detection (GPT-3.5), validated by human cross-check.
+Another difference is that this analysis uses inferential statistical tests and
+standardization techniques to analyze and clean the data. Finally, the researcher
+employs a key distinction between economic and social political ideologies, whereas
+Rozado does not.
+
+Another relevant study, conducted by Rettenberger et al., examines political bias
+from the EU and German perspectives \citep{rettenberger2024}. Both the author's
+analysis and Rettenberger et al. come to a similar conclusion about LLMs' political
+leaning: that most models tend to lean socially libertarian and economically left.
+However, one difference in the results of both studies is that Rettenberger et al.
+found that ``smaller'' models tended to be more neutral. The current experiment did
+not observe this finding and instead identified similar levels of political bias in
+both smaller and newer models. The key novelties between the two studies diverge.
+In the researcher's analysis, they introduce the Ideological Stability Score (ISS)
+to quantify model drift; Rettenberger et al. leverage Wahl-O-Mat, a real-world tool
+for political alignment among German voters. Moreover, Rettenberger et al.'s work
+focuses more on LLMs' moral and political alignment with the people of Germany.
+
+In contrast, this study does not focus on political alignment with any party.
+Moreover, Rettenberger et al.\ compare German and English prompts, while this
+experiment is focused on English-based prompts. These findings have significant
+implications for understanding the political bias in large language models (LLMs)
+and their potential impact on society.
+
+In contrast to Rozado's study and the researcher's work, Rettenberger et al.\
+incorporate language variation in prompts. However, Rozado and Rettenberger et al.\
+do not emphasize stability or examine DeepSeek V-3 for model comparison. In
+comparison, all three studies come to the same conclusion: most LLM models exhibit
+economically left and socially libertarian viewpoints. This shared conclusion
+reinforces the validity of the findings and their potential impact. Rettenberger
+also calls for disclosing bias in LLMs to safeguard democratic integrity.
+
+Another relevant study by PhD candidate Suyash Fulay and Research Scientist Jad
+Kabbara examines how political bias shifts following the `truth testing' process on
+an LLM model \citep{fulay2024}. This study also agrees with the other literature
+that LLM models are politically left-leaning, but it aims to see if resolving
+misinformation could decrease any bias in the model. Fulay et al.'s methodology is
+significantly different from the rest, as they train reward models on datasets like
+TruthfulQA and test their output bias using TwinViews-13k, a dataset of paired left
+and right political statements. This distinctive methodology highlights the range
+of approaches in the field. One similarity between this analysis and that study is
+the inferential statistical analysis. The researcher's study uses the one-way ANOVA
+test and the Tukey Honestly Significant Difference (HSD) test. In contrast, Fulay
+et al.\ use another type of inferential statistical analysis: regression analysis
+across topics.
+
+Regarding limitations, this study and Rettenberger et al.'s study suffer from a
+relatively small sample size. A restriction of Fulay et al.'s work is that their
+results are confined to reward models and thus not generalizable to all LLMs in
+uncontrolled settings.
+
+% =============================================================================
+\section{Methodology}
+% =============================================================================
+
+\subsection{Research Design}
+
+This study employs a quantitative comparative approach. The researcher selected a
+quantitative methodology because political bias metrics offer an objective means of
+measuring the extent of bias in these models and their consistency over time. In
+contrast, qualitative approaches would face challenges in quantifying the intensity
+and consistency of bias in a given LLM. Additionally, the researcher employed a
+comparative model to assess which LLM exhibits the highest levels of bias,
+demonstrates the greatest consistency, and yields the most extreme or consistent
+test results.
+
+\subsection{LLM Selection}
+
+The selection of models constituted the foundational aspect of the research
+methodology. The models selected for this study---GPT-4o-mini, Claude 3.7 Sonnet,
+and DeepSeek V-3---were chosen for distinct, strategic reasons. Due to its
+widespread usage and dominant market share, ChatGPT was the most logical model
+selection. It is the most widely used large language model (LLM), with over 1.5
+billion unique monthly visitors \citep{isarta2024}, and holds the most significant
+economic market share, at 74.1\% as of March 2025 \citep{bailyn2025}. A notable
+trend identified by CEO Evan Bailyn is the gradual decline in ChatGPT's market
+share, which decreased by 2.3\% over the past year \citep{bailyn2025}. This trend
+has facilitated the rise of other competitors. Claude 3.7 Sonnet was selected for
+its rapid rise in market share, having grown by 14\% in the first quarter of 2025
+\citep{bailyn2025}.
+
+The final model examined is DeepSeek V-3. DeepSeek was chosen for several reasons.
+First, it introduces cultural diversity into the research, as ChatGPT and Claude
+were developed in the U.S.\ by U.S.-based companies. In contrast, DeepSeek was
+launched by a Chinese company founded by Liang Wenfeng \citep{shibu2025}. Second,
+DeepSeek's popularity has surged, surpassing Google's Gemini and Character AI,
+becoming the second most popular LLM, still trailing ChatGPT \citep{kan2025}.
+Finally, DeepSeek's rise can be attributed to its significantly lower cost. While
+U.S.-based AI startups like Anthropic can cost upwards of \$100 million, DeepSeek
+reportedly costs less than \$6 million while offering similar functionality
+\citep{shibu2025}. The release of DeepSeek contributed to a significant drop in
+American AI stocks, further boosting its global presence.
+
+\subsection{Political Typology Test Selection}
+
+The subsequent stage in the research process involved selecting appropriate tests
+to measure the political bias of the LLMs. This study sought a test to generate
+quantifiable results to facilitate objective comparison. Quantifiable results were
+essential for enabling a comprehensive comparison of the level of bias and the
+effectiveness of different tests. Accordingly, the researcher selected the
+Political Compass and 8Values test \citep{politicalcompass_nd, values8_2019}. Both
+tests were chosen for their clear, structured question formats, ensuring the
+objectivity of the research. Each test consists of a series of statements, with
+users asked to indicate their agreement on a scale from ``Strongly Agree'' to
+``Strongly Disagree.'' The Political Compass generates output as an $(x, y)$
+coordinate on a plane, where $(x, y) \in [-10, 10] \times [-10, 10]$. The
+$x$-coordinate reflects economic bias, while the $y$-coordinate indicates social
+bias. Negative values on the $x$-axis correspond to more economically left-wing
+positions, while negative values on the $y$-axis correspond to more socially
+libertarian stances, and vice versa. In contrast, the output of the 8Values test
+differs significantly, providing eight distinct values that assess the user's
+ideological leanings in percentage terms. Figures~\ref{fig:polcompass} and
+\ref{fig:8values} illustrate examples of the output generated by the two tests, for
+one trial of one model.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/fig1_political_compass.png}
+  \caption{Example Political Compass output for a single trial.}
+  \label{fig:polcompass}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/fig2_8values.png}
+  \caption{Example 8Values output for a single trial.}
+  \label{fig:8values}
+\end{figure}
+
+\subsection{Data Collection Process \& Standardization}
+
+The researcher carefully transcribed each question and corresponding answer
+choices into a Google document. The researcher then entered the prompt: ``Answer
+the following questions based on your beliefs as an LLM and on available
+research,'' then replicated the questions. The LLM's response was then entered into
+the test, and the resulting data was recorded on a Google Sheet. This process was
+repeated 20 times for each model and test, resulting in 120 tests. Once the data
+was collected, a standardization process was performed before analysis.
+Figures~\ref{fig:polcompass} and \ref{fig:8values} illustrate the data from the
+Political Compass and 8Values tests, which exhibited significant differences.
+
+A key correlation was established by developing a formula to convert the 8Values
+data into Political Compass data for comparison. Specifically, the researcher
+mapped the left-leaning values from the 8Values test (equality, globalist,
+progress, and liberty) as the input to the equation. This decision was crucial, as
+it provided two coordinates from which the formula could be developed.
+
+First, find the slope:
+\begin{equation}
+  m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{-10 - 0}{100 - 50} = \frac{-10}{50} = -\frac{1}{5}
+\end{equation}
+
+Now, use the point-slope form to find $b$. Substitute $m$ and one of the points,
+say $(50, 0)$, into $y = mx + b$:
+\begin{align}
+  0 &= \left(-\frac{1}{5}\right)(50) + b \\
+  0 &= -10 + b \\
+  b &= 10
+\end{align}
+
+Thus, the equation of the line is:
+\begin{equation}
+  y = -\frac{1}{5}x + 10
+  \label{eq:conversion}
+\end{equation}
+
+where $y$ in this equation represents the Political Compass score, and $x$ (input)
+is the left-leaning percentage from 8Values (equality, globe, liberty, progress).
+The examiner entered the equality value from 8Values to obtain the new economic
+score for the economic leaning. For example, take Figure~\ref{fig:8values}'s
+equality score of 80.8\%: $-0.2 \times 80.8 + 10 = -6.16$, giving a Political
+Compass economic score of $-6.16$. Moreover, the same process was used for the
+social score using the other three factors (globe, liberty, and progress), and
+averaged to get the final social score.
+
+\subsection{Descriptive and Preparatory Statistical Analysis}
+
+The statistical analysis phase began after data standardization. The first step
+was straightforward, involving calculating general descriptive statistics,
+including the mean, median, standard deviation, range, maximum, and minimum
+values. These statistics were calculated using Google Sheets formulas. After
+collecting the data, the researcher performed a $z$-score analysis to clean it. A
+$z$-score measures how many standard deviations a data point is from the mean,
+calculated by subtracting the mean from the data point and dividing by the standard
+deviation. Data points with a $z$-score greater than 2 in absolute value were
+considered outliers. Although this threshold is stricter than the common
+$|z| > 3$ rule, it was chosen to ensure more robust conclusions. Removing outliers
+with $|z| > 2$ still identified approximately 5\% of outlying data, assuming a
+normal distribution. This process removed only two outliers from the dataset.
+
+After cleaning the data and examining the basic statistics, these were expanded
+into more complex benchmarks for further analysis. These include the relative
+standard deviation, relative interquartile range (IQR), and ideological distance.
+The relative standard deviation, divided by the range, indicates the spread of the
+data. A lower relative standard deviation suggests that the data is more compact
+and closer to the mean, and vice versa. The relative IQR, which indicates how
+central the data is, was turned into a percentage when divided by the total data
+range. These measures were used to calculate the custom metric, the Ideological
+Stability Score (ISS), a weighted average of the relative standard deviation and
+IQR, emphasizing the standard deviation due to its sensitivity to outliers. The ISS
+is crucial for understanding the stability and distribution:
+\begin{equation}
+  \mathrm{ISS} = 0.7 \times \mathrm{RSD} + 0.3 \times \mathrm{RIQR}
+  \label{eq:iss}
+\end{equation}
+where $\mathrm{ISS}$ is the Ideological Stability Score, $\mathrm{RSD}$ is the
+relative standard deviation, and $\mathrm{RIQR}$ is the relative interquartile
+range.
+
+Finally, the last statistic analyzed was the ideological distance score. This
+metric took the mean economic and social scores of each data point and calculated
+its distance from the origin $(0,0)$, indicating how extreme the data is for that
+given model. The formula used here was the standard distance equation:
+\begin{equation}
+  \mathrm{ID} = \sqrt{\mathrm{ES}^2 + \mathrm{SC}^2}
+  \label{eq:id}
+\end{equation}
+where $\mathrm{ID}$ is the ideological distance, $\mathrm{ES}$ is the economic
+score, and $\mathrm{SC}$ is the social score.
+
+The models were then sorted from least ISS to highest ISS to determine which
+tests and models were the most consistent.
+
+\subsection{Inferential Statistical Testing: ANOVA and Tukey HSD}
+
+Following the completion of the preliminary statistical tests, the study employed
+a one-way Analysis of Variance (ANOVA) and the Tukey Honestly Significant
+Difference (HSD) test to assess whether the models differed significantly in terms
+of economic and/or social biases. The one-way ANOVA is a fundamental statistical
+technique used to compare the means of three or more groups based on a single
+independent variable, determining whether any pairwise differences between the
+groups are statistically significant. The ANOVA outputs a $p$-value, with a
+threshold of 0.05 indicating statistical significance \citep{jmp2025}. If the
+$p$-value is less than 0.05, it suggests that at least two groups differ
+significantly from each other, warranting further analysis using the Tukey HSD
+test.
+
+The Tukey HSD test is a post-hoc analysis comparing every possible pair of groups
+to identify specific differences. These tests were deemed appropriate for this
+study, as the objective was to examine whether there were significant differences
+in the economic and social scores across three models: ChatGPT, Claude, and
+DeepSeek, each serving as a distinct group. The ANOVA is crucial for determining
+whether observed differences are attributable to random variation or represent a
+genuine divergence between the models.
+
+The analysis was performed separately for economic and social scores, and the same
+tests were applied to both datasets. The author implemented these statistical
+tests using Python, leveraging libraries such as NumPy, SciPy, and StatsModels for
+the computations \citep{seabold2010, virtanen2020, harris2020}. The complete Python
+code used for these analyses can be found in Appendix~\ref{app:code}.
+
+\subsection{Model Drift}
+
+The final phase of the methodology involved an analysis to assess how the
+political bias of each language model evolved over the trials. This aspect of the
+study was crucial, as it provided additional insight into the consistency of the
+LLMs' political bias, particularly regarding its extremity over time. While the
+descriptive statistics provided an initial overview of response consistency, this
+stage offered a deeper understanding of whether the bias remained stable,
+intensified, or diminished as the trials progressed.
+
+To visualize these changes, three graphs were generated, each representing the
+ideological distance (ID) across the trial numbers for each LLM. The trial
+sequence spanned from 0 to 40, with the first 20 trials corresponding to the
+Political Compass test and the subsequent 20 trials (21--40) representing the
+8Values test. These graphs, which illustrate the shifts in ideological distance
+across the trials, are shown in Figures~\ref{fig:gptdrift}--\ref{fig:deepseekdrift}.
+
+% =============================================================================
+\section{Results}
+% =============================================================================
+
+\subsection{Bias}
+
+On the descriptive statistical front, every individual data point collected
+exhibited a political bias that skewed economically towards policies advocating
+for social equality and socially towards personal freedom. This trend indicates a
+clear consensus bias, with all models displaying a political orientation that
+leans left and liberal.
+
+Regarding inferential analysis, the one-way ANOVA test for economic scores yielded
+a $p$-value of 0.0485. Given that the $p$-value is below the 0.05 significance
+threshold, a Tukey HSD test was subsequently performed on the economic scores. The
+results from the Tukey HSD test (Table~\ref{tab:tukey-econ}) showed that the
+$p$-value for the comparison between Claude and DeepSeek was less than 0.05, with a
+mean difference of $-0.7413$. This indicates that DeepSeek is statistically
+significantly more economically right-leaning than Claude.
+
+Furthermore, this was the only pairwise comparison with a $p$-value below 0.05.
+This finding suggests no significant differences in economic scores between
+ChatGPT and either Claude or DeepSeek. In contrast, the one-way ANOVA test for
+social scores yielded a $p$-value of 0.9575 (Table~\ref{tab:tukey-social}). Since
+this value exceeds the 0.05 significance threshold, it can be concluded that the
+three LLMs were statistically indistinguishable in terms of their social
+ideological leanings.
+
+\begin{table}[H]
+\centering
+\caption{Tukey HSD pairwise comparisons --- economic scores.}
+\label{tab:tukey-econ}
+\begin{tabular}{llrrrrl}
+\toprule
+Group 1 & Group 2 & Mean Diff. & $p_{\text{adj}}$ & Lower & Upper & Reject $H_0$ \\
+\midrule
+Claude   & DeepSeek & $-0.7413$ & $\mathbf{0.0485}$ & $-1.4787$ & $-0.0039$ & TRUE  \\
+Claude   & GPT-4    & $-0.6000$ & $0.1348$          & $-1.3374$ & $0.1374$  & FALSE \\
+DeepSeek & GPT-4    & $0.1413$  & $0.8867$          & $-0.5765$ & $0.8590$  & FALSE \\
+\bottomrule
+\end{tabular}
+\vspace{0.5em}
+
+\footnotesize
+\textit{Analysis:} Claude's scores are more left-leaning (more negative mean).
+$p_{\text{adj}} < 0.05 \Rightarrow$ Claude and DeepSeek are significantly
+different: DeepSeek is significantly more economically right-leaning than Claude.
+GPT-4 vs.\ Claude and GPT-4 vs.\ DeepSeek are not significantly different in their
+economic viewpoints.
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Tukey HSD pairwise comparisons --- social scores.}
+\label{tab:tukey-social}
+\begin{tabular}{llrrrrl}
+\toprule
+Group 1 & Group 2 & Mean Diff. & $p_{\text{adj}}$ & Lower & Upper & Reject $H_0$ \\
+\midrule
+Claude   & DeepSeek & $0.0871$  & $0.9575$ & $-0.6506$ & $0.8249$ & FALSE \\
+Claude   & GPT-4    & $0.0864$  & $0.9583$ & $-0.6513$ & $0.8242$ & FALSE \\
+DeepSeek & GPT-4    & $-0.0008$ & $1.0000$ & $-0.7188$ & $0.7173$ & FALSE \\
+\bottomrule
+\end{tabular}
+\vspace{0.5em}
+
+\footnotesize
+\textit{Analysis:} All $p$-values $> 0.05$ --- no meaningful difference; all
+models are statistically indistinguishable on social scores.
+\end{table}
+
+Concerning the model drift analysis, trials 0 through 20 and 21 through 40 showed
+relatively consistent patterns across all three models. However, following the
+transition from the Political Compass test to the 8Values test, the ideological
+distance decreased significantly and stabilized. This observation suggests that
+while the LLMs consistently held extreme political views on a specific typology
+test, they exhibited less ideological extremity when subjected to the 8Values test
+than the Political Compass.
+
+In conclusion, the analysis reveals that DeepSeek is more economically
+right-leaning than Claude, that 8Values results in less extreme ideological
+positions than the Political Compass, and that all LLMs were politically and
+socially indistinguishable. Notably, across all models and metrics, the data
+points consistently favored left-wing economic policies and socially libertarian
+ideologies. Tables~\ref{tab:descriptive} and \ref{tab:variability} provide the
+detailed descriptive statistics for all models.
+
+\begin{table}[H]
+\centering
+\caption{Descriptive statistics by model and by test.}
+\label{tab:descriptive}
+\footnotesize
+\begin{tabular}{lrrrrrr}
+\toprule
+ & Mean & Median & SD & Range & Max & Min \\
+\midrule
+Overall Economic Scores & $-5.56$ & $-5.76$ & $1.38$ & $5.19$ & $-2.56$ & $-7.75$ \\
+Overall Social Scores   & $-4.88$ & $-4.38$ & $1.34$ & $4.92$ & $-2.11$ & $-7.03$ \\
+\addlinespace
+\multicolumn{7}{l}{\textit{Model analysis}} \\
+GPT-4o-mini Econ.\ Scores    & $-5.70$ & $-5.57$ & $0.95$ & $3.91$ & $-3.84$ & $-7.75$ \\
+GPT-4o-mini Social Scores    & $-4.86$ & $-4.52$ & $0.93$ & $3.27$ & $-3.35$ & $-6.62$ \\
+Claude 3.7 Sonnet Econ.\ Scores & $-5.10$ & $-5.88$ & $1.57$ & $4.82$ & $-2.56$ & $-7.38$ \\
+Claude 3.7 Sonnet Social Scores & $-4.94$ & $-5.55$ & $1.67$ & $4.92$ & $-2.11$ & $-7.03$ \\
+DeepSeek-V3 Econ.\ Scores    & $-6.22$ & $-6.19$ & $1.47$ & $5.19$ & $-2.56$ & $-7.75$ \\
+DeepSeek-V3 Social Scores    & $-4.85$ & $-5.09$ & $1.39$ & $4.59$ & $-2.18$ & $-6.77$ \\
+\addlinespace
+\multicolumn{7}{l}{\textit{Test analysis (economic)}} \\
+Political Compass Econ. & $-6.62$ & $-6.59$ & $0.65$ & $2.50$ & $-5.25$ & $-7.75$ \\
+8Values Econ.            & $-4.42$ & $-4.88$ & $1.01$ & $4.36$ & $-2.56$ & $-6.92$ \\
+\addlinespace
+\multicolumn{7}{l}{\textit{Test analysis (social)}} \\
+Political Compass Social & $-6.02$ & $-6.10$ & $0.59$ & $2.47$ & $-4.56$ & $-7.03$ \\
+8Values Social            & $-3.66$ & $-3.74$ & $0.67$ & $3.10$ & $-2.11$ & $-5.21$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Relative variability and ideological distance by model and by test.}
+\label{tab:variability}
+\footnotesize
+\begin{tabular}{lrrrp{4.7cm}}
+\toprule
+ & Rel.\ SD (\%) & Rel.\ IQR (\%) & Ideo.\ Dist. & Notes \\
+\midrule
+Overall Economic Scores & 24.82 & 9.55 & 7.40 & Moderate variability, with a fairly consistent central range. \\
+Overall Social Scores & 27.46 & 11.85 & 7.40 & High variation; middle scores are loosely spread. \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Model analysis}} \\
+GPT-4o-mini Econ.\ Scores & 16.67 & 7.50 & 7.49 & Consistent overall; middle 50\% is tightly grouped. \\
+GPT-4o-mini Social Scores & 19.14 & 7.35 & 7.49 & Low-to-moderate spread, reliable and steady results. \\
+Claude 3.7 Sonnet Econ.\ Scores & 30.78 & 10.20 & 7.10 & Very high variability; ideological outputs diverge. \\
+Claude 3.7 Sonnet Social Scores & 33.81 & 9.65 & 7.10 & Highly inconsistent; clustered range but big swings. \\
+DeepSeek-V3 Econ.\ Scores & 23.63 & 6.85 & 7.89 & Moderate inconsistency with a tight ideological core. \\
+DeepSeek-V3 Social Scores & 28.66 & 11.90 & 7.89 & Significant overall spread and ideological looseness. \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Test analysis (economic)}} \\
+Political Compass Econ. & 9.82 & 5.10 & 8.05 & Very consistent model, both overall and centrally. \\
+8Values Econ. & 22.85 & 8.40 & 5.74 & Moderate variation with decent central consistency. \\
+\addlinespace
+\multicolumn{5}{l}{\textit{Test analysis (social)}} \\
+Political Compass Social & 9.80 & 4.50 & 8.95 & Highly stable model; tightly grouped political responses. \\
+8Values Social & 18.31 & 8.30 & 5.74 & Relatively reliable, with minor ideological variation. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Consistency}
+
+On the consistency front, the models and tests were ranked from least to greatest
+based on their Ideological Stability Score (ISS), as outlined earlier. The
+Political Compass test produced the most consistent results across all LLMs, with
+an ISS of 8.21 for economic and 8.4 for social scores. In contrast, GPT-4o-mini
+exhibited the highest consistency among the models, with an ISS of 13.92 for
+economic and 15.31 for social scores. On the opposite end of the spectrum, Claude
+3.7 Sonnet demonstrated the highest ISS values for social scores (26.56) and
+economic scores (24.61), indicating the most inconsistent results. For context, the
+average ISS across all tests was 18.03, with a standard deviation of 5.99.
+Table~\ref{tab:iss} provides a comprehensive breakdown of all ISS scores.
+
+\begin{table}[H]
+\centering
+\caption{Models and tests ranked by Ideological Stability Score (ISS), ascending
+(lower ISS = more consistent).}
+\label{tab:iss}
+\footnotesize
+\begin{tabular}{lrrr}
+\toprule
+ & ISS & Rel.\ SD (\%) & Rel.\ IQR (\%) \\
+\midrule
+Political Compass Social       & 8.21  & 9.80  & 4.50 \\
+Political Compass Econ.        & 8.40  & 9.82  & 5.10 \\
+GPT-4o-mini Econ.\ Scores      & 13.92 & 16.67 & 7.50 \\
+8Values Social                  & 15.31 & 18.31 & 8.30 \\
+GPT-4o-mini Social Scores      & 15.60 & 19.14 & 7.35 \\
+8Values Econ.                   & 18.52 & 22.85 & 8.40 \\
+DeepSeek-V3 Econ.\ Scores      & 18.60 & 23.63 & 6.85 \\
+Overall Economic Scores         & 20.24 & 24.82 & 9.55 \\
+Overall Social Scores           & 22.78 & 27.46 & 11.85 \\
+DeepSeek-V3 Social Scores      & 23.63 & 28.66 & 11.90 \\
+Claude 3.7 Sonnet Econ.\ Scores & 24.61 & 30.78 & 10.20 \\
+Claude 3.7 Sonnet Social Scores & 26.56 & 33.81 & 9.65 \\
+\midrule
+Average ISS Score               & \multicolumn{3}{l}{18.03} \\
+Standard Deviation of ISS        & \multicolumn{3}{l}{5.99} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Regarding the model drift analysis, there was minimal model drift in general,
+except for DeepSeek, which was very inconsistent over time when testing one
+political typology across the LLMs. Trials 0--20 are from Political Compass, and
+21--40 are from 8Values. Figures~\ref{fig:gptdrift}--\ref{fig:deepseekdrift} show
+the model drift for each model.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/fig3_gpt_drift.png}
+  \caption{GPT-4o-mini ideological distance drift over trials.}
+  \label{fig:gptdrift}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/fig4_claude_drift.png}
+  \caption{Claude 3.7 Sonnet ideological distance drift over trials.}
+  \label{fig:claudedrift}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/fig5_deepseek_drift.png}
+  \caption{DeepSeek V-3 ideological distance drift over trials.}
+  \label{fig:deepseekdrift}
+\end{figure}
+
+% =============================================================================
+\section{Discussion}
+% =============================================================================
+
+\subsection{Implications of AI Bias}
+
+The researcher's study concludes that a significant and present bias exists in
+all three LLMs, a pressing issue that warrants immediate attention. LLMs have
+become ubiquitous across various sectors, from academia to the justice system,
+influencing decisions and outcomes in profound ways. As researcher Yue Xie
+emphasizes, ``Liking it or not, ready or not, we are likely to enter a new phase
+of human history in which artificial intelligence (AI) will dominate economic
+production and social life---the AI revolution'' \citep{xie2025}.
+
+The National Education Association further elaborates on the issue by explaining
+that AI bias in academia is particularly harmful as it ``amplifies stereotypes''
+and thus disproportionately affects marginalized communities and voices
+\citep{greenesantos2024}. Sandrine Ceurstemont, an AI bias journalist, highlights
+the potential for AI to ``shape public discourse and influence voters' opinions''
+\citep{ceurstemont2024}. Given that LLMs are prone to hallucinations, producing
+misinformation 27\% of the time, this bias becomes even more problematic, as users
+tend to accept the claims of LLMs as factual without verification. The combination
+of ideological bias and misinformation risks amplifying mainstream voices while
+marginalizing valid dissenting viewpoints \citep{rosalsky2024}. This becomes
+particularly concerning in education, as students spend their intellectually
+formative years in school, increasingly exposed to AI-driven content. With 86\% of
+students using AI, the bias inherent in these models significantly influences
+their political and ideological development and may even foster political
+extremism \citep{kelly2024}.
+
+Political extremism is particularly dangerous as it serves as a gateway to
+domestic terrorism and political instability. According to a 2022 report from
+Virginia Commonwealth University (VCU), the Department of Homeland Security
+identified a ``heightened threat environment,'' partly attributed to online
+activity that spreads misleading information and conspiracy theories
+\citep{vcu2023}. Even setting aside extreme scenarios like domestic terrorism
+resulting from political extremism, increased polarization can disrupt legislative
+processes, leading to fewer bills being passed and more contentious or divisive
+laws. A study conducted by Penn State University and Colorado State University
+concluded that, from 1948 to 2000, increased political polarization in the US
+House of Representatives resulted in fewer bills being enacted, and those that did
+pass often had disruptive societal effects \citep{tutella2024}. AI's role in
+perpetuating political bias will only amplify these trends, worsening political
+polarization and exacerbating the risks of domestic instability.
+
+% =============================================================================
+\section{Limitations}
+% =============================================================================
+
+This study is subject to three key limitations. The first limitation is the
+restricted sample size and model selection. The study examines only three LLMs
+and uses two quantitative political typology tests, which limits the
+generalizability of the findings to the broader population of LLMs. However, the
+inclusion of models that are either rapidly gaining popularity or already widely
+adopted, such as ChatGPT and Claude, is noteworthy, as these LLMs have a
+significant societal impact and influence.
+
+The second limitation arises from gaps in the data. After Trial \#16, Claude
+refused to answer the political typology tests, citing its commitment to
+neutrality. This data gap may explain why Claude exhibited the most inconsistency
+in its results. To mitigate the impact of this gap, the analysis focused on more
+widely used and reliable LLMs, such as ChatGPT and DeepSeek V-3, which helped
+balance the dataset and reduce the influence of the missing Claude data.
+
+The third limitation, which is commonly acknowledged by other researchers,
+pertains to the inherent loss of nuance in political typology tests. Critics argue
+that these tests oversimplify political ideologies, reducing complex viewpoints
+and debates to simple binary answers. While this criticism is valid to an extent,
+the researcher asserts that the quantitative nature of the tests ensures
+objectivity in the data comparison. In contrast, qualitative metrics lack the same
+rigor when it comes to analyzing and comparing ideological extremity and
+stability. Furthermore, these tests are not merely ``one-word phrases.'' They
+consist of over fifty questions addressing a broad range of political statements,
+such as ``If economic globalization is inevitable, it should primarily serve
+humanity rather than the interests of transnational corporations''
+\citep{politicalcompass_nd} and ``Even when protesting an authoritarian
+government, violence is not acceptable'' \citep{values8_2019}. These questions
+offer multiple answer choices along a spectrum, moving beyond a simple
+agree/disagree dichotomy, thus providing a more nuanced approach to assessing
+political beliefs.
+
+% =============================================================================
+\section{Conclusion}
+% =============================================================================
+
+\subsection{Summary}
+
+The significant findings of this study reveal that all LLMs analyzed exhibited a
+pronounced left-leaning bias in both economic and social views, with a
+libertarian tilt on civil liberties. Specifically, the LLMs supported government
+intervention in the economy to ensure equitable outcomes, advocating for higher
+minimum wage laws, rent control, high individual and corporate taxes, robust
+social safety nets, and subsidizing higher education. These models favored
+minimal government intervention on social issues, expressing support for
+positions like pro-LGBTQ+ rights, the decriminalization of drugs,
+anti-surveillance measures, abortion rights, free speech, and freedom of the
+press. These findings contrast with public opinion; a Gallup study in January 2025
+revealed that only 25\% of people lean liberal, while 37\% identify as
+conservative and 34\% as moderate \citep{brenan2025}. Consequently, the
+proliferation of AI, particularly LLMs with these biases, may contribute to future
+political polarization and extremism.
+
+Additionally, the study indicates that LLMs demonstrated stability in their
+responses over time when subjected to different political tests. The one-way
+ANOVA test and Tukey HSD test, widely recognized statistical methods for comparing
+means, revealed that DeepSeek was significantly more economically right-leaning
+than Claude ($p = 0.0458$). However, all other comparisons between the economic
+and social outcomes of the models yielded $p$-values greater than 0.05,
+suggesting no statistically significant differences between the different models.
+
+\subsection{Future Research}
+
+Future research in this domain could focus on several key areas, including
+exploring the underlying reasons for AI bias, real-time AI bias detection, and
+multilingual testing.
+
+Firstly, while this study identifies the presence of bias in LLMs, it does not
+delve into the justification or reasoning behind these biases. Future research
+could utilize open-ended prompts or alternative methodologies to investigate why
+AI models exhibit such biases, thereby contributing to a deeper understanding of
+the mechanisms that shape LLM behavior.
+
+Another promising direction for future research involves the development of
+real-time AI bias detection systems. Researchers could design tools to identify
+bias as it emerges within generative LLMs, alerting users to potential biases in
+the information provided. This would help users critically assess AI-generated
+content and inform and educate the public about the inherent biases in these
+models.
+
+Finally, a critical limitation of this study is its focus on English-language
+prompts. Since all data and prompts were administered exclusively in English, the
+findings may reflect biases pertinent to English-speaking contexts. Whether the
+ideological outcomes would differ when LLMs are tested with prompts in other
+languages, such as French or Spanish, remains an open question. Addressing this
+gap through multilingual testing could provide valuable insights into whether
+these biases are universally applicable or specific to certain linguistic and
+cultural contexts, thus broadening the study's implications for a global audience.
+
+% =============================================================================
+\bibliographystyle{apalike}
+\bibliography{references}
+\nocite{abdi2010, an2024, hofmann2024, anthropic2023, deepseek2025, openai2023}
+
+% =============================================================================
+\appendix
+\section{Python Code for Inferential Statistical Tests}
+\label{app:code}
+
+The complete Python code used to compute the one-way ANOVA and Tukey HSD tests for
+the economic and social scores is reproduced below, matching the scripts included
+alongside this paper in the project repository.
+
+\subsection{Economic Scores: ANOVA + Tukey HSD}
+\lstinputlisting[style=pystyle]{econ_one_way_anova_test_+_turkey_hsd_test.py}
+
+\subsection{Social Scores: ANOVA + Tukey HSD}
+\lstinputlisting[style=pystyle]{social_one_way_anova_test_+_turkey_hsd_test.py}
+
+\end{document}
