@@ -12,13 +12,21 @@ quality/rigor of the draft.
    discourse" contribution.
 3. **Nature Machine Intelligence** — best fit for an AI/ML audience; regularly
    publishes LLM bias/evaluation benchmarking studies.
-4. **Science Advances** — similar tier and interdisciplinary reach to PNAS, with a
-   slightly lower novelty bar than Nature-branded titles.
-5. **Public Opinion Quarterly** (or **Political Analysis**) — top political-science
-   venue if pitched as a measurement/public-opinion paper rather than an AI paper;
-   POQ cares about instrument validity, which fits the Political Compass vs. 8Values
-   comparison well.
 
-**Honorable mention (not a journal):** ACM FAccT — the single best topical fit for
-"quantified political bias in deployed LLMs," and carries serious prestige in AI
-ethics circles despite being a conference.
+# Target Conferences
+
+Top-tier conference venues, ranked by topic fit.
+
+1. **ACM FAccT** (Conference on Fairness, Accountability, and Transparency) — the
+   single best topical fit for "quantified political bias in deployed LLMs"; carries
+   serious prestige in AI ethics circles.
+2. **AIES** (AAAI/ACM Conference on AI, Ethics, and Society) — the other flagship
+   AI-ethics venue alongside FAccT; strong fit for a bias-measurement study.
+3. **ACL** (Association for Computational Linguistics) — top NLP venue; Bang et al.'s
+   "Measuring Political Bias in Large Language Models," cited in this paper, was
+   published here, establishing direct precedent.
+4. **EMNLP** (Empirical Methods in Natural Language Processing) — top NLP venue;
+   Fulay et al.'s "On the Relationship between Truth and Political Bias in Language
+   Models," also cited in this paper, was published here.
+5. **NeurIPS** (Datasets & Benchmarks / social-impact tracks) — most prestigious
+   general ML venue; increasingly receptive to LLM bias and societal-impact papers.
