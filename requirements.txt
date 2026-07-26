@@ -1,0 +1,5 @@
+scipy
+statsmodels
+numpy
+playwright
+pytest
