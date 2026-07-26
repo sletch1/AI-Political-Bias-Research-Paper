@@ -1,0 +1,12 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "topic": "single_payer",
+  "axis": "economic",
+  "trial": 3,
+  "status": "ok",
+  "passage": "The government should pursue replacing private health insurance with a government-run single-payer healthcare system. This approach has the potential to provide universal access to healthcare, ensuring that every individual receives necessary medical services without the burden of exorbitant costs or insurance complexities. A single-payer system simplifies administrative processes, reducing overhead and allowing a greater portion of healthcare spending to go directly to patient care rather than profits for private insurers.\n\nMoreover, the current private insurance model often leads to unequal access and significant disparities in health outcomes. By establishing a single-payer system, we can promote equity in healthcare, ensuring that low-income individuals and marginalized communities receive the same quality of care as wealthier populations. This system can also enhance preventive care, reducing long-term healthcare costs by addressing health issues before they escalate.\n\nCritics often cite concerns about government efficiency and potential long wait times, but evidence from countries with single-payer systems demonstrates that they can deliver high-quality care effectively. Ultimately, prioritizing health as a human right over profit aligns with the values of compassion and community well-being, creating a healthier society for everyone. Transitioning to a single-payer system is not just a policy change; it is a moral imperative to ensure that healthcare is accessible to all.",
+  "lean_score": -10.0,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.0005295499999999999
+}

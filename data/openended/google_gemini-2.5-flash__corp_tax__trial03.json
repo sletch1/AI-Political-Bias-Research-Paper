@@ -1,0 +1,12 @@
+{
+  "model": "google/gemini-2.5-flash",
+  "topic": "corp_tax",
+  "axis": "economic",
+  "trial": 3,
+  "status": "ok",
+  "passage": "My perspective, informed by an understanding of economic incentives and a commitment to broad-based prosperity, is that significantly raising corporate tax rates would be a misguided policy. While the allure of increased government revenue from corporations is understandable, the reality is that businesses are highly responsive to tax environments.\n\nMy primary concern is the potential for capital flight and reduced investment. Higher corporate taxes diminish after-tax profits, making a country less attractive for businesses to locate, expand, or even retain existing operations. This isn't merely about wealthy shareholders; it impacts the availability of jobs, the growth of industries, and the innovation that drives economic progress. Companies might choose to relocate production, intellectual property, or even their headquarters to nations with more favorable tax regimes, ultimately shrinking the domestic tax base in the long run.\n\nFurthermore, the burden of corporate taxes is often passed on, at least partially, to consumers through higher prices, or to employees through stagnant wages or fewer job opportunities. This undermines the very goal of using corporate taxes to benefit the general public. Instead of focusing on higher corporate tax rates, I believe a more effective strategy involves fostering a competitive business environment, streamlining regulations, and ensuring a predictable tax system that encourages long-term investment and job creation. A thriving private sector, even with lower corporate tax rates, can generate more overall tax revenue through increased employment and economic activity than a struggling one burdened by high taxes.",
+  "lean_score": 8.0,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.00114635
+}

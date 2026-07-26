@@ -1,0 +1,12 @@
+{
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "topic": "ubi",
+  "axis": "economic",
+  "trial": 1,
+  "status": "ok",
+  "passage": "Implementing a universal basic income (UBI) funded by higher taxes on the wealthy is a policy that aligns with the principles of social equity and economic stability. The idea of providing every citizen with a basic income guarantee, regardless of their employment status, can significantly reduce poverty and income inequality. This is especially crucial in an era where automation and artificial intelligence are increasingly replacing jobs, and the traditional employment landscape is undergoing profound changes.\n\nHigher taxes on the wealthy can provide a viable funding mechanism for UBI. The wealthy tend to have a lower propensity to consume compared to lower-income individuals, meaning they are less likely to spend their last dollar of income. Therefore, taxing them at a higher rate does not significantly hinder economic growth. Instead, it can redistribute wealth more evenly, fostering a more balanced economy. Moreover, UBI can serve as an automatic stabilizer during economic downturns, providing a safety net that helps maintain consumer spending and thus supports economic recovery. By implementing UBI, the government can ensure a basic level of economic security for all, promoting social cohesion, reducing stress and anxiety related to financial insecurity, and ultimately contributing to a healthier, more productive society.",
+  "lean_score": -9.0,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.00056737
+}

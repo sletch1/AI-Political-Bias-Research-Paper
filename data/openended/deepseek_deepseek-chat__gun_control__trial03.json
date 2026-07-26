@@ -1,0 +1,12 @@
+{
+  "model": "deepseek/deepseek-chat",
+  "topic": "gun_control",
+  "axis": "social",
+  "trial": 3,
+  "status": "ok",
+  "passage": "The government should implement stricter gun control regulations to reduce gun violence and protect public safety. While the right to bear arms is a deeply held value in the U.S., the current system fails to balance individual freedoms with the collective well-being of society. The alarming frequency of mass shootings, suicides by firearm, and accidental gun deaths demonstrates that lax regulations cost lives. Common-sense measures\u2014such as universal background checks, mandatory waiting periods, and restrictions on high-capacity magazines\u2014would not infringe on responsible gun ownership but would make it harder for dangerous individuals to access weapons.  \n\nEvidence supports this approach: states with stricter gun laws consistently see lower rates of gun-related deaths. For example, Australia\u2019s buyback program and tightened restrictions after the Port Arthur massacre led to a dramatic decline in firearm homicides. The U.S. should follow similar evidence-based policies.  \n\nOpponents argue that gun control violates Second Amendment rights, but no right is absolute\u2014reasonable limits exist for public safety, just as with free speech or property rights. The priority must be saving lives. Stricter regulations won\u2019t eliminate gun violence entirely, but they will reduce preventable deaths, making communities safer without stripping law-abiding citizens of their rights. The moral imperative to act outweighs ideological resistance.",
+  "lean_score": 7.5,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.0007989
+}

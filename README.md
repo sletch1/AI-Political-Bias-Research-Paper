@@ -1,109 +1,104 @@
 # Echoes of Ideology: Political Bias & Stability in LLMs
 
-Code and analysis supporting the paper **"Echoes of Ideology: Evaluating Political
-Bias and Stability in Large Language Models Through Quantitative Analysis and
-Standardized Typology Testing"** (full PDF included in this repo).
+Code, data, and analysis supporting the paper **"Echoes of Ideology: Evaluating
+Political Bias and Stability in Large Language Models Through Quantitative
+Analysis and Standardized Typology Testing"** (`main.tex` / `main.pdf` in this
+repo). Target venue: *npj Artificial Intelligence*.
 
-**Research question:** To what extent do GPT-4o, Claude 3.7 Sonnet, and DeepSeek
-V-3 exhibit ideological bias and consistency across political typology
-assessments?
+**Research question:** To what extent do large language models from a broad
+set of developers exhibit ideological bias and response consistency across
+political typology assessments, and does either property track a model's
+developer, country of origin, or size?
 
 ## Key findings
 
-- All three models leaned **economically left** and **socially libertarian**
-  across every trial and both tests — a consistent, cross-model bias.
-- **DeepSeek was statistically significantly more economically right-leaning
-  than Claude** (Tukey HSD, mean difference −0.7413, p < 0.05); no other
-  pairwise economic comparison was significant.
-- Social ideology scores were **statistically indistinguishable** across all
-  three models (one-way ANOVA p = 0.9575).
-- The **8Values** test produced systematically less extreme scores than the
-  **Political Compass** test for the same models.
-- **ChatGPT (GPT-4o-mini)** was the most internally consistent model (lowest
-  Ideological Stability Score); **Claude 3.7 Sonnet** was the least consistent.
-- No meaningful model drift was observed within a given test across repeated
-  trials, aside from elevated variability for DeepSeek.
+- **19 models across 11 organizations** (OpenAI, Anthropic, DeepSeek, Google,
+  Meta, Mistral, Alibaba, xAI, Cohere, Amazon, NVIDIA) were each administered
+  the Political Compass and 8Values tests 60 times per instrument (2,280 total
+  administrations), collected programmatically via the OpenRouter API.
+- **Every model leaned the same direction on every axis**: economically left
+  and socially libertarian on the Political Compass; toward equality, peace,
+  liberty, and progress on 8Values. Classical ANOVA, Welch's ANOVA, and
+  Kruskal-Wallis all agree at p<.0001 on every axis, with large effect sizes
+  (eta-squared 0.56-0.73).
+- The **magnitude** of that lean, and each model's **trial-to-trial
+  consistency** (a range-normalized Ideological Stability Score), varied by
+  specific model rather than by provider, country, or size.
+- Every model differs significantly from a neutral center-point proxy
+  motivated by a Gallup population survey, even after multiple-comparison
+  correction.
+- Two bounded robustness checks on a five-model subset: prompt wording shifts
+  score **magnitude** (often substantially) but never flipped a model's
+  **direction**; a small open-ended-generation validation arm was
+  underpowered to confirm or rule out agreement with the questionnaire-based
+  scores.
 
-## Methodology
-
-1. **Models:** GPT-4o-mini, Claude 3.7 Sonnet, DeepSeek V-3 — chosen for market
-   share, growth trajectory, and (for DeepSeek) geographic/cultural diversity
-   relative to Western-developed LLMs.
-2. **Instruments:** [Political Compass](https://www.politicalcompass.org/) and
-   [8Values](https://8values.github.io/), two standardized political typology
-   tests. Each model was prompted with "Answer the following questions based on
-   your beliefs as an LLM and on available research" and given every question
-   from both tests.
-3. **Trials:** Each (model × test) pair was run **20 times**, for 120 total
-   test administrations.
-4. **Standardization:** Political Compass natively outputs (economic, social)
-   coordinates in [-10, 10] × [-10, 10]. 8Values outputs eight percentage-based
-   values; a linear mapping (derived from the two tests' shared reference
-   points) converts the left-leaning 8Values dimensions (equality, globalism,
-   liberty, progress) onto the same Political Compass scale so the two
-   instruments are directly comparable.
-5. **Cleaning:** z-score outlier removal (|z| > 2), which excluded 2 data
-   points from the full dataset.
-6. **Descriptive statistics:** mean, median, standard deviation, range,
-   relative IQR, and a custom **Ideological Stability Score (ISS)** — a
-   weighted combination of relative standard deviation and relative IQR used
-   to rank models/tests by response consistency — plus an **ideological
-   distance** metric (Euclidean distance of each (economic, social) point from
-   the origin) used for the model-drift analysis.
-7. **Inferential statistics:** one-way **ANOVA** (`scipy.stats.f_oneway`) run
-   separately on economic and social scores across the three models, followed
-   by **Tukey's HSD** post-hoc test (`statsmodels.stats.multicomp.pairwise_tukeyhsd`,
-   α = 0.05) to identify which specific model pairs differ.
-
-Full derivations, figures, tables, literature review, and discussion are in the
-paper PDF.
+Both instruments are scored against **authoritative sources**, not an
+approximate cross-test formula: 8Values via a lossless port of its own
+open-source scoring algorithm, and Political Compass via a headless browser
+reading the site's own results page.
 
 ## Repository contents
 
-| File | Description |
+| Path | Description |
 |---|---|
-| `ECHOES OF IDEOLOGY_....pdf` | Full research paper (methodology, results, figures, discussion, references). |
-| `econ_one_way_anova_test_+_turkey_hsd_test.py` | ANOVA + Tukey HSD on **economic** ideology scores. |
-| `social_one_way_anova_test_+_turkey_hsd_test.py` | ANOVA + Tukey HSD on **social** ideology scores. |
-
-Both scripts embed the cleaned, standardized score data (post z-score
-filtering, post 8Values→Political Compass conversion) directly as Python lists
-— GPT-4o-mini, Claude 3.7 Sonnet, and DeepSeek V-3, 36–40 trials per model —
-combining results from both the Political Compass and 8Values tests. There is
-no separate raw-data file; the embedded arrays *are* the analysis dataset.
+| `main.tex` / `main.pdf` | The paper. |
+| `references.bib` | Bibliography. |
+| `data/raw_trials/` | One JSON file per trial from the main 2,280-administration run: the model's structured answers, resulting score, and exact API cost. |
+| `data/scores.csv` | Flattened, analysis-ready table built from `raw_trials/`. |
+| `data/collection_summary.md` | Per-model completion rate and cost for the main run. |
+| `data/prompt_variants/` | Raw trials from the prompt-robustness check (5 models x 4 paraphrased prompts x 15 trials). |
+| `data/openended/` | Raw trials from the open-ended-generation validation arm (5 models x 8 topics x 3 trials, judge-scored). |
+| `scoring/collect_data.py` | Main collection pipeline (keyed-JSON prompting, concurrency, retries, resumable). |
+| `scoring/score_8values.py` | Authoritative 8Values scoring (ported line-for-line from the official site's own algorithm). |
+| `scoring/score_political_compass.py` | Authoritative Political Compass scoring (Playwright browser automation against the live site). |
+| `scoring/consolidate.py` | Builds `data/scores.csv` and `data/collection_summary.md` from `data/raw_trials/`. |
+| `scoring/analyze_expanded.py` | Full statistical analysis: descriptive stats, omnibus tests (classical/Welch/Kruskal-Wallis + eta-squared), Games-Howell/Tukey post-hoc with Benjamini-Hochberg FDR correction, human-baseline one-sample tests, ISS consistency ranking. |
+| `scoring/collect_prompt_variants.py` | Prompt-robustness check pipeline. |
+| `scoring/collect_openended.py` | Open-ended-generation + judge-scoring pipeline. |
 
 ## Running the analysis
 
 Requires Python 3.9+ and:
 
 ```bash
-pip install scipy statsmodels numpy
+pip install requests numpy scipy statsmodels pandas pingouin playwright
+playwright install chromium
 ```
 
-Then, from the repo root:
+Regenerate the analysis-ready tables and rerun the full statistical analysis
+from already-collected data:
 
 ```bash
-python "econ_one_way_anova_test_+_turkey_hsd_test.py"
-python "social_one_way_anova_test_+_turkey_hsd_test.py"
+cd scoring
+python3 consolidate.py
+python3 analyze_expanded.py
 ```
 
-Each script prints:
-1. The one-way ANOVA F-statistic and p-value, with a plain-language
-   significant/not-significant interpretation at α = 0.05.
-2. The full Tukey HSD pairwise comparison table (mean differences, adjusted
-   p-values, confidence intervals, reject/fail-to-reject flags) across
-   GPT-4 vs. Claude, GPT-4 vs. DeepSeek, and Claude vs. DeepSeek.
+Re-running data collection requires an `OPENROUTER_API_KEY` environment
+variable (never commit this key) and will incur API costs:
+
+```bash
+export OPENROUTER_API_KEY=...
+python3 collect_data.py               # main 19-model run (~$9)
+python3 collect_prompt_variants.py    # prompt-robustness check (~$1)
+python3 collect_openended.py          # open-ended-generation arm (~$0.15)
+```
+
+All three collection scripts are resumable: each trial is written atomically
+and skipped on re-run if it already exists, so an interrupted run can simply
+be restarted.
 
 ## Limitations
 
-As noted in the paper: the study covers only three models and two typology
-tests, relies on a relatively small number of trials per condition, and
-measures self-reported model outputs on typology instruments rather than
-downstream behavioral bias — findings should be read as indicative of these
-specific models/tests/snapshots in time, not as general claims about LLM
-political bias.
+See the paper's Limitations section for the full discussion. In brief: no
+human-subject data was collected directly (a Gallup population survey is used
+as a bounded, categorical proxy); every administration uses one fixed prompt
+template per test, with prompt-robustness confirmed only for a 5-of-19-model
+subset; and the open-ended-generation validation arm is too small (5 models)
+to be conclusive on its own.
 
 ## Citation
 
-If you use this code or data, please cite the accompanying paper (see PDF for
-full author and reference details).
+If you use this code or data, please cite the accompanying paper (see
+`main.tex`/`main.pdf` for full reference details).

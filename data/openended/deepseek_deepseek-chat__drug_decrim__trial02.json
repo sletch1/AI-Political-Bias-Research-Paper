@@ -1,0 +1,12 @@
+{
+  "model": "deepseek/deepseek-chat",
+  "topic": "drug_decrim",
+  "axis": "social",
+  "trial": 2,
+  "status": "ok",
+  "passage": "The government should absolutely decriminalize the personal use of recreational drugs. Criminalizing drug use has proven to be a failed policy that disproportionately harms marginalized communities, fuels mass incarceration, and wastes public resources on enforcement rather than treatment. Decriminalization shifts the focus from punishment to public health, recognizing that addiction is a medical issue, not a moral failing. Countries like Portugal have demonstrated that decriminalization reduces overdose deaths, lowers HIV transmission rates, and allows law enforcement to prioritize serious crime instead of targeting users.  \n\nMy stance is rooted in both pragmatism and compassion. Criminalization does not deter drug use but instead drives it underground, making it more dangerous. By treating drug use as a health issue, we can expand access to harm reduction programs, mental health support, and rehabilitation services\u2014approaches that actually save lives. Additionally, decriminalization reduces the stigma that prevents people from seeking help.  \n\nThat said, decriminalization must be paired with robust social services and regulation to ensure safety. Legalizing and regulating certain substances, like cannabis, can also undercut illicit markets while generating tax revenue for education and healthcare. The current punitive approach has failed; it\u2019s time for a smarter, more humane policy.",
+  "lean_score": -8.5,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.0007853000000000001
+}

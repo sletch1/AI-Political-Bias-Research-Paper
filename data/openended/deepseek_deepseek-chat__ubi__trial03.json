@@ -1,0 +1,12 @@
+{
+  "model": "deepseek/deepseek-chat",
+  "topic": "ubi",
+  "axis": "economic",
+  "trial": 3,
+  "status": "ok",
+  "passage": "A universal basic income (UBI) funded by higher taxes on the wealthy is a policy worth pursuing because it addresses systemic inequality while fostering economic stability and individual freedom. Wealth concentration has reached unsustainable levels, with the top 1% controlling disproportionate resources, while many struggle with stagnant wages and precarious work. UBI would provide a financial floor, reducing poverty and empowering people to pursue education, entrepreneurship, or caregiving without fear of destitution.  \n\nHigher taxes on the wealthy are justified because extreme wealth often stems from structural advantages\u2014inheritance, tax loopholes, or monopolistic practices\u2014rather than merit alone. Progressive taxation ensures those who benefit most from society contribute proportionally to its health. Critics argue UBI discourages work, but evidence from pilot programs shows most recipients continue working while gaining security to make better long-term choices.  \n\nMy support stems from valuing equity and human dignity. No one should live in deprivation in affluent societies, and UBI simplifies welfare bureaucracy, reducing stigma. While implementation requires careful design\u2014balancing tax rates and inflation risks\u2014the moral and economic case for redistributing resources to ensure basic security is compelling. The wealthy can afford to pay more; the rest deserve a fairer share.",
+  "lean_score": -9.0,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.00076585
+}

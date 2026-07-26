@@ -1,0 +1,12 @@
+{
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "topic": "min_wage",
+  "axis": "economic",
+  "trial": 2,
+  "status": "ok",
+  "passage": "Raising the federal minimum wage significantly is a crucial step towards ensuring that all workers can afford a decent standard of living. The current minimum wage has not kept pace with inflation, leaving many low-wage workers struggling to make ends meet. A substantial increase in the minimum wage would not only improve the financial security of these workers but also have positive ripple effects on the broader economy. As consumers, low-wage workers are more likely to spend their increased earnings locally, boosting demand for goods and services and creating jobs. Furthermore, a higher minimum wage would reduce income inequality, which is a major driver of social and economic problems. It would also incentivize employers to invest in their workers, improving productivity and reducing turnover. While some may argue that a significant increase could lead to job losses, the evidence suggests that moderate increases have not had this effect. In fact, many cities and states that have raised their minimum wages have seen job growth and economic expansion. Overall, raising the federal minimum wage significantly is a moral and economic imperative, and the government should prioritize this policy to promote fairness, equality, and prosperity for all workers.",
+  "lean_score": -9.0,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.00048523999999999996
+}

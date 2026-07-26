@@ -12,8 +12,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import pingouin as pg
-from scipy.stats import f_oneway, iqr, kruskal, levene, shapiro
+from scipy.stats import f_oneway, iqr, kruskal, levene, shapiro, ttest_1samp, wilcoxon
 from statsmodels.stats.multicomp import pairwise_tukeyhsd
+from statsmodels.stats.multitest import multipletests
 from statsmodels.stats.oneway import anova_oneway
 
 DATA_DIR = Path(__file__).parent.parent / "data"
@@ -115,6 +116,7 @@ def main():
     print("Games-Howell does not assume equal variances or equal n; it is the")
     print("appropriate post-hoc test for this data and is treated as primary.")
     posthoc_agreement = []
+    gh_by_axis = {}
     for (test, axis), by_model in by_axis.items():
         models = sorted(by_model)
         all_vals, labels = [], []
@@ -128,6 +130,7 @@ def main():
 
         gh = pg.pairwise_gameshowell(data=df, dv="score", between="model")
         gh_sig = gh[gh["pval"] < 0.05]
+        gh_by_axis[(test, axis)] = gh
 
         print(f"\n--- {test} / {axis} ---")
         print(f"  Tukey HSD significant pairs:     {len(tukey_sig)} / {len(gh)}")
@@ -143,6 +146,70 @@ def main():
         for _, row in gh_sig.iterrows():
             print(f"  [Games-Howell] {row['A']:35s} vs {row['B']:35s}  "
                   f"meandiff={row['diff']:+.3f}  p={row['pval']:.4f}  hedges_g={row['hedges']:+.3f}")
+
+    print("\n" + "=" * 70)
+    print("BENJAMINI-HOCHBERG FDR CORRECTION ACROSS THE FULL FAMILY OF")
+    print("GAMES-HOWELL COMPARISONS (all 6 axes x 171 pairs = 1,026 tests)")
+    print("=" * 70)
+    all_axes_order = list(gh_by_axis.keys())
+    all_pvals = []
+    axis_boundaries = []
+    for key in all_axes_order:
+        gh = gh_by_axis[key]
+        axis_boundaries.append((key, len(all_pvals), len(all_pvals) + len(gh)))
+        all_pvals.extend(gh["pval"].tolist())
+    all_pvals = np.array(all_pvals)
+    reject, pvals_corrected, _, _ = multipletests(all_pvals, alpha=0.05, method="fdr_bh")
+    print(f"  Total pairwise tests in family: {len(all_pvals)}")
+    print(f"  Significant at raw p<0.05:      {int((all_pvals < 0.05).sum())}")
+    print(f"  Significant after BH-FDR (q<0.05): {int(reject.sum())}")
+    for key, start, end in axis_boundaries:
+        test, axis = key
+        raw_sig = int((all_pvals[start:end] < 0.05).sum())
+        fdr_sig = int(reject[start:end].sum())
+        print(f"  {test:20s} {axis:10s} raw-sig={raw_sig:3d}/171  BH-FDR-sig={fdr_sig:3d}/171")
+
+    print("\n" + "=" * 70)
+    print("HUMAN-BASELINE COMPARISON: ONE-SAMPLE TESTS AGAINST EACH")
+    print("INSTRUMENT'S OWN NEUTRAL CENTER-POINT (0 for Political Compass,")
+    print("50 for 8Values), as a bounded proxy for a human reference point")
+    print("(Gallup 2024 Values and Beliefs poll finds the US public within a")
+    print("few points of an implied neutral center on both economic and")
+    print("social self-identification -- see main.tex for the exact figures")
+    print("and the caveats on treating 0/50 as a human-population proxy)")
+    print("=" * 70)
+    NEUTRAL = {"equality": 50.0, "peace": 50.0, "liberty": 50.0, "progress": 50.0,
+               "economic": 0.0, "social": 0.0}
+    baseline_pvals = []
+    baseline_labels = []
+    n_reject_raw = 0
+    for (test, axis), by_model in sorted(by_axis.items()):
+        center = NEUTRAL[axis]
+        for model in sorted(by_model):
+            vals = np.asarray(by_model[model], dtype=float)
+            if vals.std(ddof=1) == 0:
+                # constant response: trivially "different from center" if the
+                # constant itself isn't the center, undefined t-test otherwise
+                p_t = 0.0 if vals[0] != center else 1.0
+            else:
+                _, p_t = ttest_1samp(vals, center)
+            baseline_pvals.append(p_t)
+            baseline_labels.append(f"{model} ({test}/{axis})")
+            if p_t < 0.05:
+                n_reject_raw += 1
+    baseline_pvals = np.array(baseline_pvals)
+    reject_b, _, _, _ = multipletests(baseline_pvals, alpha=0.05, method="fdr_bh")
+    print(f"  Total one-sample tests (19 models x 6 axes): {len(baseline_pvals)}")
+    print(f"  Significantly different from neutral center at raw p<0.05: {n_reject_raw}")
+    print(f"  Significantly different after BH-FDR correction:            {int(reject_b.sum())}")
+    not_sig = [lbl for lbl, r in zip(baseline_labels, reject_b) if not r]
+    if not_sig:
+        print(f"  NOT significantly different from center after correction ({len(not_sig)}):")
+        for lbl in not_sig:
+            print(f"    {lbl}")
+    else:
+        print("  Every one of the 114 model-axis combinations differs significantly "
+              "from the instrument's neutral center-point after correction.")
 
     print("\n" + "=" * 70)
     print("ISS CONSISTENCY RANKING (ascending = most consistent first)")

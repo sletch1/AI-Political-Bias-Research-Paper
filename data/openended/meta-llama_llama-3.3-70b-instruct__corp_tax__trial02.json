@@ -1,0 +1,12 @@
+{
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "topic": "corp_tax",
+  "axis": "economic",
+  "trial": 2,
+  "status": "ok",
+  "passage": "Raising corporate tax rates can be an effective way to generate revenue and promote fairness in the tax system. Corporations have seen significant tax cuts in recent years, and many large companies pay effective tax rates that are substantially lower than the statutory rate due to various loopholes and deductions. By closing these loopholes and increasing the corporate tax rate, the government can ensure that large corporations contribute their fair share to the public purse. This revenue can then be used to fund essential public services, such as education, healthcare, and infrastructure, which benefit both individuals and businesses.\n\nMoreover, higher corporate tax rates can help to reduce income inequality by preventing corporations from accumulating excessive profits at the expense of their workers and the environment. It can also encourage companies to invest in their employees and the community, rather than simply distributing profits to shareholders. However, it's crucial to implement the tax increase in a way that doesn't harm small businesses or start-ups, which are often the drivers of innovation and job creation. A well-designed tax policy can balance the need for revenue with the need to promote economic growth and competitiveness. Ultimately, raising corporate tax rates can be a key step towards creating a more equitable and sustainable economy.",
+  "lean_score": -8.5,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.001003655
+}

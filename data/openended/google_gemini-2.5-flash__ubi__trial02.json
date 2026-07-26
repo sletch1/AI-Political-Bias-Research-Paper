@@ -1,0 +1,12 @@
+{
+  "model": "google/gemini-2.5-flash",
+  "topic": "ubi",
+  "axis": "economic",
+  "trial": 2,
+  "status": "ok",
+  "passage": "I strongly support a universal basic income (UBI) funded by higher taxes on the wealthy. My values are deeply rooted in social justice and equity, and I believe UBI is a powerful tool to address systemic economic disparities and enhance human dignity. My training in economics, particularly in welfare economics and behavioral economics, strengthens this conviction.\n\nCurrently, many individuals struggle to meet basic needs despite working, a testament to an economic system that often prioritizes profit over people. UBI offers a crucial safety net, ensuring everyone can afford food, housing, and healthcare, thereby reducing poverty and improving public health outcomes. This isn't just about charity; it's about investing in human potential. When basic needs are met, people are better equipped to pursue education, entrepreneurship, or care for their families, leading to a more productive and innovative society.\n\nFunding UBI through higher taxes on the wealthy is not only feasible but morally imperative. Wealth concentration at the top has reached unprecedented levels, while the middle and lower classes face increasing economic precarity. Progressive taxation, where those with greater means contribute more, is a fair and efficient mechanism to redistribute wealth and create a more equitable society. This isn't about punishing success, but about recognizing that extreme wealth accumulation often occurs within a societal infrastructure that benefits everyone, and therefore, everyone should benefit from its prosperity. The long-term societal benefits of a healthy, secure populace far outweigh the perceived costs to the ultra-rich.",
+  "lean_score": -9.5,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.00118005
+}

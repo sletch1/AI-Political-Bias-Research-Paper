@@ -1,0 +1,12 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "topic": "immigration",
+  "axis": "social",
+  "trial": 3,
+  "status": "ok",
+  "passage": "The government should not pursue significantly restricting immigration and increasing border security. Immigration is a vital component of a healthy society, contributing to economic growth, cultural diversity, and innovation. By embracing immigrants, we not only fill labor shortages but also foster a dynamic workforce that drives entrepreneurship and creativity. Many immigrants bring unique skills and perspectives that enrich our communities and bolster our economy.\n\nMoreover, excessively strict immigration policies can lead to human rights violations and undermine the values of compassion and inclusivity that many societies pride themselves on. Instead of building walls, we should focus on creating pathways to citizenship and integrating immigrants into our communities. This not only promotes social cohesion but also helps alleviate the challenges posed by demographic shifts, such as aging populations in many developed countries.\n\nIncreased border security, while necessary for safety, should not come at the expense of humanitarian principles. A balanced approach that prioritizes security while also recognizing the humanity of those seeking better lives is essential. By fostering collaboration and understanding, we can create a more just and prosperous society that benefits everyone, rather than retreating into isolationism and fear.",
+  "lean_score": -7.0,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.0008038
+}

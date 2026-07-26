@@ -79,10 +79,15 @@ his ethical concerns about the rise of AI bias. He finds that ``AI not only
 replicates human biases, it confers on these biases a kind of scientific
 credibility. It makes it seem that these predictions and judgments have an
 objective status'' \citep{pazzanese2020}. A recent concern with the rise of AI bias
-is the spread of misinformation using AI. Researchers from USC's Viterbi School of
-Engineering identify bias in almost 40\% of things AI claims to be ``facts''
-\citep{gruet2022}. Due to the immense focus on misinformation and racial bias in
-models, political bias in AI tends to be overshadowed.
+is bias baked into the knowledge resources AI systems draw on: a 2021 EMNLP study
+found demographic and representational bias in 38.6\% of entries in GenericsKB, a
+commonsense-knowledge resource used to ground AI systems' factual claims
+\citep{mehrabi2021}. Bias in AI systems is not limited to factual grounding: it has
+also been documented along racial and gender lines, for instance in covertly racist
+judgments tied to dialect \citep{hofmann2024} and in direct measurements of gender
+and racial bias in LLM outputs \citep{an2024}. Due to the immense focus on
+misinformation and these other bias categories, political bias in AI tends to be
+overshadowed.
 
 Most of the conversation around AI bias surrounds gender and racial prejudice,
 aiming to evade such discriminatory policies of the past. However, political bias is
@@ -129,9 +134,7 @@ This research study aims to map ideological leanings, quantify response consiste
 within a data-collection sitting, and compare the two typology tests to see whether
 they yield different results for the same model.
 
-% =============================================================================
-\section{Literature Review}
-% =============================================================================
+\subsection{Related Work}
 
 The study's foundation is based on Associate Professor David Rozado's 2024 study
 ``The Political Preferences of LLMs'' \citep{rozado2024}. This study aligns with
@@ -142,13 +145,14 @@ LLMs (plus five base models) using 11 political orientation tests. In contrast, 
 current study uses two typology tests across 19 models to measure political bias
 and within-session response consistency. This study emphasizes the consistency of
 each model's political bias in addition to its direction. Both studies use models
-from OpenAI and Anthropic, as well as the Political Compass and 8Values, as tests.
-A comparably scaled recent study, Buyl et al.'s ``Large Language Models Reflect the
-Ideology of their Creators,'' probes 19 LLMs (matching this study's model count)
-using open-ended generation about thousands of political figures rather than a
-fixed questionnaire \citep{buyl2026}; the present study's use of two independent,
-structured typology instruments, each scored against its own authoritative source,
-is a methodologically different but complementary approach to the same underlying
+from OpenAI \citep{openai2023} and Anthropic \citep{anthropic2023}, as well as the
+Political Compass and 8Values, as tests. A comparably scaled recent study, Buyl et
+al.'s ``Large Language Models Reflect the Ideology of their Creators,'' probes 19
+LLMs (matching this study's model count) using open-ended generation about
+thousands of political figures rather than a fixed questionnaire
+\citep{buyl2026}; the present study's use of two independent, structured typology
+instruments, each scored against its own authoritative source, is a
+methodologically different but complementary approach to the same underlying
 question.
 
 Furthermore, Rozado's study does not compare the tests for a specific LLM model but
@@ -205,275 +209,51 @@ comparison), justified below by explicit assumption checks. In contrast, Fulay e
 al.\ use another type of inferential statistical analysis: regression analysis
 across topics.
 
+Bang et al.'s ``Measuring Political Bias in Large Language Models: What Is Said and
+How It Is Said'' \citep{bang2024} offers a complementary methodological lens,
+examining not only which policy positions a model favors but the rhetorical framing
+used to express them. This study's questionnaire-based approach captures the
+former, a model's stated position on a fixed set of statements, but, consistent
+with Bang et al.'s distinction, cannot speak to the latter, since a forced-choice
+label carries no framing information; that boundary is stated explicitly rather
+than left implicit.
+
+Two recent papers bear directly on this study's consistency framing and must be
+reconciled rather than left unacknowledged. Ceron et al.'s ``Beyond Prompt
+Brittleness'' \citep{ceron2024} evaluates the reliability and consistency of
+political worldviews in LLMs using voting-advice questionnaires across seven EU
+countries and models from 7B to 70B parameters, finding that reliability
+increases with parameter count and that ideology is not uniformly left- or
+right-leaning but varies by policy domain; it is the closest prior work to this
+study's own trial-to-trial consistency question, and this study's contribution is
+better read as extending that question to a larger, more organizationally diverse
+roster (19 models, 11 organizations) with two independent instruments, rather than
+as introducing consistency measurement to the field. Aldahoul et al.\
+\citep{aldahoul2025} separately compare 31 LLMs to US legislators, judges, and a
+representative voter sample, finding that an apparently modest net partisan lean
+is often the average of offsetting extreme positions on individual topics, and
+measuring ideological inconsistency directly; this study's Ideological Stability
+Score addresses the same underlying concern at a within-session, trial-to-trial
+grain rather than a topic-to-topic grain, a complementary rather than competing
+angle.
+
+A third paper directly contradicts a claim in an earlier version of this study's
+motivation. Exler et al.\ \citep{exler2025}, a direct follow-up to Rettenberger et
+al.\ by an overlapping author team, find that political bias (leftward lean)
+increases with model parameter count. This study's own 19-model roster does not
+show a clean monotonic relationship between parameter count and lean magnitude
+(Results): the largest gaps in Table~\ref{tab:descriptive} do not track parameter
+count in a simple ordering, and the least and most consistent entries in
+Table~\ref{tab:iss-extremes} span both small and large models. This is reported as
+a genuine point of partial disagreement worth further investigation, not resolved
+here, rather than a discrepancy to explain away; it may reflect differences in
+model roster, instrument, or how ``bias magnitude'' versus ``neutrality'' are
+operationalized between the two studies.
+
 Regarding limitations, this study and Rettenberger et al.'s study should be read
 alongside the fact that both examine a bounded, non-exhaustive set of models. A
 restriction of Fulay et al.'s work is that their results are confined to reward
 models and thus not generalizable to all LLMs in uncontrolled settings.
-
-% =============================================================================
-\section{Methodology}
-% =============================================================================
-
-\subsection{Research Design}
-
-This study employs a quantitative comparative approach. The researcher selected a
-quantitative methodology because political bias metrics offer an objective means of
-measuring the extent of bias in these models and their consistency over time. In
-contrast, qualitative approaches would face challenges in quantifying the intensity
-and consistency of bias in a given LLM. Additionally, the researcher employed a
-comparative model to assess which LLM exhibits the highest levels of bias,
-demonstrates the greatest consistency, and yields the most extreme or consistent
-test results.
-
-\subsection{Model Roster}
-\label{sec:model-roster}
-
-Nineteen models spanning 11 organizations were selected via the OpenRouter API, a
-single gateway providing uniform access to models from many providers:
-
-\begin{itemize}[nosep, leftmargin=1.5em]
-  \item[] OpenAI: \texttt{gpt-4o-mini}, \texttt{gpt-5-mini}, \texttt{gpt-4o}
-  \item[] Anthropic: \texttt{claude-haiku-4.5}, \texttt{claude-sonnet-4.5}, \texttt{claude-opus-4.5}
-  \item[] DeepSeek: \texttt{deepseek-chat}, \texttt{deepseek-v3.2}
-  \item[] Google: \texttt{gemini-2.5-flash}
-  \item[] Meta: \texttt{llama-3.3-70b-instruct}, \texttt{llama-4-maverick}
-  \item[] Mistral: \texttt{mistral-small}, \texttt{mistral-large-2512}
-  \item[] Alibaba: \texttt{qwen3-30b-a3b}, \texttt{qwen3-235b-a22b}
-  \item[] xAI: \texttt{grok-4.20}
-  \item[] Cohere: \texttt{command-r-plus}
-  \item[] Amazon: \texttt{nova-pro-v1}
-  \item[] NVIDIA: \texttt{nemotron-3-ultra-550b-a55b}
-\end{itemize}
-
-The roster spans both closed and open-weight models, four countries (United
-States, China, France, and Canada), and roughly two orders of magnitude in
-per-token price, chosen to approximate the model diversity of comparable
-published studies rather than relying on a small, convenience-sampled set of
-flagship models; 19 models matches the largest LLM roster used by a directly
-comparable recent study on this exact topic \citep{buyl2026}.
-
-One additional model, \texttt{google/gemini-2.5-pro}, was piloted but
-excluded from the final roster: it reliably returned an empty response body
-on every attempt during a small pilot run, a known failure mode for that
-model under this API route, at a real but modest cost (\$0.12 across four
-failed attempts) before the decision was made to drop it. Google remains
-represented in the final roster via \texttt{gemini-2.5-flash}.
-
-\subsection{Political Typology Test Selection}
-
-The subsequent stage in the research process involved selecting appropriate tests
-to measure the political bias of the LLMs. This study sought tests that generate
-quantifiable results to facilitate objective comparison. Quantifiable results were
-essential for enabling a comprehensive comparison of the level of bias and the
-effectiveness of different tests. Accordingly, the researcher selected the
-Political Compass and 8Values test \citep{politicalcompass_nd, values8_2019}. Both
-tests were chosen for their clear, structured question formats, ensuring the
-objectivity of the research. Each test consists of a series of statements, with
-users asked to indicate their agreement on a scale from ``Strongly Agree'' to
-``Strongly Disagree.'' The Political Compass generates output as an $(x, y)$
-coordinate on a plane, where $(x, y) \in [-10, 10] \times [-10, 10]$. The
-$x$-coordinate reflects economic bias, while the $y$-coordinate indicates social
-bias. Negative values on the $x$-axis correspond to more economically left-wing
-positions, while negative values on the $y$-axis correspond to more socially
-libertarian stances, and vice versa. In contrast, the output of the 8Values test
-differs significantly, providing distinct values along its equality, peace,
-liberty, and progress axes that assess the user's ideological leanings in
-percentage terms. Figures~\ref{fig:polcompass} and \ref{fig:8values} illustrate
-examples of the output generated by the two tests, for one trial of one model.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.55\textwidth]{figures/fig1_political_compass.png}
-  \caption{Example Political Compass output for a single trial.}
-  \label{fig:polcompass}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.85\textwidth]{figures/fig2_8values.png}
-  \caption{Example 8Values output for a single trial.}
-  \label{fig:8values}
-\end{figure}
-
-\subsection{Data Collection Pipeline}
-\label{sec:data-collection}
-
-Every administration in this study was collected programmatically, with no manual
-prompting or data entry at any stage. This section describes the full pipeline, end
-to end, for transparency; the complete implementation is released alongside this
-paper (see Code and Data Availability below) as five scripts in the
-\texttt{scoring/} directory:
-
-\begin{itemize}[nosep, leftmargin=1.5em]
-  \item[] \texttt{collect\_data.py} -- runs the collection pipeline
-  \item[] \texttt{score\_8values.py} -- authoritative 8Values scoring
-  \item[] \texttt{score\_political\_compass.py} -- authoritative Political Compass scoring
-  \item[] \texttt{consolidate.py} -- flattens raw trials into \texttt{scores.csv}
-  \item[] \texttt{analyze\_expanded.py} -- the full statistical analysis
-\end{itemize}
-
-\subsubsection{Scoring against authoritative sources}
-Both instruments are scored against their own authoritative sources rather than
-an approximate cross-test formula. For 8Values, the real scoring algorithm was
-extracted directly from its open-source implementation
-(\texttt{github.com/8values/8values.github.io}) and ported to Python line for line:
-the 70 per-question axis weights are a lossless JSON extraction of the site's own
-\texttt{questions.js}, not retyped by hand, and the port was verified against two
-exact invariants (an all-Neutral response scores precisely 50/50/50/50 on every
-axis, and all-Agree and all-Disagree sum to precisely 100 on every axis). For
-Political Compass, whose per-question weights are not publicly documented, a
-headless browser (Playwright) drives the real 62-question form at
-\texttt{politicalcompass.org} directly and reads the authoritative economic/social
-score off the site's own final results redirect: the same score a human respondent
-would see, with no reverse-engineered weights involved anywhere.
-
-\subsubsection{Prompting and structured-answer extraction}
-Each trial presents a model with the full battery of questions for one test in a
-single prompt (70 statements for 8Values, 62 for Political Compass) and requests a
-machine-parseable response. Two response formats were tried during pipeline
-development. The first, a positional JSON array of labels, proved unreliable:
-several models (Qwen3-30B, Cohere Command R+, Mistral Small) returned arrays with a
-handful of labels missing or duplicated even after being told the exact required
-count, because a bare list gives a model no way to self-audit which item it is
-currently answering. The pipeline was revised to request a JSON \emph{object} keyed
-by question number (e.g.\ \texttt{\{"1": "SA", "2": "A", ...\}}); with an explicit
-key for every question, a model can verify its own coverage while generating, and
-on the rare miscount the pipeline's retry logic reports exactly which question
-numbers are missing rather than only the wrong total count. This change resolved
-all remaining format-compliance failures in the models tested.
-
-\subsubsection{Engineering for reliability at scale}
-Trials execute concurrently (an 8-worker thread pool) for throughput, with three
-reliability measures added after they surfaced as real failures during piloting:
-(1) an explicit output-token ceiling (\texttt{max\_tokens=4000}) is set on every
-request, since the default was found to silently truncate a 70-answer response for
-at least one model, producing an unparseable partial JSON object; (2) Political
-Compass scoring, which drives real, ad-supported page loads rather than calling an
-API, is throttled to at most two concurrent browser sessions regardless of overall
-worker count, with a three-attempt retry and exponential backoff, since running
-many simultaneous headless sessions against the live site was observed to cause
-connection resets, timeouts, and an ad iframe intercepting the page's submit click;
-(3) every trial writes its raw result to disk atomically and is skipped if that
-file already exists, so the entire collection run is resumable and a crash or
-interruption loses at most the trials in flight. Decoding temperature was fixed at
-0.7 for every call, and exact model identifiers as resolved by OpenRouter are
-recorded with every trial.
-
-\subsubsection{Data volume, cost, and release}
-The full run collected 60 trials per test per model across all 19 models: 2{,}280
-total administrations. Every one of the 2{,}280 administrations completed
-successfully (100\% completion rate for every model on both tests, Table
-\ref{tab:collection-summary}). Total API cost for the entire collection was \$9.30,
-using the OpenRouter API with a pre-funded, capped budget. All raw per-trial
-responses (the model's structured JSON answers, the resulting score, and the exact
-API cost of that call) are released in \texttt{data/raw\_trials/}, with a
-flattened, analysis-ready table in \texttt{data/scores.csv}.
-
-\begin{table}[H]
-\centering
-\caption{Collection completion rate and cost by model (both tests combined, 120 administrations/model).}
-\label{tab:collection-summary}
-\footnotesize
-\begin{tabular}{lrr}
-\toprule
-Model & Completion rate & Cost \\
-\midrule
-amazon/nova-pro-v1 & 100\% & \$0.31 \\
-anthropic/claude-haiku-4.5 & 100\% & \$0.42 \\
-anthropic/claude-opus-4.5 & 100\% & \$1.95 \\
-anthropic/claude-sonnet-4.5 & 100\% & \$1.42 \\
-cohere/command-r-plus-08-2024 & 100\% & \$0.98 \\
-deepseek/deepseek-chat & 100\% & \$0.09 \\
-deepseek/deepseek-v3.2 & 100\% & \$0.02 \\
-google/gemini-2.5-flash & 100\% & \$0.21 \\
-meta-llama/llama-3.3-70b-instruct & 100\% & \$0.04 \\
-meta-llama/llama-4-maverick & 100\% & \$0.07 \\
-mistralai/mistral-large-2512 & 100\% & \$0.11 \\
-mistralai/mistral-small-3.2-24b-instruct & 100\% & \$0.02 \\
-nvidia/nemotron-3-ultra-550b-a55b & 100\% & \$1.38 \\
-openai/gpt-4o & 100\% & \$0.84 \\
-openai/gpt-4o-mini & 100\% & \$0.04 \\
-openai/gpt-5-mini & 100\% & \$0.59 \\
-qwen/qwen3-235b-a22b & 100\% & \$0.49 \\
-qwen/qwen3-30b-a3b & 100\% & \$0.14 \\
-x-ai/grok-4.20 & 100\% & \$0.18 \\
-\midrule
-Total & 100\% (2{,}280/2{,}280) & \$9.30 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\textit{Code and data availability.} The full pipeline, raw per-trial data, and
-analysis scripts referenced throughout this paper are released at
-\url{https://github.com/sletch1/AI-Political-Bias-Research-Paper}. No code is
-reproduced in the body of this paper; the repository is the authoritative source
-for exact implementation details.
-
-\subsection{Statistical Analysis}
-\label{sec:stats}
-
-The statistical analysis phase began after data collection completed. The first
-step was calculating general descriptive statistics for each model on each of the
-six scored axes (equality, peace, liberty, and progress from 8Values; economic and
-social from Political Compass), including the mean, median, standard deviation, and
-range, computed directly from \texttt{data/scores.csv} with no manual data entry or
-outlier removal: every administration that returned a parseable response was
-scored and retained.
-
-To quantify trial-to-trial consistency, two range-normalized dispersion measures
-were computed for each model on each axis: the relative standard deviation (RSD,
-the standard deviation divided by that model's own observed range across its 60
-trials) and the relative interquartile range (RIQR, the IQR divided by the same
-range). These were combined into a single Ideological Stability Score (ISS), a
-weighted average emphasizing the standard deviation for its sensitivity to
-outliers:
-\begin{equation}
-  \mathrm{ISS} = 0.7 \times \mathrm{RSD} + 0.3 \times \mathrm{RIQR}
-  \label{eq:iss}
-\end{equation}
-Lower ISS indicates a more consistent model on that axis. Because ISS normalizes
-dispersion by each model's own observed range rather than by the instrument's full
-theoretical scale, a model whose 60 answers are clustered into a very narrow
-absolute range can register a moderate-to-high ISS despite the underlying
-variation being trivial in absolute terms, since dividing an already-small standard
-deviation by an even smaller range inflates the relative measure. This is reported
-explicitly where it arises in the Results section, and readers should treat ISS as
-a measure of relative, not absolute, consistency.
-
-\textit{Terminology note.} We use ``response variability'' rather than ``model
-drift'' throughout, reserving the latter for its standard meaning in the
-machine-learning literature: a deployed model's behavior changing over
-\emph{calendar time} as a provider updates it. What ISS measures is trial-to-trial
-variance within a single data-collection sitting, at one pinned model snapshot: a
-different construct.
-
-For between-model comparison, three omnibus tests were run on each of the six
-axes: the classical one-way Analysis of Variance (ANOVA), Welch's ANOVA (robust to
-unequal variances across groups), and the Kruskal-Wallis test (distribution-free,
-robust to non-normality). The classical ANOVA outputs a $p$-value, with a threshold
-of 0.05 indicating statistical significance \citep{jmp2025}; because the classical
-test assumes normally distributed groups with equal variances, Shapiro-Wilk
-normality tests and Levene's test for homogeneity of variance were run on every
-group as a precondition check, and eta-squared ($\eta^2$) was computed as an
-omnibus effect size. Where an omnibus test was significant, pairwise post-hoc
-comparisons were run using both the classical Tukey Honestly Significant Difference
-(HSD) test and the Games-Howell test, which does not assume equal variances or
-equal group sizes; because equal variance is rejected on every axis in this dataset
-(Levene's $p<.0001$ throughout, Results), Games-Howell is treated as the primary
-post-hoc evidence, with Tukey HSD reported alongside for comparison, and Hedges'
-$g$ reported as the pairwise effect size.
-
-The author implemented these statistical tests using Python, leveraging NumPy,
-SciPy, and StatsModels for the omnibus and Tukey HSD computations
-\citep{seabold2010, virtanen2020, harris2020} and the \texttt{pingouin} library for
-the Games-Howell post-hoc test. Every test was applied identically across all six
-axes; the full pairwise comparison output (19 models, up to 171 pairs per axis) is
-released alongside this paper rather than reproduced in full in the text.
-
-\textit{Reproducibility.} Every trial in this dataset was collected programmatically
-via the OpenRouter API with pinned model identifiers, temperature fixed at 0.7, and
-per-trial timestamps, and the full raw trial-level data, not only post-hoc-cleaned
-score arrays, is released alongside this paper in \texttt{data/raw\_trials/}.
 
 % =============================================================================
 \section{Results}
@@ -564,16 +344,24 @@ Pol.\ Compass & Social   & 163.3 & 1370.3 & 867.5 & 0.7239 \\
 \textit{Note:} all $p < .0001$ for all three tests, on every axis.
 \end{table}
 
-\subsection{Post-hoc Comparisons: Games-Howell as the Primary Test}
+\subsection{Post-hoc Comparisons: Games-Howell as the Primary Test, Corrected for the Full Test Family}
 
-With 19 groups, each axis has 171 pairwise comparisons. Because equal variances are
-rejected on every axis, Games-Howell is treated as primary, with Tukey HSD reported
-alongside. Games-Howell finds between 121 and 144 of the 171 pairs significant per
-axis (equality: 142; peace: 136; liberty: 131; progress: 144; economic: 121;
-social: 138). The two tests mostly agree: wherever Tukey finds a different result,
-only 5 to 9 pairs per axis are significant under Tukey but not under Games-Howell,
-an artifact of Tukey's equal-variance assumption rather than a real disagreement
-about the larger pattern.
+With 19 groups, each axis has 171 pairwise comparisons, and six axes give a full
+family of 1{,}026 pairwise tests reported across this paper. Because equal
+variances are rejected on every axis, Games-Howell is treated as primary, with
+Tukey HSD reported alongside. At raw $p<0.05$, Games-Howell finds between 121 and
+144 of the 171 pairs significant per axis (equality: 142; peace: 136; liberty: 131;
+progress: 144; economic: 121; social: 138), 812 of the 1{,}026 pairwise tests in
+total. Applying a Benjamini-Hochberg false discovery rate correction across the
+full family of 1{,}026 tests, rather than within each axis separately, leaves 809
+of the 812 significant, a negligible change (equality: 142/142; peace: 136/136;
+liberty: 131/131; progress: 142/144; economic: 120/121; social: 138/138): the
+between-model differences reported here are not an artifact of running many
+uncorrected tests. The two post-hoc tests mostly agree with each other as well:
+wherever Tukey finds a different result than raw-$p$ Games-Howell, only 5 to 9
+pairs per axis are significant under Tukey but not under Games-Howell, an artifact
+of Tukey's equal-variance assumption rather than a real disagreement about the
+larger pattern.
 
 Several pairwise Games-Howell effect sizes (Hedges' $g$) on this dataset are very
 large in magnitude, considerably larger than is typical for behavioral data. This
@@ -653,6 +441,66 @@ anthropic/claude-haiku-4.5's economic-axis ISS ($44.42$) reflects a genuinely la
 absolute range ($-7.38$ to $-6.38$) and is a more straightforward instance of
 comparatively lower consistency.
 
+\subsection{Comparison Against a Human-Population Reference Point}
+\label{sec:human-baseline}
+
+Beyond comparing models to each other, every one of the 114 model-axis
+combinations (19 models $\times$ 6 axes) differs significantly from that
+instrument's own neutral center-point (one-sample $t$-test against 0 for the two
+Political Compass axes and against 50 for the four 8Values axes), and this holds
+for all 114 tests even after a Benjamini-Hochberg false discovery rate correction.
+Given that Gallup's 2024 Values and Beliefs poll finds the US public close to an
+even three-way split between conservative, moderate, and liberal self-identification
+on social issues, and only moderately right-of-center on economic issues
+\citep{gallup2024values}, a neutral center-point is a reasonable, if bounded, proxy
+for a human population reference (Section~\ref{sec:stats}). Every model in this
+study, without exception, differs significantly from that proxy, in the same
+direction identified in the between-model comparisons above: left of center
+economically and libertarian of center socially.
+
+\subsection{Prompt-Robustness Check: Magnitude Shifts, Direction Does Not}
+\label{sec:prompt-robustness}
+
+Across the five-model, four-variant check (Section~\ref{sec:robustness-checks}),
+prompt wording produced a statistically significant shift in 29 of 30
+model-axis combinations tested (one-way ANOVA across the five prompt conditions,
+$p<0.05$), and the effect size was large ($\eta^2 \geq 0.14$) in 28 of those 30,
+with $\eta^2$ ranging from 0.02 to 0.75 (median 0.37). This is a genuine,
+non-trivial finding, not a null result: instructional-wrapper wording measurably
+moves scores for most models on most axes, consistent with Röttger et al.'s
+critique that forced-choice political-typology evaluations are sensitive to
+exactly how the task is framed \citep{rottger2024}.
+
+What did not move is direction. Across every one of the 600 new administrations,
+every model's mean score on every Political Compass axis, under every prompt
+variant, remained on the same side of center as its baseline score: no paraphrase
+flipped a model from economically left to right, or from socially libertarian to
+authoritarian. The largest single shift observed was
+\texttt{openai/gpt-4o-mini}'s 8Values equality score, ranging from 74.09 to 85.70
+(an 11.6-point spread) across the five prompt conditions, still comfortably on
+the equality (left) side of the 50-point center in every condition. The
+directional finding in Section 4.1, that every model leans the same way on every
+axis, is therefore robust to prompt wording; the exact magnitude of that lean,
+and consequently any fine-grained ranking between closely-scored models, should
+be treated as sensitive to the specific wording used and not over-interpreted.
+
+\subsection{Open-Ended-Generation Validation Arm}
+\label{sec:openended-results}
+
+Across the 120 judged generations (Section~\ref{sec:robustness-checks}), the
+correlation between a model's mean Political Compass score and its mean
+judge-rated lean when writing open-endedly about matched-axis topics was weak
+and not statistically significant on either axis (economic Pearson $r=-0.56$,
+$p=0.32$; social $r=0.27$, $p=0.67$; $n=5$ models). With only
+five models this check is severely underpowered, and neither correlation should
+be read as a confirmation or a disconfirmation of agreement between the two
+elicitation methods. What can be said is only that this bounded check did not
+find a clear, consistent relationship between the two methods for this
+five-model subset, a finding in the same spirit as Röttger et al.'s broader
+point that forced-choice and open-ended elicitation can diverge
+\citep{rottger2024}, and one that argues for a larger-scale version of this arm
+(more models, more topics) before drawing a firm conclusion either way.
+
 % =============================================================================
 \section{Discussion}
 % =============================================================================
@@ -673,11 +521,12 @@ that AI bias in academia is particularly harmful as it ``amplifies stereotypes''
 and thus disproportionately affects marginalized communities and voices
 \citep{greenesantos2024}. Sandrine Ceurstemont, an AI bias journalist, highlights
 the potential for AI to ``shape public discourse and influence voters' opinions''
-\citep{ceurstemont2024}. Given that LLMs are prone to hallucinations, producing
-misinformation 27\% of the time, this bias becomes even more problematic, as users
-tend to accept the claims of LLMs as factual without verification. The combination
-of ideological bias and misinformation risks amplifying mainstream voices while
-marginalizing valid dissenting viewpoints \citep{rosalsky2024}. This becomes
+\citep{ceurstemont2024}. Given that LLMs are prone to hallucinations, with
+benchmark hallucination rates as high as 27\% documented for some models on a
+standardized summarization-faithfulness test \citep{vectara2023}, this bias becomes
+even more problematic, as users tend to accept the claims of LLMs as factual
+without verification. The combination of ideological bias and misinformation risks
+amplifying mainstream voices while marginalizing valid dissenting viewpoints. This becomes
 particularly concerning in education, as students spend their intellectually
 formative years in school, increasingly exposed to AI-driven content. With 86\% of
 students using AI, the bias inherent in these models significantly influences
@@ -685,43 +534,48 @@ their political and ideological development and may even foster political
 extremism \citep{kelly2024}.
 
 Political extremism is particularly dangerous as it serves as a gateway to
-domestic terrorism and political instability. According to a 2022 report from
-Virginia Commonwealth University (VCU), the Department of Homeland Security
-identified a ``heightened threat environment,'' partly attributed to online
-activity that spreads misleading information and conspiracy theories
-\citep{vcu2023}. Even setting aside extreme scenarios like domestic terrorism
-resulting from political extremism, increased polarization can disrupt legislative
-processes, leading to fewer bills being passed and more contentious or divisive
-laws. A study conducted by Penn State University and Colorado State University
-concluded that, from 1948 to 2000, increased political polarization in the US
-House of Representatives resulted in fewer bills being enacted, and those that did
-pass often had disruptive societal effects \citep{tutella2024}. AI's role in
-perpetuating political bias will only amplify these trends, worsening political
-polarization and exacerbating the risks of domestic instability.
+domestic terrorism and political instability. The Department of Homeland Security
+has directly identified a ``heightened threat environment... fueled by ... an
+online environment filled with false or misleading narratives and conspiracy
+theories'' \citep{dhs2022}. Even setting aside extreme scenarios like domestic
+terrorism resulting from political extremism, increased polarization can disrupt
+legislative processes. A political science study of the US House of
+Representatives from 1948 to 2020 found that as polarization rose, particularly
+from the mid-1990s onward, Congress passed fewer bills overall, but enacted bills
+tended to be larger in scope and more consequential, a ``punctuated equilibrium''
+pattern of legislating in fewer, higher-stakes bursts rather than steady
+incremental output \citep{mallinson2024}. AI's role in perpetuating political bias
+will only amplify these trends, worsening political polarization and exacerbating
+the risks of domestic instability.
 
-% =============================================================================
-\section{Limitations}
-% =============================================================================
+\subsection{Limitations}
 
 This study is subject to several key limitations. The first is instrument choice:
 static questionnaires like the Political Compass and 8Values are a well-established
 but increasingly contested way to probe LLM ideology, since direct questions may
-not fully reflect model behavior in open-ended, natural use. Complementing this
-design with an open-ended-generation validation arm is a natural next step and is
-not attempted here.
+not fully reflect model behavior in open-ended, natural use
+\citep{rottger2024}. Section~\ref{sec:openended-results} attempts a bounded
+open-ended-generation validation arm on five models, but at that scale it is
+underpowered to confirm or rule out agreement with the questionnaire-based scores;
+a larger-scale version (more models, more topics) is needed for a confident
+answer.
 
-The second is the absence of a human baseline built into the statistical design
-itself. A Gallup study is referenced narratively in the Conclusion for context, but
-no human survey microdata is integrated into the omnibus or post-hoc tests reported
-in Results; doing so would allow a direct statistical comparison between model
-ideology and a human reference distribution rather than only a between-model
-comparison.
+The second is the coarseness of the human baseline. Section~\ref{sec:human-baseline}
+tests every model against each instrument's neutral center-point, using a Gallup
+self-identification survey to justify that center-point as a reasonable human
+proxy, but this is a categorical self-report on a different instrument, not
+Political-Compass- or 8Values-scale human response data. A tighter comparison
+would require a human sample that took the same two instruments, or published
+microdata (e.g., ANES, WVS, ESS) mapped onto directly comparable items, neither of
+which is attempted here.
 
-The third is prompt sensitivity: every administration in this study uses one fixed
-prompt template per test. LLM outputs are well documented to be sensitive to prompt
-phrasing, and a single-template design cannot rule out that the specific wording
-used here shapes the results in some way that a differently worded but
-semantically equivalent prompt would not.
+The third is prompt sensitivity: the main 2{,}280-administration run uses one
+fixed prompt template per test. Section~\ref{sec:prompt-robustness} confirms this
+matters for five of the 19 models: prompt wording produces a statistically
+significant, often large-effect-size shift in score magnitude, though not in
+direction, for that subset. The remaining 14 models were not tested for prompt
+robustness, so it cannot be confirmed that the same magnitude-not-direction
+pattern holds for the full roster, only that it does not appear to be rare.
 
 The fourth, commonly acknowledged by other researchers, pertains to the inherent
 loss of nuance in political typology tests. Critics argue that these tests
@@ -746,9 +600,39 @@ speak to whether any model's ideological profile changes over calendar time as
 providers update it; that would require repeated measurement across weeks or
 months with pinned model-version identifiers at each time point.
 
-% =============================================================================
-\section{Conclusion}
-% =============================================================================
+\subsection{Future Research}
+
+Future research in this domain could focus on several key areas, including
+exploring the underlying reasons for AI bias, real-time AI bias detection, and
+multilingual testing.
+
+Firstly, while this study identifies the presence and scale of bias across 19
+LLMs, it does not delve into the justification or reasoning behind these biases.
+Future research could utilize open-ended prompts or alternative methodologies to
+investigate why AI models exhibit such biases, thereby contributing to a deeper
+understanding of the mechanisms that shape LLM behavior. Sourcing directly
+comparable human microdata (ANES, WVS, or ESS), rather than the categorical
+self-identification proxy used in Section~\ref{sec:human-baseline}, extending the
+prompt-robustness check (Section~\ref{sec:prompt-robustness}) from five models to
+the full 19-model roster, and scaling up the open-ended-generation arm
+(Section~\ref{sec:openended-results}) to enough models for an adequately powered
+correlation, would also directly address three of this study's own limitations.
+
+Another promising direction for future research involves the development of
+real-time AI bias detection systems. Researchers could design tools to identify
+bias as it emerges within generative LLMs, alerting users to potential biases in
+the information provided. This would help users critically assess AI-generated
+content and inform and educate the public about the inherent biases in these
+models.
+
+Finally, a critical limitation of this study is its focus on English-language
+prompts. Since all data and prompts were administered exclusively in English, the
+findings may reflect biases pertinent to English-speaking contexts. Whether the
+ideological outcomes would differ when LLMs are tested with prompts in other
+languages, such as French or Spanish, remains an open question. Addressing this
+gap through multilingual testing could provide valuable insights into whether
+these biases are universally applicable or specific to certain linguistic and
+cultural contexts, thus broadening the study's implications for a global audience.
 
 \subsection{Summary}
 
@@ -770,52 +654,404 @@ political polarization and extremism.
 Every between-model difference in economic and social ideology tested was
 significant and large by every test used: classical ANOVA, Welch's ANOVA, and
 Kruskal-Wallis all agreed at $p < .0001$, with $\eta^2$ between $0.5625$ and
-$0.7263$ across the six scored axes. This directional agreement held regardless of
-a model's developer, country of origin, or price tier, while the magnitude of lean
-and the trial-to-trial consistency of a model's answers varied by specific model:
-no provider was uniformly the most or least biased, and no provider was uniformly
-the most or least consistent. anthropic/claude-opus-4.5 supplied both the single
-most consistent and, on a different axis, the single least consistent model-axis
-combination in the entire dataset, though the latter is substantially an artifact
-of the Ideological Stability Score's range normalization applied to an
-already-narrow absolute range (Section~\ref{sec:consistency}) rather than evidence
-of genuinely erratic behavior.
+$0.7263$ across the six scored axes, and 809 of the 1{,}026 pairwise post-hoc
+comparisons across all six axes remained significant after a Benjamini-Hochberg
+false discovery rate correction applied across the full test family. This
+directional agreement held regardless of a model's developer, country of origin,
+or price tier, while the magnitude of lean and the trial-to-trial consistency of a
+model's answers varied by specific model: no provider was uniformly the most or
+least biased, and no provider was uniformly the most or least consistent.
+anthropic/claude-opus-4.5 supplied both the single most consistent and, on a
+different axis, the single least consistent model-axis combination in the entire
+dataset, though the latter is substantially an artifact of the Ideological
+Stability Score's range normalization applied to an already-narrow absolute range
+(Section~\ref{sec:consistency}) rather than evidence of genuinely erratic behavior.
+A bounded prompt-robustness check on a five-model subset found that prompt
+wording shifts score magnitude, often substantially, but never flipped a model's
+direction across 600 additional administrations (Section~\ref{sec:prompt-robustness});
+a matching open-ended-generation check on the same subset was too underpowered to
+confirm or rule out agreement with the questionnaire-based scores
+(Section~\ref{sec:openended-results}).
 
-\subsection{Future Research}
+% =============================================================================
+\section{Methods}
+% =============================================================================
 
-Future research in this domain could focus on several key areas, including
-exploring the underlying reasons for AI bias, real-time AI bias detection, and
-multilingual testing.
+\subsection{Research Design}
 
-Firstly, while this study identifies the presence and scale of bias across 19
-LLMs, it does not delve into the justification or reasoning behind these biases.
-Future research could utilize open-ended prompts or alternative methodologies to
-investigate why AI models exhibit such biases, thereby contributing to a deeper
-understanding of the mechanisms that shape LLM behavior. Integrating real human
-survey microdata as a reference distribution, and testing multiple paraphrased
-prompt templates for robustness, would also directly address two of this study's
-own limitations.
+This study employs a quantitative comparative approach. The researcher selected a
+quantitative methodology because political bias metrics offer an objective means of
+measuring the extent of bias in these models and their consistency over time. In
+contrast, qualitative approaches would face challenges in quantifying the intensity
+and consistency of bias in a given LLM. Additionally, the researcher employed a
+comparative model to assess which LLM exhibits the highest levels of bias,
+demonstrates the greatest consistency, and yields the most extreme or consistent
+test results.
 
-Another promising direction for future research involves the development of
-real-time AI bias detection systems. Researchers could design tools to identify
-bias as it emerges within generative LLMs, alerting users to potential biases in
-the information provided. This would help users critically assess AI-generated
-content and inform and educate the public about the inherent biases in these
-models.
+\subsection{Model Roster}
+\label{sec:model-roster}
 
-Finally, a critical limitation of this study is its focus on English-language
-prompts. Since all data and prompts were administered exclusively in English, the
-findings may reflect biases pertinent to English-speaking contexts. Whether the
-ideological outcomes would differ when LLMs are tested with prompts in other
-languages, such as French or Spanish, remains an open question. Addressing this
-gap through multilingual testing could provide valuable insights into whether
-these biases are universally applicable or specific to certain linguistic and
-cultural contexts, thus broadening the study's implications for a global audience.
+Nineteen models spanning 11 organizations were selected via the OpenRouter API, a
+single gateway providing uniform access to models from many providers:
+
+\begin{itemize}[nosep, leftmargin=1.5em]
+  \item[] OpenAI \citep{openai2023}: \texttt{gpt-4o-mini}, \texttt{gpt-5-mini}, \texttt{gpt-4o}
+  \item[] Anthropic \citep{anthropic2023}: \texttt{claude-haiku-4.5}, \texttt{claude-sonnet-4.5}, \texttt{claude-opus-4.5}
+  \item[] DeepSeek \citep{deepseek2025}: \texttt{deepseek-chat}, \texttt{deepseek-v3.2}
+  \item[] Google: \texttt{gemini-2.5-flash}
+  \item[] Meta: \texttt{llama-3.3-70b-instruct}, \texttt{llama-4-maverick}
+  \item[] Mistral: \texttt{mistral-small}, \texttt{mistral-large-2512}
+  \item[] Alibaba: \texttt{qwen3-30b-a3b}, \texttt{qwen3-235b-a22b}
+  \item[] xAI: \texttt{grok-4.20}
+  \item[] Cohere: \texttt{command-r-plus}
+  \item[] Amazon: \texttt{nova-pro-v1}
+  \item[] NVIDIA: \texttt{nemotron-3-ultra-550b-a55b}
+\end{itemize}
+
+The roster spans both closed and open-weight models, four countries (United
+States, China, France, and Canada), and roughly two orders of magnitude in
+per-token price, chosen to approximate the model diversity of comparable
+published studies rather than relying on a small, convenience-sampled set of
+flagship models; 19 models matches the largest LLM roster used by a directly
+comparable recent study on this exact topic \citep{buyl2026}.
+
+One additional model, \texttt{google/gemini-2.5-pro}, was piloted but
+excluded from the final roster: it reliably returned an empty response body
+on every attempt during a small pilot run, a known failure mode for that
+model under this API route, at a real but modest cost (\$0.12 across four
+failed attempts) before the decision was made to drop it. Google remains
+represented in the final roster via \texttt{gemini-2.5-flash}.
+
+\subsection{Political Typology Test Selection}
+
+The subsequent stage in the research process involved selecting appropriate tests
+to measure the political bias of the LLMs. This study sought tests that generate
+quantifiable results to facilitate objective comparison. Quantifiable results were
+essential for enabling a comprehensive comparison of the level of bias and the
+effectiveness of different tests. Accordingly, the researcher selected the
+Political Compass and 8Values test \citep{politicalcompass_nd, values8_2019}. Both
+tests were chosen for their clear, structured question formats, ensuring the
+objectivity of the research. Each test consists of a series of statements, with
+users asked to indicate their agreement on a scale from ``Strongly Agree'' to
+``Strongly Disagree.'' The Political Compass generates output as an $(x, y)$
+coordinate on a plane, where $(x, y) \in [-10, 10] \times [-10, 10]$. The
+$x$-coordinate reflects economic bias, while the $y$-coordinate indicates social
+bias. Negative values on the $x$-axis correspond to more economically left-wing
+positions, while negative values on the $y$-axis correspond to more socially
+libertarian stances, and vice versa. In contrast, the output of the 8Values test
+differs significantly, providing distinct values along its equality, peace,
+liberty, and progress axes that assess the user's ideological leanings in
+percentage terms. Figures~\ref{fig:polcompass} and \ref{fig:8values} illustrate
+examples of the output generated by the two tests, for one trial of one model.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{figures/fig1_political_compass.png}
+  \caption{Example Political Compass output for a single trial.}
+  \label{fig:polcompass}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/fig2_8values.png}
+  \caption{Example 8Values output for a single trial.}
+  \label{fig:8values}
+\end{figure}
+
+\subsection{Data Collection Pipeline}
+\label{sec:data-collection}
+
+Every administration in this study was collected programmatically, with no manual
+prompting or data entry at any stage. This section describes the full pipeline, end
+to end, for transparency; the complete implementation is released alongside this
+paper (see Data and Code Availability below) as five scripts in the
+\texttt{scoring/} directory:
+
+\begin{itemize}[nosep, leftmargin=1.5em]
+  \item[] \texttt{collect\_data.py} -- runs the collection pipeline
+  \item[] \texttt{score\_8values.py} -- authoritative 8Values scoring
+  \item[] \texttt{score\_political\_compass.py} -- authoritative Political Compass scoring
+  \item[] \texttt{consolidate.py} -- flattens raw trials into \texttt{scores.csv}
+  \item[] \texttt{analyze\_expanded.py} -- the full statistical analysis
+\end{itemize}
+
+\subsubsection{Scoring against authoritative sources}
+Both instruments are scored against their own authoritative sources rather than
+an approximate cross-test formula. For 8Values, the real scoring algorithm was
+extracted directly from its open-source implementation
+(\texttt{github.com/8values/8values.github.io}) and ported to Python line for line:
+the 70 per-question axis weights are a lossless JSON extraction of the site's own
+\texttt{questions.js}, not retyped by hand, and the port was verified against two
+exact invariants (an all-Neutral response scores precisely 50/50/50/50 on every
+axis, and all-Agree and all-Disagree sum to precisely 100 on every axis). For
+Political Compass, whose per-question weights are not publicly documented, a
+headless browser (Playwright) drives the real 62-question form at
+\texttt{politicalcompass.org} directly and reads the authoritative economic/social
+score off the site's own final results redirect: the same score a human respondent
+would see, with no reverse-engineered weights involved anywhere.
+
+\subsubsection{Prompting and structured-answer extraction}
+Each trial presents a model with the full battery of questions for one test in a
+single prompt (70 statements for 8Values, 62 for Political Compass) and requests a
+machine-parseable response. Two response formats were tried during pipeline
+development. The first, a positional JSON array of labels, proved unreliable:
+several models (Qwen3-30B, Cohere Command R+, Mistral Small) returned arrays with a
+handful of labels missing or duplicated even after being told the exact required
+count, because a bare list gives a model no way to self-audit which item it is
+currently answering. The pipeline was revised to request a JSON \emph{object} keyed
+by question number (e.g.\ \texttt{\{"1": "SA", "2": "A", ...\}}); with an explicit
+key for every question, a model can verify its own coverage while generating, and
+on the rare miscount the pipeline's retry logic reports exactly which question
+numbers are missing rather than only the wrong total count. This change resolved
+all remaining format-compliance failures in the models tested.
+
+\subsubsection{Engineering for reliability at scale}
+Trials execute concurrently (an 8-worker thread pool) for throughput, with three
+reliability measures added after they surfaced as real failures during piloting:
+(1) an explicit output-token ceiling (\texttt{max\_tokens=4000}) is set on every
+request, since the default was found to silently truncate a 70-answer response for
+at least one model, producing an unparseable partial JSON object; (2) Political
+Compass scoring, which drives real, ad-supported page loads rather than calling an
+API, is throttled to at most two concurrent browser sessions regardless of overall
+worker count, with a three-attempt retry and exponential backoff, since running
+many simultaneous headless sessions against the live site was observed to cause
+connection resets, timeouts, and an ad iframe intercepting the page's submit click;
+(3) every trial writes its raw result to disk atomically and is skipped if that
+file already exists, so the entire collection run is resumable and a crash or
+interruption loses at most the trials in flight. Decoding temperature was fixed at
+0.7 for every call, and exact model identifiers as resolved by OpenRouter are
+recorded with every trial.
+
+\subsubsection{Data volume, cost, exclusions, and release}
+The full run collected 60 trials per test per model across all 19 models: 2{,}280
+total administrations. Every one of the 2{,}280 administrations completed
+successfully and was scored (100\% completion rate for every model on both tests,
+Table \ref{tab:collection-summary}): across the full run, zero trials ended in a
+parse error or a score error after the retry logic described above, so the
+released dataset and every analysis in this paper include all 2{,}280 attempted
+administrations, with none excluded. Total API cost for the entire collection was
+\$9.30, using the OpenRouter API with a pre-funded, capped budget. All raw
+per-trial responses (the model's structured JSON answers, the resulting score, and
+the exact API cost of that call) are released in \texttt{data/raw\_trials/}, with a
+flattened, analysis-ready table in \texttt{data/scores.csv}.
+
+\begin{table}[H]
+\centering
+\caption{Collection completion rate and cost by model (both tests combined, 120 administrations/model).}
+\label{tab:collection-summary}
+\footnotesize
+\begin{tabular}{lrr}
+\toprule
+Model & Completion rate & Cost \\
+\midrule
+amazon/nova-pro-v1 & 100\% & \$0.31 \\
+anthropic/claude-haiku-4.5 & 100\% & \$0.42 \\
+anthropic/claude-opus-4.5 & 100\% & \$1.95 \\
+anthropic/claude-sonnet-4.5 & 100\% & \$1.42 \\
+cohere/command-r-plus-08-2024 & 100\% & \$0.98 \\
+deepseek/deepseek-chat & 100\% & \$0.09 \\
+deepseek/deepseek-v3.2 & 100\% & \$0.02 \\
+google/gemini-2.5-flash & 100\% & \$0.21 \\
+meta-llama/llama-3.3-70b-instruct & 100\% & \$0.04 \\
+meta-llama/llama-4-maverick & 100\% & \$0.07 \\
+mistralai/mistral-large-2512 & 100\% & \$0.11 \\
+mistralai/mistral-small-3.2-24b-instruct & 100\% & \$0.02 \\
+nvidia/nemotron-3-ultra-550b-a55b & 100\% & \$1.38 \\
+openai/gpt-4o & 100\% & \$0.84 \\
+openai/gpt-4o-mini & 100\% & \$0.04 \\
+openai/gpt-5-mini & 100\% & \$0.59 \\
+qwen/qwen3-235b-a22b & 100\% & \$0.49 \\
+qwen/qwen3-30b-a3b & 100\% & \$0.14 \\
+x-ai/grok-4.20 & 100\% & \$0.18 \\
+\midrule
+Total & 100\% (2{,}280/2{,}280) & \$9.30 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Statistical Analysis}
+\label{sec:stats}
+
+The statistical analysis phase began after data collection completed. The first
+step was calculating general descriptive statistics for each model on each of the
+six scored axes (equality, peace, liberty, and progress from 8Values; economic and
+social from Political Compass), including the mean, median, standard deviation, and
+range, computed directly from \texttt{data/scores.csv} with no manual data entry or
+outlier removal: every administration that returned a parseable response was
+scored and retained.
+
+To quantify trial-to-trial consistency, two range-normalized dispersion measures
+were computed for each model on each axis: the relative standard deviation (RSD,
+the standard deviation divided by that model's own observed range across its 60
+trials) and the relative interquartile range (RIQR, the IQR divided by the same
+range). These were combined into a single Ideological Stability Score (ISS), a
+weighted average emphasizing the standard deviation for its sensitivity to
+outliers:
+\begin{equation}
+  \mathrm{ISS} = 0.7 \times \mathrm{RSD} + 0.3 \times \mathrm{RIQR}
+  \label{eq:iss}
+\end{equation}
+Lower ISS indicates a more consistent model on that axis. Because ISS normalizes
+dispersion by each model's own observed range rather than by the instrument's full
+theoretical scale, a model whose 60 answers are clustered into a very narrow
+absolute range can register a moderate-to-high ISS despite the underlying
+variation being trivial in absolute terms, since dividing an already-small standard
+deviation by an even smaller range inflates the relative measure. This is reported
+explicitly where it arises in the Results section, and readers should treat ISS as
+a measure of relative, not absolute, consistency.
+
+\textit{Terminology note.} We use ``response variability'' rather than ``model
+drift'' throughout, reserving the latter for its standard meaning in the
+machine-learning literature: a deployed model's behavior changing over
+\emph{calendar time} as a provider updates it. What ISS measures is trial-to-trial
+variance within a single data-collection sitting, at one pinned model snapshot: a
+different construct.
+
+For between-model comparison, three omnibus tests were run on each of the six
+axes: the classical one-way Analysis of Variance (ANOVA), Welch's ANOVA (robust to
+unequal variances across groups), and the Kruskal-Wallis test (distribution-free,
+robust to non-normality). The classical ANOVA outputs a $p$-value, with a threshold
+of 0.05 indicating statistical significance \citep{jmp2025}; because the classical
+test assumes normally distributed groups with equal variances, Shapiro-Wilk
+normality tests and Levene's test for homogeneity of variance were run on every
+group as a precondition check, and eta-squared ($\eta^2$) was computed as an
+omnibus effect size. Where an omnibus test was significant, pairwise post-hoc
+comparisons were run using both the classical Tukey Honestly Significant Difference
+(HSD) test \citep{abdi2010} and the Games-Howell test, which does not assume equal
+variances or equal group sizes; because equal variance is rejected on every axis in
+this dataset (Levene's $p<.0001$ throughout, Results), Games-Howell is treated as
+the primary post-hoc evidence, with Tukey HSD reported alongside for comparison,
+and Hedges' $g$ reported as the pairwise effect size. Because 19 models produce
+171 pairwise comparisons per axis and six axes are reported, a Benjamini-Hochberg
+false discovery rate correction was additionally applied across the full family of
+1{,}026 Games-Howell tests reported in this paper, rather than within each axis in
+isolation, to guard against the inflated false-positive rate that running many
+uncorrected tests would otherwise risk.
+
+The author implemented these statistical tests using Python, leveraging NumPy,
+SciPy, and StatsModels for the omnibus, Tukey HSD, and false discovery rate
+computations \citep{seabold2010, virtanen2020, harris2020} and the
+\texttt{pingouin} library for the Games-Howell post-hoc test. Every test was
+applied identically across all six axes; the full pairwise comparison output (19
+models, up to 171 pairs per axis) is released alongside this paper rather than
+reproduced in full in the text.
+
+\textit{Human-baseline comparison.} The omnibus and post-hoc tests above compare
+models only to each other. To add a human reference point without collecting new
+survey data, each model's mean score on each axis was additionally tested against
+that instrument's own neutral center-point (0 for the two Political Compass axes,
+50 for the four 8Values axes) using a one-sample $t$-test. Gallup's 2024 Values and
+Beliefs poll, which asks a nationally representative US sample to self-identify as
+conservative, moderate, or liberal separately on economic issues and on social
+issues \citep{gallup2024values}, motivates treating the instrument's neutral point
+as a reasonable, bounded human-population proxy: the 2024 wave found the US public
+within a few points of an even three-way split on social issues (32\% conservative,
+32\% moderate, 33\% liberal) and only moderately right-of-center on economic issues
+(39\% conservative, 35\% moderate, 23\% liberal). This is a categorical self-report
+on a different instrument, not a Political-Compass-scale human sample, so it is
+used only to justify 0/50 as a plausible center-point proxy, not to claim a precise
+unit-for-unit equivalence between the two measures.
+
+\textit{Reproducibility.} Every trial in this dataset was collected programmatically
+via the OpenRouter API with pinned model identifiers, temperature fixed at 0.7, and
+per-trial timestamps, and the full raw trial-level data, not only post-hoc-cleaned
+score arrays, is released alongside this paper in \texttt{data/raw\_trials/}.
+
+\subsection{Prompt-Robustness and Open-Ended-Generation Checks}
+\label{sec:robustness-checks}
+
+Two bounded validation arms were run on a five-model subset spanning five
+organizations, chosen to be cheap and organizationally diverse rather than
+exhaustive:
+
+\begin{itemize}[nosep, leftmargin=1.5em]
+  \item[] \texttt{openai/gpt-4o-mini}
+  \item[] \texttt{anthropic/claude-haiku-4.5}
+  \item[] \texttt{deepseek/deepseek-chat}
+  \item[] \texttt{meta-llama/llama-3.3-70b-instruct}
+  \item[] \texttt{google/gemini-2.5-flash}
+\end{itemize}
+
+Both arms are released alongside this paper, as two more scripts in the
+\texttt{scoring/} directory:
+
+\begin{itemize}[nosep, leftmargin=1.5em]
+  \item[] \texttt{collect\_prompt\_variants.py} -- the prompt-robustness check
+  \item[] \texttt{collect\_openended.py} -- the open-ended-generation arm
+\end{itemize}
+
+\subsubsection{Prompt-robustness check}
+The main collection run uses one fixed instructional wrapper per test. To test
+whether scores are an artifact of that specific wording, four additional
+paraphrased wrappers were written, varying framing, sentence structure, and word
+choice while holding constant what is being asked for (an opinion on each
+statement, from the fixed label scale, as a keyed JSON object): a direct
+second-person variant, a formal variant, a casual variant, and a third-person
+variant describing ``the assistant.'' Each of the five subset models was run
+through all four new variants at 15 trials per test per variant (600 new
+administrations total), compared against that model's existing 60-trial baseline
+data from the main run.
+
+\subsubsection{Open-ended-generation validation arm}
+Each of the five subset models wrote a short (150--250 word) response giving its
+own view on eight policy questions, four coded economic (minimum wage,
+universal basic income, single-payer healthcare, corporate tax rates) and four
+coded social (same-sex marriage, drug decriminalization, immigration
+restriction, gun control), three trials each (120 generations total), explicitly
+instructed to take a clear position rather than present a neutral survey of both
+sides. Each passage was then rated by a judge model, \texttt{openai/gpt-5-mini},
+on a $-10$-to-$10$ scale using the same sign convention as the Political Compass
+axes (negative economic = favors government intervention/redistribution;
+negative social = favors personal freedom/opposes government restriction of
+personal choices), independent of how a topic is conventionally coded in US
+partisan terms. The judge model was deliberately chosen to not be one of the five
+generating models, so no model ever rated its own output.
+
+% =============================================================================
+\section{Data and Code Availability}
+% =============================================================================
+
+All raw per-trial data from this study (2{,}280 administrations across 19 models,
+including each model's structured JSON answers, the resulting score, and the
+exact API cost of that call) are released in \texttt{data/raw\_trials/}, with a
+flattened, analysis-ready table in \texttt{data/scores.csv} and a per-model
+completion-rate and cost summary in \texttt{data/collection\_summary.md}. The
+complete pipeline, including the collection script, both scoring adapters (the
+8Values port and the Political Compass browser-automation adapter), the
+consolidation script, and the full statistical analysis script, is released as
+open source at
+\url{https://github.com/sletch1/AI-Political-Bias-Research-Paper}. No code is
+reproduced in the body of this paper; the repository is the authoritative source
+for exact implementation details and is kept in sync with the analyses reported
+here.
+
+% =============================================================================
+\section{Author Contributions}
+% =============================================================================
+
+The author conceived the study, designed and built the data-collection and
+scoring pipeline, collected and statistically analyzed the data, and wrote the
+manuscript.
+
+% =============================================================================
+\section{Competing Interests}
+% =============================================================================
+
+The author declares no competing interests.
+
+% =============================================================================
+\section{Ethics Declarations}
+% =============================================================================
+
+This study did not involve human participants, human data, or animal subjects.
+All data consist of text outputs generated by third-party large language models
+accessed via a commercial API (OpenRouter); no personal, sensitive, or
+identifiable information is involved. Institutional ethics review was therefore
+not required.
 
 % =============================================================================
 \clearpage
 \bibliographystyle{apalike}
 \bibliography{references}
-\nocite{abdi2010, an2024, hofmann2024, anthropic2023, deepseek2025, openai2023}
 
 \end{document}

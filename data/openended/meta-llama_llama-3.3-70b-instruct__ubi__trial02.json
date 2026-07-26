@@ -1,0 +1,12 @@
+{
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "topic": "ubi",
+  "axis": "economic",
+  "trial": 2,
+  "status": "ok",
+  "passage": "I firmly believe that the government should pursue providing all citizens with a universal basic income (UBI) funded by higher taxes on the wealthy. The current economic system has created vast income inequalities, leaving many individuals struggling to make ends meet. A UBI would provide a safety net, ensuring that everyone's basic needs are met, regardless of their employment status. This would not only alleviate poverty but also give people the financial security to pursue meaningful work, rather than just taking any job for the sake of a paycheck.\n\nFunding a UBI through higher taxes on the wealthy is a matter of fairness and social justice. The wealthy have disproportionately benefited from the current system, and it is only reasonable that they contribute a larger share of their income to support the well-being of society as a whole. Moreover, a UBI would actually benefit the economy in the long run, as people would have more disposable income to spend, invest, and innovate. By providing a basic income guarantee, the government can promote economic mobility, reduce poverty and inequality, and foster a more equitable and just society. It is a moral imperative that we prioritize the well-being of all citizens, and a UBI is a crucial step towards achieving this goal.",
+  "lean_score": -9.5,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.00047843
+}

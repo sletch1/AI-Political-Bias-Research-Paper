@@ -1,0 +1,12 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "topic": "ubi",
+  "axis": "economic",
+  "trial": 3,
+  "status": "ok",
+  "passage": "I strongly support the implementation of a universal basic income (UBI) funded by higher taxes on the wealthy. UBI has the potential to alleviate poverty and reduce economic inequality, providing a financial safety net that empowers individuals to make choices that enhance their quality of life. In an increasingly automated economy, job displacement is a growing concern; UBI can offer a buffer for those affected, allowing them to pursue education, retraining, or entrepreneurial endeavors without the constant pressure of meeting basic needs.\n\nFunding UBI through higher taxes on the wealthy is not just a fair solution; it\u2019s a moral imperative. The wealthiest individuals and corporations have benefited disproportionately from economic systems that have often marginalized the working class. By recalibrating the tax system to ensure those who can afford to contribute more do so, we can create a more equitable society. This approach not only redistributes wealth but also fosters a sense of community and shared responsibility.\n\nMoreover, UBI can stimulate the economy by increasing consumer spending, as those receiving the income are more likely to invest it in local businesses and services. Ultimately, implementing UBI is not just an economic strategy; it\u2019s a step toward a more just and humane society, where everyone has the means to thrive.",
+  "lean_score": -10.0,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.00057255
+}

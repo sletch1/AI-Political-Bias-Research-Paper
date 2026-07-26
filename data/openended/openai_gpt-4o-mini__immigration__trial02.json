@@ -1,0 +1,12 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "topic": "immigration",
+  "axis": "social",
+  "trial": 2,
+  "status": "ok",
+  "passage": "The government should not pursue significantly restricting immigration and increasing border security. Immigration is a vital component of a thriving society, contributing to economic growth, cultural diversity, and innovation. Restricting immigration undermines the principles of openness and opportunity that many nations stand for, stifling the potential contributions of skilled individuals seeking better lives and opportunities.\n\nIncreased border security often leads to a militarization of communities and fosters an atmosphere of fear and division. It can marginalize vulnerable populations, pushing them deeper into the shadows and making them less likely to seek help or integrate positively into society. Moreover, many immigrants fill crucial roles in sectors such as healthcare, agriculture, and technology, which are essential for national resilience and economic stability.\n\nRather than focusing on restriction, the government should prioritize comprehensive immigration reform that balances security with compassion and practicality. This includes streamlining legal pathways for immigration, providing support for asylum seekers, and fostering integration programs. Ultimately, a more inclusive approach not only enriches society but also reflects our shared values of humanity and justice. Embracing immigration with thoughtful policies can lead to a stronger, more cohesive nation.",
+  "lean_score": -8.5,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.0007186
+}

@@ -1,0 +1,12 @@
+{
+  "model": "deepseek/deepseek-chat",
+  "topic": "single_payer",
+  "axis": "economic",
+  "trial": 2,
+  "status": "ok",
+  "passage": "I firmly believe that the government should pursue replacing private health insurance with a single-payer healthcare system. My support for this policy stems from a commitment to equity, efficiency, and the belief that healthcare is a fundamental human right. Private health insurance perpetuates inequality by tying access to care to one\u2019s ability to pay, leaving millions uninsured or underinsured. A single-payer system would ensure universal coverage, eliminating the financial barriers that prevent people from receiving necessary care.\n\nFrom an efficiency standpoint, private insurance is riddled with administrative waste, with significant resources spent on marketing, billing, and profit margins. A government-run system would streamline these processes, reducing overhead costs and allowing more funds to be directed toward actual healthcare delivery. Additionally, a single-payer system would empower the government to negotiate lower prices for medications and procedures, addressing the exorbitant costs that burden patients and the economy.\n\nCritics often argue that a single-payer system would lead to longer wait times or reduced quality of care, but evidence from other countries with universal healthcare, such as Canada and the UK, demonstrates that these systems can provide timely, high-quality care while covering everyone. Ultimately, replacing private insurance with a single-payer system aligns with my values of fairness and compassion, ensuring that no one is denied care due to financial circumstances. It\u2019s a bold but necessary step toward a healthier, more just society.",
+  "lean_score": -10.0,
+  "judge_confidence": "high",
+  "judge_model": "openai/gpt-5-mini",
+  "cost": 0.00076571
+}
