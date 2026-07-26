@@ -1,11 +1,28 @@
-"""Automated data collection: query an LLM via OpenRouter, parse structured
-answers, score with the authoritative adapters in this directory.
+"""Main data-collection pipeline for the paper's primary 19-model dataset.
 
-Replaces the manual "read question -> paste into chat -> copy answer -> type
-into test website -> read score" loop with one API call per (model, test,
-trial), scored immediately by score_8values.py / score_political_compass.py.
+For every (model, test, trial) combination in DEFAULT_MODELS x {8values,
+political_compass} x n_trials_per_test, this script: builds a single prompt
+containing the full battery of test questions, sends it to the model via the
+OpenRouter API (a unified gateway to many providers), parses the model's
+keyed-JSON response, scores it with the authoritative adapters in this
+directory (score_8values.py / score_political_compass.py), and writes one
+JSON record per trial to data/raw_trials/.
 
-Requires OPENROUTER_API_KEY as an environment variable (never hard-code it).
+Run standalone (uses DEFAULT_MODELS, 60 trials/test, $12 cost cap):
+
+    export OPENROUTER_API_KEY=...
+    python3 collect_data.py
+
+Or with an explicit model list as command-line arguments:
+
+    python3 collect_data.py openai/gpt-4o-mini anthropic/claude-haiku-4.5
+
+The run is resumable: each trial's result file is written atomically and
+skipped on re-run if it already exists (see run_trial), so an interrupted or
+crashed run can simply be restarted and will only redo missing trials.
+Afterwards, run consolidate.py to build data/scores.csv and
+data/collection_summary.md, then analyze_expanded.py for the full
+statistical analysis.
 """
 
 import json
@@ -45,6 +62,9 @@ SCALE_PC = "SD (Strongly Disagree), D (Disagree), A (Agree), SA (Strongly Agree)
 
 
 def build_prompt(questions, scale, example):
+    """Render PROMPT_TEMPLATE with a numbered list of `questions` and the
+    given answer `scale` (SCALE_8V or SCALE_PC), returning the exact prompt
+    string sent to the model for one trial."""
     numbered = "\n".join(f"{i+1}. {q['question']}" for i, q in enumerate(questions))
     return PROMPT_TEMPLATE.format(
         n=len(questions), scale=scale, example=example, numbered_statements=numbered
@@ -129,6 +149,13 @@ def _parse_keyed_answers(text, expected_length):
 
 
 def run_trial(model, test, trial_num, questions_8v, questions_pc):
+    """Run one (model, test, trial) administration end to end: build the
+    prompt, call the model, score the response, and persist the result to
+    data/raw_trials/<model>__<test>__trial<NN>.json.
+
+    Idempotent/resumable: if that file already exists (from a prior run),
+    it is loaded and returned without calling the API again, so re-running
+    this script after an interruption only fills in what's missing."""
     result_path = RESULTS_DIR / f"{model.replace('/', '_')}__{test}__trial{trial_num:02d}.json"
     if result_path.exists():
         return json.loads(result_path.read_text())  # resumable
@@ -173,6 +200,12 @@ _state = {"total_cost": 0.0, "n_ok": 0, "n_fail": 0, "stopped": False}
 
 
 def main(models, n_trials_per_test=3, max_workers=8, cost_cap=None):
+    """Collect n_trials_per_test trials on both tests for every model in
+    `models`, dispatching all (model, test, trial) tasks to a thread pool of
+    `max_workers` concurrent workers. If `cost_cap` (in dollars) is set,
+    stops dispatching *new* tasks once the running total observed cost
+    reaches it; tasks already in flight are allowed to finish. Prints a
+    per-trial progress line as each task completes and a final summary."""
     questions_8v = load_8v_questions()
     questions_pc = load_pc_questions()
 
@@ -219,15 +252,17 @@ def main(models, n_trials_per_test=3, max_workers=8, cost_cap=None):
           f"Total observed cost: ${_state['total_cost']:.4f}")
 
 
-# 19 models spanning 10 organizations, multiple countries, open-weight and
-# closed, cheap-to-flagship pricing tiers (see scoring/README.md for the full
-# roster rationale and per-model pricing this was budgeted against). Model
-# count matches the comparator study cited in improvement.md ("Large Language
-# Models Reflect the Ideology of their Creators", npj Artificial Intelligence,
-# 19 models). The final 7 entries are flagship-tier siblings of an existing
-# smaller model in the same family (added to test whether bias magnitude or
-# consistency scales with model size within a family) plus one additional
-# organization (Amazon) for further breadth.
+# 19 models spanning 11 organizations (OpenAI, Anthropic, DeepSeek, Google,
+# Meta, Mistral, Alibaba, xAI, Cohere, Amazon, NVIDIA), multiple countries,
+# open-weight and closed, cheap-to-flagship pricing tiers (see
+# scoring/README.md for the full roster rationale and per-model pricing this
+# was budgeted against). Model count matches the comparator study cited in
+# main.tex's Related Work ("Large Language Models Reflect the Ideology of
+# their Creators", npj Artificial Intelligence, 19 models). The final 7
+# entries are flagship-tier siblings of an existing smaller model in the same
+# family (added to test whether bias magnitude or consistency scales with
+# model size within a family) plus two additional organizations (Amazon,
+# NVIDIA) for further breadth.
 DEFAULT_MODELS = [
     "openai/gpt-4o-mini",
     "openai/gpt-5-mini",
@@ -258,13 +293,15 @@ DEFAULT_MODELS = [
 # across 4 failed attempts on a single trial). Google remains represented in
 # the roster via google/gemini-2.5-flash.
 #
-# Note: nvidia/nemotron-3-ultra-550b-a55b (and, in piloting,
-# google/gemini-3.1-pro-preview) answered every single 8Values question "N"
-# (Neutral), a well-formed but degenerate response distinct from the
-# gemini-2.5-pro failure above. This is included and reported as data, not
-# discarded: it is a second, structurally different form of political-content
-# avoidance alongside Claude's outright refusal (Section 3.4), and is treated
-# as a finding in the Results discussion rather than excluded as noise.
+# Note: nvidia/nemotron-3-ultra-550b-a55b and google/gemini-3.1-pro-preview
+# both answered "N" (Neutral) on most or all questions in a small early pilot
+# batch, which briefly looked like a degenerate, distinct-from-refusal form
+# of political-content avoidance. That did not hold up at full trial count:
+# nemotron's actual 60-trial 8values data (data/raw_trials/) shows ordinary
+# variance and a left-leaning profile in line with the rest of the roster, so
+# no such finding is reported in the paper. Kept here as a record of a
+# hypothesis that was tested and did not survive a larger sample, not as a
+# confirmed behavior.
 
 if __name__ == "__main__":
     import sys

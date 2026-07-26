@@ -17,6 +17,16 @@ RAW_DIR = DATA_DIR / "raw_trials"
 
 
 def main():
+    """Read every JSON file in data/raw_trials/, then write:
+      - data/scores.csv: one row per successful ("ok" status) trial, with
+        that trial's scores spread across the axis1..axis4_name/value
+        columns (8values trials use all 4; political_compass trials use
+        only axis1/axis2 and leave axis3/axis4 blank).
+      - data/collection_summary.md: a per-(model, test) table of completed
+        count, failed count, completion rate, and total API cost, plus a
+        grand total.
+    Trials with any other status (parse_error, score_error: ...) are counted
+    as failed in the summary and excluded from scores.csv."""
     rows = []
     status_by_model_test = defaultdict(lambda: {"ok": 0, "fail": 0, "cost": 0.0})
 

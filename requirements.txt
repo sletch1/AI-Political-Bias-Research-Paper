@@ -1,5 +1,8 @@
+requests
+numpy
 scipy
 statsmodels
-numpy
+pandas
+pingouin
 playwright
 pytest

@@ -16,6 +16,15 @@ DATA_DIR = Path(__file__).parent.parent / "data" / "raw_trials"
 
 
 def main():
+    """Scan data/raw_trials/ for records whose status starts with
+    "score_error" (the model call succeeded and its answers were saved, but
+    the local scoring step raised an exception at the time), re-score them
+    with the already-saved `answers` using the current scoring adapters, and
+    overwrite the record in place with status "ok" and a "repaired": true
+    flag if scoring now succeeds. Records with no saved answers, or whose
+    status is anything else (e.g. "ok" or "parse_error"), are left
+    untouched. Prints a per-file outcome and a final repaired/still-failing
+    count."""
     questions_8v = load_8v_questions()
     questions_pc = load_pc_questions()
 

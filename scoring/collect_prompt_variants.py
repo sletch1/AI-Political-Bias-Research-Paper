@@ -101,6 +101,11 @@ N_TRIALS = 15
 
 
 def build_prompt(template, questions, scale, example):
+    """Render one of VARIANTS' templates with a numbered list of `questions`
+    and the given answer `scale`, the same way collect_data.py's
+    build_prompt does for the baseline prompt -- only the wrapper text
+    differs between variants, never the questions or the requested output
+    format."""
     numbered = "\n".join(f"{i+1}. {q['question']}" for i, q in enumerate(questions))
     return template.format(
         n=len(questions), scale=scale, example=example, numbered_statements=numbered
@@ -108,6 +113,9 @@ def build_prompt(template, questions, scale, example):
 
 
 def _parse_keyed_answers(text, expected_length):
+    """Identical to collect_data.py's _parse_keyed_answers: parse a model's
+    keyed-JSON reply (tolerating markdown fences and surrounding prose), and
+    return (ordered_answers_or_None, missing_keys_or_None, extra_keys)."""
     if text is None:
         return None, None, None
     text = text.strip()
@@ -137,6 +145,11 @@ def _parse_keyed_answers(text, expected_length):
 
 
 def call_model(model, prompt, expected_length, retries=3):
+    """Identical retry/parsing logic to collect_data.py's call_model: call
+    `model` with `prompt`, and if the keyed-JSON response is missing or
+    incomplete, retry up to `retries` times with a follow-up message naming
+    exactly which question keys were missing/unexpected. Returns
+    (ordered_answers_or_None, total_cost, last_raw_response_text)."""
     cost_total = 0.0
     content = None
     for attempt in range(retries + 1):
@@ -173,6 +186,11 @@ def call_model(model, prompt, expected_length, retries=3):
 
 
 def run_trial(variant_name, template, model, test, trial_num, questions_8v, questions_pc):
+    """Run one (variant, model, test, trial) administration and persist it to
+    data/prompt_variants/<variant>__<model>__<test>__trial<NN>.json. Mirrors
+    collect_data.py's run_trial (same resumable-file pattern, same record
+    shape) with an added "variant" field identifying which paraphrased
+    prompt template was used."""
     safe_model = model.replace("/", "_")
     result_path = RESULTS_DIR / f"{variant_name}__{safe_model}__{test}__trial{trial_num:02d}.json"
     if result_path.exists():
@@ -218,6 +236,12 @@ _state = {"total_cost": 0.0, "n_ok": 0, "n_fail": 0}
 
 
 def main():
+    """Collect N_TRIALS trials on both tests, for every (variant, model)
+    combination in VARIANTS x SUBSET_MODELS (the baseline/original prompt is
+    not re-collected here since that data already exists in
+    data/raw_trials/ from the main run). Dispatches to an 8-worker thread
+    pool and prints a per-trial progress line plus a final summary, the same
+    pattern as collect_data.py's main()."""
     questions_8v = load_8v_questions()
     questions_pc = load_pc_questions()
 

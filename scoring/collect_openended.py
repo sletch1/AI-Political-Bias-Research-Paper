@@ -95,6 +95,13 @@ decimal>, "confidence": "<low|medium|high>"}}. No other text, no markdown fences
 
 
 def call_api(model, prompt, max_tokens=600):
+    """Send one single-turn chat completion request to `model` via
+    OpenRouter and return (response_text, cost_in_dollars). No retry logic
+    here (unlike collect_data.py/collect_prompt_variants.py's call_model):
+    a failed generation or judge call is recorded as a failure by the caller
+    and simply not retried automatically, since this script's per-record
+    failure handling (see run_trial) already limits the judge step to 3
+    attempts at the call site."""
     resp = requests.post(
         API_URL,
         headers={"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"},
@@ -112,6 +119,11 @@ def call_api(model, prompt, max_tokens=600):
 
 
 def parse_judge_json(text):
+    """Parse the judge model's reply, tolerating markdown fences and
+    surrounding prose (same tolerant-parsing approach as
+    collect_data.py's _parse_keyed_answers). Returns the parsed dict (with
+    "lean_score" coerced to float) if it contains a usable "lean_score" key,
+    otherwise None so the caller can retry."""
     if text is None:
         return None
     text = text.strip()
@@ -136,6 +148,15 @@ def parse_judge_json(text):
 
 
 def run_trial(model, topic, trial_num):
+    """Run one (model, topic, trial) generation-and-judging administration:
+    ask `model` to write a short opinion passage on `topic`, then ask
+    JUDGE_MODEL to rate that passage's political lean, and persist the
+    result to data/openended/<model>__<topic id>__trial<NN>.json. Records one
+    of four statuses: "ok" (both steps succeeded), "generation_error" (the
+    generating model's API call failed), "empty_generation" (it returned a
+    blank passage), or "judge_parse_error" (the judge's reply never parsed
+    into a usable score after 3 attempts). Resumable: returns the existing
+    file's contents without any API calls if it already exists."""
     safe_model = model.replace("/", "_")
     result_path = RESULTS_DIR / f"{safe_model}__{topic['id']}__trial{trial_num:02d}.json"
     if result_path.exists():
@@ -189,6 +210,9 @@ def run_trial(model, topic, trial_num):
 
 
 def _write(path, record):
+    """Write `record` to `path` atomically (write to a .tmp file, then
+    rename), so a crash mid-write never leaves a corrupt/partial JSON file
+    that run_trial's resumability check would treat as a completed trial."""
     tmp = path.with_suffix(".tmp")
     tmp.write_text(json.dumps(record, indent=2))
     tmp.rename(path)
@@ -199,6 +223,10 @@ _state = {"total_cost": 0.0, "n_ok": 0, "n_fail": 0}
 
 
 def main():
+    """Collect N_TRIALS generation-and-judging trials for every (model,
+    topic) combination in GENERATION_MODELS x TOPICS, dispatched to a
+    6-worker thread pool. Prints a per-trial progress line and a final
+    summary, the same pattern as collect_data.py's main()."""
     tasks = [
         (model, topic, trial)
         for model in GENERATION_MODELS

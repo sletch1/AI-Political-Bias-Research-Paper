@@ -53,6 +53,12 @@ BASE_URL = "https://www.politicalcompass.org/test/en"
 
 
 def load_questions():
+    """Load the 62 Political Compass questions from
+    questions_political_compass.json. Each entry is a dict with "name" (the
+    HTML form field name used to submit an answer for this question on the
+    live site), "page" (which of the site's 6 pages it appears on), and
+    "question" (the statement text). Scraped directly from the live site via
+    Playwright, not retyped by hand (see the module docstring)."""
     with open(QUESTIONS_PATH) as f:
         return json.load(f)
 

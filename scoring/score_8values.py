@@ -35,6 +35,11 @@ AXES = ("econ", "dipl", "govt", "scty")
 
 
 def load_questions():
+    """Load the 70 8Values questions from questions_8values.json. Each entry
+    is a dict with at least "question" (the statement text) and "effect"
+    (per-axis weights for "econ"/"dipl"/"govt"/"scty"). This JSON is a
+    lossless extraction of the live site's own questions.js, not retyped by
+    hand (see the module docstring)."""
     with open(QUESTIONS_PATH) as f:
         return json.load(f)
 
