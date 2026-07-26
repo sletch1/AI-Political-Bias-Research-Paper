@@ -7,3 +7,14 @@
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Secrets -- never commit API keys
+.env
+.env.*
+*.key
+secrets.json
+
+# Large collected-data cache (raw per-trial JSON, regeneratable via collect_data.py)
+scoring/collected/
+scoring/__pycache__/
+scoring/.pytest_cache/
