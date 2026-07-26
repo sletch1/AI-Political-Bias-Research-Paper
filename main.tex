@@ -4,6 +4,7 @@
 % Packages
 % ---------------------------------------------------------------------------
 \usepackage{fontspec}
+\usepackage{microtype}
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -12,29 +13,13 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{enumitem}
-\usepackage{listings}
-\usepackage{xcolor}
 \usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
+\usepackage{xurl}
 \usepackage[round]{natbib}
 \usepackage{setspace}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
-
-\newfontfamily\pymonofont{Menlo}
-\lstdefinestyle{pystyle}{
-  language=Python,
-  basicstyle=\pymonofont\footnotesize,
-  keywordstyle=\color{blue!70!black},
-  commentstyle=\color{gray},
-  stringstyle=\color{green!40!black},
-  numbers=left,
-  numberstyle=\tiny\color{gray},
-  breaklines=true,
-  showstringspaces=false,
-  frame=single,
-  tabsize=4
-}
 
 \title{\textbf{Echoes of Ideology: Evaluating Political Bias and Stability in Large
 Language Models Through Quantitative Analysis and Standardized Typology Testing}}
@@ -46,40 +31,22 @@ Language Models Through Quantitative Analysis and Standardized Typology Testing}
 \maketitle
 
 \begin{abstract}
-This quantitative comparative analysis focuses on determining AI political bias and
-consistency. This research asks: ``To what extent do GPT-4o, Claude 3.7 Sonnet, and
-DeepSeek V-3 exhibit ideological bias and consistency across political typology
-assessments?'' Key gaps in the previous literature include the lack of inclusion of
-the new DeepSeek-V3 model, the absence of measures for LLM consistency in responses,
-and the lack of comparison between political typology tests for a given large
-language model (LLM). The research gathered data from Political Compass and
-8Values, then standardized the 8Values data to be comparable to that of Political
-Compass. The data was then subjected to descriptive statistical analysis (mean,
-median, range, standard deviation, etc.) and inferential statistical analysis
-(one-way ANOVA test and Tukey HSD test) to determine whether the results differed
-significantly. ChatGPT demonstrated the highest level of consistency, while Claude
-was the most inconsistent. The 8Values test yielded less ideological extremity than
-the Political Compass test. All models leaned left, both socially (libertarian) and
-economically. Additionally, DeepSeek was statistically significantly more
-economically right-leaning than Claude ($p = 0.0459$ under a classical one-way
-ANOVA, though this result did not survive assumption-free robustness checks
-described below). There was no observed response-variability effect within a
-sitting, and all models had indistinguishable social and political ideologies
-(all $p$-values $> 0.05$).
-
-This study was subsequently extended to twelve models across nine
-organizations (1{,}440 total administrations, a twelvefold increase),
-collected via an automated pipeline that scores both instruments against
-authoritative sources rather than a hand-derived conversion formula. Every
-model leaned in the same direction on every axis, replicating the original
-finding at substantially larger scale, and all omnibus tests (classical
-ANOVA, Welch's ANOVA, Kruskal-Wallis) agreed at $p < .0001$ with large effect
-sizes ($\eta^2 = 0.575$ to $0.816$) on every axis, a materially more robust
-result than the original three-model finding. The magnitude of lean varies
-substantially by model, and the original finding that Claude was the least
-consistent model does not generalize once more than one Claude generation is
-included: Claude Sonnet 4.5 was among the most consistent models tested and
-Claude Haiku 4.5 among the least.
+This study measures political bias and response consistency across 19 large
+language models from 11 organizations, using two standardized
+political-typology instruments: the Political Compass and 8Values. Each
+model was queried 60 times per instrument (2{,}280 total administrations)
+via the OpenRouter API, with both instruments scored against authoritative
+sources rather than an approximate cross-test formula. Every model leaned
+the same direction on every axis: economically left and socially
+libertarian on the Political Compass, and toward equality, peace, liberty,
+and progress on 8Values. Classical ANOVA, Welch's ANOVA, and Kruskal-Wallis
+tests agreed at $p < .0001$ on every axis, with large effect sizes ($\eta^2
+= 0.56$ to $0.73$), though the magnitude of lean varied substantially by
+model. Trial-to-trial consistency, measured with a range-normalized
+Ideological Stability Score, varied by specific model rather than by
+provider, country, or model size. All code, raw trial data, and analysis
+scripts are released at
+\url{https://github.com/sletch1/AI-Political-Bias-Research-Paper}.
 \end{abstract}
 
 % =============================================================================
@@ -126,53 +93,41 @@ down a particular ideological path \citep{mowshowitz2024}. Partisan LLMs exacerb
 this trend. While there is a growing presence of literature on AI political bias,
 most academic papers have a couple of gaps that this study addresses.
 
-The first gap is examining newer models. Most academic articles examining political
-bias do not use DeepSeek, and even those that do not use the most recent version of
-DeepSeek, DeepSeek V-3. Analyzing DeepSeek's AI political bias is essential, as it
-has recently become the second most popular large language model (LLM), behind
-ChatGPT. Moreover, its rise in popularity is because of its ability to do the same
-thing as current LLMs but at a fraction of the cost. Such an invention led to
-measurable volatility in the stock prices of major AI hardware firms like NVIDIA,
-bringing DeepSeek to the forefront of American and global attention. Additionally,
-DeepSeek, the most widely used LLM developed in China, provides cultural diversity
-compared to Western-centric LLMs such as ChatGPT and Claude.
+The first gap is breadth of model coverage. Most academic studies of political bias
+in LLMs examine a small, convenience-sampled handful of flagship models, typically
+from two or three organizations, and are re-run infrequently enough that they miss
+newer entrants entirely. This study instead evaluates 19 models spanning 11
+organizations across four countries, chosen deliberately to cover both closed and
+open-weight models, multiple size and price tiers within the same model family, and
+providers outside the usual US-centric set, including DeepSeek and Qwen (China) and
+Mistral (France).
 
-The second gap is that while many studies examine political bias, none compare
-political consistency and stability. More than just leaning left or right, are the
-LLM models consistent in their answers as the trials increase? Do the LLMs give
-varying answers? Does one trial agree with the decriminalization of drugs, while
-another trial strongly opposes it?
+The second gap is that while many studies examine political bias, few compare
+political consistency and stability across a broad model set. More than just
+leaning left or right, are the LLM models consistent in their answers as the trials
+increase? Do the LLMs give varying answers? Does one trial agree with the
+decriminalization of drugs, while another trial strongly opposes it?
 
 The third gap is the test comparison. Most studies aim to examine the level of AI
 political bias, but few explore the results of different political typology tests
 and how they differ. This analysis will show that the same AI model can result in
-varying levels of political extremism in other tests.
+varying levels of political extremism on different tests.
 
-The research question for this study is: ``To what extent do GPT-4o, Claude 3.7
-Sonnet, and DeepSeek V-3 exhibit ideological bias and consistency across political
-typology assessments?'' This study aims to identify political bias and consistency
-within models and compare them. The author hypothesizes that DeepSeek will exhibit
-a more socially authoritarian orientation than ChatGPT and Claude, which are
-expected to hold similar ideological positions. Moreover, there will be minimal
-response variability across trials. Lastly, the 8Values test will likely lead to less
-ideological extremism than the Political Compass test.
+The research question for this study is: ``To what extent do large language models
+from a broad set of developers exhibit ideological bias and response consistency
+across political typology assessments, and does either property track a model's
+developer, country of origin, or size?'' This study aims to identify political bias
+and consistency within models and compare them. It is hypothesized that most models
+will lean in a similar ideological direction, consistent with prior literature, but
+that the magnitude of that lean, and the trial-to-trial consistency of a model's
+answers, will vary by specific model rather than clustering neatly by developer,
+country, or size. It is further hypothesized that the 8Values test, which offers a
+`Neutral/Unsure' option, a larger number of questions, and multiple nuanced factors
+per axis, will yield less ideological extremity than the Political Compass test.
 
-This hypothesis was derived for a couple of reasons. It is hypothesized that
-DeepSeek may exhibit a more socially authoritarian orientation since it was
-developed in China, a country infamous for its extreme social authoritarianism in
-governance. This may result in a more authoritarian orientation due to potential
-state-influenced training data. Additionally, DeepSeek has been associated with
-disseminating Chinese state narratives \citep{myers2025}. Furthermore, it is
-expected that the responses given by LLMs will be relatively consistent, given a
-control political typology test. There is no reason to expect a change except for
-algorithmic randomness. Finally, it is anticipated that the 8Values test will yield
-less politically extreme results due to the inclusion of a `Neutral/Unsure' option,
-the greater number of questions, and the incorporation of multiple nuanced factors
-in the analysis.
-
-This research study aims to map ideological leanings, quantify stability in model
-drift over time, and ensure answer consistency. Moreover, it compares the two tests
-to see if they yield different results.
+This research study aims to map ideological leanings, quantify response consistency
+within a data-collection sitting, and compare the two typology tests to see whether
+they yield different results for the same model.
 
 % =============================================================================
 \section{Literature Review}
@@ -181,51 +136,58 @@ to see if they yield different results.
 The study's foundation is based on Associate Professor David Rozado's 2024 study
 ``The Political Preferences of LLMs'' \citep{rozado2024}. This study aligns with
 the interests of scholars in AI, language models, and political bias, sharing a
-goal similar to Professor Rozado's research but differing in LLM selection and
-methodology. Rozado aims to diagnose political preferences across 24 LLMs (plus
-five base models) using 11 political orientation tests. In contrast, the current
-experiment uses two typology tests to measure the political bias and stability
-(consistency or drift) of three state-of-the-art language models (LLMs). This
-study emphasizes the stability and consistency of each LLM's political bias. Both
-studies use ChatGPT and Claude, as well as the Political Compass and 8Values, as
-tests.
+goal similar to Professor Rozado's research but differing in scale, model
+selection, and methodology. Rozado aims to diagnose political preferences across 24
+LLMs (plus five base models) using 11 political orientation tests. In contrast, the
+current study uses two typology tests across 19 models to measure political bias
+and within-session response consistency. This study emphasizes the consistency of
+each model's political bias in addition to its direction. Both studies use models
+from OpenAI and Anthropic, as well as the Political Compass and 8Values, as tests.
+A comparably scaled recent study, Buyl et al.'s ``Large Language Models Reflect the
+Ideology of their Creators,'' probes 19 LLMs (matching this study's model count)
+using open-ended generation about thousands of political figures rather than a
+fixed questionnaire \citep{buyl2026}; the present study's use of two independent,
+structured typology instruments, each scored against its own authoritative source,
+is a methodologically different but complementary approach to the same underlying
+question.
 
 Furthermore, Rozado's study does not compare the tests for a specific LLM model but
-examines the models from a broader perspective. Moreover, the cleaning and outlier
-removal process was different in both studies. The current research employed a
-z-score analysis, removing data points with a $|z\text{-score}| > 2$, whereas Rozado
-utilized automated stance detection (GPT-3.5), validated by human cross-check.
-Another difference is that this analysis uses inferential statistical tests and
-standardization techniques to analyze and clean the data. Finally, the researcher
-employs a key distinction between economic and social political ideologies, whereas
-Rozado does not.
+examines the models from a broader perspective. Both studies score every response
+against the tests' own authoritative outputs rather than a hand-derived measure,
+though the automation differs: Rozado utilized automated stance detection
+(GPT-3.5), validated by human cross-check, whereas the current study drives the
+Political Compass's own live scoring page directly and ports 8Values' own published
+scoring algorithm line for line, so that no separate stance-classification step is
+needed for either instrument. Finally, the researcher employs a key distinction
+between economic and social political ideologies, whereas Rozado does not.
 
 Another relevant study, conducted by Rettenberger et al., examines political bias
 from the EU and German perspectives \citep{rettenberger2024}. Both the author's
 analysis and Rettenberger et al.\ come to a similar conclusion about LLMs' political
 leaning: that most models tend to lean socially libertarian and economically left.
 However, one difference in the results of both studies is that Rettenberger et al.\
-found that ``smaller'' models tended to be more neutral. The current experiment did
-not observe this finding and instead identified similar levels of political bias in
-both smaller and newer models. The key novelties between the two studies diverge.
-In the researcher's analysis, they introduce the Ideological Stability Score (ISS)
-to quantify response variability; Rettenberger et al.\ leverage Wahl-O-Mat, a real-world tool
-for political alignment among German voters. Moreover, Rettenberger et al.'s work
-focuses more on LLMs' moral and political alignment with the people of Germany.
+found that ``smaller'' models tended to be more neutral. The current study's
+19-model roster, which spans multiple size tiers within several model families,
+did not find a consistent relationship between model size and neutrality. The key
+novelties between the two studies diverge. In the researcher's analysis, they
+introduce the Ideological Stability Score (ISS) to quantify response variability;
+Rettenberger et al.\ leverage Wahl-O-Mat, a real-world tool for political alignment
+among German voters. Moreover, Rettenberger et al.'s work focuses more on LLMs'
+moral and political alignment with the people of Germany.
 
 In contrast, this study does not focus on political alignment with any party.
 Moreover, Rettenberger et al.\ compare German and English prompts, while this
-experiment is focused on English-based prompts. These findings have significant
+study is focused on English-based prompts. These findings have significant
 implications for understanding the political bias in large language models (LLMs)
 and their potential impact on society.
 
 In contrast to Rozado's study and the researcher's work, Rettenberger et al.\
 incorporate language variation in prompts. However, Rozado and Rettenberger et al.\
-do not emphasize stability or examine DeepSeek V-3 for model comparison. In
-comparison, all three studies come to the same conclusion: most LLM models exhibit
-economically left and socially libertarian viewpoints. This shared conclusion
-reinforces the validity of the findings and their potential impact. Rettenberger
-also calls for disclosing bias in LLMs to safeguard democratic integrity.
+do not emphasize response consistency to the same degree. In comparison, all three
+studies come to the same conclusion: most LLM models exhibit economically left and
+socially libertarian viewpoints. This shared conclusion reinforces the validity of
+the findings and their potential impact. Rettenberger also calls for disclosing
+bias in LLMs to safeguard democratic integrity.
 
 Another relevant study by PhD candidate Suyash Fulay and Research Scientist Jad
 Kabbara examines how political bias shifts following the `truth testing' process on
@@ -236,15 +198,17 @@ significantly different from the rest, as they train reward models on datasets l
 TruthfulQA and test their output bias using TwinViews-13k, a dataset of paired left
 and right political statements. This distinctive methodology highlights the range
 of approaches in the field. One similarity between this analysis and that study is
-the inferential statistical analysis. The researcher's study uses the one-way ANOVA
-test and the Tukey Honestly Significant Difference (HSD) test. In contrast, Fulay
-et al.\ use another type of inferential statistical analysis: regression analysis
+the use of inferential statistical analysis: the current study relies on Welch's
+ANOVA, the Kruskal-Wallis test, and the Games-Howell post-hoc test as its primary
+evidence (with the classical one-way ANOVA and Tukey HSD reported alongside for
+comparison), justified below by explicit assumption checks. In contrast, Fulay et
+al.\ use another type of inferential statistical analysis: regression analysis
 across topics.
 
-Regarding limitations, this study and Rettenberger et al.'s study suffer from a
-relatively small sample size. A restriction of Fulay et al.'s work is that their
-results are confined to reward models and thus not generalizable to all LLMs in
-uncontrolled settings.
+Regarding limitations, this study and Rettenberger et al.'s study should be read
+alongside the fact that both examine a bounded, non-exhaustive set of models. A
+restriction of Fulay et al.'s work is that their results are confined to reward
+models and thus not generalizable to all LLMs in uncontrolled settings.
 
 % =============================================================================
 \section{Methodology}
@@ -261,37 +225,44 @@ comparative model to assess which LLM exhibits the highest levels of bias,
 demonstrates the greatest consistency, and yields the most extreme or consistent
 test results.
 
-\subsection{LLM Selection}
+\subsection{Model Roster}
+\label{sec:model-roster}
 
-The selection of models constituted the foundational aspect of the research
-methodology. The models selected for this study (GPT-4o-mini, Claude 3.7 Sonnet,
-and DeepSeek V-3) were chosen for distinct, strategic reasons. Due to its
-widespread usage and dominant market share, ChatGPT was the most logical model
-selection. It is the most widely used large language model (LLM), with over 1.5
-billion unique monthly visitors \citep{isarta2024}, and holds the most significant
-economic market share, at 74.1\% as of March 2025 \citep{bailyn2025}. A notable
-trend identified by CEO Evan Bailyn is the gradual decline in ChatGPT's market
-share, which decreased by 2.3\% over the past year \citep{bailyn2025}. This trend
-has facilitated the rise of other competitors. Claude 3.7 Sonnet was selected for
-its rapid rise in market share, having grown by 14\% in the first quarter of 2025
-\citep{bailyn2025}.
+Nineteen models spanning 11 organizations were selected via the OpenRouter API, a
+single gateway providing uniform access to models from many providers:
 
-The final model examined is DeepSeek V-3. DeepSeek was chosen for several reasons.
-First, it introduces cultural diversity into the research, as ChatGPT and Claude
-were developed in the U.S.\ by U.S.-based companies. In contrast, DeepSeek was
-launched by a Chinese company founded by Liang Wenfeng \citep{shibu2025}. Second,
-DeepSeek's popularity has surged, surpassing Google's Gemini and Character AI,
-becoming the second most popular LLM, still trailing ChatGPT \citep{kan2025}.
-Finally, DeepSeek's rise can be attributed to its significantly lower cost. While
-U.S.-based AI startups like Anthropic can cost upwards of \$100 million, DeepSeek
-reportedly costs less than \$6 million while offering similar functionality
-\citep{shibu2025}. The release of DeepSeek contributed to a significant drop in
-American AI stocks, further boosting its global presence.
+\begin{itemize}[nosep, leftmargin=1.5em]
+  \item[] OpenAI: \texttt{gpt-4o-mini}, \texttt{gpt-5-mini}, \texttt{gpt-4o}
+  \item[] Anthropic: \texttt{claude-haiku-4.5}, \texttt{claude-sonnet-4.5}, \texttt{claude-opus-4.5}
+  \item[] DeepSeek: \texttt{deepseek-chat}, \texttt{deepseek-v3.2}
+  \item[] Google: \texttt{gemini-2.5-flash}
+  \item[] Meta: \texttt{llama-3.3-70b-instruct}, \texttt{llama-4-maverick}
+  \item[] Mistral: \texttt{mistral-small}, \texttt{mistral-large-2512}
+  \item[] Alibaba: \texttt{qwen3-30b-a3b}, \texttt{qwen3-235b-a22b}
+  \item[] xAI: \texttt{grok-4.20}
+  \item[] Cohere: \texttt{command-r-plus}
+  \item[] Amazon: \texttt{nova-pro-v1}
+  \item[] NVIDIA: \texttt{nemotron-3-ultra-550b-a55b}
+\end{itemize}
+
+The roster spans both closed and open-weight models, four countries (United
+States, China, France, and Canada), and roughly two orders of magnitude in
+per-token price, chosen to approximate the model diversity of comparable
+published studies rather than relying on a small, convenience-sampled set of
+flagship models; 19 models matches the largest LLM roster used by a directly
+comparable recent study on this exact topic \citep{buyl2026}.
+
+One additional model, \texttt{google/gemini-2.5-pro}, was piloted but
+excluded from the final roster: it reliably returned an empty response body
+on every attempt during a small pilot run, a known failure mode for that
+model under this API route, at a real but modest cost (\$0.12 across four
+failed attempts) before the decision was made to drop it. Google remains
+represented in the final roster via \texttt{gemini-2.5-flash}.
 
 \subsection{Political Typology Test Selection}
 
 The subsequent stage in the research process involved selecting appropriate tests
-to measure the political bias of the LLMs. This study sought a test to generate
+to measure the political bias of the LLMs. This study sought tests that generate
 quantifiable results to facilitate objective comparison. Quantifiable results were
 essential for enabling a comprehensive comparison of the level of bias and the
 effectiveness of different tests. Accordingly, the researcher selected the
@@ -305,10 +276,10 @@ $x$-coordinate reflects economic bias, while the $y$-coordinate indicates social
 bias. Negative values on the $x$-axis correspond to more economically left-wing
 positions, while negative values on the $y$-axis correspond to more socially
 libertarian stances, and vice versa. In contrast, the output of the 8Values test
-differs significantly, providing eight distinct values that assess the user's
-ideological leanings in percentage terms. Figures~\ref{fig:polcompass} and
-\ref{fig:8values} illustrate examples of the output generated by the two tests, for
-one trial of one model.
+differs significantly, providing distinct values along its equality, peace,
+liberty, and progress axes that assess the user's ideological leanings in
+percentage terms. Figures~\ref{fig:polcompass} and \ref{fig:8values} illustrate
+examples of the output generated by the two tests, for one trial of one model.
 
 \begin{figure}[H]
   \centering
@@ -324,599 +295,267 @@ one trial of one model.
   \label{fig:8values}
 \end{figure}
 
-\subsection{Data Collection Process \& Standardization}
+\subsection{Data Collection Pipeline}
+\label{sec:data-collection}
 
-The researcher carefully transcribed each question and corresponding answer
-choices into a Google document. The researcher then entered the prompt: ``Answer
-the following questions based on your beliefs as an LLM and on available
-research,'' then replicated the questions. The LLM's response was then entered into
-the test, and the resulting data was recorded on a Google Sheet. This process was
-repeated 20 times for each model and test, resulting in 120 tests. Once the data
-was collected, a standardization process was performed before analysis.
-Figures~\ref{fig:polcompass} and \ref{fig:8values} illustrate the data from the
-Political Compass and 8Values tests, which exhibited significant differences.
+Every administration in this study was collected programmatically, with no manual
+prompting or data entry at any stage. This section describes the full pipeline, end
+to end, for transparency; the complete implementation is released alongside this
+paper (see Code and Data Availability below) as five scripts in the
+\texttt{scoring/} directory:
 
-A key correlation was established by developing a formula to convert the 8Values
-data into Political Compass data for comparison. Specifically, the researcher
-mapped the left-leaning values from the 8Values test (equality, globalist,
-progress, and liberty) as the input to the equation. This decision was crucial, as
-it provided two coordinates from which the formula could be developed.
+\begin{itemize}[nosep, leftmargin=1.5em]
+  \item[] \texttt{collect\_data.py} -- runs the collection pipeline
+  \item[] \texttt{score\_8values.py} -- authoritative 8Values scoring
+  \item[] \texttt{score\_political\_compass.py} -- authoritative Political Compass scoring
+  \item[] \texttt{consolidate.py} -- flattens raw trials into \texttt{scores.csv}
+  \item[] \texttt{analyze\_expanded.py} -- the full statistical analysis
+\end{itemize}
 
-First, find the slope:
-\begin{equation}
-  m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{-10 - 0}{100 - 50} = \frac{-10}{50} = -\frac{1}{5}
-\end{equation}
-
-Now, use the point-slope form to find $b$. Substitute $m$ and one of the points,
-say $(50, 0)$, into $y = mx + b$:
-\begin{align}
-  0 &= \left(-\frac{1}{5}\right)(50) + b \\
-  0 &= -10 + b \\
-  b &= 10
-\end{align}
-
-Thus, the equation of the line is:
-\begin{equation}
-  y = -\frac{1}{5}x + 10
-  \label{eq:conversion}
-\end{equation}
-
-where $y$ in this equation represents the Political Compass score, and $x$ (input)
-is the left-leaning percentage from 8Values (equality, globe, liberty, progress).
-The examiner entered the equality value from 8Values to obtain the new economic
-score for the economic leaning. For example, take Figure~\ref{fig:8values}'s
-equality score of 80.8\%: $-0.2 \times 80.8 + 10 = -6.16$, giving a Political
-Compass economic score of $-6.16$. Moreover, the same process was used for the
-social score using the other three factors (globe, liberty, and progress), and
-averaged to get the final social score.
-
-\subsection{Expanded Automated Data Collection}
-\label{sec:expanded-data}
-
-The manual process described above (transcribing questions, prompting a
-model by hand, copying its answer into a test website, and reading off a
-score) does not scale past a handful of models and trials. To extend the study, the entire
-pipeline was rebuilt as an automated, reproducible system, described in full
-below for transparency; the complete implementation
-(\texttt{scoring/collect\_data.py}, \texttt{scoring/score\_8values.py},
-\texttt{scoring/score\_political\_compass.py}) is released alongside this
-paper.
-
-\subsubsection{Model roster}
-Twelve models spanning nine organizations were selected via the OpenRouter
-API, a single gateway providing uniform access to models from many providers:
-OpenAI (\texttt{gpt-4o-mini}, \texttt{gpt-5-mini}), Anthropic
-(\texttt{claude-haiku-4.5}, \texttt{claude-sonnet-4.5}), DeepSeek
-(\texttt{deepseek-chat}, \texttt{deepseek-v3.2}), Google
-(\texttt{gemini-2.5-flash}), Meta (\texttt{llama-3.3-70b-instruct}), Mistral
-(\texttt{mistral-small}), Alibaba
-(\texttt{qwen3-30b-a3b}), xAI (\texttt{grok-4.20}), and Cohere
-(\texttt{command-r-plus}). The roster spans both closed and
-open-weight models, multiple countries (United States, China, France,
-Canada), and roughly an order of magnitude in per-token price, chosen to
-approximate the model diversity of comparable published studies rather than
-relying on a small, convenience-sampled set of flagship models.
-
-\subsubsection{Scoring}
-Both instruments are scored by ground truth rather than the original study's
-linear conversion formula (Equation~\ref{eq:conversion}). For 8Values, the
-real scoring algorithm was extracted directly from its open-source
-implementation (\texttt{github.com/8values/8values.github.io}) and ported to
-Python line for line: the 70 per-question axis weights are a lossless JSON
-extraction of the site's own \texttt{questions.js}, not retyped by hand, and
-the port was verified against two exact invariants (an all-Neutral response
-scores precisely 50/50/50/50 on every axis, and all-Agree and all-Disagree
-sum to precisely 100 on every axis). For Political Compass, whose
-per-question weights are not publicly documented, a headless browser
-(Playwright) drives the real 62-question form at
-\texttt{politicalcompass.org} directly and reads the authoritative
-economic/social score off the site's own final results redirect: the same
-score a human respondent would see, with no reverse-engineered weights
-involved anywhere.
+\subsubsection{Scoring against authoritative sources}
+Both instruments are scored against their own authoritative sources rather than
+an approximate cross-test formula. For 8Values, the real scoring algorithm was
+extracted directly from its open-source implementation
+(\texttt{github.com/8values/8values.github.io}) and ported to Python line for line:
+the 70 per-question axis weights are a lossless JSON extraction of the site's own
+\texttt{questions.js}, not retyped by hand, and the port was verified against two
+exact invariants (an all-Neutral response scores precisely 50/50/50/50 on every
+axis, and all-Agree and all-Disagree sum to precisely 100 on every axis). For
+Political Compass, whose per-question weights are not publicly documented, a
+headless browser (Playwright) drives the real 62-question form at
+\texttt{politicalcompass.org} directly and reads the authoritative economic/social
+score off the site's own final results redirect: the same score a human respondent
+would see, with no reverse-engineered weights involved anywhere.
 
 \subsubsection{Prompting and structured-answer extraction}
-Each trial presents a model with the full battery of questions for one test
-in a single prompt (70 statements for 8Values, 62 for Political Compass) and
-requests a machine-parseable response. Two response formats were tried during
-pipeline development. The first, a positional JSON array of labels, proved
-unreliable: several models (Qwen3-30B, Cohere Command R+, Mistral Small)
-returned arrays with a handful of labels missing or duplicated even after
-being told the exact required count, because a bare list gives a model no way
-to self-audit which item it is currently answering. The pipeline was revised
-to request a JSON \emph{object} keyed by question number (e.g.\
-\texttt{\{"1": "SA", "2": "A", ...\}}); with an explicit key for every
-question, a model can verify its own coverage while generating, and on the
-rare miscount the pipeline's retry logic reports exactly which question
-numbers are missing rather than only the wrong total count. This change
-resolved all remaining format-compliance failures in the models tested.
+Each trial presents a model with the full battery of questions for one test in a
+single prompt (70 statements for 8Values, 62 for Political Compass) and requests a
+machine-parseable response. Two response formats were tried during pipeline
+development. The first, a positional JSON array of labels, proved unreliable:
+several models (Qwen3-30B, Cohere Command R+, Mistral Small) returned arrays with a
+handful of labels missing or duplicated even after being told the exact required
+count, because a bare list gives a model no way to self-audit which item it is
+currently answering. The pipeline was revised to request a JSON \emph{object} keyed
+by question number (e.g.\ \texttt{\{"1": "SA", "2": "A", ...\}}); with an explicit
+key for every question, a model can verify its own coverage while generating, and
+on the rare miscount the pipeline's retry logic reports exactly which question
+numbers are missing rather than only the wrong total count. This change resolved
+all remaining format-compliance failures in the models tested.
 
 \subsubsection{Engineering for reliability at scale}
-Trials execute concurrently (an 8-worker thread pool) for throughput, with
-three reliability measures added after they surfaced as real failures during
-piloting: (1) an explicit output-token ceiling (\texttt{max\_tokens=4000}) is
-set on every request, since the default was found to silently truncate a
-70-answer response for at least one model, producing an unparseable partial
-JSON object; (2) Political Compass scoring, which drives real,
-ad-supported page loads rather than calling an API, is throttled to at most
-two concurrent browser sessions regardless of overall worker count, with a
-three-attempt retry and exponential backoff, since running many simultaneous
-headless sessions against the live site was observed to cause connection
-resets, timeouts, and an ad iframe intercepting the page's submit click; (3)
-every trial writes its raw result to disk atomically and is skipped if that
+Trials execute concurrently (an 8-worker thread pool) for throughput, with three
+reliability measures added after they surfaced as real failures during piloting:
+(1) an explicit output-token ceiling (\texttt{max\_tokens=4000}) is set on every
+request, since the default was found to silently truncate a 70-answer response for
+at least one model, producing an unparseable partial JSON object; (2) Political
+Compass scoring, which drives real, ad-supported page loads rather than calling an
+API, is throttled to at most two concurrent browser sessions regardless of overall
+worker count, with a three-attempt retry and exponential backoff, since running
+many simultaneous headless sessions against the live site was observed to cause
+connection resets, timeouts, and an ad iframe intercepting the page's submit click;
+(3) every trial writes its raw result to disk atomically and is skipped if that
 file already exists, so the entire collection run is resumable and a crash or
-interruption loses at most the trials in flight, mirroring the resumable
-design already used for this project's simulation infrastructure. Decoding
-temperature was fixed at 0.7 for every call, and exact model identifiers as
-resolved by OpenRouter are recorded with every trial, addressing the original
-dataset's lack of pinned model versions and decoding parameters.
+interruption loses at most the trials in flight. Decoding temperature was fixed at
+0.7 for every call, and exact model identifiers as resolved by OpenRouter are
+recorded with every trial.
 
 \subsubsection{Data volume, cost, and release}
-The full run collected 60 trials per test per model across all twelve
-models: 1{,}440 total administrations, a twelvefold increase over the
-original study's 120. Every one of the 1{,}440 administrations completed
-successfully (100\% completion rate for every model on both tests), in
-contrast to the original dataset's Claude refusals discussed above; whether
-that difference reflects the newer model generations tested, the absence of
-an ongoing chat context, or genuine model-to-model variation is not
-determinable from this design and is not claimed here. Total API cost for
-the entire expanded collection was \$4.15 (Table~\ref{tab:collection-summary}),
+The full run collected 60 trials per test per model across all 19 models: 2{,}280
+total administrations. Every one of the 2{,}280 administrations completed
+successfully (100\% completion rate for every model on both tests, Table
+\ref{tab:collection-summary}). Total API cost for the entire collection was \$9.30,
 using the OpenRouter API with a pre-funded, capped budget. All raw per-trial
-responses (the model's structured JSON answers, the resulting score, and the
-exact API cost of that call) are released in \texttt{data/raw\_trials/},
-with a flattened, analysis-ready table in \texttt{data/scores.csv},
-addressing the original dataset's lack of a released raw dataset beyond
-post-hoc-cleaned score arrays.
+responses (the model's structured JSON answers, the resulting score, and the exact
+API cost of that call) are released in \texttt{data/raw\_trials/}, with a
+flattened, analysis-ready table in \texttt{data/scores.csv}.
 
 \begin{table}[H]
 \centering
-\caption{Expanded collection: completion rate and cost by model (both tests combined, 120 administrations/model).}
+\caption{Collection completion rate and cost by model (both tests combined, 120 administrations/model).}
 \label{tab:collection-summary}
 \footnotesize
 \begin{tabular}{lrr}
 \toprule
 Model & Completion rate & Cost \\
 \midrule
+amazon/nova-pro-v1 & 100\% & \$0.31 \\
 anthropic/claude-haiku-4.5 & 100\% & \$0.42 \\
+anthropic/claude-opus-4.5 & 100\% & \$1.95 \\
 anthropic/claude-sonnet-4.5 & 100\% & \$1.42 \\
 cohere/command-r-plus-08-2024 & 100\% & \$0.98 \\
 deepseek/deepseek-chat & 100\% & \$0.09 \\
 deepseek/deepseek-v3.2 & 100\% & \$0.02 \\
 google/gemini-2.5-flash & 100\% & \$0.21 \\
 meta-llama/llama-3.3-70b-instruct & 100\% & \$0.04 \\
+meta-llama/llama-4-maverick & 100\% & \$0.07 \\
+mistralai/mistral-large-2512 & 100\% & \$0.11 \\
 mistralai/mistral-small-3.2-24b-instruct & 100\% & \$0.02 \\
+nvidia/nemotron-3-ultra-550b-a55b & 100\% & \$1.38 \\
+openai/gpt-4o & 100\% & \$0.84 \\
 openai/gpt-4o-mini & 100\% & \$0.04 \\
 openai/gpt-5-mini & 100\% & \$0.59 \\
+qwen/qwen3-235b-a22b & 100\% & \$0.49 \\
 qwen/qwen3-30b-a3b & 100\% & \$0.14 \\
 x-ai/grok-4.20 & 100\% & \$0.18 \\
 \midrule
-Total & 100\% (1{,}440/1{,}440) & \$4.15 \\
+Total & 100\% (2{,}280/2{,}280) & \$9.30 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Descriptive and Preparatory Statistical Analysis}
+\textit{Code and data availability.} The full pipeline, raw per-trial data, and
+analysis scripts referenced throughout this paper are released at
+\url{https://github.com/sletch1/AI-Political-Bias-Research-Paper}. No code is
+reproduced in the body of this paper; the repository is the authoritative source
+for exact implementation details.
 
-The statistical analysis phase began after data standardization. The first step
-was straightforward, involving calculating general descriptive statistics,
-including the mean, median, standard deviation, range, maximum, and minimum
-values. These statistics were calculated using Google Sheets formulas. After
-collecting the data, the researcher performed a $z$-score analysis to clean it. A
-$z$-score measures how many standard deviations a data point is from the mean,
-calculated by subtracting the mean from the data point and dividing by the standard
-deviation. Data points with a $z$-score greater than 2 in absolute value were
-considered outliers. Although this threshold is stricter than the common
-$|z| > 3$ rule, it was chosen to ensure more robust conclusions. Removing outliers
-with $|z| > 2$ still identified approximately 5\% of outlying data, assuming a
-normal distribution. This process removed only two outliers from the dataset.
+\subsection{Statistical Analysis}
+\label{sec:stats}
 
-After cleaning the data and examining the basic statistics, these were expanded
-into more complex benchmarks for further analysis. These include the relative
-standard deviation, relative interquartile range (IQR), and ideological distance.
-The relative standard deviation, divided by the range, indicates the spread of the
-data. A lower relative standard deviation suggests that the data is more compact
-and closer to the mean, and vice versa. The relative IQR, which indicates how
-central the data is, was turned into a percentage when divided by the total data
-range. These measures were used to calculate the custom metric, the Ideological
-Stability Score (ISS), a weighted average of the relative standard deviation and
-IQR, emphasizing the standard deviation due to its sensitivity to outliers. The ISS
-is crucial for understanding the stability and distribution:
+The statistical analysis phase began after data collection completed. The first
+step was calculating general descriptive statistics for each model on each of the
+six scored axes (equality, peace, liberty, and progress from 8Values; economic and
+social from Political Compass), including the mean, median, standard deviation, and
+range, computed directly from \texttt{data/scores.csv} with no manual data entry or
+outlier removal: every administration that returned a parseable response was
+scored and retained.
+
+To quantify trial-to-trial consistency, two range-normalized dispersion measures
+were computed for each model on each axis: the relative standard deviation (RSD,
+the standard deviation divided by that model's own observed range across its 60
+trials) and the relative interquartile range (RIQR, the IQR divided by the same
+range). These were combined into a single Ideological Stability Score (ISS), a
+weighted average emphasizing the standard deviation for its sensitivity to
+outliers:
 \begin{equation}
   \mathrm{ISS} = 0.7 \times \mathrm{RSD} + 0.3 \times \mathrm{RIQR}
   \label{eq:iss}
 \end{equation}
-where $\mathrm{ISS}$ is the Ideological Stability Score, $\mathrm{RSD}$ is the
-relative standard deviation, and $\mathrm{RIQR}$ is the relative interquartile
-range.
-
-Finally, the last statistic analyzed was the ideological distance score. This
-metric took the mean economic and social scores of each data point and calculated
-its distance from the origin $(0,0)$, indicating how extreme the data is for that
-given model. The formula used here was the standard distance equation:
-\begin{equation}
-  \mathrm{ID} = \sqrt{\mathrm{ES}^2 + \mathrm{SC}^2}
-  \label{eq:id}
-\end{equation}
-where $\mathrm{ID}$ is the ideological distance, $\mathrm{ES}$ is the economic
-score, and $\mathrm{SC}$ is the social score.
-
-The models were then sorted from least ISS to highest ISS to determine which
-tests and models were the most consistent.
-
-\subsection{Inferential Statistical Testing: ANOVA and Tukey HSD}
-
-Following the completion of the preliminary statistical tests, the study employed
-a one-way Analysis of Variance (ANOVA) and the Tukey Honestly Significant
-Difference (HSD) test to assess whether the models differed significantly in terms
-of economic and/or social biases. The one-way ANOVA is a fundamental statistical
-technique used to compare the means of three or more groups based on a single
-independent variable, determining whether any pairwise differences between the
-groups are statistically significant. The ANOVA outputs a $p$-value, with a
-threshold of 0.05 indicating statistical significance \citep{jmp2025}. If the
-$p$-value is less than 0.05, it suggests that at least two groups differ
-significantly from each other, warranting further analysis using the Tukey HSD
-test.
-
-The Tukey HSD test is a post-hoc analysis comparing every possible pair of groups
-to identify specific differences. These tests were deemed appropriate for this
-study, as the objective was to examine whether there were significant differences
-in the economic and social scores across three models: ChatGPT, Claude, and
-DeepSeek, each serving as a distinct group. The ANOVA is crucial for determining
-whether observed differences are attributable to random variation or represent a
-genuine divergence between the models.
-
-The analysis was performed separately for economic and social scores, and the same
-tests were applied to both datasets. The author implemented these statistical
-tests using Python, leveraging libraries such as NumPy, SciPy, and StatsModels for
-the computations \citep{seabold2010, virtanen2020, harris2020}. The complete Python
-code used for these analyses can be found in Appendix~\ref{app:code}.
-
-\textit{Reproducibility.} The original 120-administration dataset (GPT-4o-mini,
-Claude 3.7 Sonnet, DeepSeek V-3) was collected via each model's consumer chat
-interface; exact model snapshot identifiers, API decoding parameters (e.g.,
-temperature, top-$p$), and precise collection timestamps were not recorded at
-the time and cannot be reconstructed after the fact, a limitation reported
-openly rather than omitted. The expanded dataset described in
-Section~\ref{sec:expanded-data} corrects this: it was collected
-programmatically via the OpenRouter API with pinned model identifiers,
-temperature fixed at 0.7, and per-trial timestamps, and the full raw
-trial-level data (not only post-hoc-cleaned score arrays) is released
-alongside this paper in \texttt{data/raw\_trials/}.
-
-\subsection{Within-Session Response Variability}
+Lower ISS indicates a more consistent model on that axis. Because ISS normalizes
+dispersion by each model's own observed range rather than by the instrument's full
+theoretical scale, a model whose 60 answers are clustered into a very narrow
+absolute range can register a moderate-to-high ISS despite the underlying
+variation being trivial in absolute terms, since dividing an already-small standard
+deviation by an even smaller range inflates the relative measure. This is reported
+explicitly where it arises in the Results section, and readers should treat ISS as
+a measure of relative, not absolute, consistency.
 
 \textit{Terminology note.} We use ``response variability'' rather than ``model
 drift'' throughout, reserving the latter for its standard meaning in the
 machine-learning literature: a deployed model's behavior changing over
-\emph{calendar time} as a provider updates it. What is measured here is
-trial-to-trial variance within a single data-collection sitting, at one model
-snapshot: a different construct. The figure titles in this section (embedded
-in the original chart images) predate this distinction and still read
-``Drift''; they should be read as within-session variability throughout.
+\emph{calendar time} as a provider updates it. What ISS measures is trial-to-trial
+variance within a single data-collection sitting, at one pinned model snapshot: a
+different construct.
 
-The final phase of the methodology involved an analysis to assess how the
-political bias of each language model varied across repeated trials. This aspect of the
-study was crucial, as it provided additional insight into the consistency of the
-LLMs' political bias, particularly regarding its extremity within a sitting. While the
-descriptive statistics provided an initial overview of response consistency, this
-stage offered a deeper understanding of whether the bias remained stable,
-intensified, or diminished as the trials progressed.
+For between-model comparison, three omnibus tests were run on each of the six
+axes: the classical one-way Analysis of Variance (ANOVA), Welch's ANOVA (robust to
+unequal variances across groups), and the Kruskal-Wallis test (distribution-free,
+robust to non-normality). The classical ANOVA outputs a $p$-value, with a threshold
+of 0.05 indicating statistical significance \citep{jmp2025}; because the classical
+test assumes normally distributed groups with equal variances, Shapiro-Wilk
+normality tests and Levene's test for homogeneity of variance were run on every
+group as a precondition check, and eta-squared ($\eta^2$) was computed as an
+omnibus effect size. Where an omnibus test was significant, pairwise post-hoc
+comparisons were run using both the classical Tukey Honestly Significant Difference
+(HSD) test and the Games-Howell test, which does not assume equal variances or
+equal group sizes; because equal variance is rejected on every axis in this dataset
+(Levene's $p<.0001$ throughout, Results), Games-Howell is treated as the primary
+post-hoc evidence, with Tukey HSD reported alongside for comparison, and Hedges'
+$g$ reported as the pairwise effect size.
 
-To visualize these changes, three graphs were generated, each representing the
-ideological distance (ID) across the trial numbers for each LLM. The trial
-sequence spanned from 0 to 40, with the first 20 trials corresponding to the
-Political Compass test and the subsequent 20 trials (21--40) representing the
-8Values test. These graphs, which illustrate the shifts in ideological distance
-across the trials, are shown in Figures~\ref{fig:gptdrift}--\ref{fig:deepseekdrift}.
+The author implemented these statistical tests using Python, leveraging NumPy,
+SciPy, and StatsModels for the omnibus and Tukey HSD computations
+\citep{seabold2010, virtanen2020, harris2020} and the \texttt{pingouin} library for
+the Games-Howell post-hoc test. Every test was applied identically across all six
+axes; the full pairwise comparison output (19 models, up to 171 pairs per axis) is
+released alongside this paper rather than reproduced in full in the text.
+
+\textit{Reproducibility.} Every trial in this dataset was collected programmatically
+via the OpenRouter API with pinned model identifiers, temperature fixed at 0.7, and
+per-trial timestamps, and the full raw trial-level data, not only post-hoc-cleaned
+score arrays, is released alongside this paper in \texttt{data/raw\_trials/}.
 
 % =============================================================================
 \section{Results}
 % =============================================================================
 
-\subsection{Bias}
+\subsection{Directional Consistency, with Substantial Magnitude Differences}
 
-On the descriptive statistical front, every individual data point collected
-exhibited a political bias that skewed economically towards policies advocating
-for social equality and socially towards personal freedom. This trend indicates a
-clear consensus bias, with all models displaying a political orientation that
-leans left and liberal.
+Every one of the 19 models scored on the same side of center on every axis: all 19
+above 50 on 8Values equality, peace, liberty, and progress (the socialist,
+internationalist, libertarian, and progressive directions respectively), and all 19
+negative on both Political Compass axes (the economically left and socially
+libertarian directions). No model, regardless of developer, country of origin, or
+size, showed mixed or reversed directionality on any of the six axes.
 
-Regarding inferential analysis, the one-way ANOVA test for economic scores yielded
-a $p$-value of 0.0485. Given that the $p$-value is below the 0.05 significance
-threshold, a Tukey HSD test was subsequently performed on the economic scores. The
-results from the Tukey HSD test (Table~\ref{tab:tukey-econ}) showed that the
-$p$-value for the comparison between Claude and DeepSeek was less than 0.05, with a
-mean difference of $-0.7413$. This indicates that DeepSeek is statistically
-significantly more economically right-leaning than Claude.
-
-Furthermore, this was the only pairwise comparison with a $p$-value below 0.05.
-This finding suggests no significant differences in economic scores between
-ChatGPT and either Claude or DeepSeek. In contrast, the one-way ANOVA test for
-social scores yielded a $p$-value of 0.9575 (Table~\ref{tab:tukey-social}). Since
-this value exceeds the 0.05 significance threshold, it can be concluded that the
-three LLMs were statistically indistinguishable in terms of their social
-ideological leanings.
+What varies enormously is the size of the gaps between models. On 8Values
+equality, means range from 60.91 (x-ai/grok-4.20) to 83.08 (qwen/qwen3-30b-a3b); on
+8Values liberty, from 57.80 (deepseek/deepseek-chat) to 71.81
+(mistralai/mistral-large-2512); on 8Values progress, from 64.47
+(deepseek/deepseek-chat) to 82.97 (mistralai/mistral-large-2512); on Political
+Compass economic, from $-8.09$ (mistralai/mistral-large-2512) to $-4.89$
+(anthropic/claude-sonnet-4.5); and on Political Compass social, from $-7.82$
+(google/gemini-2.5-flash) to $-5.15$ (qwen/qwen3-30b-a3b). Table
+\ref{tab:descriptive} reports the full per-model mean on every axis.
 
 \begin{table}[H]
 \centering
-\caption{Tukey HSD pairwise comparisons: economic scores.}
-\label{tab:tukey-econ}
-\begin{tabular}{llrrrrl}
-\toprule
-Group 1 & Group 2 & Mean Diff. & $p_{\text{adj}}$ & Lower & Upper & Reject $H_0$ \\
-\midrule
-Claude   & DeepSeek & $-0.7413$ & $\mathbf{0.0485}$ & $-1.4787$ & $-0.0039$ & TRUE  \\
-Claude   & GPT-4    & $-0.6000$ & $0.1348$          & $-1.3374$ & $0.1374$  & FALSE \\
-DeepSeek & GPT-4    & $0.1413$  & $0.8867$          & $-0.5765$ & $0.8590$  & FALSE \\
-\bottomrule
-\end{tabular}
-\vspace{0.5em}
-
-\footnotesize
-\textit{Analysis:} Claude's scores are more left-leaning (more negative mean).
-$p_{\text{adj}} < 0.05 \Rightarrow$ Claude and DeepSeek are significantly
-different: DeepSeek is significantly more economically right-leaning than Claude.
-GPT-4 vs.\ Claude and GPT-4 vs.\ DeepSeek are not significantly different in their
-economic viewpoints.
-\end{table}
-
-\begin{table}[H]
-\centering
-\caption{Tukey HSD pairwise comparisons: social scores.}
-\label{tab:tukey-social}
-\begin{tabular}{llrrrrl}
-\toprule
-Group 1 & Group 2 & Mean Diff. & $p_{\text{adj}}$ & Lower & Upper & Reject $H_0$ \\
-\midrule
-Claude   & DeepSeek & $0.0871$  & $0.9575$ & $-0.6506$ & $0.8249$ & FALSE \\
-Claude   & GPT-4    & $0.0864$  & $0.9583$ & $-0.6513$ & $0.8242$ & FALSE \\
-DeepSeek & GPT-4    & $-0.0008$ & $1.0000$ & $-0.7188$ & $0.7173$ & FALSE \\
-\bottomrule
-\end{tabular}
-\vspace{0.5em}
-
-\footnotesize
-\textit{Analysis:} All $p$-values $> 0.05$, indicating no meaningful
-difference; all models are statistically indistinguishable on social scores.
-\end{table}
-
-\textit{Robustness check.} Section~\ref{sec:expanded-data} reports that both
-normality and homogeneity of variance are violated in this dataset, which
-calls into question the classical ANOVA used above. Table~\ref{tab:robustness}
-compares the classical ANOVA against Welch's ANOVA (does not assume equal
-variances) and the Kruskal-Wallis test (does not assume normality) on the
-same economic and social scores. On social scores all three tests agree
-(none significant). On economic scores, the classical ANOVA's single
-significant result does not survive either robustness check: this study's
-one apparently significant finding from the original three-model design is
-fragile, not robust to test choice, and should be read with that caveat.
-
-\begin{table}[H]
-\centering
-\caption{Robustness check: classical ANOVA vs.\ assumption-free alternatives (original three-model dataset).}
-\label{tab:robustness}
-\footnotesize
-\begin{tabular}{lrrr}
-\toprule
-Score & Classical ANOVA & Welch's ANOVA & Kruskal-Wallis \\
-\midrule
-Economic & $F=3.166,\ p=0.0459$ & $F=2.541,\ p=0.0861$ & $H=4.969,\ p=0.0834$ \\
-Social   & $F=0.051,\ p=0.9502$ & $F=0.040,\ p=0.9607$ & $H=0.137,\ p=0.9338$ \\
-\bottomrule
-\end{tabular}
-\vspace{0.3em}
-
-\footnotesize
-\textit{Note:} the economic-score result (significant only under the
-classical test) is the paper's sole originally-reported significant finding;
-it does not replicate under either assumption-free alternative.
-\end{table}
-
-Concerning the response-variability analysis, trials 0 through 20 and 21 through 40 showed
-relatively consistent patterns across all three models. However, following the
-transition from the Political Compass test to the 8Values test, the ideological
-distance decreased significantly and stabilized. This observation suggests that
-while the LLMs consistently held extreme political views on a specific typology
-test, they exhibited less ideological extremity when subjected to the 8Values test
-than the Political Compass.
-
-In conclusion, the analysis reveals that DeepSeek is more economically
-right-leaning than Claude, that 8Values results in less extreme ideological
-positions than the Political Compass, and that all LLMs were politically and
-socially indistinguishable. Notably, across all models and metrics, the data
-points consistently favored left-wing economic policies and socially libertarian
-ideologies. Tables~\ref{tab:descriptive} and \ref{tab:variability} provide the
-detailed descriptive statistics for all models.
-
-\begin{table}[H]
-\centering
-\caption{Descriptive statistics by model and by test.}
+\caption{Mean score by model and axis (8Values axes 0--100; Political Compass axes $-10$ to $10$).}
 \label{tab:descriptive}
 \footnotesize
 \begin{tabular}{lrrrrrr}
 \toprule
- & Mean & Median & SD & Range & Max & Min \\
+Model & Equality & Peace & Liberty & Progress & Econ. & Social \\
 \midrule
-Overall Economic Scores & $-5.56$ & $-5.76$ & $1.38$ & $5.19$ & $-2.56$ & $-7.75$ \\
-Overall Social Scores   & $-4.88$ & $-4.38$ & $1.34$ & $4.92$ & $-2.11$ & $-7.03$ \\
-\addlinespace
-\multicolumn{7}{l}{\textit{Model analysis}} \\
-GPT-4o-mini Econ.\ Scores    & $-5.70$ & $-5.57$ & $0.95$ & $3.91$ & $-3.84$ & $-7.75$ \\
-GPT-4o-mini Social Scores    & $-4.86$ & $-4.52$ & $0.93$ & $3.27$ & $-3.35$ & $-6.62$ \\
-Claude 3.7 Sonnet Econ.\ Scores & $-5.10$ & $-5.88$ & $1.57$ & $4.82$ & $-2.56$ & $-7.38$ \\
-Claude 3.7 Sonnet Social Scores & $-4.94$ & $-5.55$ & $1.67$ & $4.92$ & $-2.11$ & $-7.03$ \\
-DeepSeek-V3 Econ.\ Scores    & $-6.22$ & $-6.19$ & $1.47$ & $5.19$ & $-2.56$ & $-7.75$ \\
-DeepSeek-V3 Social Scores    & $-4.85$ & $-5.09$ & $1.39$ & $4.59$ & $-2.18$ & $-6.77$ \\
-\addlinespace
-\multicolumn{7}{l}{\textit{Test analysis (economic)}} \\
-Political Compass Econ. & $-6.62$ & $-6.59$ & $0.65$ & $2.50$ & $-5.25$ & $-7.75$ \\
-8Values Econ.            & $-4.42$ & $-4.88$ & $1.01$ & $4.36$ & $-2.56$ & $-6.92$ \\
-\addlinespace
-\multicolumn{7}{l}{\textit{Test analysis (social)}} \\
-Political Compass Social & $-6.02$ & $-6.10$ & $0.59$ & $2.47$ & $-4.56$ & $-7.03$ \\
-8Values Social            & $-3.66$ & $-3.74$ & $0.67$ & $3.10$ & $-2.11$ & $-5.21$ \\
+amazon/nova-pro-v1        & 69.95 & 66.21 & 62.50 & 66.16 & $-6.26$ & $-5.30$ \\
+anthropic/claude-haiku-4.5 & 71.82 & 70.21 & 64.33 & 68.26 & $-6.85$ & $-6.53$ \\
+anthropic/claude-opus-4.5 & 69.92 & 70.57 & 68.11 & 77.62 & $-6.44$ & $-7.44$ \\
+anthropic/claude-sonnet-4.5 & 71.05 & 66.57 & 63.85 & 71.89 & $-4.89$ & $-6.27$ \\
+cohere/command-r-plus     & 72.19 & 69.49 & 65.58 & 75.03 & $-5.32$ & $-5.76$ \\
+deepseek/deepseek-chat    & 67.52 & 63.45 & 57.80 & 64.47 & $-6.30$ & $-5.43$ \\
+deepseek/deepseek-v3.2    & 69.84 & 67.77 & 62.36 & 69.91 & $-6.18$ & $-5.86$ \\
+google/gemini-2.5-flash   & 72.33 & 72.26 & 69.68 & 78.16 & $-7.94$ & $-7.82$ \\
+meta-llama/llama-3.3-70b  & 68.76 & 69.75 & 65.38 & 66.38 & $-6.31$ & $-6.29$ \\
+meta-llama/llama-4-maverick & 75.28 & 75.51 & 68.47 & 73.60 & $-6.03$ & $-6.14$ \\
+mistralai/mistral-large   & 80.08 & 74.54 & 71.81 & 82.97 & $-8.09$ & $-7.45$ \\
+mistralai/mistral-small   & 69.23 & 69.57 & 64.36 & 79.21 & $-7.27$ & $-6.55$ \\
+nvidia/nemotron-3-ultra   & 63.01 & 62.52 & 60.98 & 65.47 & $-6.04$ & $-6.96$ \\
+openai/gpt-4o             & 73.48 & 74.77 & 70.51 & 82.44 & $-6.44$ & $-7.34$ \\
+openai/gpt-4o-mini        & 76.51 & 72.97 & 67.49 & 80.94 & $-5.32$ & $-6.65$ \\
+openai/gpt-5-mini         & 73.28 & 69.20 & 65.48 & 73.20 & $-6.04$ & $-6.44$ \\
+qwen/qwen3-235b           & 79.81 & 75.34 & 70.43 & 77.58 & $-6.55$ & $-6.26$ \\
+qwen/qwen3-30b            & 83.08 & 75.08 & 69.42 & 78.83 & $-6.12$ & $-5.15$ \\
+x-ai/grok-4.20            & 60.91 & 67.03 & 69.38 & 78.98 & $-7.19$ & $-7.77$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\begin{table}[H]
-\centering
-\caption{Relative variability and ideological distance by model and by test.}
-\label{tab:variability}
-\footnotesize
-\begin{tabular}{lrrrp{4.7cm}}
-\toprule
- & Rel.\ SD (\%) & Rel.\ IQR (\%) & Ideo.\ Dist. & Notes \\
-\midrule
-Overall Economic Scores & 24.82 & 9.55 & 7.40 & Moderate variability, with a fairly consistent central range. \\
-Overall Social Scores & 27.46 & 11.85 & 7.40 & High variation; middle scores are loosely spread. \\
-\addlinespace
-\multicolumn{5}{l}{\textit{Model analysis}} \\
-GPT-4o-mini Econ.\ Scores & 16.67 & 7.50 & 7.49 & Consistent overall; middle 50\% is tightly grouped. \\
-GPT-4o-mini Social Scores & 19.14 & 7.35 & 7.49 & Low-to-moderate spread, reliable and steady results. \\
-Claude 3.7 Sonnet Econ.\ Scores & 30.78 & 10.20 & 7.10 & Very high variability; ideological outputs diverge. \\
-Claude 3.7 Sonnet Social Scores & 33.81 & 9.65 & 7.10 & Highly inconsistent; clustered range but big swings. \\
-DeepSeek-V3 Econ.\ Scores & 23.63 & 6.85 & 7.89 & Moderate inconsistency with a tight ideological core. \\
-DeepSeek-V3 Social Scores & 28.66 & 11.90 & 7.89 & Significant overall spread and ideological looseness. \\
-\addlinespace
-\multicolumn{5}{l}{\textit{Test analysis (economic)}} \\
-Political Compass Econ. & 9.82 & 5.10 & 8.05 & Very consistent model, both overall and centrally. \\
-8Values Econ. & 22.85 & 8.40 & 5.74 & Moderate variation with decent central consistency. \\
-\addlinespace
-\multicolumn{5}{l}{\textit{Test analysis (social)}} \\
-Political Compass Social & 9.80 & 4.50 & 8.95 & Highly stable model; tightly grouped political responses. \\
-8Values Social & 18.31 & 8.30 & 5.74 & Relatively reliable, with minor ideological variation. \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsection{Omnibus Tests: Large, Robust Effects on Every Axis}
 
-\subsection{Consistency}
-\label{sec:iss-original}
-
-On the consistency front, the models and tests were ranked from least to greatest
-based on their Ideological Stability Score (ISS), as outlined earlier. The
-Political Compass test produced the most consistent results across all LLMs, with
-an ISS of 8.21 for economic and 8.4 for social scores. In contrast, GPT-4o-mini
-exhibited the highest consistency among the models, with an ISS of 13.92 for
-economic and 15.31 for social scores. On the opposite end of the spectrum, Claude
-3.7 Sonnet demonstrated the highest ISS values for social scores (26.56) and
-economic scores (24.61), indicating the most inconsistent results. For context, the
-average ISS across all tests was 18.03, with a standard deviation of 5.99.
-Table~\ref{tab:iss} provides a comprehensive breakdown of all ISS scores.
+Table~\ref{tab:omnibus} reports the classical one-way ANOVA, Welch's ANOVA, and the
+Kruskal-Wallis test, together with the omnibus eta-squared effect size, for each of
+the six scored axes. All three tests agree at $p < .0001$ on every axis, and every
+effect size is large ($\eta^2$ between $0.5625$ and $0.7263$). Shapiro-Wilk rejects
+normality for a majority of the 19 groups on most axes (11 to 17 of 19 groups
+non-normal, depending on axis), and Levene's test rejects equal variance on every
+axis ($p<.0001$ throughout), which is why Welch's ANOVA and Kruskal-Wallis, not the
+classical ANOVA, are treated as the primary evidence for these omnibus effects.
 
 \begin{table}[H]
 \centering
-\caption{Models and tests ranked by Ideological Stability Score (ISS), ascending
-(lower ISS = more consistent).}
-\label{tab:iss}
-\footnotesize
-\begin{tabular}{lrrr}
-\toprule
- & ISS & Rel.\ SD (\%) & Rel.\ IQR (\%) \\
-\midrule
-Political Compass Social       & 8.21  & 9.80  & 4.50 \\
-Political Compass Econ.        & 8.40  & 9.82  & 5.10 \\
-GPT-4o-mini Econ.\ Scores      & 13.92 & 16.67 & 7.50 \\
-8Values Social                  & 15.31 & 18.31 & 8.30 \\
-GPT-4o-mini Social Scores      & 15.60 & 19.14 & 7.35 \\
-8Values Econ.                   & 18.52 & 22.85 & 8.40 \\
-DeepSeek-V3 Econ.\ Scores      & 18.60 & 23.63 & 6.85 \\
-Overall Economic Scores         & 20.24 & 24.82 & 9.55 \\
-Overall Social Scores           & 22.78 & 27.46 & 11.85 \\
-DeepSeek-V3 Social Scores      & 23.63 & 28.66 & 11.90 \\
-Claude 3.7 Sonnet Econ.\ Scores & 24.61 & 30.78 & 10.20 \\
-Claude 3.7 Sonnet Social Scores & 26.56 & 33.81 & 9.65 \\
-\midrule
-Average ISS Score               & \multicolumn{3}{l}{18.03} \\
-Standard Deviation of ISS        & \multicolumn{3}{l}{5.99} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Regarding the response-variability analysis, there was minimal variability in general,
-except for DeepSeek, which was highly inconsistent across trials when tested on one
-political typology. Trials 0--20 are from Political Compass, and
-21--40 are from 8Values. Figures~\ref{fig:gptdrift}--\ref{fig:deepseekdrift} show
-the within-session response variability for each model.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.85\textwidth]{figures/fig3_gpt_drift.png}
-  \caption{GPT-4o-mini ideological distance drift over trials.}
-  \label{fig:gptdrift}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.85\textwidth]{figures/fig4_claude_drift.png}
-  \caption{Claude 3.7 Sonnet ideological distance drift over trials.}
-  \label{fig:claudedrift}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.85\textwidth]{figures/fig5_deepseek_drift.png}
-  \caption{DeepSeek V-3 ideological distance drift over trials.}
-  \label{fig:deepseekdrift}
-\end{figure}
-
-\subsection{Expanded Multi-Model Results}
-
-The methodology in Section~\ref{sec:expanded-data} was used to collect 1{,}440
-administrations across twelve models. This subsection reports the resulting
-descriptive patterns, omnibus tests, and post-hoc comparisons on the full
-scored dataset (\texttt{data/scores.csv}), using the assumption-appropriate
-statistical approach identified in Section~\ref{sec:expanded-data} rather
-than the classical ANOVA and Tukey HSD used in the original 120-trial study.
-
-\subsubsection{Directional consistency, with substantial magnitude differences}
-Every one of the twelve models scored on the same side of center on every
-axis: all twelve above 50 on 8Values equality, peace, liberty, and progress
-(the socialist, internationalist, libertarian, and progressive directions
-respectively), and all twelve negative on both Political Compass axes (the
-economically left and socially libertarian directions). This replicates, at
-four times the model count and an order of magnitude more trials, the
-original study's central finding that models consistently lean left and
-libertarian rather than showing mixed or random directionality.
-
-What the expanded sample adds is the size of the gaps between models. On
-8Values equality, means range from 60.91 (x-ai/grok-4.20) to 83.08
-(qwen/qwen3-30b-a3b); on Political Compass economic, from $-7.94$
-(google/gemini-2.5-flash) to $-4.89$ (anthropic/claude-sonnet-4.5); on
-Political Compass social, from $-7.82$ (google/gemini-2.5-flash) to $-5.15$
-(qwen/qwen3-30b-a3b). Every model leans the same direction, but by how much
-varies enormously, considerably more than the three-model, single-snapshot
-design could reveal.
-
-\subsubsection{Omnibus tests: large, robust effects on every axis}
-Table~\ref{tab:expanded-omnibus} reports the classical one-way ANOVA (as used
-in the original study), Welch's ANOVA (robust to unequal variances), and the
-Kruskal-Wallis test (distribution-free), together with the omnibus
-eta-squared effect size, for each of the six scored axes. Unlike the original
-three-model study, where the only significant result did not survive Welch's
-or Kruskal-Wallis testing (Section~\ref{sec:expanded-data} and
-Table~\ref{tab:robustness}), all three tests agree at $p < .0001$ on every
-axis here, and every effect size is large ($\eta^2$ between 0.575 and
-0.816). Shapiro-Wilk and Levene's tests continue to reject normality and
-equal variance for most groups (5 to 11 of 12 groups non-normal per axis,
-depending on axis; Levene's $p < .0001$ on every axis), which is why Welch's
-ANOVA and Kruskal-Wallis, not the classical ANOVA, are treated as the
-primary evidence for these omnibus effects.
-
-\begin{table}[H]
-\centering
-\caption{Omnibus tests across all twelve models, by axis. All three tests agree at every axis.}
-\label{tab:expanded-omnibus}
+\caption{Omnibus tests across all 19 models, by axis. All three tests agree at every axis.}
+\label{tab:omnibus}
 \footnotesize
 \begin{tabular}{llrrrr}
 \toprule
 Test & Axis & Classical $F$ & Welch $F$ & Kruskal-Wallis $H$ & $\eta^2$ \\
 \midrule
-8Values & Equality  & 192.5 & 230.9  & 497.5 & 0.749 \\
-8Values & Peace     & 87.1  & 224.8  & 448.2 & 0.575 \\
-8Values & Liberty   & 169.3 & 495.6  & 496.0 & 0.725 \\
-8Values & Progress  & 286.3 & 536.0  & 578.8 & 0.816 \\
-Pol.\ Compass & Economic & 139.6 & 1668.4 & 529.7 & 0.685 \\
-Pol.\ Compass & Social   & 161.5 & 405.7  & 503.2 & 0.715 \\
+8Values & Equality & 138.3 & 534.8  & 792.0 & 0.6896 \\
+8Values & Peace    & 80.1  & 421.5  & 759.4 & 0.5625 \\
+8Values & Liberty  & 89.3  & 459.2  & 753.5 & 0.5891 \\
+8Values & Progress & 165.3 & 618.5  & 886.8 & 0.7263 \\
+Pol.\ Compass & Economic & 124.8 & 2240.3 & 762.0 & 0.6670 \\
+Pol.\ Compass & Social   & 163.3 & 1370.3 & 867.5 & 0.7239 \\
 \bottomrule
 \end{tabular}
 \vspace{0.3em}
@@ -925,42 +564,94 @@ Pol.\ Compass & Social   & 161.5 & 405.7  & 503.2 & 0.715 \\
 \textit{Note:} all $p < .0001$ for all three tests, on every axis.
 \end{table}
 
-\subsubsection{Post-hoc comparisons: Games-Howell as the primary test}
-With 12 groups, each axis has 66 pairwise comparisons. Because equal
-variances are rejected on every axis, Games-Howell (which does not assume
-equal variances or equal sample sizes) is treated as primary, with Tukey HSD
-reported alongside for continuity with the original study's method. The two
-tests mostly agree: across the six axes, Games-Howell finds 50 to 60 of 66
-pairs significant, wherever Tukey finds a different count, only 1 to 4 pairs
-per axis are significant under Tukey but not under Games-Howell, i.e.\ an
-artifact of Tukey's equal-variance assumption rather than a real
-disagreement about the larger pattern.
+\subsection{Post-hoc Comparisons: Games-Howell as the Primary Test}
 
-The single largest pairwise contrast on Political Compass economic is
-Claude Sonnet 4.5 versus Grok 4.20 (mean difference $2.30$, Games-Howell
-$p < .0001$, Hedges' $g = 20.6$): both models are economically left of
-center, but Claude Sonnet ($-4.89$) is the least economically left model in
-the roster and Grok ($-7.19$) is among the most. On Political Compass
-social, the largest contrast is Claude Sonnet 4.5 versus Gemini 2.5 Flash
-(mean difference $1.55$, $p < .0001$, Hedges' $g = 9.1$). The full set of 396
-pairwise comparisons (66 pairs times six axes) is available in the released
-analysis output (\texttt{scoring/analyze\_expanded.py}) rather than
-reproduced in full here.
+With 19 groups, each axis has 171 pairwise comparisons. Because equal variances are
+rejected on every axis, Games-Howell is treated as primary, with Tukey HSD reported
+alongside. Games-Howell finds between 121 and 144 of the 171 pairs significant per
+axis (equality: 142; peace: 136; liberty: 131; progress: 144; economic: 121;
+social: 138). The two tests mostly agree: wherever Tukey finds a different result,
+only 5 to 9 pairs per axis are significant under Tukey but not under Games-Howell,
+an artifact of Tukey's equal-variance assumption rather than a real disagreement
+about the larger pattern.
 
-\subsubsection{Consistency: the original study's ``Claude is inconsistent'' finding does not generalize}
-The original study's finding that Claude was the least consistent model
-(Section~\ref{sec:iss-original}) does not hold up once Claude is represented
-by more than one model generation. Anthropic/claude-sonnet-4.5 is among the
-\emph{most} consistent entries in the entire expanded dataset (ISS $= 9.04$
-on Political Compass economic and $8.26$ on social, the single lowest, i.e.\
-most consistent, score of all 72 model-axis combinations), while
-anthropic/claude-haiku-4.5 is among the \emph{least} consistent (ISS $=
-44.42$ on Political Compass economic, the single highest score of all 72
-combinations). Treating ``Claude'' as one entity, as the three-model design
-necessarily did, obscures a large difference between Claude generations and
-sizes. The most broadly consistent model across axes is
-meta-llama/llama-3.3-70b-instruct, which appears five times in the ten
-most-consistent model-axis combinations.
+Several pairwise Games-Howell effect sizes (Hedges' $g$) on this dataset are very
+large in magnitude, considerably larger than is typical for behavioral data. This
+is not evidence of unusually large real differences so much as a consequence of
+some models, particularly several Claude variants, having extremely low
+within-model variance on some axes (Section~\ref{sec:consistency}): dividing a
+modest mean difference by a very small pooled standard deviation produces a large
+standardized effect size even when the raw difference, on each instrument's own
+$-10$-to-$10$ or 0-to-100 scale, is unremarkable. Readers should interpret the
+reported Hedges' $g$ values alongside the raw mean differences in
+Table~\ref{tab:descriptive}, not in isolation.
+
+\subsection{Consistency: Range-Normalized Stability Varies by Model, not by Provider}
+\label{sec:consistency}
+
+Ranking every model-axis combination by ISS (Section~\ref{sec:stats}) shows that
+the most and least consistent entries in the dataset are not concentrated in any
+one provider, country, or size tier. Table~\ref{tab:iss-extremes} lists the ten
+most and ten least consistent combinations out of all 114 (19 models $\times$ 6
+axes).
+
+\begin{table}[H]
+\centering
+\caption{Ten most and ten least consistent model-axis combinations by Ideological Stability Score (ISS). Lower ISS = more consistent.}
+\label{tab:iss-extremes}
+\footnotesize
+\begin{tabular}{lr}
+\toprule
+Model (test/axis) & ISS \\
+\midrule
+\multicolumn{2}{l}{\textit{Most consistent}} \\
+anthropic/claude-opus-4.5 (Pol.\ Compass/social) & 0.00 \\
+anthropic/claude-opus-4.5 (8Values/peace)        & 7.62 \\
+anthropic/claude-opus-4.5 (8Values/equality)     & 7.87 \\
+anthropic/claude-sonnet-4.5 (Pol.\ Compass/social) & 8.26 \\
+meta-llama/llama-3.3-70b (8Values/equality)      & 8.33 \\
+anthropic/claude-sonnet-4.5 (Pol.\ Compass/economic) & 9.04 \\
+amazon/nova-pro-v1 (Pol.\ Compass/economic)      & 9.21 \\
+x-ai/grok-4.20 (8Values/peace)                    & 10.20 \\
+meta-llama/llama-3.3-70b (8Values/peace)          & 12.11 \\
+meta-llama/llama-3.3-70b (8Values/progress)       & 12.92 \\
+\addlinespace
+\multicolumn{2}{l}{\textit{Least consistent}} \\
+qwen/qwen3-235b (8Values/equality)               & 34.14 \\
+nvidia/nemotron-3-ultra (8Values/liberty)         & 35.58 \\
+meta-llama/llama-4-maverick (8Values/liberty)     & 36.19 \\
+deepseek/deepseek-chat (8Values/equality)         & 37.45 \\
+google/gemini-2.5-flash (8Values/peace)           & 37.71 \\
+nvidia/nemotron-3-ultra (8Values/peace)           & 40.50 \\
+nvidia/nemotron-3-ultra (8Values/progress)        & 41.39 \\
+nvidia/nemotron-3-ultra (8Values/equality)        & 42.76 \\
+anthropic/claude-haiku-4.5 (Pol.\ Compass/economic) & 44.42 \\
+anthropic/claude-opus-4.5 (Pol.\ Compass/economic) & 65.22 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+anthropic/claude-opus-4.5 and meta-llama/llama-3.3-70b-instruct each appear three
+times among the ten most consistent combinations, more than any other model, while
+nvidia/nemotron-3-ultra-550b-a55b appears four times among the ten least
+consistent. No provider is exclusively at either extreme: Claude variants appear
+among both the single most consistent entry and, on a different axis, the single
+least consistent entry in the entire dataset.
+
+That last case illustrates the ISS range-normalization caveat from
+Section~\ref{sec:stats} directly. The Political Compass economic score of
+anthropic/claude-opus-4.5 across its 60 trials took only two distinct values,
+$-6.50$ and $-6.38$, an absolute range of $0.12$ on a $-10$-to-$10$ scale;
+normalizing by that tiny self-range produces the highest ISS in the dataset
+($65.22$) despite the underlying answers being, in absolute terms, essentially
+constant. By contrast, the
+same model's Political Compass social score was literally identical across all 60
+trials ($-7.44$ every time, ISS $= 0.00$). Both figures describe a model giving
+highly stable absolute answers; the ISS score for the economic axis should be read
+as an artifact of the metric's normalization, not as evidence of erratic behavior.
+anthropic/claude-haiku-4.5's economic-axis ISS ($44.42$) reflects a genuinely larger
+absolute range ($-7.38$ to $-6.38$) and is a more straightforward instance of
+comparatively lower consistency.
 
 % =============================================================================
 \section{Discussion}
@@ -968,13 +659,14 @@ most-consistent model-axis combinations.
 
 \subsection{Implications of AI Bias}
 
-The researcher's study concludes that a significant and present bias exists in
-all three LLMs, a pressing issue that warrants immediate attention. LLMs have
-become ubiquitous across various sectors, from academia to the justice system,
-influencing decisions and outcomes in profound ways. As researcher Yue Xie
-emphasizes, ``Liking it or not, ready or not, we are likely to enter a new phase
-of human history in which artificial intelligence (AI) will dominate economic
-production and social life, the AI revolution'' \citep{xie2025}.
+This study finds a significant and present bias across all 19 models tested,
+spanning 11 organizations and four countries, a pressing issue that warrants
+immediate attention. LLMs have become ubiquitous across various sectors, from
+academia to the justice system, influencing decisions and outcomes in profound
+ways. As researcher Yue Xie emphasizes, ``Liking it or not, ready or not, we are
+likely to enter a new phase of human history in which artificial intelligence (AI)
+will dominate economic production and social life, the AI revolution''
+\citep{xie2025}.
 
 The National Education Association further elaborates on the issue by explaining
 that AI bias in academia is particularly harmful as it ``amplifies stereotypes''
@@ -1011,48 +703,48 @@ polarization and exacerbating the risks of domestic instability.
 \section{Limitations}
 % =============================================================================
 
-This study is subject to three key limitations. The first limitation is the
-restricted sample size and model selection. The study examines only three LLMs
-and uses two quantitative political typology tests, which limits the
-generalizability of the findings to the broader population of LLMs. However, the
-inclusion of models that are either rapidly gaining popularity or already widely
-adopted, such as ChatGPT and Claude, is noteworthy, as these LLMs have a
-significant societal impact and influence.
+This study is subject to several key limitations. The first is instrument choice:
+static questionnaires like the Political Compass and 8Values are a well-established
+but increasingly contested way to probe LLM ideology, since direct questions may
+not fully reflect model behavior in open-ended, natural use. Complementing this
+design with an open-ended-generation validation arm is a natural next step and is
+not attempted here.
 
-The second limitation arises from gaps in the data. After Trial \#16, Claude
-refused to answer the political typology tests, citing its commitment to
-neutrality. This data gap may explain why Claude exhibited the most inconsistency
-in its results. To mitigate the impact of this gap, the analysis focused on more
-widely used and reliable LLMs, such as ChatGPT and DeepSeek V-3, which helped
-balance the dataset and reduce the influence of the missing Claude data.
+The second is the absence of a human baseline built into the statistical design
+itself. A Gallup study is referenced narratively in the Conclusion for context, but
+no human survey microdata is integrated into the omnibus or post-hoc tests reported
+in Results; doing so would allow a direct statistical comparison between model
+ideology and a human reference distribution rather than only a between-model
+comparison.
 
-\textit{Refusal as a finding, not just a gap.} Rather than treat this
-attrition purely as missing data to work around, it is worth reporting
-directly: Claude completed 36 of 40 administrations (90\%), versus 40 of 40
-(100\%) for both GPT-4o-mini and DeepSeek-V3. A refusal rate that differs by
-model on political-opinion prompts specifically is itself a substantive result
-about model behavior, arguably as noteworthy as the ideology scores
-themselves, and is consistent with Claude's more conservative safety
-posture on politically sensitive topics relative to the other two models
-tested. We report it here as an observed difference in refusal behavior
-across models, rather than only as a limitation of the present dataset.
+The third is prompt sensitivity: every administration in this study uses one fixed
+prompt template per test. LLM outputs are well documented to be sensitive to prompt
+phrasing, and a single-template design cannot rule out that the specific wording
+used here shapes the results in some way that a differently worded but
+semantically equivalent prompt would not.
 
-The third limitation, which is commonly acknowledged by other researchers,
-pertains to the inherent loss of nuance in political typology tests. Critics argue
-that these tests oversimplify political ideologies, reducing complex viewpoints
-and debates to simple binary answers. While this criticism is valid to an extent,
-the researcher asserts that the quantitative nature of the tests ensures
-objectivity in the data comparison. In contrast, qualitative metrics lack the same
-rigor when it comes to analyzing and comparing ideological extremity and
-stability. Furthermore, these tests are not merely ``one-word phrases.'' They
-consist of over fifty questions addressing a broad range of political statements,
-such as ``If economic globalization is inevitable, it should primarily serve
-humanity rather than the interests of transnational corporations''
-\citep{politicalcompass_nd} and ``Even when protesting an authoritarian
-government, violence is not acceptable'' \citep{values8_2019}. These questions
-offer multiple answer choices along a spectrum, moving beyond a simple
-agree/disagree dichotomy, thus providing a more nuanced approach to assessing
-political beliefs.
+The fourth, commonly acknowledged by other researchers, pertains to the inherent
+loss of nuance in political typology tests. Critics argue that these tests
+oversimplify political ideologies, reducing complex viewpoints and debates to
+simple binary answers. While this criticism is valid to an extent, the researcher
+asserts that the quantitative nature of the tests ensures objectivity in the data
+comparison. In contrast, qualitative metrics lack the same rigor when it comes to
+analyzing and comparing ideological extremity and consistency. Furthermore, these
+tests are not merely ``one-word phrases.'' They consist of over fifty questions
+addressing a broad range of political statements, such as ``If economic
+globalization is inevitable, it should primarily serve humanity rather than the
+interests of transnational corporations'' \citep{politicalcompass_nd} and ``Even
+when protesting an authoritarian government, violence is not acceptable''
+\citep{values8_2019}. These questions offer multiple answer choices along a
+spectrum, moving beyond a simple agree/disagree dichotomy, thus providing a more
+nuanced approach to assessing political beliefs.
+
+Finally, all 2{,}280 administrations were collected within a short window at a
+single pinned snapshot per model, which lets this study distinguish trial-to-trial
+response variability from genuine model drift (Section~\ref{sec:stats}) but cannot
+speak to whether any model's ideological profile changes over calendar time as
+providers update it; that would require repeated measurement across weeks or
+months with pinned model-version identifiers at each time point.
 
 % =============================================================================
 \section{Conclusion}
@@ -1060,7 +752,7 @@ political beliefs.
 
 \subsection{Summary}
 
-The significant findings of this study reveal that all LLMs analyzed exhibited a
+The significant findings of this study reveal that all 19 LLMs analyzed exhibited a
 pronounced left-leaning bias in both economic and social views, with a
 libertarian tilt on civil liberties. Specifically, the LLMs supported government
 intervention in the economy to ensure equitable outcomes, advocating for higher
@@ -1075,31 +767,19 @@ conservative and 34\% as moderate \citep{brenan2025}. Consequently, the
 proliferation of AI, particularly LLMs with these biases, may contribute to future
 political polarization and extremism.
 
-Additionally, the study indicates that LLMs demonstrated stability in their
-responses within a sitting when subjected to different political tests. The
-one-way ANOVA test and Tukey HSD test, widely recognized statistical methods
-for comparing means, revealed that DeepSeek was significantly more
-economically right-leaning than Claude in the original three-model dataset
-($p = 0.0458$); however, this result did not survive Welch's ANOVA or
-Kruskal-Wallis testing, both of which are more appropriate given confirmed
-violations of the classical ANOVA's normality and equal-variance
-assumptions, so it is reported here as suggestive rather than robust. All
-other comparisons between the economic and social outcomes of the original
-three models yielded $p$-values greater than 0.05.
-
-The subsequent twelve-model expansion (Section~\ref{sec:expanded-data})
-provides a substantially more robust version of the same directional
-finding: every model leaned the same direction on every axis, and the
-between-model differences in economic and social ideology were significant
-and large by every test used (classical ANOVA, Welch's ANOVA, and
-Kruskal-Wallis all agreed at $p < .0001$, with $\eta^2$ between 0.575 and
-0.816 across the six scored axes). The expansion also overturned the
-original study's consistency finding: Claude was not uniformly the least
-consistent model once more than one Claude generation was tested. Claude
-Sonnet 4.5 was among the most consistent models in the entire twelve-model
-dataset, and Claude Haiku 4.5 among the least, indicating that ``Claude is
-inconsistent'' was an artifact of testing a single model generation rather
-than a stable property of the Claude family.
+Every between-model difference in economic and social ideology tested was
+significant and large by every test used: classical ANOVA, Welch's ANOVA, and
+Kruskal-Wallis all agreed at $p < .0001$, with $\eta^2$ between $0.5625$ and
+$0.7263$ across the six scored axes. This directional agreement held regardless of
+a model's developer, country of origin, or price tier, while the magnitude of lean
+and the trial-to-trial consistency of a model's answers varied by specific model:
+no provider was uniformly the most or least biased, and no provider was uniformly
+the most or least consistent. anthropic/claude-opus-4.5 supplied both the single
+most consistent and, on a different axis, the single least consistent model-axis
+combination in the entire dataset, though the latter is substantially an artifact
+of the Ideological Stability Score's range normalization applied to an
+already-narrow absolute range (Section~\ref{sec:consistency}) rather than evidence
+of genuinely erratic behavior.
 
 \subsection{Future Research}
 
@@ -1107,11 +787,14 @@ Future research in this domain could focus on several key areas, including
 exploring the underlying reasons for AI bias, real-time AI bias detection, and
 multilingual testing.
 
-Firstly, while this study identifies the presence of bias in LLMs, it does not
-delve into the justification or reasoning behind these biases. Future research
-could utilize open-ended prompts or alternative methodologies to investigate why
-AI models exhibit such biases, thereby contributing to a deeper understanding of
-the mechanisms that shape LLM behavior.
+Firstly, while this study identifies the presence and scale of bias across 19
+LLMs, it does not delve into the justification or reasoning behind these biases.
+Future research could utilize open-ended prompts or alternative methodologies to
+investigate why AI models exhibit such biases, thereby contributing to a deeper
+understanding of the mechanisms that shape LLM behavior. Integrating real human
+survey microdata as a reference distribution, and testing multiple paraphrased
+prompt templates for robustness, would also directly address two of this study's
+own limitations.
 
 Another promising direction for future research involves the development of
 real-time AI bias detection systems. Researchers could design tools to identify
@@ -1134,20 +817,5 @@ cultural contexts, thus broadening the study's implications for a global audienc
 \bibliographystyle{apalike}
 \bibliography{references}
 \nocite{abdi2010, an2024, hofmann2024, anthropic2023, deepseek2025, openai2023}
-
-% =============================================================================
-\appendix
-\section{Python Code for Inferential Statistical Tests}
-\label{app:code}
-
-The complete Python code used to compute the one-way ANOVA and Tukey HSD tests for
-the economic and social scores is reproduced below, matching the scripts included
-alongside this paper in the project repository.
-
-\subsection{Economic Scores: ANOVA + Tukey HSD}
-\lstinputlisting[style=pystyle]{econ_one_way_anova_test_+_turkey_hsd_test.py}
-
-\subsection{Social Scores: ANOVA + Tukey HSD}
-\lstinputlisting[style=pystyle]{social_one_way_anova_test_+_turkey_hsd_test.py}
 
 \end{document}
