@@ -27,9 +27,17 @@ Requires: pip install playwright && playwright install chromium
 
 import json
 import re
+import threading
+import time
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
+
+# The live site is a small, ad-supported, volunteer-run test -- politely cap
+# how many headless sessions hit it at once regardless of the caller's own
+# concurrency, and retry on the transient network/ad-interception errors that
+# running many concurrent sessions against it provokes.
+_CONCURRENCY_LIMIT = threading.Semaphore(2)
 
 QUESTIONS_PATH = Path(__file__).parent / "questions_political_compass.json"
 
@@ -49,7 +57,23 @@ def load_questions():
         return json.load(f)
 
 
-def score_political_compass(answers, questions=None, headless=True, timeout_ms=30000):
+def score_political_compass(answers, questions=None, headless=True, timeout_ms=30000, retries=3):
+    """Retry wrapper around _score_political_compass_once: a fresh browser
+    per attempt, with a module-wide concurrency cap so we don't overwhelm a
+    small volunteer-run site with many simultaneous headless sessions."""
+    last_err = None
+    with _CONCURRENCY_LIMIT:
+        for attempt in range(retries + 1):
+            try:
+                return _score_political_compass_once(answers, questions, headless, timeout_ms)
+            except Exception as e:
+                last_err = e
+                if attempt < retries:
+                    time.sleep(2 * (attempt + 1))  # backoff: 2s, 4s, 6s
+        raise last_err
+
+
+def _score_political_compass_once(answers, questions=None, headless=True, timeout_ms=30000):
     """Drive the real Political Compass test and return its authoritative score.
 
     Parameters
@@ -104,7 +128,9 @@ def score_political_compass(answers, questions=None, headless=True, timeout_ms=3
 
             btn = page.query_selector("input[type=submit], button[type=submit]")
             with page.expect_navigation(timeout=timeout_ms):
-                btn.click()
+                # force=True: a sticky ad iframe can intercept the click's
+                # pointer-event otherwise (observed at concurrency > 1)
+                btn.click(force=True, timeout=timeout_ms)
 
         final_url = page.url
         browser.close()

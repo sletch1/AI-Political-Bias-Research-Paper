@@ -11,6 +11,22 @@ sit well above Big Data & Society in selectivity, and this paper is currently fa
 below the bar for either. This document lays out concretely how far, and what to
 do about it.
 
+## Status (updated as fixes land)
+
+| # | Item | Status |
+|---|---|---|
+| 4 | Unvalidated 8Values conversion formula | **Fixed structurally.** `scoring/score_8values.py` (exact port of the real open-source algorithm) and `scoring/score_political_compass.py` (drives the live site, reads its own authoritative score) replace the formula entirely -- there is nothing left to validate. |
+| 1 | Sample size and scale | **In progress.** Expanding from 3 models/120 administrations to a 12-model, multi-provider roster (OpenAI, Anthropic, DeepSeek, Google, Meta, Mistral, Qwen, xAI, Cohere) at 60 trials/model/test via `scoring/collect_data.py`, collected live through the OpenRouter API. Raw data lands in `data/raw_trials/`. |
+| 5 | ISS weighting is ad hoc | **Fixed.** `scoring/extended_stats.py` recomputes ISS under three weightings (0.7/0.3, 0.5/0.5, 0.9/0.1) on the original data; the model/test consistency ranking is identical under all three -- reported in the paper as a robustness check rather than an unexamined choice. |
+| 6 | "Model drift" mislabeled | **Fixed.** Renamed to "response variability" / "within-session response variability" throughout `main.tex`, with an explicit terminology note distinguishing it from calendar-time drift. |
+| 7 | Statistical toolkit too shallow | **Fixed on the original dataset, will re-run on the expanded one.** Added Shapiro-Wilk normality, Levene's homogeneity-of-variance, Cohen's d, eta-squared, and a Welch's-ANOVA/Kruskal-Wallis robustness check (`scoring/extended_stats.py`). This surfaced a real finding: both normality and equal-variance are violated, and the paper's one significant result (economic scores, p=0.0485 under classic ANOVA) does **not** survive under either assumption-free alternative (Welch's p=0.0861, Kruskal-Wallis p=0.0834) -- reported honestly rather than hidden. |
+| 9 | Refusal treated only as a limitation | **Fixed.** Added a "refusal as a finding" discussion in `main.tex`: Claude completed 90% of administrations vs. 100% for the other two original models, reframed as a substantive result about differential refusal behavior, not just a data gap. |
+| 10 | Reproducibility / open science | **Partially fixed.** Decoding-parameter and model-snapshot gaps in the *original* dataset are now documented openly rather than omitted. The *expanded* dataset is collected with pinned model IDs, fixed temperature, and full raw-trial JSON released in `data/raw_trials/`. |
+| 2 | Literature engagement | **Not yet done.** Still the thinner of the two confirmed BD&S rejection reasons; needs a real pass, not just a couple more citations. |
+| 3 | Instrument behind the field's frontier (open-ended generation arm) | **Not yet done.** Would need a second, differently-scored data-collection arm; deferred. |
+| 8 | No human baseline in the analysis | **Not yet done.** Needs real survey microdata (ANES/WVS/ESS/Gallup) integrated into the statistical design, not just a narrative mention. |
+| 11 | Single fixed prompt template | **Not yet done.** The collection pipeline now built could support this cheaply (multiple prompt variants per trial) as a follow-up. |
+
 ## What the actual bar looks like
 
 Three real, comparable papers in this exact subfield, to calibrate against
