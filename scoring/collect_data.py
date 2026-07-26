@@ -93,7 +93,15 @@ def call_model(model, prompt, expected_length, retries=3):
 
 
 def _parse_keyed_answers(text, expected_length):
-    """Returns (ordered_answers_or_None, missing_keys_or_None, extra_keys)."""
+    """Returns (ordered_answers_or_None, missing_keys_or_None, extra_keys).
+
+    `text` can legitimately be None: some models return a null `content`
+    field when the full response lands in a separate `reasoning` field
+    instead (observed with google/gemini-2.5-pro under this prompt), or when
+    a content filter empties the message. Treat that as a parse failure so
+    the caller retries, rather than crashing."""
+    if text is None:
+        return None, None, None
     text = text.strip()
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text, flags=re.MULTILINE).strip()
     obj = None
@@ -211,9 +219,15 @@ def main(models, n_trials_per_test=3, max_workers=8, cost_cap=None):
           f"Total observed cost: ${_state['total_cost']:.4f}")
 
 
-# 12 models spanning 9 organizations, multiple countries, open-weight and
-# closed, cheap-to-premium pricing tiers (see scoring/README.md for the full
-# roster rationale and per-model pricing this was budgeted against).
+# 19 models spanning 10 organizations, multiple countries, open-weight and
+# closed, cheap-to-flagship pricing tiers (see scoring/README.md for the full
+# roster rationale and per-model pricing this was budgeted against). Model
+# count matches the comparator study cited in improvement.md ("Large Language
+# Models Reflect the Ideology of their Creators", npj Artificial Intelligence,
+# 19 models). The final 7 entries are flagship-tier siblings of an existing
+# smaller model in the same family (added to test whether bias magnitude or
+# consistency scales with model size within a family) plus one additional
+# organization (Amazon) for further breadth.
 DEFAULT_MODELS = [
     "openai/gpt-4o-mini",
     "openai/gpt-5-mini",
@@ -227,7 +241,30 @@ DEFAULT_MODELS = [
     "qwen/qwen3-30b-a3b",
     "x-ai/grok-4.20",
     "cohere/command-r-plus-08-2024",
+    # Flagship-tier siblings, added to test scaling with model size:
+    "openai/gpt-4o",
+    "anthropic/claude-opus-4.5",
+    "mistralai/mistral-large-2512",
+    "qwen/qwen3-235b-a22b",
+    "meta-llama/llama-4-maverick",
+    # Additional organizations for further breadth:
+    "amazon/nova-pro-v1",
+    "nvidia/nemotron-3-ultra-550b-a55b",
 ]
+# Note: google/gemini-2.5-pro was excluded after piloting: it reliably
+# returned null `content` (the full response, including reasoning, appears
+# to land in a field this pipeline does not read for this route), producing
+# parse_error on every attempt including all retries, at real cost ($0.12
+# across 4 failed attempts on a single trial). Google remains represented in
+# the roster via google/gemini-2.5-flash.
+#
+# Note: nvidia/nemotron-3-ultra-550b-a55b (and, in piloting,
+# google/gemini-3.1-pro-preview) answered every single 8Values question "N"
+# (Neutral), a well-formed but degenerate response distinct from the
+# gemini-2.5-pro failure above. This is included and reported as data, not
+# discarded: it is a second, structurally different form of political-content
+# avoidance alongside Claude's outright refusal (Section 3.4), and is treated
+# as a finding in the Results discussion rather than excluded as noise.
 
 if __name__ == "__main__":
     import sys

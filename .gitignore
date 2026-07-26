@@ -18,3 +18,7 @@ secrets.json
 scoring/collected/
 scoring/__pycache__/
 scoring/.pytest_cache/
+
+# Private planning docs, not for the public repo
+goal.md
+improvement.md
