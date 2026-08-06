@@ -227,22 +227,30 @@ def main():
                "economic": 0.0, "social": 0.0}
     baseline_pvals = []
     baseline_labels = []
+    baseline_d = []
     n_reject_raw = 0
     for (test, axis), by_model in sorted(by_axis.items()):
         center = NEUTRAL[axis]
         for model in sorted(by_model):
             vals = np.asarray(by_model[model], dtype=float)
-            if vals.std(ddof=1) == 0:
-                # constant response: trivially "different from center" if the
-                # constant itself isn't the center, undefined t-test otherwise
-                p_t = 0.0 if vals[0] != center else 1.0
+            sd = vals.std(ddof=1)
+            # Treat near-zero SD (constant, or constant up to floating-point
+            # noise) as the same degenerate case: d is effectively unbounded,
+            # not a meaningful finite number, so don't let float noise near 0
+            # produce an astronomically large but spurious d.
+            if sd < 1e-6:
+                p_t = 0.0 if abs(vals[0] - center) > 1e-6 else 1.0
+                d = np.inf if abs(vals[0] - center) > 1e-6 else 0.0
             else:
                 _, p_t = ttest_1samp(vals, center)
+                d = (vals.mean() - center) / sd  # one-sample Cohen's d
             baseline_pvals.append(p_t)
             baseline_labels.append(f"{model} ({test}/{axis})")
+            baseline_d.append(d)
             if p_t < 0.05:
                 n_reject_raw += 1
     baseline_pvals = np.array(baseline_pvals)
+    baseline_d = np.array(baseline_d)
     reject_b, _, _, _ = multipletests(baseline_pvals, alpha=0.05, method="fdr_bh")
     print(f"  Total one-sample tests (19 models x 6 axes): {len(baseline_pvals)}")
     print(f"  Significantly different from neutral center at raw p<0.05: {n_reject_raw}")
@@ -255,6 +263,19 @@ def main():
     else:
         print("  Every one of the 114 model-axis combinations differs significantly "
               "from the instrument's neutral center-point after correction.")
+    finite_d = np.abs(baseline_d[np.isfinite(baseline_d)])
+    n_small = int(((finite_d >= 0.2) & (finite_d < 0.5)).sum())
+    n_medium = int(((finite_d >= 0.5) & (finite_d < 0.8)).sum())
+    n_large = int((finite_d >= 0.8).sum())
+    n_negligible = int((finite_d < 0.2).sum())
+    print(f"\n  One-sample Cohen's d (mean - center)/SD, |d| by Cohen (1988) bands"
+          f" (n={len(finite_d)} finite of {len(baseline_d)}):")
+    print(f"    |d| < 0.2  (negligible): {n_negligible}")
+    print(f"    0.2 <= |d| < 0.5 (small): {n_small}")
+    print(f"    0.5 <= |d| < 0.8 (medium): {n_medium}")
+    print(f"    |d| >= 0.8 (large): {n_large}")
+    print(f"    median |d| = {np.median(finite_d):.2f}, min = {finite_d.min():.2f}, max = {finite_d.max():.2f}"
+          f" ({int((~np.isfinite(baseline_d)).sum())} infinite [zero-SD, non-center constant response] excluded)")
 
     print("\n" + "=" * 70)
     print("ISS CONSISTENCY RANKING (ascending = most consistent first)")

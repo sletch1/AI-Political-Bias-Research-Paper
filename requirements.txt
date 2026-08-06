@@ -6,3 +6,5 @@ pandas
 pingouin
 playwright
 pytest
+adjustText
+matplotlib

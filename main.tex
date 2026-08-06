@@ -15,7 +15,6 @@
 \usepackage{enumitem}
 \usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
 \usepackage{xurl}
-\usepackage[round]{natbib}
 \usepackage{setspace}
 
 \setlength{\parindent}{0pt}
@@ -53,50 +52,37 @@ scripts are released at
 \section{Introduction}
 % =============================================================================
 
-This study considers the cognitive implications of AI beyond automation.
-Technological advancements are often viewed as tools that automate labor, improving
-daily life efficiency. Such an assumption is based on historical precedent. The rise
-of inventions such as the steam engine, which mechanized power for factories,
-trains, and ships, revolutionized transportation and production. Similarly, the
-invention of the spinning Jenny transformed textile production. This trend
-continues into modern day. Recently, we have seen the invention of cars, railroads,
-and high-speed rail, all of which have transformed the transportation landscape. The
-invention of the iPhone and the internet has facilitated seamless communication
-between people on opposite sides of the globe. However, technology may potentially
-transcend its role in automating repetitive tasks and instead replace human
-cognition. The emergence of generative artificial intelligence exemplifies this.
+Generative AI has moved beyond automating routine tasks and now participates
+directly in cognitive and communicative work: drafting text, answering
+questions, and summarizing information for hundreds of millions of users.
+That shift raises a distinct ethical question from earlier waves of
+automation, since a system that generates language can also shape opinion.
+Large language models (LLMs) have consequently achieved rapid, broad
+societal integration, and with that integration comes an obligation to
+understand and disclose their biases and potential harms.
 
-Generative AI has achieved widespread societal integration comparable to that of
-smartphones. Similar to how almost 9 out of 10 teenagers in the US own an iPhone,
-more than 4 out of 5 students have used generative artificial intelligence
-\citep{pandey2021, kelly2024}. Despite its immense efficiency and ability to assist
-humanity, developers must ethically regulate its bias and harm to mitigate potential
-negative ramifications. With the rise of AI comes moral implications that we must
-address.
-
-Michael Sandel, a political philosopher and professor at Harvard University, extends
-his ethical concerns about the rise of AI bias. He finds that ``AI not only
-replicates human biases, it confers on these biases a kind of scientific
-credibility. It makes it seem that these predictions and judgments have an
-objective status'' \citep{pazzanese2020}. A recent concern with the rise of AI bias
-is bias baked into the knowledge resources AI systems draw on: a 2021 EMNLP study
-found demographic and representational bias in 38.6\% of entries in GenericsKB, a
-commonsense-knowledge resource used to ground AI systems' factual claims
-\citep{mehrabi2021}. Bias in AI systems is not limited to factual grounding: it has
-also been documented along racial and gender lines, for instance in covertly racist
-judgments tied to dialect \citep{hofmann2024} and in direct measurements of gender
-and racial bias in LLM outputs \citep{an2024}. Due to the immense focus on
-misinformation and these other bias categories, political bias in AI tends to be
-overshadowed.
-
-Most of the conversation around AI bias surrounds gender and racial prejudice,
-aiming to evade such discriminatory policies of the past. However, political bias is
-just as detrimental to society. Zvi Mowshowitz from \textit{The New York Times}
-explains how social media has paved the way for political polarization, as
-algorithms feed people more content that resonates with them, pushing them further
-down a particular ideological path \citep{mowshowitz2024}. Partisan LLMs exacerbate
-this trend. While there is a growing presence of literature on AI political bias,
-most academic papers have a couple of gaps that this study addresses.
+Weidinger et al.\ situate political and opinion-shaping bias within a
+broader taxonomy of language-model harms spanning discrimination,
+misinformation, and malicious use \cite{weidinger2021}, and Bender et al.\
+argue that a model's biases are not incidental defects but a direct
+consequence of the scale and provenance of its training data
+\cite{bender2021}. Foundational work has documented this concretely along
+gender and racial lines: word embeddings encode human-like biases measurable
+by association tests \cite{caliskan2017}, geometrically reflect gender
+stereotypes \cite{bolukbasi2016}, and downstream commercial systems built on
+similar data show large intersectional accuracy gaps by race and gender
+\cite{buolamwini2018}. More recent work extends this line directly to large
+language models: a 2021 study found demographic and representational bias in
+38.6\% of entries in GenericsKB, a commonsense-knowledge resource used to
+ground AI systems' factual claims \cite{mehrabi2021}, and LLMs have been
+shown to produce covertly racist judgments tied to dialect \cite{hofmann2024}
+and measurable gender and racial bias in resume evaluation
+\cite{an2024}. Political bias has received comparatively less attention
+against this backdrop of gender- and race-focused work, despite evidence
+that algorithmic content curation already shapes political polarization at
+scale \cite{bakshy2015}, a dynamic that a politically biased LLM could
+plausibly reinforce. While a growing literature now studies AI political
+bias directly, existing work leaves a few gaps that this study addresses.
 
 The first gap is breadth of model coverage. Most academic studies of political bias
 in LLMs examine a small, convenience-sampled handful of flagship models, typically
@@ -136,124 +122,138 @@ they yield different results for the same model.
 
 \subsection{Related Work}
 
-The study's foundation is based on Associate Professor David Rozado's 2024 study
-``The Political Preferences of LLMs'' \citep{rozado2024}. This study aligns with
-the interests of scholars in AI, language models, and political bias, sharing a
-goal similar to Professor Rozado's research but differing in scale, model
-selection, and methodology. Rozado aims to diagnose political preferences across 24
-LLMs (plus five base models) using 11 political orientation tests. In contrast, the
-current study uses two typology tests across 19 models to measure political bias
-and within-session response consistency. This study emphasizes the consistency of
-each model's political bias in addition to its direction. Both studies use models
-from OpenAI \citep{openai2023} and Anthropic \citep{anthropic2023}, as well as the
-Political Compass and 8Values, as tests. A comparably scaled recent study, Buyl et
-al.'s ``Large Language Models Reflect the Ideology of their Creators,'' probes 19
-LLMs (matching this study's model count) using open-ended generation about
-thousands of political figures rather than a fixed questionnaire
-\citep{buyl2026}; the present study's use of two independent, structured typology
-instruments, each scored against its own authoritative source, is a
-methodologically different but complementary approach to the same underlying
-question.
+\paragraph{Closest comparators.} Rozado's ``The Political Preferences of LLMs''
+diagnoses political preferences across 24 LLMs (plus five base models) using 11
+political-orientation tests, including the Political Compass and 8Values used
+here \cite{rozado2024}. The present study covers fewer models (19) but more
+trials per model per test (60, versus a single administration in Rozado's
+design), which is what makes a trial-to-trial consistency metric possible in
+the first place; it also scores every response against each instrument's own
+authoritative source rather than an automated stance classifier, and treats
+the economic and social axes as analytically distinct throughout rather than
+collapsing to a single left-right score. Buyl et al.'s ``Large Language Models
+Reflect the Ideology of their Creators,'' published in \textit{npj Artificial
+Intelligence}, probes 19 LLMs (matching this study's model count) using
+open-ended generation about thousands of political figures rather than a fixed
+questionnaire \cite{buyl2026}; the present study's use of two independent,
+structured typology instruments is a methodologically different but
+complementary approach to the same underlying question, and the convergence of
+findings across such different elicitation methods (forced-choice
+questionnaire versus open-ended generation judged for stance) is itself
+evidence that the measured lean is not an artifact of either method alone.
 
-Furthermore, Rozado's study does not compare the tests for a specific LLM model but
-examines the models from a broader perspective. Both studies score every response
-against the tests' own authoritative outputs rather than a hand-derived measure,
-though the automation differs: Rozado utilized automated stance detection
-(GPT-3.5), validated by human cross-check, whereas the current study drives the
-Political Compass's own live scoring page directly and ports 8Values' own published
-scoring algorithm line for line, so that no separate stance-classification step is
-needed for either instrument. Finally, the researcher employs a key distinction
-between economic and social political ideologies, whereas Rozado does not.
+\paragraph{Convergent findings across methods and instruments.} A broader
+literature, spanning multiple instruments, elicitation methods, and venues,
+converges on the same directional finding reported here. Using the Political
+Compass with pre-registered, multi-language prompts, Hartmann et al.\ found
+ChatGPT's answers cluster in the same economically-left,
+socially-libertarian region \cite{hartmann2023}; Rutinowski et al.\ combined
+the Political Compass with personality psychometrics on the same model and
+reached a similar conclusion \cite{rutinowski2024}; and, using an
+entirely different elicitation method (persona-conditioned generation rather
+than direct questionnaire response), Motoki et al.\ found the same
+pro-left, pro-incumbent-progressive lean in a peer-reviewed economics venue
+\cite{motoki2024}. Santurkar et al.'s widely cited ``Whose Opinions Do
+Language Models Reflect?'' compares default LLM opinions against 60 US
+demographic subgroups using the Pew Research American Trends Panel and finds
+systematic, non-random misalignment with the median respondent
+\cite{santurkar2023}, a finding this study's own human-baseline comparison
+(Section~\ref{sec:human-baseline}) is directly in the spirit of, though
+using a different reference source. Feng et al.\ trace a mechanistic path
+from the political lean of pretraining corpora through to measurable
+downstream model bias and unfairness \cite{feng2023}, a pretraining-stage
+account that is complementary to, and does not require choosing between,
+alignment-stage explanations discussed in the Discussion. Two studies extend
+this literature outside the standard English/US-model scope this study
+itself is limited to: Qu and Wang directly evaluate LLMs' accuracy and bias
+when used to simulate public opinion \cite{quwang2024}, and Pan and Xu find
+that political censorship in LLMs originating from China tracks the
+political-censorship environment of their origin, evidence that a model's
+training and deployment environment, not only its architecture, shapes
+measured political behavior \cite{panxu2026} -- directly relevant to this
+study's own research question of whether bias tracks a model's country of
+origin.
 
-Another relevant study, conducted by Rettenberger et al., examines political bias
-from the EU and German perspectives \citep{rettenberger2024}. Both the author's
-analysis and Rettenberger et al.\ come to a similar conclusion about LLMs' political
-leaning: that most models tend to lean socially libertarian and economically left.
-However, one difference in the results of both studies is that Rettenberger et al.\
-found that ``smaller'' models tended to be more neutral. The current study's
-19-model roster, which spans multiple size tiers within several model families,
-did not find a consistent relationship between model size and neutrality. The key
-novelties between the two studies diverge. In the researcher's analysis, they
-introduce the Ideological Stability Score (ISS) to quantify response variability;
-Rettenberger et al.\ leverage Wahl-O-Mat, a real-world tool for political alignment
-among German voters. Moreover, Rettenberger et al.'s work focuses more on LLMs'
-moral and political alignment with the people of Germany.
+Rettenberger et al.\ examine political bias in LLMs from an EU and German
+perspective using Wahl-O-Mat, a real-world voting-advice tool
+\cite{rettenberger2024}, and reach the same directional conclusion: models
+lean socially libertarian and economically left. Two differences are worth
+noting. Rettenberger et al.\ found smaller models tended to score more
+neutral; this study's 19-model roster, which spans multiple size tiers
+within several model families, does not show a consistent relationship
+between model size and neutrality (Results), a disagreement addressed
+further below. Rettenberger et al.\ also compare German- and English-language
+prompts, where this study is English-only (Limitations), but does introduce
+the Ideological Stability Score to quantify trial-to-trial response
+variability, which Rettenberger et al.\ do not measure.
 
-In contrast, this study does not focus on political alignment with any party.
-Moreover, Rettenberger et al.\ compare German and English prompts, while this
-study is focused on English-based prompts. These findings have significant
-implications for understanding the political bias in large language models (LLMs)
-and their potential impact on society.
+\paragraph{Methodological critiques this study must address.} Two papers
+directly critique the forced-choice questionnaire methodology this study
+uses, and are addressed rather than left unacknowledged. R{\"o}ttger et
+al.'s ``Political Compass or Spinning Arrow?'' argues that forced-choice
+political-typology evaluations are sensitive to exactly how the task is
+framed and may not generalize to open-ended model behavior
+\cite{rottger2024}; Section~\ref{sec:prompt-robustness}'s prompt-robustness
+check and Section~\ref{sec:openended-results}'s open-ended-generation
+validation arm are direct responses to this critique, applied to a subset of
+the model roster. Bang et al.'s ``Measuring Political Bias in Large Language
+Models: What Is Said and How It Is Said'' examines not only which policy
+positions a model favors but the rhetorical framing used to express them
+\cite{bang2024}; this study's questionnaire-based approach captures only the
+former, a model's stated position on a fixed set of statements, since a
+forced-choice label carries no framing information, a boundary stated
+explicitly here rather than left implicit.
 
-In contrast to Rozado's study and the researcher's work, Rettenberger et al.\
-incorporate language variation in prompts. However, Rozado and Rettenberger et al.\
-do not emphasize response consistency to the same degree. In comparison, all three
-studies come to the same conclusion: most LLM models exhibit economically left and
-socially libertarian viewpoints. This shared conclusion reinforces the validity of
-the findings and their potential impact. Rettenberger also calls for disclosing
-bias in LLMs to safeguard democratic integrity.
-
-Another relevant study by PhD candidate Suyash Fulay and Research Scientist Jad
-Kabbara examines how political bias shifts following the `truth testing' process on
-an LLM model \citep{fulay2024}. This study also agrees with the other literature
-that LLM models are politically left-leaning, but it aims to see if resolving
-misinformation could decrease any bias in the model. Fulay et al.'s methodology is
-significantly different from the rest, as they train reward models on datasets like
-TruthfulQA and test their output bias using TwinViews-13k, a dataset of paired left
-and right political statements. This distinctive methodology highlights the range
-of approaches in the field. One similarity between this analysis and that study is
-the use of inferential statistical analysis: the current study relies on Welch's
-ANOVA, the Kruskal-Wallis test, and the Games-Howell post-hoc test as its primary
-evidence (with the classical one-way ANOVA and Tukey HSD reported alongside for
-comparison), justified below by explicit assumption checks. In contrast, Fulay et
-al.\ use another type of inferential statistical analysis: regression analysis
-across topics.
-
-Bang et al.'s ``Measuring Political Bias in Large Language Models: What Is Said and
-How It Is Said'' \citep{bang2024} offers a complementary methodological lens,
-examining not only which policy positions a model favors but the rhetorical framing
-used to express them. This study's questionnaire-based approach captures the
-former, a model's stated position on a fixed set of statements, but, consistent
-with Bang et al.'s distinction, cannot speak to the latter, since a forced-choice
-label carries no framing information; that boundary is stated explicitly rather
-than left implicit.
-
-Two recent papers bear directly on this study's consistency framing and must be
-reconciled rather than left unacknowledged. Ceron et al.'s ``Beyond Prompt
-Brittleness'' \citep{ceron2024} evaluates the reliability and consistency of
-political worldviews in LLMs using voting-advice questionnaires across seven EU
+\paragraph{Consistency and stability.} Two recent papers bear directly on
+this study's consistency framing. Ceron et al.'s ``Beyond Prompt
+Brittleness'' evaluates the reliability and consistency of political
+worldviews in LLMs using voting-advice questionnaires across seven EU
 countries and models from 7B to 70B parameters, finding that reliability
-increases with parameter count and that ideology is not uniformly left- or
-right-leaning but varies by policy domain; it is the closest prior work to this
-study's own trial-to-trial consistency question, and this study's contribution is
-better read as extending that question to a larger, more organizationally diverse
-roster (19 models, 11 organizations) with two independent instruments, rather than
-as introducing consistency measurement to the field. Aldahoul et al.\
-\citep{aldahoul2025} separately compare 31 LLMs to US legislators, judges, and a
-representative voter sample, finding that an apparently modest net partisan lean
-is often the average of offsetting extreme positions on individual topics, and
-measuring ideological inconsistency directly; this study's Ideological Stability
-Score addresses the same underlying concern at a within-session, trial-to-trial
-grain rather than a topic-to-topic grain, a complementary rather than competing
-angle.
+increases with parameter count and that ideology varies by policy domain
+rather than sitting on a single left-right line \cite{ceron2024}; it is the
+closest prior work to this study's own trial-to-trial consistency question,
+and this study's contribution is better read as extending that question to a
+larger, more organizationally diverse roster (19 models, 11 organizations)
+with two independent instruments than as introducing consistency measurement
+to the field. Aldahoul et al.\ separately compare 31 LLMs to US legislators,
+judges, and a representative voter sample, finding that an apparently modest
+net partisan lean is often the average of offsetting extreme positions on
+individual topics \cite{aldahoul2025}; this study's Ideological Stability
+Score addresses a related concern at a within-session, trial-to-trial grain
+rather than a topic-to-topic grain, a complementary rather than competing
+angle. A large-scale longitudinal study tracking twelve LLMs' stated
+positions near-daily across the 2024 US election season provides an
+independent, calendar-time analogue to this study's within-session
+consistency question \cite{cen2025}, and reports the same directional lean
+persisting across that period.
 
-A third paper directly contradicts a claim in an earlier version of this study's
-motivation. Exler et al.\ \citep{exler2025}, a direct follow-up to Rettenberger et
-al.\ by an overlapping author team, find that political bias (leftward lean)
-increases with model parameter count. This study's own 19-model roster does not
-show a clean monotonic relationship between parameter count and lean magnitude
-(Results): the largest gaps in Table~\ref{tab:descriptive} do not track parameter
-count in a simple ordering, and the least and most consistent entries in
-Table~\ref{tab:iss-extremes} span both small and large models. This is reported as
-a genuine point of partial disagreement worth further investigation, not resolved
-here, rather than a discrepancy to explain away; it may reflect differences in
-model roster, instrument, or how ``bias magnitude'' versus ``neutrality'' are
-operationalized between the two studies.
+\paragraph{A point of disagreement.} Exler et al., a direct follow-up to
+Rettenberger et al.\ by an overlapping author team, find that political
+bias (leftward lean) increases with model parameter count
+\cite{exler2025}. This study's own 19-model roster does not show a clean
+monotonic relationship between parameter count and lean magnitude (Results):
+the largest gaps in Table~\ref{tab:descriptive} do not track parameter count
+in a simple ordering, and the least and most consistent entries in
+Table~\ref{tab:iss-extremes} span both small and large models. This is
+reported as a genuine point of partial disagreement worth further
+investigation, not resolved here, rather than a discrepancy to explain away;
+it may reflect differences in model roster, instrument, or how ``bias
+magnitude'' versus ``neutrality'' are operationalized between the two
+studies.
 
-Regarding limitations, this study and Rettenberger et al.'s study should be read
-alongside the fact that both examine a bounded, non-exhaustive set of models. A
-restriction of Fulay et al.'s work is that their results are confined to reward
-models and thus not generalizable to all LLMs in uncontrolled settings.
+\paragraph{A different intervention.} Fulay and Kabbara examine how political
+bias shifts following a `truth-training' process applied to an LLM, training
+reward models on datasets such as TruthfulQA and testing output bias on
+TwinViews-13k, a dataset of paired left- and right-leaning political
+statements \cite{fulay2024}. Their finding that LLMs are politically
+left-leaning agrees with the present study and the broader literature above,
+reached via a distinctively different route: an intervention study of what
+happens to bias under a specific training procedure, rather than a
+descriptive measurement across already-deployed models. Their results are
+confined to reward models trained for that specific study and are not
+directly generalizable to the deployed, uncontrolled models evaluated here,
+just as this study's own findings are bounded to the specific model
+snapshots and instruments used (Limitations).
 
 % =============================================================================
 \section{Results}
@@ -276,7 +276,12 @@ equality, means range from 60.91 (x-ai/grok-4.20) to 83.08 (qwen/qwen3-30b-a3b);
 Compass economic, from $-8.09$ (mistralai/mistral-large-2512) to $-4.89$
 (anthropic/claude-sonnet-4.5); and on Political Compass social, from $-7.82$
 (google/gemini-2.5-flash) to $-5.15$ (qwen/qwen3-30b-a3b). Table
-\ref{tab:descriptive} reports the full per-model mean on every axis.
+\ref{tab:descriptive} reports the full per-model mean on every axis, and
+Figures~\ref{fig:compass-scatter} and \ref{fig:8values-dotplot} show the same
+means plotted directly: every model occupies the same quadrant of the
+Political Compass plane, and every model sits on the same side of the
+neutral reference line on all four 8Values axes, with the between-model
+spread visible at a glance rather than only in tabular form.
 
 \begin{table}[H]
 \centering
@@ -309,6 +314,25 @@ x-ai/grok-4.20            & 60.91 & 67.03 & 69.38 & 78.98 & $-7.19$ & $-7.77$ \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig3_compass_scatter.png}
+\caption{Political Compass position of all 19 models (mean of 60 trials each),
+zoomed to the occupied region (a) with the full $-10$ to $10$ instrument
+scale shown for context (b). The $+$ marks the neutral human-baseline proxy
+used in Section~\ref{sec:human-baseline}.}
+\label{fig:compass-scatter}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/fig4_8values_dotplot.png}
+\caption{8Values scores of all 19 models on all four axes (mean of 60 trials
+each), sorted independently within each panel; the dashed line marks the
+instrument's neutral center-point (50).}
+\label{fig:8values-dotplot}
+\end{figure}
 
 \subsection{Omnibus Tests: Large, Robust Effects on Every Axis}
 
@@ -419,6 +443,22 @@ anthropic/claude-opus-4.5 (Pol.\ Compass/economic) & 65.22 \\
 \end{tabular}
 \end{table}
 
+Table~\ref{tab:iss-extremes} shows only the twenty most extreme entries;
+Figure~\ref{fig:iss-distribution} shows the full distribution of all 114
+ISS values, grouped by axis, and makes visible both the general spread
+within each axis and the single high-leverage outlier
+(anthropic/claude-opus-4.5's Political Compass economic score) discussed
+below.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/fig5_iss_distribution.png}
+\caption{Ideological Stability Score for all 114 model--axis combinations,
+grouped by axis. Each point is one model; the black bar marks the axis
+median.}
+\label{fig:iss-distribution}
+\end{figure}
+
 anthropic/claude-opus-4.5 and meta-llama/llama-3.3-70b-instruct each appear three
 times among the ten most consistent combinations, more than any other model, while
 nvidia/nemotron-3-ultra-550b-a55b appears four times among the ten least
@@ -452,11 +492,25 @@ for all 114 tests even after a Benjamini-Hochberg false discovery rate correctio
 Given that Gallup's 2024 Values and Beliefs poll finds the US public close to an
 even three-way split between conservative, moderate, and liberal self-identification
 on social issues, and only moderately right-of-center on economic issues
-\citep{gallup2024values}, a neutral center-point is a reasonable, if bounded, proxy
+\cite{gallup2024values}, a neutral center-point is a reasonable, if bounded, proxy
 for a human population reference (Section~\ref{sec:stats}). Every model in this
 study, without exception, differs significantly from that proxy, in the same
 direction identified in the between-model comparisons above: left of center
 economically and libertarian of center socially.
+
+Statistical significance alone is a weak claim at $n=60$ trials per test, since
+even a small, practically unremarkable deviation from center would clear
+$p<0.05$ at that sample size. The effect sizes rule this out: computing a
+one-sample Cohen's $d$ for each of the 114 tests (the standardized deviation of
+a model's mean from the instrument's center-point) finds every finite value at
+$|d|\geq 1.47$, comfortably past Cohen's conventional threshold for a
+``large'' effect ($|d|\geq 0.8$) \cite{cohen1988}, with a median $|d|$ of
+$11.92$ and a maximum of $106.74$ (one model-axis combination is excluded
+from these summary statistics for having an effectively zero within-model
+standard deviation, discussed in Section~\ref{sec:consistency}). The deviation
+from the neutral center-point is therefore not merely statistically
+detectable but, on average, an order of magnitude larger than the
+conventional threshold for a large effect.
 
 \subsection{Prompt-Robustness Check: Magnitude Shifts, Direction Does Not}
 \label{sec:prompt-robustness}
@@ -469,7 +523,7 @@ with $\eta^2$ ranging from 0.02 to 0.75 (median 0.37). This is a genuine,
 non-trivial finding, not a null result: instructional-wrapper wording measurably
 moves scores for most models on most axes, consistent with Röttger et al.'s
 critique that forced-choice political-typology evaluations are sensitive to
-exactly how the task is framed \citep{rottger2024}.
+exactly how the task is framed \cite{rottger2024}.
 
 What did not move is direction. Across every one of the 600 new administrations,
 every model's mean score on every Political Compass axis, under every prompt
@@ -498,7 +552,7 @@ elicitation methods. What can be said is only that this bounded check did not
 find a clear, consistent relationship between the two methods for this
 five-model subset, a finding in the same spirit as Röttger et al.'s broader
 point that forced-choice and open-ended elicitation can diverge
-\citep{rottger2024}, and one that argues for a larger-scale version of this arm
+\cite{rottger2024}, and one that argues for a larger-scale version of this arm
 (more models, more topics) before drawing a firm conclusion either way.
 
 % =============================================================================
@@ -507,46 +561,70 @@ point that forced-choice and open-ended elicitation can diverge
 
 \subsection{Implications of AI Bias}
 
-This study finds a significant and present bias across all 19 models tested,
-spanning 11 organizations and four countries, a pressing issue that warrants
-immediate attention. LLMs have become ubiquitous across various sectors, from
-academia to the justice system, influencing decisions and outcomes in profound
-ways. As researcher Yue Xie emphasizes, ``Liking it or not, ready or not, we are
-likely to enter a new phase of human history in which artificial intelligence (AI)
-will dominate economic production and social life, the AI revolution''
-\citep{xie2025}.
+These results document a significant and consistent directional bias across
+all 19 models tested, spanning 11 organizations and four countries. LLMs are
+already deployed across sectors including academia, customer service, and
+information retrieval, and Xie and Avila argue that AI is entering a phase
+in which it substantively shapes economic production and social life rather
+than merely automating discrete tasks \cite{xie2025}; a system used at that
+scale that also carries a consistent ideological lean is a legitimate object
+of scrutiny independent of any single downstream harm. Two features of the
+present findings sharpen that concern specifically. First, LLMs are prone to
+hallucination, with benchmark hallucination rates as high as 27\% documented
+for some models on a standardized summarization-faithfulness test
+\cite{vectara2023}; a model that states biased content with the same
+confident register as verified fact compounds the risk that users treat its
+output as neutral rather than as a stance. Second, algorithmic content
+curation is already documented to shape political polarization independent
+of language generation \cite{bakshy2015}; a language model that both
+generates content and leans consistently in one direction is a plausible
+additional contributor to the same dynamic, though the present study
+measures the models' stated positions on fixed instruments and does not
+measure any downstream effect on real users' beliefs or behavior, a
+distinction addressed further in Limitations.
 
-The National Education Association further elaborates on the issue by explaining
-that AI bias in academia is particularly harmful as it ``amplifies stereotypes''
-and thus disproportionately affects marginalized communities and voices
-\citep{greenesantos2024}. Sandrine Ceurstemont, an AI bias journalist, highlights
-the potential for AI to ``shape public discourse and influence voters' opinions''
-\citep{ceurstemont2024}. Given that LLMs are prone to hallucinations, with
-benchmark hallucination rates as high as 27\% documented for some models on a
-standardized summarization-faithfulness test \citep{vectara2023}, this bias becomes
-even more problematic, as users tend to accept the claims of LLMs as factual
-without verification. The combination of ideological bias and misinformation risks
-amplifying mainstream voices while marginalizing valid dissenting viewpoints. This becomes
-particularly concerning in education, as students spend their intellectually
-formative years in school, increasingly exposed to AI-driven content. With 86\% of
-students using AI, the bias inherent in these models significantly influences
-their political and ideological development and may even foster political
-extremism \citep{kelly2024}.
+Separately from any effect on individual users, sustained political
+polarization has documented structural effects on democratic institutions:
+an analysis of the US House of Representatives from 1948 to 2020 found that
+as polarization rose, particularly from the mid-1990s onward, Congress
+passed fewer bills overall, with enacted bills growing larger in scope and
+more consequential, a ``punctuated equilibrium'' pattern of legislating in
+fewer, higher-stakes bursts rather than steady incremental output
+\cite{mallinson2024}. Whether LLM-driven content contributes to that
+dynamic at any measurable scale is well beyond what this study's
+questionnaire-based design can establish, but the documented stakes of
+polarization for legislative function are a reason to treat consistent,
+measurable LLM ideological lean as worth monitoring going forward rather
+than as an incidental property of these systems.
 
-Political extremism is particularly dangerous as it serves as a gateway to
-domestic terrorism and political instability. The Department of Homeland Security
-has directly identified a ``heightened threat environment... fueled by ... an
-online environment filled with false or misleading narratives and conspiracy
-theories'' \citep{dhs2022}. Even setting aside extreme scenarios like domestic
-terrorism resulting from political extremism, increased polarization can disrupt
-legislative processes. A political science study of the US House of
-Representatives from 1948 to 2020 found that as polarization rose, particularly
-from the mid-1990s onward, Congress passed fewer bills overall, but enacted bills
-tended to be larger in scope and more consequential, a ``punctuated equilibrium''
-pattern of legislating in fewer, higher-stakes bursts rather than steady
-incremental output \citep{mallinson2024}. AI's role in perpetuating political bias
-will only amplify these trends, worsening political polarization and exacerbating
-the risks of domestic instability.
+\subsection{A Note on Mechanism}
+
+This study measures political lean and consistency descriptively and does
+not test any specific causal mechanism, but a plausible mechanistic account
+is worth stating explicitly, since it bears on how the findings should be
+interpreted. Nearly every model in this roster is fine-tuned with some
+variant of reinforcement learning from human feedback (RLHF)
+\cite{christiano2017, ouyang2022}, including Anthropic's Constitutional AI
+variant \cite{bai2022constitutional} and the original helpful-and-harmless
+RLHF recipe \cite{bai2022helpful}. RLHF has documented, systematic
+limitations beyond simply making models more helpful \cite{casper2023}: it
+can induce sycophancy, a tendency to agree with positions a user appears to
+hold rather than to give a consistent independent answer
+\cite{sharma2023}, and default opinion distributions in RLHF-tuned models
+have been shown to skew toward the US and Western demographic populations
+disproportionately represented among human feedback annotators
+\cite{durmus2023}. A recent single-author preprint reports mechanistic
+evidence, via sparse-autoencoder probing, that RLHF suppresses but does not
+remove partisan representations learned during pretraining
+\cite{tam2026}; if broadly correct, this would suggest the consistent
+directional lean measured here reflects pretraining-data composition
+\cite{feng2023} that alignment training dampens in magnitude without
+eliminating, rather than a lean introduced by alignment training itself.
+This account is consistent with, though not proven by, the present
+results: every model leans the same direction regardless of developer or
+alignment approach (Results), which is more readily explained by a shared
+upstream influence, such as broadly similar pretraining data composition
+across providers, than by any one company's specific fine-tuning choices.
 
 \subsection{Limitations}
 
@@ -554,11 +632,22 @@ This study is subject to several key limitations. The first is instrument choice
 static questionnaires like the Political Compass and 8Values are a well-established
 but increasingly contested way to probe LLM ideology, since direct questions may
 not fully reflect model behavior in open-ended, natural use
-\citep{rottger2024}. Section~\ref{sec:openended-results} attempts a bounded
+\cite{rottger2024}. Section~\ref{sec:openended-results} attempts a bounded
 open-ended-generation validation arm on five models, but at that scale it is
 underpowered to confirm or rule out agreement with the questionnaire-based scores;
 a larger-scale version (more models, more topics) is needed for a confident
 answer.
+
+Related to instrument choice is a specific concern about the Ideological
+Stability Score itself: LLM responses to survey-style instruments have been
+found to under-disperse relative to real human response variance on the
+same instruments \cite{bisbee2024}. If LLM outputs are systematically less
+variable than human responses in general, the absolute ISS values reported
+here should not be read as directly comparable to what an equivalent
+human-population stability score would show; the ISS comparisons in this
+study are only used, and should only be used, to rank models and axes
+\emph{against one another}, not against an implied human consistency
+baseline.
 
 The second is the coarseness of the human baseline. Section~\ref{sec:human-baseline}
 tests every model against each instrument's neutral center-point, using a Gallup
@@ -577,19 +666,23 @@ direction, for that subset. The remaining 14 models were not tested for prompt
 robustness, so it cannot be confirmed that the same magnitude-not-direction
 pattern holds for the full roster, only that it does not appear to be rare.
 
-The fourth, commonly acknowledged by other researchers, pertains to the inherent
-loss of nuance in political typology tests. Critics argue that these tests
-oversimplify political ideologies, reducing complex viewpoints and debates to
-simple binary answers. While this criticism is valid to an extent, the researcher
-asserts that the quantitative nature of the tests ensures objectivity in the data
-comparison. In contrast, qualitative metrics lack the same rigor when it comes to
-analyzing and comparing ideological extremity and consistency. Furthermore, these
-tests are not merely ``one-word phrases.'' They consist of over fifty questions
-addressing a broad range of political statements, such as ``If economic
+The fourth is a limitation commonly raised about political typology tests in
+general, and about applying human-designed psychometric instruments to LLMs
+specifically \cite{suhr2023}: reducing complex political viewpoints to a
+fixed set of forced-choice statements necessarily loses nuance, and it is
+not established that a construct validated on human respondents transfers
+unchanged to a language model. This study's quantitative design trades away
+some of that nuance in exchange for comparability across 19 models and
+1,000+ trials, a trade this study considers justified for the specific
+comparative question asked here, though it does mean the results should be
+read as measuring stated positions on fixed instruments, not the full
+richness of a model's political reasoning. The instruments themselves are
+not simple binary checks: each consists of over fifty statements spanning a
+broad range of political positions, such as ``If economic
 globalization is inevitable, it should primarily serve humanity rather than the
-interests of transnational corporations'' \citep{politicalcompass_nd} and ``Even
+interests of transnational corporations'' \cite{politicalcompass_nd} and ``Even
 when protesting an authoritarian government, violence is not acceptable''
-\citep{values8_2019}. These questions offer multiple answer choices along a
+\cite{values8_2019}. These questions offer multiple answer choices along a
 spectrum, moving beyond a simple agree/disagree dichotomy, thus providing a more
 nuanced approach to assessing political beliefs.
 
@@ -647,7 +740,7 @@ positions like pro-LGBTQ+ rights, the decriminalization of drugs,
 anti-surveillance measures, abortion rights, free speech, and freedom of the
 press. These findings contrast with public opinion; a Gallup study in January 2025
 revealed that only 25\% of people lean liberal, while 37\% identify as
-conservative and 34\% as moderate \citep{brenan2025}. Consequently, the
+conservative and 34\% as moderate \cite{brenan2025}. Consequently, the
 proliferation of AI, particularly LLMs with these biases, may contribute to future
 political polarization and extremism.
 
@@ -679,14 +772,26 @@ confirm or rule out agreement with the questionnaire-based scores
 
 \subsection{Research Design}
 
-This study employs a quantitative comparative approach. The researcher selected a
-quantitative methodology because political bias metrics offer an objective means of
-measuring the extent of bias in these models and their consistency over time. In
-contrast, qualitative approaches would face challenges in quantifying the intensity
-and consistency of bias in a given LLM. Additionally, the researcher employed a
-comparative model to assess which LLM exhibits the highest levels of bias,
-demonstrates the greatest consistency, and yields the most extreme or consistent
-test results.
+This study employs a quantitative, comparative design: every model is
+administered the same two standardized instruments under the same protocol,
+so that bias magnitude and trial-to-trial consistency can be compared
+directly across models rather than assessed qualitatively per model. This
+follows a design paradigm sometimes called ``machine psychology''
+\cite{hagendorff2023}, administering instruments designed for human
+respondents directly to LLMs and analyzing the results with the same
+psychometric tools used for human data. Treating an LLM's answers to a
+human-designed instrument as meaningful, comparable data is not
+self-evident and rests on the notion of \emph{algorithmic fidelity}: that,
+under the right conditions, language-model outputs can approximate the
+response patterns of the human populations reflected in their training and
+tuning data closely enough to support this kind of comparative analysis
+\cite{argyle2023}. Directly administering standardized psychometric
+instruments to language models and scoring the results as if from a human
+respondent has precedent both for personality and demographic inventories
+\cite{miotto2022} and, at larger scale, for a resampling design close to
+this study's own repeated-trials approach \cite{serapiogarcia2023}.
+Section~\ref{sec:openended-results}'s open-ended-generation arm and the
+Limitations discuss the boundaries of the algorithmic-fidelity assumption.
 
 \subsection{Model Roster}
 \label{sec:model-roster}
@@ -695,9 +800,9 @@ Nineteen models spanning 11 organizations were selected via the OpenRouter API, 
 single gateway providing uniform access to models from many providers:
 
 \begin{itemize}[nosep, leftmargin=1.5em]
-  \item[] OpenAI \citep{openai2023}: \texttt{gpt-4o-mini}, \texttt{gpt-5-mini}, \texttt{gpt-4o}
-  \item[] Anthropic \citep{anthropic2023}: \texttt{claude-haiku-4.5}, \texttt{claude-sonnet-4.5}, \texttt{claude-opus-4.5}
-  \item[] DeepSeek \citep{deepseek2025}: \texttt{deepseek-chat}, \texttt{deepseek-v3.2}
+  \item[] OpenAI \cite{openai2023}: \texttt{gpt-4o-mini}, \texttt{gpt-5-mini}, \texttt{gpt-4o}
+  \item[] Anthropic \cite{anthropic2023}: \texttt{claude-haiku-4.5}, \texttt{claude-sonnet-4.5}, \texttt{claude-opus-4.5}
+  \item[] DeepSeek \cite{deepseek2025}: \texttt{deepseek-chat}, \texttt{deepseek-v3.2}
   \item[] Google: \texttt{gemini-2.5-flash}
   \item[] Meta: \texttt{llama-3.3-70b-instruct}, \texttt{llama-4-maverick}
   \item[] Mistral: \texttt{mistral-small}, \texttt{mistral-large-2512}
@@ -713,7 +818,7 @@ States, China, France, and Canada), and roughly two orders of magnitude in
 per-token price, chosen to approximate the model diversity of comparable
 published studies rather than relying on a small, convenience-sampled set of
 flagship models; 19 models matches the largest LLM roster used by a directly
-comparable recent study on this exact topic \citep{buyl2026}.
+comparable recent study on this exact topic \cite{buyl2026}.
 
 One additional model, \texttt{google/gemini-2.5-pro}, was piloted but
 excluded from the final roster: it reliably returned an empty response body
@@ -724,14 +829,11 @@ represented in the final roster via \texttt{gemini-2.5-flash}.
 
 \subsection{Political Typology Test Selection}
 
-The subsequent stage in the research process involved selecting appropriate tests
-to measure the political bias of the LLMs. This study sought tests that generate
-quantifiable results to facilitate objective comparison. Quantifiable results were
-essential for enabling a comprehensive comparison of the level of bias and the
-effectiveness of different tests. Accordingly, the researcher selected the
-Political Compass and 8Values test \citep{politicalcompass_nd, values8_2019}. Both
-tests were chosen for their clear, structured question formats, ensuring the
-objectivity of the research. Each test consists of a series of statements, with
+Test selection required instruments that generate quantifiable results, so that
+bias magnitude and cross-model comparisons could be made objectively rather
+than qualitatively. We selected the Political Compass and 8Values
+\cite{politicalcompass_nd, values8_2019} for their clear, structured question
+formats. Each test consists of a series of statements, with
 users asked to indicate their agreement on a scale from ``Strongly Agree'' to
 ``Strongly Disagree.'' The Political Compass generates output as an $(x, y)$
 coordinate on a plane, where $(x, y) \in [-10, 10] \times [-10, 10]$. The
@@ -910,14 +1012,14 @@ different construct.
 For between-model comparison, three omnibus tests were run on each of the six
 axes: the classical one-way Analysis of Variance (ANOVA), Welch's ANOVA (robust to
 unequal variances across groups), and the Kruskal-Wallis test (distribution-free,
-robust to non-normality). The classical ANOVA outputs a $p$-value, with a threshold
-of 0.05 indicating statistical significance \citep{jmp2025}; because the classical
+robust to non-normality). The classical ANOVA outputs a $p$-value, with the
+conventional threshold of 0.05 taken as statistically significant; because the classical
 test assumes normally distributed groups with equal variances, Shapiro-Wilk
 normality tests and Levene's test for homogeneity of variance were run on every
 group as a precondition check, and eta-squared ($\eta^2$) was computed as an
 omnibus effect size. Where an omnibus test was significant, pairwise post-hoc
 comparisons were run using both the classical Tukey Honestly Significant Difference
-(HSD) test \citep{abdi2010} and the Games-Howell test, which does not assume equal
+(HSD) test \cite{tukey1949} and the Games-Howell test, which does not assume equal
 variances or equal group sizes; because equal variance is rejected on every axis in
 this dataset (Levene's $p<.0001$ throughout, Results), Games-Howell is treated as
 the primary post-hoc evidence, with Tukey HSD reported alongside for comparison,
@@ -928,9 +1030,9 @@ false discovery rate correction was additionally applied across the full family 
 isolation, to guard against the inflated false-positive rate that running many
 uncorrected tests would otherwise risk.
 
-The author implemented these statistical tests using Python, leveraging NumPy,
+These statistical tests were implemented in Python, leveraging NumPy,
 SciPy, and StatsModels for the omnibus, Tukey HSD, and false discovery rate
-computations \citep{seabold2010, virtanen2020, harris2020} and the
+computations \cite{seabold2010, virtanen2020, harris2020} and the
 \texttt{pingouin} library for the Games-Howell post-hoc test. Every test was
 applied identically across all six axes; the full pairwise comparison output (19
 models, up to 171 pairs per axis) is released alongside this paper rather than
@@ -940,10 +1042,13 @@ reproduced in full in the text.
 models only to each other. To add a human reference point without collecting new
 survey data, each model's mean score on each axis was additionally tested against
 that instrument's own neutral center-point (0 for the two Political Compass axes,
-50 for the four 8Values axes) using a one-sample $t$-test. Gallup's 2024 Values and
+50 for the four 8Values axes) using a one-sample $t$-test, accompanied by a
+one-sample Cohen's $d$ for each test so that statistical significance, which
+$n=60$ trials per test makes easy to achieve for even a small deviation, can be
+distinguished from practical effect size \cite{cohen1988}. Gallup's 2024 Values and
 Beliefs poll, which asks a nationally representative US sample to self-identify as
 conservative, moderate, or liberal separately on economic issues and on social
-issues \citep{gallup2024values}, motivates treating the instrument's neutral point
+issues \cite{gallup2024values}, motivates treating the instrument's neutral point
 as a reasonable, bounded human-population proxy: the 2024 wave found the US public
 within a few points of an even three-way split on social issues (32\% conservative,
 32\% moderate, 33\% liberal) and only moderately right-of-center on economic issues
@@ -1008,18 +1113,24 @@ partisan terms. The judge model was deliberately chosen to not be one of the fiv
 generating models, so no model ever rated its own output.
 
 % =============================================================================
-\section{Data and Code Availability}
+\section{Data Availability}
 % =============================================================================
 
 All raw per-trial data from this study (2{,}280 administrations across 19 models,
 including each model's structured JSON answers, the resulting score, and the
 exact API cost of that call) are released in \texttt{data/raw\_trials/}, with a
 flattened, analysis-ready table in \texttt{data/scores.csv} and a per-model
-completion-rate and cost summary in \texttt{data/collection\_summary.md}. The
-complete pipeline, including the collection script, both scoring adapters (the
-8Values port and the Political Compass browser-automation adapter), the
-consolidation script, and the full statistical analysis script, is released as
-open source at
+completion-rate and cost summary in \texttt{data/collection\_summary.md}, at
+\url{https://github.com/sletch1/AI-Political-Bias-Research-Paper}.
+
+% =============================================================================
+\section{Code Availability}
+% =============================================================================
+
+The complete pipeline, including the collection script, both scoring adapters
+(the 8Values port and the Political Compass browser-automation adapter), the
+consolidation script, the figure-generation script, and the full statistical
+analysis script, is released as open source at the same repository,
 \url{https://github.com/sletch1/AI-Political-Bias-Research-Paper}. No code is
 reproduced in the body of this paper; the repository is the authoritative source
 for exact implementation details and is kept in sync with the analyses reported
@@ -1051,7 +1162,7 @@ not required.
 
 % =============================================================================
 \clearpage
-\bibliographystyle{apalike}
+\bibliographystyle{naturemag}
 \bibliography{references}
 
 \end{document}
