@@ -261,74 +261,30 @@ def task_4_2(df: pd.DataFrame) -> dict:
 def task_4_3(df: pd.DataFrame) -> dict:
     """Crossed random-effects decomposition of the 2,280 administrations.
 
-    Scores are z-scored *within trait* first, because the two instruments have
-    incomparable units; the decomposition is therefore of relative, not
-    absolute, variation. Components: model, trait, model x trait interaction,
-    and residual (= trial-to-trial instability, the quantity the paper calls
-    stability).
+    Delegates to variance_components.variance_decomposition, which is the
+    paper's single statistical model (plan.md section 5). Rolling a second
+    decomposition here would let W4 and the manuscript quote different error
+    budgets computed two different ways, which is exactly the failure the
+    shared module exists to prevent.
 
-    Fitted with statsmodels MixedLM using variance components on a single
-    pseudo-group, which is the standard way to express fully crossed effects in
-    that library. Falls back to a method-of-moments decomposition if the
-    likelihood fails to converge.
+    Scores are z-scored within trait first because the two instruments have
+    incomparable units; without that the 0-100 instrument dominates every
+    component. Components: model, trait, their interaction, and residual --
+    the last being pure trial-to-trial instability, which is the quantity the
+    manuscript calls stability.
     """
-    import statsmodels.formula.api as smf
+    from variance_components import variance_decomposition
 
-    d = df.copy()
-    d["value_z"] = d.groupby("trait")["value"].transform(
-        lambda s: (s - s.mean()) / s.std(ddof=0) if s.std(ddof=0) > 0 else 0.0
+    out = variance_decomposition(
+        df, value="value", random_effects=["model", "trait", "model:trait"], z_within="trait"
     )
-    d["model_trait"] = d["model"] + "|" + d["trait"]
-    d["grp"] = 1
-
-    vc = {
-        "model": "0 + C(model)",
-        "trait": "0 + C(trait)",
-        "model_trait": "0 + C(model_trait)",
-    }
-    result = {"method": "mixedlm_vc"}
-    try:
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            fit = smf.mixedlm("value_z ~ 1", d, groups=d["grp"], vc_formula=vc).fit(
-                reml=True
-            )
-        comps = {k: float(v) for k, v in fit.vcomp_and_names()} if hasattr(
-            fit, "vcomp_and_names"
-        ) else dict(zip(list(vc.keys()), [float(x) for x in fit.vcomp]))
-        comps["residual"] = float(fit.scale)
-    except Exception as exc:  # pragma: no cover - numerical fallback
-        result["method"] = "method_of_moments_fallback"
-        result["mixedlm_error"] = str(exc)
-        comps = _moments_decomposition(d)
-
-    total = sum(comps.values())
-    result["variance_components"] = comps
-    result["variance_share"] = {k: (v / total if total else 0.0) for k, v in comps.items()}
-    result["total_variance"] = total
-    result["interpretation"] = (
-        "residual share is the fraction of variation that is pure trial-to-trial "
-        "instability rather than any stable property of a model or instrument"
+    out["interpretation"] = (
+        "the residual share is the fraction of variation that is pure trial-to-trial "
+        "instability rather than any stable property of a model or an instrument; the "
+        "model share is the ICC for model identity, i.e. how much of a measured "
+        "political position is actually about the model"
     )
-    return result
-
-
-def _moments_decomposition(d: pd.DataFrame) -> dict:
-    """Simple nested method-of-moments decomposition, used only as a fallback."""
-    grand = d["value_z"].mean()
-    model_eff = d.groupby("model")["value_z"].mean() - grand
-    trait_eff = d.groupby("trait")["value_z"].mean() - grand
-    cell = d.groupby(["model", "trait"])["value_z"].mean()
-    inter = cell - grand
-    for (m, t) in cell.index:
-        inter.loc[(m, t)] -= model_eff[m] + trait_eff[t]
-    resid = d["value_z"] - d.set_index(["model", "trait"]).index.map(cell) - 0.0
-    return {
-        "model": float(model_eff.var(ddof=0)),
-        "trait": float(trait_eff.var(ddof=0)),
-        "model_trait": float(inter.var(ddof=0)),
-        "residual": float(np.var(resid, ddof=0)),
-    }
+    return out
 
 
 # --------------------------------------------------------------------------
@@ -344,67 +300,55 @@ TRAIT_PAIRS = [
 
 
 def task_4_4(df: pd.DataFrame) -> dict:
-    """Campbell-Fiske MTMM over (2 methods x traits), correlating across models.
+    """Campbell-Fiske MTMM over the two instruments.
 
-    Unit of analysis is the model: each cell is a model's mean on one
-    trait-method combination, giving n = 19 per correlation.
+    Delegates the matrix itself to variance_components.mtmm. That function keys
+    convergence off a shared trait label, so TRAIT_PAIRS is applied first to
+    harmonise each instrument's axis onto the construct the manuscript claims
+    it measures. Those pairings *are* the manuscript's claim; MTMM is how the
+    claim gets tested instead of asserted.
 
-    Convergent validity  = same trait, different method (want HIGH).
-    Discriminant validity = different trait, same method (want LOW).
-    A measurement passes Campbell-Fiske when convergent > discriminant.
+    The strict matrix is 2 traits x 2 methods. The four 8Values axes without a
+    Political Compass counterpart are reported separately as internal factor
+    structure -- they are a real finding, but folding them into the discriminant
+    mean inflates it and is not Campbell-Fiske.
     """
+    from variance_components import mtmm
+
+    mapping = {pc: name for name, pc, _ in TRAIT_PAIRS}
+    mapping.update({ev: name for name, _, ev in TRAIT_PAIRS})
+    d = df[df["trait"].isin(mapping)].copy()
+    d["construct"] = d["trait"].map(mapping)
+
+    out = mtmm(d, unit="model", trait="construct", method="instrument", value="value")
+    out["trait_pairings"] = [
+        {"construct": n, "political_compass": pc, "8values": ev} for n, pc, ev in TRAIT_PAIRS
+    ]
+
+    # Internal structure of 8Values, reported but excluded from the matrix.
     means = df.groupby(["model", "trait"])["value"].mean().unstack("trait")
-    corr = means.corr(method="pearson")
-
-    convergent, discriminant, heterotrait_heteromethod = [], [], []
-    for name, pc_trait, ev_trait in TRAIT_PAIRS:
-        if pc_trait in corr.columns and ev_trait in corr.columns:
-            convergent.append(
-                {
-                    "trait": name,
-                    "method_a": pc_trait,
-                    "method_b": ev_trait,
-                    "r": float(corr.loc[pc_trait, ev_trait]),
-                }
-            )
-    for method in ("political_compass", "8values"):
-        cols = [c for c in corr.columns if c.startswith(method + ":")]
-        for i, a in enumerate(cols):
-            for b in cols[i + 1 :]:
-                discriminant.append(
-                    {"method": method, "trait_a": a, "trait_b": b, "r": float(corr.loc[a, b])}
-                )
-    named = {t for _, a, b in TRAIT_PAIRS for t in (a, b)}
-    cols = list(corr.columns)
-    for i, a in enumerate(cols):
-        for b in cols[i + 1 :]:
-            same_method = a.split(":")[0] == b.split(":")[0]
-            same_trait = any(
-                {a, b} == {pc, ev} for _, pc, ev in TRAIT_PAIRS
-            )
-            if not same_method and not same_trait:
-                heterotrait_heteromethod.append(
-                    {"trait_a": a, "trait_b": b, "r": float(corr.loc[a, b])}
-                )
-
-    conv_mean = float(np.mean([c["r"] for c in convergent])) if convergent else float("nan")
-    disc_mean = float(np.mean([d["r"] for d in discriminant])) if discriminant else float("nan")
-    return {
-        "n_models": int(means.shape[0]),
-        "correlation_matrix": corr.round(4).to_dict(),
-        "convergent": convergent,
-        "discriminant_same_method": discriminant,
-        "heterotrait_heteromethod": heterotrait_heteromethod,
-        "convergent_mean_r": conv_mean,
-        "discriminant_mean_r": disc_mean,
-        "campbell_fiske_passes": bool(
-            convergent and not math.isnan(conv_mean) and conv_mean > abs(disc_mean)
-        ),
+    ev_cols = [c for c in means.columns if c.startswith("8values:")]
+    ev_corr = means[ev_cols].corr()
+    internal = [
+        {"trait_a": a, "trait_b": b, "r": float(ev_corr.loc[a, b])}
+        for i, a in enumerate(ev_cols)
+        for b in ev_cols[i + 1 :]
+    ]
+    out["eightvalues_internal_structure"] = {
+        "pairs": internal,
+        "mean_r": float(np.mean([e["r"] for e in internal])) if internal else float("nan"),
         "note": (
-            "Correlations are across the 19 models (n=19). With n=19 the 95% CI on "
-            "an r of 0.5 is roughly [0.05, 0.78]; report intervals, not point estimates."
+            "8Values axes correlate strongly with one another across models, which is "
+            "consistent with one dominant general factor rather than four separable "
+            "traits. Excluded from the discriminant mean above because these traits have "
+            "no Political Compass counterpart and so are not part of the MTMM design."
         ),
     }
+    out["note"] = (
+        "Correlations run across the 19 models (n=19). With n=19 the 95% CI on an r of "
+        "0.5 is roughly [0.05, 0.78]; report intervals, not point estimates."
+    )
+    return out
 
 
 # --------------------------------------------------------------------------
@@ -508,16 +452,21 @@ def main() -> None:
     print("\n" + "=" * 78)
     print("4.4  MULTI-TRAIT MULTI-METHOD")
     print("=" * 78)
-    print(f"n models = {r44['n_models']}")
-    print("convergent (same trait, different instrument) — want HIGH:")
+    print(f"n models = {r44['n_units']}   (strict 2 traits x 2 methods design)")
+    print("convergent (same construct, different instrument) -- want HIGH:")
     for c in r44["convergent"]:
-        print(f"  {c['trait']:10s} r = {c['r']:+.3f}   ({c['method_a']} vs {c['method_b']})")
-    print("discriminant (different trait, same instrument) — want LOW:")
+        print(f"  r = {c['r']:+.3f}   {c['a']} vs {c['b']}")
+    print("discriminant (different construct, same instrument) -- want LOW:")
     for d_ in r44["discriminant_same_method"]:
-        print(f"  {d_['method']:18s} r = {d_['r']:+.3f}   ({d_['trait_a']} vs {d_['trait_b']})")
+        print(f"  r = {d_['r']:+.3f}   {d_['a']} vs {d_['b']}")
     print(f"mean convergent r = {_fmt(r44['convergent_mean_r'])}, "
           f"mean discriminant r = {_fmt(r44['discriminant_mean_r'])}")
     print(f"Campbell-Fiske passes: {r44['campbell_fiske_passes']}")
+    internal = r44["eightvalues_internal_structure"]
+    print(f"\n  8Values internal structure (reported separately, not part of the matrix): "
+          f"mean r = {_fmt(internal['mean_r'])} across {len(internal['pairs'])} axis pairs")
+    for e in sorted(internal["pairs"], key=lambda e: -abs(e["r"]))[:3]:
+        print(f"    {e['trait_a']} vs {e['trait_b']}: r = {e['r']:+.3f}")
 
     print("\n" + "=" * 78)
     print("4.5  OVERTON ENVELOPE")

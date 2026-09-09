@@ -2147,167 +2147,119 @@
   },
   "task_4_3": {
     "method": "mixedlm_vc",
+    "n_observations": 6840,
+    "fixed_effects": [],
+    "z_within": "trait",
     "variance_components": {
       "model": 0.12908848609185689,
       "trait": 0.5192941541732605,
-      "model_trait": 0.000400923713538894,
+      "model:trait": 0.000400923713538894,
       "residual": 0.3461844520085
     },
     "variance_share": {
       "model": 0.12974134245288468,
       "trait": 0.5219204495312781,
-      "model_trait": 0.00040295135833197414,
+      "model:trait": 0.00040295135833197414,
       "residual": 0.34793525665750524
     },
     "total_variance": 0.9949680159871563,
-    "interpretation": "residual share is the fraction of variation that is pure trial-to-trial instability rather than any stable property of a model or instrument"
+    "icc": {
+      "model": 0.12974134245288468,
+      "trait": 0.5219204495312781,
+      "model:trait": 0.00040295135833197414
+    },
+    "interpretation": "the residual share is the fraction of variation that is pure trial-to-trial instability rather than any stable property of a model or an instrument; the model share is the ICC for model identity, i.e. how much of a measured political position is actually about the model"
   },
   "task_4_4": {
-    "n_models": 19,
-    "correlation_matrix": {
-      "8values:equality": {
-        "8values:equality": 1.0,
-        "8values:liberty": 0.5571,
-        "8values:peace": 0.8175,
-        "8values:progress": 0.4902,
-        "political_compass:economic": -0.0049,
-        "political_compass:social": 0.2388
-      },
-      "8values:liberty": {
-        "8values:equality": 0.5571,
-        "8values:liberty": 1.0,
-        "8values:peace": 0.8531,
-        "8values:progress": 0.848,
-        "political_compass:economic": -0.387,
-        "political_compass:social": -0.5147
-      },
-      "8values:peace": {
-        "8values:equality": 0.8175,
-        "8values:liberty": 0.8531,
-        "8values:peace": 1.0,
-        "8values:progress": 0.7206,
-        "political_compass:economic": -0.2278,
-        "political_compass:social": -0.1594
-      },
-      "8values:progress": {
-        "8values:equality": 0.4902,
-        "8values:liberty": 0.848,
-        "8values:peace": 0.7206,
-        "8values:progress": 1.0,
-        "political_compass:economic": -0.3248,
-        "political_compass:social": -0.5058
-      },
-      "political_compass:economic": {
-        "8values:equality": -0.0049,
-        "8values:liberty": -0.387,
-        "8values:peace": -0.2278,
-        "8values:progress": -0.3248,
-        "political_compass:economic": 1.0,
-        "political_compass:social": 0.549
-      },
-      "political_compass:social": {
-        "8values:equality": 0.2388,
-        "8values:liberty": -0.5147,
-        "8values:peace": -0.1594,
-        "8values:progress": -0.5058,
-        "political_compass:economic": 0.549,
-        "political_compass:social": 1.0
-      }
-    },
+    "n_units": 19,
     "convergent": [
       {
-        "trait": "economic",
-        "method_a": "political_compass:economic",
-        "method_b": "8values:equality",
+        "a": "8values:economic",
+        "b": "political_compass:economic",
         "r": -0.004852294035863153
       },
       {
-        "trait": "social",
-        "method_a": "political_compass:social",
-        "method_b": "8values:progress",
+        "a": "8values:social",
+        "b": "political_compass:social",
         "r": -0.5058292447800855
       }
     ],
     "discriminant_same_method": [
       {
-        "method": "political_compass",
-        "trait_a": "political_compass:economic",
-        "trait_b": "political_compass:social",
-        "r": 0.5490122389053733
-      },
-      {
-        "method": "8values",
-        "trait_a": "8values:equality",
-        "trait_b": "8values:liberty",
-        "r": 0.5571067378453983
-      },
-      {
-        "method": "8values",
-        "trait_a": "8values:equality",
-        "trait_b": "8values:peace",
-        "r": 0.8174882576887518
-      },
-      {
-        "method": "8values",
-        "trait_a": "8values:equality",
-        "trait_b": "8values:progress",
+        "a": "8values:economic",
+        "b": "8values:social",
         "r": 0.49019138009717156
       },
       {
-        "method": "8values",
-        "trait_a": "8values:liberty",
-        "trait_b": "8values:peace",
-        "r": 0.8530679270476454
-      },
-      {
-        "method": "8values",
-        "trait_a": "8values:liberty",
-        "trait_b": "8values:progress",
-        "r": 0.8479720197867376
-      },
-      {
-        "method": "8values",
-        "trait_a": "8values:peace",
-        "trait_b": "8values:progress",
-        "r": 0.7206235582086719
+        "a": "political_compass:economic",
+        "b": "political_compass:social",
+        "r": 0.5490122389053733
       }
     ],
     "heterotrait_heteromethod": [
       {
-        "trait_a": "8values:equality",
-        "trait_b": "political_compass:social",
+        "a": "8values:economic",
+        "b": "political_compass:social",
         "r": 0.2387845406782312
       },
       {
-        "trait_a": "8values:liberty",
-        "trait_b": "political_compass:economic",
-        "r": -0.38698214449074425
-      },
-      {
-        "trait_a": "8values:liberty",
-        "trait_b": "political_compass:social",
-        "r": -0.5146831861874864
-      },
-      {
-        "trait_a": "8values:peace",
-        "trait_b": "political_compass:economic",
-        "r": -0.22779958734806985
-      },
-      {
-        "trait_a": "8values:peace",
-        "trait_b": "political_compass:social",
-        "r": -0.1593722268765389
-      },
-      {
-        "trait_a": "8values:progress",
-        "trait_b": "political_compass:economic",
+        "a": "8values:social",
+        "b": "political_compass:economic",
         "r": -0.324767038597464
       }
     ],
     "convergent_mean_r": -0.25534076940797434,
-    "discriminant_mean_r": 0.6907803027971072,
+    "discriminant_mean_r": 0.5196018095012724,
     "campbell_fiske_passes": false,
-    "note": "Correlations are across the 19 models (n=19). With n=19 the 95% CI on an r of 0.5 is roughly [0.05, 0.78]; report intervals, not point estimates."
+    "trait_pairings": [
+      {
+        "construct": "economic",
+        "political_compass": "political_compass:economic",
+        "8values": "8values:equality"
+      },
+      {
+        "construct": "social",
+        "political_compass": "political_compass:social",
+        "8values": "8values:progress"
+      }
+    ],
+    "eightvalues_internal_structure": {
+      "pairs": [
+        {
+          "trait_a": "8values:equality",
+          "trait_b": "8values:liberty",
+          "r": 0.5571067378453983
+        },
+        {
+          "trait_a": "8values:equality",
+          "trait_b": "8values:peace",
+          "r": 0.8174882576887518
+        },
+        {
+          "trait_a": "8values:equality",
+          "trait_b": "8values:progress",
+          "r": 0.49019138009717156
+        },
+        {
+          "trait_a": "8values:liberty",
+          "trait_b": "8values:peace",
+          "r": 0.8530679270476454
+        },
+        {
+          "trait_a": "8values:liberty",
+          "trait_b": "8values:progress",
+          "r": 0.8479720197867376
+        },
+        {
+          "trait_a": "8values:peace",
+          "trait_b": "8values:progress",
+          "r": 0.7206235582086719
+        }
+      ],
+      "mean_r": 0.7144083134457294,
+      "note": "8Values axes correlate strongly with one another across models, which is consistent with one dominant general factor rather than four separable traits. Excluded from the discriminant mean above because these traits have no Political Compass counterpart and so are not part of the MTMM design."
+    },
+    "note": "Correlations run across the 19 models (n=19). With n=19 the 95% CI on an r of 0.5 is roughly [0.05, 0.78]; report intervals, not point estimates."
   },
   "task_4_5": {
     "per_trait": {
