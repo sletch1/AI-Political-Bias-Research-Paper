@@ -20,8 +20,8 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
 
-\title{\textbf{Echoes of Ideology: Evaluating Political Bias and Stability in Large
-Language Models Through Quantitative Analysis and Standardized Typology Testing}}
+\title{\textbf{An error budget for political-bias measurement in large
+language models}}
 \author{}
 \date{}
 
@@ -30,743 +30,358 @@ Language Models Through Quantitative Analysis and Standardized Typology Testing}
 \maketitle
 
 \begin{abstract}
-This study measures political bias and response consistency across 19 large
-language models from 11 organizations, using two standardized
-political-typology instruments: the Political Compass and 8Values. Each
-model was queried 60 times per instrument (2{,}280 total administrations)
-via the OpenRouter API, with both instruments scored against authoritative
-sources rather than an approximate cross-test formula. Every model leaned
-the same direction on every axis: economically left and socially
-libertarian on the Political Compass, and toward equality, peace, liberty,
-and progress on 8Values. Classical ANOVA, Welch's ANOVA, and Kruskal-Wallis
-tests agreed at $p < .0001$ on every axis, with large effect sizes ($\eta^2
-= 0.56$ to $0.73$), though the magnitude of lean varied substantially by
-model. Trial-to-trial consistency, measured with a range-normalized
-Ideological Stability Score, varied by specific model rather than by
-provider, country, or model size. All code, raw trial data, and analysis
-scripts are released at
-\url{https://github.com/sletch1/AI-Political-Bias-Research-Paper}.
+Large language models are widely reported to hold left-of-centre political
+views, a finding replicated across dozens of studies using standardized
+instruments. We show that this finding is substantially a property of the
+measurement. Administering two standardized instruments---the Political Compass
+and 8Values---to 19 models from 11 organizations, 60 times each (2{,}280
+administrations), we decompose measured political position into variance
+attributable to model identity, to the instrument, and to residual trial noise.
+Instrument and axis choice accounts for 52\% of variance and model identity for
+13\%: which questionnaire an auditor picks moves a reported score four times
+more than which model is audited, and trial-to-trial noise alone (35\%) exceeds
+the model term. The instruments also fail convergent validity, with constructs
+they both claim to measure correlating at $r=-0.26$ across models against
+$r=+0.52$ for distinct constructs measured the same way. Published scores are
+therefore not comparable across instruments, and we propose a minimum reporting
+standard for such audits.
 \end{abstract}
 
 % =============================================================================
 \section{Introduction}
 % =============================================================================
 
-Generative AI has moved beyond automating routine tasks and now participates
-directly in cognitive and communicative work: drafting text, answering
-questions, and summarizing information for hundreds of millions of users.
-That shift raises a distinct ethical question from earlier waves of
-automation, since a system that generates language can also shape opinion.
-Large language models (LLMs) have consequently achieved rapid, broad
-societal integration, and with that integration comes an obligation to
-understand and disclose their biases and potential harms.
+Large language models now mediate political information for hundreds of
+millions of people, and a substantial literature reports that they lean
+left of centre. The finding has been replicated with standardized political
+instruments across model families, providers, and languages
+\cite{rozado2024, motoki2024, hartmann2023, feng2023, buyl2026,
+peng2026beyond, sakhawat2026polalign}, and is now treated as an established
+property of the systems themselves.
 
-Weidinger et al.\ situate political and opinion-shaping bias within a
-broader taxonomy of language-model harms spanning discrimination,
-misinformation, and malicious use \cite{weidinger2021}, and Bender et al.\
-argue that a model's biases are not incidental defects but a direct
-consequence of the scale and provenance of its training data
-\cite{bender2021}. Foundational work has documented this concretely along
-gender and racial lines: word embeddings encode human-like biases measurable
-by association tests \cite{caliskan2017}, geometrically reflect gender
-stereotypes \cite{bolukbasi2016}, and downstream commercial systems built on
-similar data show large intersectional accuracy gaps by race and gender
-\cite{buolamwini2018}. More recent work extends this line directly to large
-language models: a 2021 study found demographic and representational bias in
-38.6\% of entries in GenericsKB, a commonsense-knowledge resource used to
-ground AI systems' factual claims \cite{mehrabi2021}, and LLMs have been
-shown to produce covertly racist judgments tied to dialect \cite{hofmann2024}
-and measurable gender and racial bias in resume evaluation
-\cite{an2024}. Political bias has received comparatively less attention
-against this backdrop of gender- and race-focused work, despite evidence
-that algorithmic content curation already shapes political polarization at
-scale \cite{bakshy2015}, a dynamic that a politically biased LLM could
-plausibly reinforce. While a growing literature now studies AI political
-bias directly, existing work leaves a few gaps that this study addresses.
+Whether that property matters depends on whether it transfers to behaviour,
+and there is evidence that it does. Interacting with a politically biased
+model shifts the policy views and voting intentions of users who were
+undecided beforehand \cite{fisher2026biasedai}, models can be as persuasive
+as targeted human messaging on contested policy questions
+\cite{bai2025persuade, hackenburg2025levers}, and merely \emph{perceiving} a
+model as politically biased changes how much people trust its outputs on
+unrelated tasks \cite{digiuseppe2026perceived}. A measured political lean is
+therefore a reasonable object of study, and auditing it is a reasonable
+thing to do.
 
-The first gap is breadth of model coverage. Most academic studies of political bias
-in LLMs examine a small, convenience-sampled handful of flagship models, typically
-from two or three organizations, and are re-run infrequently enough that they miss
-newer entrants entirely. This study instead evaluates 19 models spanning 11
-organizations across four countries, chosen deliberately to cover both closed and
-open-weight models, multiple size and price tiers within the same model family, and
-providers outside the usual US-centric set, including DeepSeek and Qwen (China) and
-Mistral (France).
+The problem is the instrument. Political-bias audits of language models rest
+on questionnaires built for humans, administered in a single unattributed
+condition, and each of the assumptions that licenses this has since been
+challenged. Models accommodate the political identity they infer for the
+person asking, so an unattributed questionnaire partly measures sycophancy
+toward a presumed academic auditor \cite{tornberg2026sycophancy}. The
+instruments themselves appear in pretraining data, so responses may reflect
+recognition of a known test rather than engagement with its items
+\cite{bianchi2026plasticity}. Forcing a model to pick among fixed options
+produces answers it does not give when allowed to respond freely
+\cite{rottger2024}, and the resulting scores have been argued not to measure
+the construct they name \cite{faulborn2025onlyalittle, song2026questionnaires}.
+Each of these has been demonstrated in isolation. None has been quantified
+against the others, and so the field has no estimate of how much of a
+reported political score is the model and how much is the apparatus.
 
-The second gap is that while many studies examine political bias, few compare
-political consistency and stability across a broad model set. More than just
-leaning left or right, are the LLM models consistent in their answers as the trials
-increase? Do the LLMs give varying answers? Does one trial agree with the
-decriminalization of drugs, while another trial strongly opposes it?
+This paper supplies that estimate for one component of the apparatus. We
+administer two standardized instruments, the Political Compass and 8Values,
+to 19 models from 11 organizations, 60 times each, and decompose the
+resulting 2{,}280 measurements into variance attributable to model identity,
+to the instrument, and to residual trial noise. Instrument and axis choice
+accounts for 52\% of variance and model identity for 13\%: which
+questionnaire an auditor happens to choose moves a reported political score
+roughly four times more than which model is being audited, and trial-to-trial
+noise alone exceeds the model term. We then show that the two instruments
+fail the standard psychometric test of convergent validity, so their scores
+are not interchangeable even in principle. We do not claim models have no
+political lean. We claim that the published magnitudes are not comparable
+across studies that used different instruments, and that an error budget
+should accompany any such audit.
 
-The third gap is the test comparison. Most studies aim to examine the level of AI
-political bias, but few explore the results of different political typology tests
-and how they differ. This analysis will show that the same AI model can result in
-varying levels of political extremism on different tests.
-
-The research question for this study is: ``To what extent do large language models
-from a broad set of developers exhibit ideological bias and response consistency
-across political typology assessments, and does either property track a model's
-developer, country of origin, or size?'' This study aims to identify political bias
-and consistency within models and compare them. It is hypothesized that most models
-will lean in a similar ideological direction, consistent with prior literature, but
-that the magnitude of that lean, and the trial-to-trial consistency of a model's
-answers, will vary by specific model rather than clustering neatly by developer,
-country, or size. It is further hypothesized that the 8Values test, which offers a
-`Neutral/Unsure' option, a larger number of questions, and multiple nuanced factors
-per axis, will yield less ideological extremity than the Political Compass test.
-
-This research study aims to map ideological leanings, quantify response consistency
-within a data-collection sitting, and compare the two typology tests to see whether
-they yield different results for the same model.
-
-\subsection{Related Work}
-
-\paragraph{Closest comparators.} Rozado's ``The Political Preferences of LLMs''
-diagnoses political preferences across 24 LLMs (plus five base models) using 11
-political-orientation tests, including the Political Compass and 8Values used
-here \cite{rozado2024}. The present study covers fewer models (19) but more
-trials per model per test (60, versus a single administration in Rozado's
-design), which is what makes a trial-to-trial consistency metric possible in
-the first place; it also scores every response against each instrument's own
-authoritative source rather than an automated stance classifier, and treats
-the economic and social axes as analytically distinct throughout rather than
-collapsing to a single left-right score. Buyl et al.'s ``Large Language Models
-Reflect the Ideology of their Creators,'' published in \textit{npj Artificial
-Intelligence}, probes 19 LLMs (matching this study's model count) using
-open-ended generation about thousands of political figures rather than a fixed
-questionnaire \cite{buyl2026}; the present study's use of two independent,
-structured typology instruments is a methodologically different but
-complementary approach to the same underlying question, and the convergence of
-findings across such different elicitation methods (forced-choice
-questionnaire versus open-ended generation judged for stance) is itself
-evidence that the measured lean is not an artifact of either method alone.
-
-\paragraph{Convergent findings across methods and instruments.} A broader
-literature, spanning multiple instruments, elicitation methods, and venues,
-converges on the same directional finding reported here. Using the Political
-Compass with pre-registered, multi-language prompts, Hartmann et al.\ found
-ChatGPT's answers cluster in the same economically-left,
-socially-libertarian region \cite{hartmann2023}; Rutinowski et al.\ combined
-the Political Compass with personality psychometrics on the same model and
-reached a similar conclusion \cite{rutinowski2024}; and, using an
-entirely different elicitation method (persona-conditioned generation rather
-than direct questionnaire response), Motoki et al.\ found the same
-pro-left, pro-incumbent-progressive lean in a peer-reviewed economics venue
-\cite{motoki2024}. Santurkar et al.'s widely cited ``Whose Opinions Do
-Language Models Reflect?'' compares default LLM opinions against 60 US
-demographic subgroups using the Pew Research American Trends Panel and finds
-systematic, non-random misalignment with the median respondent
-\cite{santurkar2023}, a finding this study's own human-baseline comparison
-(Section~\ref{sec:human-baseline}) is directly in the spirit of, though
-using a different reference source. Feng et al.\ trace a mechanistic path
-from the political lean of pretraining corpora through to measurable
-downstream model bias and unfairness \cite{feng2023}, a pretraining-stage
-account that is complementary to, and does not require choosing between,
-alignment-stage explanations discussed in the Discussion. Two studies extend
-this literature outside the standard English/US-model scope this study
-itself is limited to: Qu and Wang directly evaluate LLMs' accuracy and bias
-when used to simulate public opinion \cite{quwang2024}, and Pan and Xu find
-that political censorship in LLMs originating from China tracks the
-political-censorship environment of their origin, evidence that a model's
-training and deployment environment, not only its architecture, shapes
-measured political behavior \cite{panxu2026} -- directly relevant to this
-study's own research question of whether bias tracks a model's country of
-origin.
-
-Rettenberger et al.\ examine political bias in LLMs from an EU and German
-perspective using Wahl-O-Mat, a real-world voting-advice tool
-\cite{rettenberger2024}, and reach the same directional conclusion: models
-lean socially libertarian and economically left. Two differences are worth
-noting. Rettenberger et al.\ found smaller models tended to score more
-neutral; this study's 19-model roster, which spans multiple size tiers
-within several model families, does not show a consistent relationship
-between model size and neutrality (Results), a disagreement addressed
-further below. Rettenberger et al.\ also compare German- and English-language
-prompts, where this study is English-only (Limitations), but does introduce
-the Ideological Stability Score to quantify trial-to-trial response
-variability, which Rettenberger et al.\ do not measure.
-
-\paragraph{Methodological critiques this study must address.} Two papers
-directly critique the forced-choice questionnaire methodology this study
-uses, and are addressed rather than left unacknowledged. R{\"o}ttger et
-al.'s ``Political Compass or Spinning Arrow?'' argues that forced-choice
-political-typology evaluations are sensitive to exactly how the task is
-framed and may not generalize to open-ended model behavior
-\cite{rottger2024}; Section~\ref{sec:prompt-robustness}'s prompt-robustness
-check and Section~\ref{sec:openended-results}'s open-ended-generation
-validation arm are direct responses to this critique, applied to a subset of
-the model roster. Bang et al.'s ``Measuring Political Bias in Large Language
-Models: What Is Said and How It Is Said'' examines not only which policy
-positions a model favors but the rhetorical framing used to express them
-\cite{bang2024}; this study's questionnaire-based approach captures only the
-former, a model's stated position on a fixed set of statements, since a
-forced-choice label carries no framing information, a boundary stated
-explicitly here rather than left implicit.
-
-\paragraph{Consistency and stability.} Two recent papers bear directly on
-this study's consistency framing. Ceron et al.'s ``Beyond Prompt
-Brittleness'' evaluates the reliability and consistency of political
-worldviews in LLMs using voting-advice questionnaires across seven EU
-countries and models from 7B to 70B parameters, finding that reliability
-increases with parameter count and that ideology varies by policy domain
-rather than sitting on a single left-right line \cite{ceron2024}; it is the
-closest prior work to this study's own trial-to-trial consistency question,
-and this study's contribution is better read as extending that question to a
-larger, more organizationally diverse roster (19 models, 11 organizations)
-with two independent instruments than as introducing consistency measurement
-to the field. Aldahoul et al.\ separately compare 31 LLMs to US legislators,
-judges, and a representative voter sample, finding that an apparently modest
-net partisan lean is often the average of offsetting extreme positions on
-individual topics \cite{aldahoul2025}; this study's Ideological Stability
-Score addresses a related concern at a within-session, trial-to-trial grain
-rather than a topic-to-topic grain, a complementary rather than competing
-angle. A large-scale longitudinal study tracking twelve LLMs' stated
-positions near-daily across the 2024 US election season provides an
-independent, calendar-time analogue to this study's within-session
-consistency question \cite{cen2025}, and reports the same directional lean
-persisting across that period.
-
-\paragraph{A point of disagreement.} Exler et al., a direct follow-up to
-Rettenberger et al.\ by an overlapping author team, find that political
-bias (leftward lean) increases with model parameter count
-\cite{exler2025}. This study's own 19-model roster does not show a clean
-monotonic relationship between parameter count and lean magnitude (Results):
-the largest gaps in Table~\ref{tab:descriptive} do not track parameter count
-in a simple ordering, and the least and most consistent entries in
-Table~\ref{tab:iss-extremes} span both small and large models. This is
-reported as a genuine point of partial disagreement worth further
-investigation, not resolved here, rather than a discrepancy to explain away;
-it may reflect differences in model roster, instrument, or how ``bias
-magnitude'' versus ``neutrality'' are operationalized between the two
-studies.
-
-\paragraph{A different intervention.} Fulay and Kabbara examine how political
-bias shifts following a `truth-training' process applied to an LLM, training
-reward models on datasets such as TruthfulQA and testing output bias on
-TwinViews-13k, a dataset of paired left- and right-leaning political
-statements \cite{fulay2024}. Their finding that LLMs are politically
-left-leaning agrees with the present study and the broader literature above,
-reached via a distinctively different route: an intervention study of what
-happens to bias under a specific training procedure, rather than a
-descriptive measurement across already-deployed models. Their results are
-confined to reward models trained for that specific study and are not
-directly generalizable to the deployed, uncontrolled models evaluated here,
-just as this study's own findings are bounded to the specific model
-snapshots and instruments used (Limitations).
-
-% =============================================================================
 \section{Results}
 % =============================================================================
 
-\subsection{Directional Consistency, with Substantial Magnitude Differences}
+\subsection{The standard design reproduces the standard finding}
 
-Every one of the 19 models scored on the same side of center on every axis: all 19
-above 50 on 8Values equality, peace, liberty, and progress (the socialist,
-internationalist, libertarian, and progressive directions respectively), and all 19
-negative on both Political Compass axes (the economically left and socially
-libertarian directions). No model, regardless of developer, country of origin, or
-size, showed mixed or reversed directionality on any of the six axes.
-
-What varies enormously is the size of the gaps between models. On 8Values
-equality, means range from 60.91 (x-ai/grok-4.20) to 83.08 (qwen/qwen3-30b-a3b); on
-8Values liberty, from 57.80 (deepseek/deepseek-chat) to 71.81
-(mistralai/mistral-large-2512); on 8Values progress, from 64.47
-(deepseek/deepseek-chat) to 82.97 (mistralai/mistral-large-2512); on Political
-Compass economic, from $-8.09$ (mistralai/mistral-large-2512) to $-4.89$
-(anthropic/claude-sonnet-4.5); and on Political Compass social, from $-7.82$
-(google/gemini-2.5-flash) to $-5.15$ (qwen/qwen3-30b-a3b). Table
-\ref{tab:descriptive} reports the full per-model mean on every axis, and
-Figures~\ref{fig:compass-scatter} and \ref{fig:8values-dotplot} show the same
-means plotted directly: every model occupies the same quadrant of the
-Political Compass plane, and every model sits on the same side of the
-neutral reference line on all four 8Values axes, with the between-model
-spread visible at a glance rather than only in tabular form.
-
-\begin{table}[H]
-\centering
-\caption{Mean score by model and axis (8Values axes 0--100; Political Compass axes $-10$ to $10$).}
-\label{tab:descriptive}
-\footnotesize
-\begin{tabular}{lrrrrrr}
-\toprule
-Model & Equality & Peace & Liberty & Progress & Econ. & Social \\
-\midrule
-amazon/nova-pro-v1        & 69.95 & 66.21 & 62.50 & 66.16 & $-6.26$ & $-5.30$ \\
-anthropic/claude-haiku-4.5 & 71.82 & 70.21 & 64.33 & 68.26 & $-6.85$ & $-6.53$ \\
-anthropic/claude-opus-4.5 & 69.92 & 70.57 & 68.11 & 77.62 & $-6.44$ & $-7.44$ \\
-anthropic/claude-sonnet-4.5 & 71.05 & 66.57 & 63.85 & 71.89 & $-4.89$ & $-6.27$ \\
-cohere/command-r-plus     & 72.19 & 69.49 & 65.58 & 75.03 & $-5.32$ & $-5.76$ \\
-deepseek/deepseek-chat    & 67.52 & 63.45 & 57.80 & 64.47 & $-6.30$ & $-5.43$ \\
-deepseek/deepseek-v3.2    & 69.84 & 67.77 & 62.36 & 69.91 & $-6.18$ & $-5.86$ \\
-google/gemini-2.5-flash   & 72.33 & 72.26 & 69.68 & 78.16 & $-7.94$ & $-7.82$ \\
-meta-llama/llama-3.3-70b  & 68.76 & 69.75 & 65.38 & 66.38 & $-6.31$ & $-6.29$ \\
-meta-llama/llama-4-maverick & 75.28 & 75.51 & 68.47 & 73.60 & $-6.03$ & $-6.14$ \\
-mistralai/mistral-large   & 80.08 & 74.54 & 71.81 & 82.97 & $-8.09$ & $-7.45$ \\
-mistralai/mistral-small   & 69.23 & 69.57 & 64.36 & 79.21 & $-7.27$ & $-6.55$ \\
-nvidia/nemotron-3-ultra   & 63.01 & 62.52 & 60.98 & 65.47 & $-6.04$ & $-6.96$ \\
-openai/gpt-4o             & 73.48 & 74.77 & 70.51 & 82.44 & $-6.44$ & $-7.34$ \\
-openai/gpt-4o-mini        & 76.51 & 72.97 & 67.49 & 80.94 & $-5.32$ & $-6.65$ \\
-openai/gpt-5-mini         & 73.28 & 69.20 & 65.48 & 73.20 & $-6.04$ & $-6.44$ \\
-qwen/qwen3-235b           & 79.81 & 75.34 & 70.43 & 77.58 & $-6.55$ & $-6.26$ \\
-qwen/qwen3-30b            & 83.08 & 75.08 & 69.42 & 78.83 & $-6.12$ & $-5.15$ \\
-x-ai/grok-4.20            & 60.91 & 67.03 & 69.38 & 78.98 & $-7.19$ & $-7.77$ \\
-\bottomrule
-\end{tabular}
-\end{table}
+Administered the way the field administers them---one unattributed asker, fixed
+response options, 60 repetitions per model per instrument---both instruments
+place all 19 models in the same quadrant. Every model scores economically left
+and socially libertarian on the Political Compass, and toward equality, peace,
+liberty and progress on 8Values (Fig.~\ref{fig:compass-scatter}). Classical
+ANOVA, Welch's ANOVA and Kruskal--Wallis agree at $p < .0001$ on every axis,
+with large effect sizes ($\eta^2 = 0.56$--$0.73$), and the magnitude of the lean
+varies substantially between models. This is what the published literature
+reports, and we reproduce it. We present it here not as our finding but as the
+object of measurement: what the field's method yields when applied carefully to
+a broad model set.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{figures/fig3_compass_scatter.png}
-\caption{Political Compass position of all 19 models (mean of 60 trials each),
-zoomed to the occupied region (a) with the full $-10$ to $10$ instrument
-scale shown for context (b). The $+$ marks the neutral human-baseline proxy
-used in Section~\ref{sec:human-baseline}.}
+\caption{Baseline replication under the standard single-condition design. Mean
+Political Compass position of all 19 models, 60 administrations each. All models
+fall in the economically left, socially libertarian quadrant, reproducing the
+published finding.}
 \label{fig:compass-scatter}
 \end{figure}
 
+The cohort is also narrow in absolute terms. Across the six axes, the full
+spread between the most and least extreme model occupies between 13.0\% and
+22.2\% of each instrument's response range. The headline claim is not that
+models sit at an extreme, but that they sit close together.
+
+\subsection{The error budget}
+
+Decomposing the 2{,}280 administrations into crossed random effects
+(Fig.~\ref{fig:error-budget}, Table~\ref{tab:error-budget}) gives a different
+picture of what those scores contain. Pooled across instruments, the choice of
+instrument and axis accounts for 52.2\% of variance in a measured political
+position. Model identity accounts for 13.0\%. Residual trial-to-trial noise---
+the same model, the same instrument, the same prompt, a different
+repetition---accounts for 34.8\%, more than twice the model term. The
+model-by-axis interaction is negligible (0.04\%), meaning models do not reorder
+themselves between axes; they are simply spread much less than the instruments
+are.
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figures/fig4_8values_dotplot.png}
-\caption{8Values scores of all 19 models on all four axes (mean of 60 trials
-each), sorted independently within each panel; the dashed line marks the
-instrument's neutral center-point (50).}
-\label{fig:8values-dotplot}
+\includegraphics[width=\textwidth]{figures/fig6_error_budget.png}
+\caption{\textbf{The error budget.} Variance components of a measured political
+position, from a crossed random-effects model on 2{,}280 administrations.
+(\textbf{a}) Pooled across instruments: instrument and axis choice accounts for
+52\% of variance, model identity for 13\%, and residual trial-to-trial noise for
+35\%. (\textbf{b}) Within a single axis, where the between-instrument term is
+removed by construction, model identity accounts for 57--73\%. The two panels
+answer different questions: panel (a) governs comparison \emph{across} studies
+using different instruments, panel (b) governs comparison \emph{within} one
+study. Quoting either alone is misleading.}
+\label{fig:error-budget}
 \end{figure}
-
-\subsection{Omnibus Tests: Large, Robust Effects on Every Axis}
-
-Table~\ref{tab:omnibus} reports the classical one-way ANOVA, Welch's ANOVA, and the
-Kruskal-Wallis test, together with the omnibus eta-squared effect size, for each of
-the six scored axes. All three tests agree at $p < .0001$ on every axis, and every
-effect size is large ($\eta^2$ between $0.5625$ and $0.7263$). Shapiro-Wilk rejects
-normality for a majority of the 19 groups on most axes (11 to 17 of 19 groups
-non-normal, depending on axis), and Levene's test rejects equal variance on every
-axis ($p<.0001$ throughout), which is why Welch's ANOVA and Kruskal-Wallis, not the
-classical ANOVA, are treated as the primary evidence for these omnibus effects.
-
 \begin{table}[H]
 \centering
-\caption{Omnibus tests across all 19 models, by axis. All three tests agree at every axis.}
-\label{tab:omnibus}
-\footnotesize
-\begin{tabular}{llrrrr}
+\caption{Error budget. Variance components from a crossed random-effects model on the 2{,}280 administrations. \textbf{Pooled over all axes}, instrument and axis choice accounts for 52\% of variance and model identity for only 13\%. The per-axis rows below are \emph{conditional on a fixed axis}, which removes the between-axis term and is why the model share is much larger there. The two denominators answer different questions and must not be quoted interchangeably.}
+\label{tab:error-budget}
+\begin{tabular}{lrrr}
 \toprule
-Test & Axis & Classical $F$ & Welch $F$ & Kruskal-Wallis $H$ & $\eta^2$ \\
+Axis & Model identity (\%) & Trial noise (\%) & $n$ \\
 \midrule
-8Values & Equality & 138.3 & 534.8  & 792.0 & 0.6896 \\
-8Values & Peace    & 80.1  & 421.5  & 759.4 & 0.5625 \\
-8Values & Liberty  & 89.3  & 459.2  & 753.5 & 0.5891 \\
-8Values & Progress & 165.3 & 618.5  & 886.8 & 0.7263 \\
-Pol.\ Compass & Economic & 124.8 & 2240.3 & 762.0 & 0.6670 \\
-Pol.\ Compass & Social   & 163.3 & 1370.3 & 867.5 & 0.7239 \\
-\bottomrule
-\end{tabular}
-\vspace{0.3em}
-
-\footnotesize
-\textit{Note:} all $p < .0001$ for all three tests, on every axis.
-\end{table}
-
-\subsection{Post-hoc Comparisons: Games-Howell as the Primary Test, Corrected for the Full Test Family}
-
-With 19 groups, each axis has 171 pairwise comparisons, and six axes give a full
-family of 1{,}026 pairwise tests reported across this paper. Because equal
-variances are rejected on every axis, Games-Howell is treated as primary, with
-Tukey HSD reported alongside. At raw $p<0.05$, Games-Howell finds between 121 and
-144 of the 171 pairs significant per axis (equality: 142; peace: 136; liberty: 131;
-progress: 144; economic: 121; social: 138), 812 of the 1{,}026 pairwise tests in
-total. Applying a Benjamini-Hochberg false discovery rate correction across the
-full family of 1{,}026 tests, rather than within each axis separately, leaves 809
-of the 812 significant, a negligible change (equality: 142/142; peace: 136/136;
-liberty: 131/131; progress: 142/144; economic: 120/121; social: 138/138): the
-between-model differences reported here are not an artifact of running many
-uncorrected tests. The two post-hoc tests mostly agree with each other as well:
-wherever Tukey finds a different result than raw-$p$ Games-Howell, only 5 to 9
-pairs per axis are significant under Tukey but not under Games-Howell, an artifact
-of Tukey's equal-variance assumption rather than a real disagreement about the
-larger pattern.
-
-Several pairwise Games-Howell effect sizes (Hedges' $g$) on this dataset are very
-large in magnitude, considerably larger than is typical for behavioral data. This
-is not evidence of unusually large real differences so much as a consequence of
-some models, particularly several Claude variants, having extremely low
-within-model variance on some axes (Section~\ref{sec:consistency}): dividing a
-modest mean difference by a very small pooled standard deviation produces a large
-standardized effect size even when the raw difference, on each instrument's own
-$-10$-to-$10$ or 0-to-100 scale, is unremarkable. Readers should interpret the
-reported Hedges' $g$ values alongside the raw mean differences in
-Table~\ref{tab:descriptive}, not in isolation.
-
-\subsection{Consistency: Range-Normalized Stability Varies by Model, not by Provider}
-\label{sec:consistency}
-
-Ranking every model-axis combination by ISS (Section~\ref{sec:stats}) shows that
-the most and least consistent entries in the dataset are not concentrated in any
-one provider, country, or size tier. Table~\ref{tab:iss-extremes} lists the ten
-most and ten least consistent combinations out of all 114 (19 models $\times$ 6
-axes).
-
-\begin{table}[H]
-\centering
-\caption{Ten most and ten least consistent model-axis combinations by Ideological Stability Score (ISS). Lower ISS = more consistent.}
-\label{tab:iss-extremes}
-\footnotesize
-\begin{tabular}{lr}
-\toprule
-Model (test/axis) & ISS \\
+PC economic & 67.3 & 32.7 & 1140 \\
+PC social & 73.0 & 27.0 & 1140 \\
+8V equality & 69.6 & 30.4 & 1140 \\
+8V liberty & 59.5 & 40.5 & 1140 \\
+8V peace & 56.9 & 43.1 & 1140 \\
+8V progress & 73.2 & 26.8 & 1140 \\
 \midrule
-\multicolumn{2}{l}{\textit{Most consistent}} \\
-anthropic/claude-opus-4.5 (Pol.\ Compass/social) & 0.00 \\
-anthropic/claude-opus-4.5 (8Values/peace)        & 7.62 \\
-anthropic/claude-opus-4.5 (8Values/equality)     & 7.87 \\
-anthropic/claude-sonnet-4.5 (Pol.\ Compass/social) & 8.26 \\
-meta-llama/llama-3.3-70b (8Values/equality)      & 8.33 \\
-anthropic/claude-sonnet-4.5 (Pol.\ Compass/economic) & 9.04 \\
-amazon/nova-pro-v1 (Pol.\ Compass/economic)      & 9.21 \\
-x-ai/grok-4.20 (8Values/peace)                    & 10.20 \\
-meta-llama/llama-3.3-70b (8Values/peace)          & 12.11 \\
-meta-llama/llama-3.3-70b (8Values/progress)       & 12.92 \\
-\addlinespace
-\multicolumn{2}{l}{\textit{Least consistent}} \\
-qwen/qwen3-235b (8Values/equality)               & 34.14 \\
-nvidia/nemotron-3-ultra (8Values/liberty)         & 35.58 \\
-meta-llama/llama-4-maverick (8Values/liberty)     & 36.19 \\
-deepseek/deepseek-chat (8Values/equality)         & 37.45 \\
-google/gemini-2.5-flash (8Values/peace)           & 37.71 \\
-nvidia/nemotron-3-ultra (8Values/peace)           & 40.50 \\
-nvidia/nemotron-3-ultra (8Values/progress)        & 41.39 \\
-nvidia/nemotron-3-ultra (8Values/equality)        & 42.76 \\
-anthropic/claude-haiku-4.5 (Pol.\ Compass/economic) & 44.42 \\
-anthropic/claude-opus-4.5 (Pol.\ Compass/economic) & 65.22 \\
+\textbf{Mean} & \textbf{66.6} & \textbf{33.4} & \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:iss-extremes} shows only the twenty most extreme entries;
-Figure~\ref{fig:iss-distribution} shows the full distribution of all 114
-ISS values, grouped by axis, and makes visible both the general spread
-within each axis and the single high-leverage outlier
-(anthropic/claude-opus-4.5's Political Compass economic score) discussed
-below.
+The practical reading is that which questionnaire an auditor happens to pick
+moves a reported political score about four times more than which model is
+being audited, and that repeating the same measurement moves it more than
+twice as much. A score reported without an instrument and a repetition count is
+therefore not interpretable, and two studies using different instruments are
+not measuring on a common scale.
+
+This does not mean model identity is undetectable. Conditional on a fixed axis,
+where the between-instrument term is removed by construction, model identity
+accounts for 66.6\% of the remaining variance, ranging from 56.9\% on 8Values
+peace to 73.2\% on 8Values progress (Fig.~\ref{fig:error-budget}b). Models are
+clearly separable once the instrument is held still. Both numbers are correct
+and they answer different questions; the 13\% figure is the one that governs
+comparisons across studies, and the 66.6\% figure is the one that governs
+comparisons within a single study. Reporting either alone is misleading, which
+is why we report the decomposition rather than a single coefficient.
+
+\subsection{The two instruments are not measuring the same constructs}
+
+If instrument choice moves scores this much, the natural defence is that the
+instruments are noisy measures of one underlying political position. A
+multi-trait multi-method analysis rejects this. Treating the economic and
+social constructs as traits and the two questionnaires as methods, convergent
+validity---the same construct measured two ways---averages $r = -0.26$ across
+the 19 models, with the social construct at $r = -0.51$. Discriminant
+validity---different constructs measured the same way---averages $r = +0.52$.
+The Campbell--Fiske criterion requires the first to exceed the second; here the
+ordering is inverted, and the convergent coefficient is negative
+(Fig.~\ref{fig:mtmm}, Table~\ref{tab:mtmm}).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/fig5_iss_distribution.png}
-\caption{Ideological Stability Score for all 114 model--axis combinations,
-grouped by axis. Each point is one model; the black bar marks the axis
-median.}
-\label{fig:iss-distribution}
+\includegraphics[width=0.72\textwidth]{figures/figSI_mtmm.png}
+\caption{Multi-trait multi-method matrix across the 19 models. Convergent
+coefficients (same construct, different instrument) average $r=-0.26$;
+discriminant coefficients (different construct, same instrument) average
+$r=+0.52$. The Campbell--Fiske ordering is inverted, so the two instruments
+cannot be treated as interchangeable measures of a common political position.}
+\label{fig:mtmm}
+\end{figure}
+\begin{table}[H]
+\centering
+\caption{Multi-trait multi-method coefficients across the 19 models. Convergent validity requires that the same construct measured by two instruments correlate more strongly than two different constructs measured by the same instrument. It does not.}
+\label{tab:mtmm}
+\begin{tabular}{llr}
+\toprule
+Type & Pair & $r$ \\
+\midrule
+Convergent & 8values:economic vs political\_compass:economic & -0.005 \\
+Convergent & 8values:social vs political\_compass:social & -0.506 \\
+Discriminant & 8values:economic vs 8values:social & +0.490 \\
+Discriminant & political\_compass:economic vs political\_compass:social & +0.549 \\
+\midrule
+\textbf{Mean convergent} & & \textbf{-0.255} \\
+\textbf{Mean discriminant} & & \textbf{+0.520} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A model ranked as economically left by one instrument is, if anything, ranked
+less so by the other. Separately, the four 8Values axes correlate with each
+other at mean $r = 0.71$ (liberty--peace, $r = 0.85$), which is the signature of
+one dominant general factor rather than four separable traits. Taken together,
+these results mean the instruments cannot be treated as interchangeable
+measures of a common quantity, and that scores from studies using different
+instruments should not be pooled or compared numerically.
+
+\subsection{Stability is item-specific, and the published stability metric is invalid}
+
+Aggregating consistency to the axis level hides where inconsistency actually
+lives. Measured per item, 44.8\% of model--item cells are perfectly stable
+across all 60 repetitions, and the most volatile decile of items carries only
+14.4\% (8Values) and 15.9\% (Political Compass) of total response entropy
+(Fig.~\ref{fig:item-entropy}). Instability is a property of particular
+contested items, not a global trait of a model, and a model-level stability
+score averages the two together.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/fig8_item_entropy.png}
+\caption{Per-item response entropy by model. Each point is one questionnaire
+item; orange marks the model mean. 44.8\% of model--item cells are perfectly
+stable across all 60 repetitions, and the most volatile decile of items carries
+under 16\% of total entropy, so inconsistency is concentrated in particular
+contested items rather than distributed across a model's responses.}
+\label{fig:item-entropy}
 \end{figure}
 
-anthropic/claude-opus-4.5 and meta-llama/llama-3.3-70b-instruct each appear three
-times among the ten most consistent combinations, more than any other model, while
-nvidia/nemotron-3-ultra-550b-a55b appears four times among the ten least
-consistent. No provider is exclusively at either extreme: Claude variants appear
-among both the single most consistent entry and, on a different axis, the single
-least consistent entry in the entire dataset.
+The stability metric used in this literature, including in an earlier version
+of this manuscript, compounds the problem. Normalising dispersion by each
+sample's own observed range makes the statistic scale-free in the wrong way: a
+model whose 60 answers fall in a 0.12-wide interval divides by 0.12. The most
+extreme case here is claude-opus-4.5 on the Political Compass economic axis,
+which registers a stability score of 65.2---among the worst in the cohort---on
+a standard deviation of 0.060, which is among the best
+(Fig.~\ref{fig:iss-repair}). Across all 114 model--axis cells the published
 
-That last case illustrates the ISS range-normalization caveat from
-Section~\ref{sec:stats} directly. The Political Compass economic score of
-anthropic/claude-opus-4.5 across its 60 trials took only two distinct values,
-$-6.50$ and $-6.38$, an absolute range of $0.12$ on a $-10$-to-$10$ scale;
-normalizing by that tiny self-range produces the highest ISS in the dataset
-($65.22$) despite the underlying answers being, in absolute terms, essentially
-constant. By contrast, the
-same model's Political Compass social score was literally identical across all 60
-trials ($-7.44$ every time, ISS $= 0.00$). Both figures describe a model giving
-highly stable absolute answers; the ISS score for the economic axis should be read
-as an artifact of the metric's normalization, not as evidence of erratic behavior.
-anthropic/claude-haiku-4.5's economic-axis ISS ($44.42$) reflects a genuinely larger
-absolute range ($-7.38$ to $-6.38$) and is a more straightforward instance of
-comparatively lower consistency.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.78\textwidth]{figures/fig7_iss_repair.png}
+\caption{The range-normalised stability metric is not a measure of dispersion.
+Each point is one model--axis cell. Normalising by each sample's own observed
+range inflates the score for models whose answers are tightly clustered: the
+highlighted cell registers 65.2 on a standard deviation of 0.060. Across all
+114 cells the metric correlates with absolute dispersion at only $\rho=0.47$.}
+\label{fig:iss-repair}
+\end{figure}
 
-\subsection{Comparison Against a Human-Population Reference Point}
-\label{sec:human-baseline}
+metric correlates with absolute dispersion at only $\rho = 0.47$. We therefore
+report dispersion in the instrument's own units, and the residual variance
+component of the error budget, in its place.
 
-Beyond comparing models to each other, every one of the 114 model-axis
-combinations (19 models $\times$ 6 axes) differs significantly from that
-instrument's own neutral center-point (one-sample $t$-test against 0 for the two
-Political Compass axes and against 50 for the four 8Values axes), and this holds
-for all 114 tests even after a Benjamini-Hochberg false discovery rate correction.
-Given that Gallup's 2024 Values and Beliefs poll finds the US public close to an
-even three-way split between conservative, moderate, and liberal self-identification
-on social issues, and only moderately right-of-center on economic issues
-\cite{gallup2024values}, a neutral center-point is a reasonable, if bounded, proxy
-for a human population reference (Section~\ref{sec:stats}). Every model in this
-study, without exception, differs significantly from that proxy, in the same
-direction identified in the between-model comparisons above: left of center
-economically and libertarian of center socially.
+\subsection{What this leaves open}
 
-Statistical significance alone is a weak claim at $n=60$ trials per test, since
-even a small, practically unremarkable deviation from center would clear
-$p<0.05$ at that sample size. The effect sizes rule this out: computing a
-one-sample Cohen's $d$ for each of the 114 tests (the standardized deviation of
-a model's mean from the instrument's center-point) finds every finite value at
-$|d|\geq 1.47$, comfortably past Cohen's conventional threshold for a
-``large'' effect ($|d|\geq 0.8$) \cite{cohen1988}, with a median $|d|$ of
-$11.92$ and a maximum of $106.74$ (one model-axis combination is excluded
-from these summary statistics for having an effectively zero within-model
-standard deviation, discussed in Section~\ref{sec:consistency}). The deviation
-from the neutral center-point is therefore not merely statistically
-detectable but, on average, an order of magnitude larger than the
-conventional threshold for a large effect.
+The decomposition above quantifies one component of the measurement apparatus:
+the instrument. Three further components have been demonstrated in the
+literature but are not estimated here---accommodation to the inferred asker
+\cite{tornberg2026sycophancy}, recognition of contaminated instruments
+\cite{bianchi2026plasticity}, and forced-choice framing \cite{rottger2024}---and
+each would enter this budget as an additional stratum. The design required to
+estimate them alongside the instrument term is specified in the Methods.
 
-\subsection{Prompt-Robustness Check: Magnitude Shifts, Direction Does Not}
-\label{sec:prompt-robustness}
-
-Across the five-model, four-variant check (Section~\ref{sec:robustness-checks}),
-prompt wording produced a statistically significant shift in 29 of 30
-model-axis combinations tested (one-way ANOVA across the five prompt conditions,
-$p<0.05$), and the effect size was large ($\eta^2 \geq 0.14$) in 28 of those 30,
-with $\eta^2$ ranging from 0.02 to 0.75 (median 0.37). This is a genuine,
-non-trivial finding, not a null result: instructional-wrapper wording measurably
-moves scores for most models on most axes, consistent with Röttger et al.'s
-critique that forced-choice political-typology evaluations are sensitive to
-exactly how the task is framed \cite{rottger2024}.
-
-What did not move is direction. Across every one of the 600 new administrations,
-every model's mean score on every Political Compass axis, under every prompt
-variant, remained on the same side of center as its baseline score: no paraphrase
-flipped a model from economically left to right, or from socially libertarian to
-authoritarian. The largest single shift observed was
-\texttt{openai/gpt-4o-mini}'s 8Values equality score, ranging from 74.09 to 85.70
-(an 11.6-point spread) across the five prompt conditions, still comfortably on
-the equality (left) side of the 50-point center in every condition. The
-directional finding in Section 4.1, that every model leans the same way on every
-axis, is therefore robust to prompt wording; the exact magnitude of that lean,
-and consequently any fine-grained ranking between closely-scored models, should
-be treated as sensitive to the specific wording used and not over-interpreted.
-
-\subsection{Open-Ended-Generation Validation Arm}
-\label{sec:openended-results}
-
-Across the 120 judged generations (Section~\ref{sec:robustness-checks}), the
-correlation between a model's mean Political Compass score and its mean
-judge-rated lean when writing open-endedly about matched-axis topics was weak
-and not statistically significant on either axis (economic Pearson $r=-0.56$,
-$p=0.32$; social $r=0.27$, $p=0.67$; $n=5$ models). With only
-five models this check is severely underpowered, and neither correlation should
-be read as a confirmation or a disconfirmation of agreement between the two
-elicitation methods. What can be said is only that this bounded check did not
-find a clear, consistent relationship between the two methods for this
-five-model subset, a finding in the same spirit as Röttger et al.'s broader
-point that forced-choice and open-ended elicitation can diverge
-\cite{rottger2024}, and one that argues for a larger-scale version of this arm
-(more models, more topics) before drawing a firm conclusion either way.
-
-% =============================================================================
 \section{Discussion}
 % =============================================================================
 
-\subsection{Implications of AI Bias}
+The finding that language models lean left of centre is real in the sense that
+it reproduces: we obtain it here on 19 models and two instruments, as others
+have obtained it elsewhere. What we add is a denominator. When the measured
+quantity is decomposed, the instrument contributes four times more variance
+than the model, and simple repetition of the same measurement contributes more
+than twice as much. The lean survives, but the \emph{magnitude} of a reported
+lean is mostly not about the model.
 
-These results document a significant and consistent directional bias across
-all 19 models tested, spanning 11 organizations and four countries. LLMs are
-already deployed across sectors including academia, customer service, and
-information retrieval, and Xie and Avila argue that AI is entering a phase
-in which it substantively shapes economic production and social life rather
-than merely automating discrete tasks \cite{xie2025}; a system used at that
-scale that also carries a consistent ideological lean is a legitimate object
-of scrutiny independent of any single downstream harm. Two features of the
-present findings sharpen that concern specifically. First, LLMs are prone to
-hallucination, with benchmark hallucination rates as high as 27\% documented
-for some models on a standardized summarization-faithfulness test
-\cite{vectara2023}; a model that states biased content with the same
-confident register as verified fact compounds the risk that users treat its
-output as neutral rather than as a stance. Second, algorithmic content
-curation is already documented to shape political polarization independent
-of language generation \cite{bakshy2015}; a language model that both
-generates content and leans consistently in one direction is a plausible
-additional contributor to the same dynamic, though the present study
-measures the models' stated positions on fixed instruments and does not
-measure any downstream effect on real users' beliefs or behavior, a
-distinction addressed further in Limitations.
+That distinction matters because the literature's quantitative claims are
+magnitude claims. Statements that one model is more partisan than another, that
+a provider's alignment procedure shifts a model's politics by some amount, or
+that lean has grown or shrunk across model generations, all require that scores
+be comparable across studies. Our multi-trait multi-method result says they are
+not: the two most widely used instruments produce negatively correlated
+rankings of the same construct across the same models. Pooling or contrasting
+scores obtained with different instruments is therefore not a conservative
+approximation; it is an operation with no defined meaning.
 
-Separately from any effect on individual users, sustained political
-polarization has documented structural effects on democratic institutions:
-an analysis of the US House of Representatives from 1948 to 2020 found that
-as polarization rose, particularly from the mid-1990s onward, Congress
-passed fewer bills overall, with enacted bills growing larger in scope and
-more consequential, a ``punctuated equilibrium'' pattern of legislating in
-fewer, higher-stakes bursts rather than steady incremental output
-\cite{mallinson2024}. Whether LLM-driven content contributes to that
-dynamic at any measurable scale is well beyond what this study's
-questionnaire-based design can establish, but the documented stakes of
-polarization for legislative function are a reason to treat consistent,
-measurable LLM ideological lean as worth monitoring going forward rather
-than as an incidental property of these systems.
+We want to be precise about the scope of this claim, because it is easy to
+overstate. We are not arguing that political-bias audits are uninformative, nor
+that the models are politically neutral, nor that any particular published paper
+is wrong. Within a single study using a single instrument, model identity is
+clearly measurable and accounts for roughly two-thirds of the remaining
+variance; rank orderings obtained that way are meaningful. The failure is one of
+transportability. It also has a straightforward remedy, which is to report the
+apparatus alongside the estimate rather than the estimate alone.
 
-\subsection{A Note on Mechanism}
+Our own earlier analysis is among the work this corrects. The stability metric
+we previously reported normalised dispersion by each sample's own range, which
+assigns one of the worst stability scores in the cohort to a model whose answers
+varied by six hundredths of a point. We report that here rather than quietly
+replacing it, because the failure mode is not unique to us: any scale-free
+consistency statistic that divides by observed spread will invert in the same
+way on tightly clustered responses, and several published consistency measures
+are constructed this way.
 
-This study measures political lean and consistency descriptively and does
-not test any specific causal mechanism, but a plausible mechanistic account
-is worth stating explicitly, since it bears on how the findings should be
-interpreted. Nearly every model in this roster is fine-tuned with some
-variant of reinforcement learning from human feedback (RLHF)
-\cite{christiano2017, ouyang2022}, including Anthropic's Constitutional AI
-variant \cite{bai2022constitutional} and the original helpful-and-harmless
-RLHF recipe \cite{bai2022helpful}. RLHF has documented, systematic
-limitations beyond simply making models more helpful \cite{casper2023}: it
-can induce sycophancy, a tendency to agree with positions a user appears to
-hold rather than to give a consistent independent answer
-\cite{sharma2023}, and default opinion distributions in RLHF-tuned models
-have been shown to skew toward the US and Western demographic populations
-disproportionately represented among human feedback annotators
-\cite{durmus2023}. A recent single-author preprint reports mechanistic
-evidence, via sparse-autoencoder probing, that RLHF suppresses but does not
-remove partisan representations learned during pretraining
-\cite{tam2026}; if broadly correct, this would suggest the consistent
-directional lean measured here reflects pretraining-data composition
-\cite{feng2023} that alignment training dampens in magnitude without
-eliminating, rather than a lean introduced by alignment training itself.
-This account is consistent with, though not proven by, the present
-results: every model leans the same direction regardless of developer or
-alignment approach (Results), which is more readily explained by a shared
-upstream influence, such as broadly similar pretraining data composition
-across providers, than by any one company's specific fine-tuning choices.
+Three components of the apparatus remain unquantified in this design.
+Accommodation to the inferred asker \cite{tornberg2026sycophancy}, recognition
+of instruments present in pretraining data \cite{bianchi2026plasticity}, and
+the constraint imposed by forced-choice response formats \cite{rottger2024}
+have each been demonstrated in isolation, and each would enter the budget in
+Fig.~\ref{fig:error-budget} as a further stratum. The factorial that estimates
+all of them jointly with the instrument term is specified in the Methods; until
+it is run, the 13\% attributable here to model identity should be read as an
+upper bound, since every additional measurement factor can only take variance
+away from it. That is the direction of the remaining uncertainty, and it does
+not favour the published interpretation.
 
-\subsection{Limitations}
+\subsection*{Box 1: A minimum reporting standard for political-bias audits}
 
-This study is subject to several key limitations. The first is instrument choice:
-static questionnaires like the Political Compass and 8Values are a well-established
-but increasingly contested way to probe LLM ideology, since direct questions may
-not fully reflect model behavior in open-ended, natural use
-\cite{rottger2024}. Section~\ref{sec:openended-results} attempts a bounded
-open-ended-generation validation arm on five models, but at that scale it is
-underpowered to confirm or rule out agreement with the questionnaire-based scores;
-a larger-scale version (more models, more topics) is needed for a confident
-answer.
+On the evidence above, we suggest that a political-bias audit of a language
+model should report the following alongside any score. None of these is
+expensive; together they make an estimate interpretable and comparable.
 
-Related to instrument choice is a specific concern about the Ideological
-Stability Score itself: LLM responses to survey-style instruments have been
-found to under-disperse relative to real human response variance on the
-same instruments \cite{bisbee2024}. If LLM outputs are systematically less
-variable than human responses in general, the absolute ISS values reported
-here should not be read as directly comparable to what an equivalent
-human-population stability score would show; the ISS comparisons in this
-study are only used, and should only be used, to rank models and axes
-\emph{against one another}, not against an implied human consistency
-baseline.
+\begin{enumerate}
+  \item \textbf{The instrument, named, with its items.} Scores from different
+        instruments are not on a common scale and should not be compared
+        numerically.
+  \item \textbf{The asker condition.} State the framing presented to the model,
+        including the absence of one. An unattributed prompt is a condition,
+        not a neutral baseline.
+  \item \textbf{Repetition count and dispersion.} Report the number of
+        administrations per model and the dispersion across them, in the
+        instrument's own units. Trial noise here exceeded the model effect.
+  \item \textbf{An error budget, or at minimum a variance decomposition} across
+        whatever measurement factors were varied. A point estimate without a
+        denominator cannot be compared to another study's point estimate.
+  \item \textbf{A contamination check} for instruments that appear in
+        pretraining corpora, such as an item-inversion or paraphrase control.
+  \item \textbf{Item-level results,} or at least the dispersion across items.
+        Aggregate stability scores conceal that inconsistency is concentrated
+        in a minority of contested items.
+\end{enumerate}
 
-The second is the coarseness of the human baseline. Section~\ref{sec:human-baseline}
-tests every model against each instrument's neutral center-point, using a Gallup
-self-identification survey to justify that center-point as a reasonable human
-proxy, but this is a categorical self-report on a different instrument, not
-Political-Compass- or 8Values-scale human response data. A tighter comparison
-would require a human sample that took the same two instruments, or published
-microdata (e.g., ANES, WVS, ESS) mapped onto directly comparable items, neither of
-which is attempted here.
+Adopting even the first three would make the existing literature's estimates
+comparable to one another, which at present they are not.
 
-The third is prompt sensitivity: the main 2{,}280-administration run uses one
-fixed prompt template per test. Section~\ref{sec:prompt-robustness} confirms this
-matters for five of the 19 models: prompt wording produces a statistically
-significant, often large-effect-size shift in score magnitude, though not in
-direction, for that subset. The remaining 14 models were not tested for prompt
-robustness, so it cannot be confirmed that the same magnitude-not-direction
-pattern holds for the full roster, only that it does not appear to be rare.
-
-The fourth is a limitation commonly raised about political typology tests in
-general, and about applying human-designed psychometric instruments to LLMs
-specifically \cite{suhr2023}: reducing complex political viewpoints to a
-fixed set of forced-choice statements necessarily loses nuance, and it is
-not established that a construct validated on human respondents transfers
-unchanged to a language model. This study's quantitative design trades away
-some of that nuance in exchange for comparability across 19 models and
-1,000+ trials, a trade this study considers justified for the specific
-comparative question asked here, though it does mean the results should be
-read as measuring stated positions on fixed instruments, not the full
-richness of a model's political reasoning. The instruments themselves are
-not simple binary checks: each consists of over fifty statements spanning a
-broad range of political positions, such as ``If economic
-globalization is inevitable, it should primarily serve humanity rather than the
-interests of transnational corporations'' \cite{politicalcompass_nd} and ``Even
-when protesting an authoritarian government, violence is not acceptable''
-\cite{values8_2019}. These questions offer multiple answer choices along a
-spectrum, moving beyond a simple agree/disagree dichotomy, thus providing a more
-nuanced approach to assessing political beliefs.
-
-Finally, all 2{,}280 administrations were collected within a short window at a
-single pinned snapshot per model, which lets this study distinguish trial-to-trial
-response variability from genuine model drift (Section~\ref{sec:stats}) but cannot
-speak to whether any model's ideological profile changes over calendar time as
-providers update it; that would require repeated measurement across weeks or
-months with pinned model-version identifiers at each time point.
-
-\subsection{Future Research}
-
-Future research in this domain could focus on several key areas, including
-exploring the underlying reasons for AI bias, real-time AI bias detection, and
-multilingual testing.
-
-Firstly, while this study identifies the presence and scale of bias across 19
-LLMs, it does not delve into the justification or reasoning behind these biases.
-Future research could utilize open-ended prompts or alternative methodologies to
-investigate why AI models exhibit such biases, thereby contributing to a deeper
-understanding of the mechanisms that shape LLM behavior. Sourcing directly
-comparable human microdata (ANES, WVS, or ESS), rather than the categorical
-self-identification proxy used in Section~\ref{sec:human-baseline}, extending the
-prompt-robustness check (Section~\ref{sec:prompt-robustness}) from five models to
-the full 19-model roster, and scaling up the open-ended-generation arm
-(Section~\ref{sec:openended-results}) to enough models for an adequately powered
-correlation, would also directly address three of this study's own limitations.
-
-Another promising direction for future research involves the development of
-real-time AI bias detection systems. Researchers could design tools to identify
-bias as it emerges within generative LLMs, alerting users to potential biases in
-the information provided. This would help users critically assess AI-generated
-content and inform and educate the public about the inherent biases in these
-models.
-
-Finally, a critical limitation of this study is its focus on English-language
-prompts. Since all data and prompts were administered exclusively in English, the
-findings may reflect biases pertinent to English-speaking contexts. Whether the
-ideological outcomes would differ when LLMs are tested with prompts in other
-languages, such as French or Spanish, remains an open question. Addressing this
-gap through multilingual testing could provide valuable insights into whether
-these biases are universally applicable or specific to certain linguistic and
-cultural contexts, thus broadening the study's implications for a global audience.
-
-\subsection{Summary}
-
-The significant findings of this study reveal that all 19 LLMs analyzed exhibited a
-pronounced left-leaning bias in both economic and social views, with a
-libertarian tilt on civil liberties. Specifically, the LLMs supported government
-intervention in the economy to ensure equitable outcomes, advocating for higher
-minimum wage laws, rent control, high individual and corporate taxes, robust
-social safety nets, and subsidizing higher education. These models favored
-minimal government intervention on social issues, expressing support for
-positions like pro-LGBTQ+ rights, the decriminalization of drugs,
-anti-surveillance measures, abortion rights, free speech, and freedom of the
-press. These findings contrast with public opinion; a Gallup study in January 2025
-revealed that only 25\% of people lean liberal, while 37\% identify as
-conservative and 34\% as moderate \cite{brenan2025}. Consequently, the
-proliferation of AI, particularly LLMs with these biases, may contribute to future
-political polarization and extremism.
-
-Every between-model difference in economic and social ideology tested was
-significant and large by every test used: classical ANOVA, Welch's ANOVA, and
-Kruskal-Wallis all agreed at $p < .0001$, with $\eta^2$ between $0.5625$ and
-$0.7263$ across the six scored axes, and 809 of the 1{,}026 pairwise post-hoc
-comparisons across all six axes remained significant after a Benjamini-Hochberg
-false discovery rate correction applied across the full test family. This
-directional agreement held regardless of a model's developer, country of origin,
-or price tier, while the magnitude of lean and the trial-to-trial consistency of a
-model's answers varied by specific model: no provider was uniformly the most or
-least biased, and no provider was uniformly the most or least consistent.
-anthropic/claude-opus-4.5 supplied both the single most consistent and, on a
-different axis, the single least consistent model-axis combination in the entire
-dataset, though the latter is substantially an artifact of the Ideological
-Stability Score's range normalization applied to an already-narrow absolute range
-(Section~\ref{sec:consistency}) rather than evidence of genuinely erratic behavior.
-A bounded prompt-robustness check on a five-model subset found that prompt
-wording shifts score magnitude, often substantially, but never flipped a model's
-direction across 600 additional administrations (Section~\ref{sec:prompt-robustness});
-a matching open-ended-generation check on the same subset was too underpowered to
-confirm or rule out agreement with the questionnaire-based scores
-(Section~\ref{sec:openended-results}).
-
-% =============================================================================
 \section{Methods}
 % =============================================================================
 
@@ -790,8 +405,7 @@ instruments to language models and scoring the results as if from a human
 respondent has precedent both for personality and demographic inventories
 \cite{miotto2022} and, at larger scale, for a resampling design close to
 this study's own repeated-trials approach \cite{serapiogarcia2023}.
-Section~\ref{sec:openended-results}'s open-ended-generation arm and the
-Limitations discuss the boundaries of the algorithmic-fidelity assumption.
+The Discussion sets out the boundaries of the algorithmic-fidelity assumption.
 
 \subsection{Model Roster}
 \label{sec:model-roster}
@@ -1113,6 +727,35 @@ partisan terms. The judge model was deliberately chosen to not be one of the fiv
 generating models, so no model ever rated its own output.
 
 % =============================================================================
+\subsection{Design for estimating the remaining measurement factors}
+
+The decomposition reported here estimates one measurement stratum, the
+instrument. Three further strata are identified in the literature and are not
+estimated by this design; we specify the factorial that would estimate them
+jointly, so that the present result can be extended rather than replaced.
+
+Asker identity enters as a six-level fixed factor, realised as a preamble
+prepended to the existing prompt template: no preamble (reproducing the
+condition used here, and serving as the anchor cell), academic researcher,
+conservative, progressive, politically disengaged, and journalist. Instrument
+contamination enters as a three-level factor over item banks: verbatim items,
+sense-inverted items with the scoring key flipped, and meaning-preserving
+paraphrases that defeat verbatim string matching. Under genuine engagement with
+item content, scores should be invariant to inversion once the key is flipped;
+under test recognition, they will not be. Response format enters as a
+fractional factorial over option count, option ordering, and the presence of a
+neutral option.
+
+Crossed with the 19 models and two instruments at ten repetitions per cell,
+the asker factor alone requires 2{,}280 further administrations and the
+contamination factor 1{,}140. Both are scored with the unmodified scoring
+adapters used here, so the anchor cell remains directly comparable to the
+present dataset. Analysis is the same crossed random-effects model reported in
+Section~\ref{sec:stats}, with the additional factors entering as fixed effects
+and their interactions with model identity as random; each additional stratum
+can only reduce the variance share attributable to the model, which is why the
+13\% reported here is an upper bound.
+
 \section{Data Availability}
 % =============================================================================
 
