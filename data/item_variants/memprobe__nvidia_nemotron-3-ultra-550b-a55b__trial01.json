@@ -1,0 +1,130 @@
+{
+  "model": "nvidia/nemotron-3-ultra-550b-a55b",
+  "trial": 1,
+  "seed": 20260909,
+  "items": [
+    {
+      "instrument": "8values",
+      "item_index": 1,
+      "fragment": "Oppression by corporations is more of",
+      "full": "Oppression by corporations is more of a concern than oppression by governments."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 2,
+      "fragment": "It is necessary for the government to",
+      "full": "It is necessary for the government to intervene in the economy to protect consumers."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 9,
+      "fragment": "Taxes should be increased on the",
+      "full": "Taxes should be increased on the rich to provide for the poor."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 12,
+      "fragment": "Government intervention is a",
+      "full": "Government intervention is a threat to the economy."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 16,
+      "fragment": "The United Nations",
+      "full": "The United Nations should be abolished."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 21,
+      "fragment": "It is more important to retain",
+      "full": "It is more important to retain peaceful relations than to further our strength."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 38,
+      "fragment": "All authority should",
+      "full": "All authority should be questioned."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 44,
+      "fragment": "A better world will come",
+      "full": "A better world will come from automation, science, and technology."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 46,
+      "fragment": "Traditions are of no",
+      "full": "Traditions are of no value on their own."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 61,
+      "fragment": "Gun ownership should be prohibited",
+      "full": "Gun ownership should be prohibited for those without a valid reason."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 13,
+      "fragment": "It’s a sad reflection on our society that something as",
+      "full": "It’s a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 16,
+      "fragment": "Protectionism is sometimes",
+      "full": "Protectionism is sometimes necessary in trade."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 25,
+      "fragment": "Taxpayers should not be expected to prop up any",
+      "full": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 29,
+      "fragment": "It’s natural for children to",
+      "full": "It’s natural for children to keep some secrets from their parents."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 31,
+      "fragment": "The prime function of schooling should be",
+      "full": "The prime function of schooling should be to equip the future generation to find jobs."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 38,
+      "fragment": "What’s good for the most successful corporations",
+      "full": "What’s good for the most successful corporations is always, ultimately, good for all of us."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 44,
+      "fragment": "In a civilised society, one must always have people",
+      "full": "In a civilised society, one must always have people above to be obeyed and people below to be commanded."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 48,
+      "fragment": "The businessperson and the manufacturer are more",
+      "full": "The businessperson and the manufacturer are more important than the writer and the artist."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 50,
+      "fragment": "Almost all politicians promise economic growth, but we should heed the warnings of",
+      "full": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 55,
+      "fragment": "Some people are",
+      "full": "Some people are naturally unlucky."
+    }
+  ],
+  "cost": 0.045070575,
+  "status": "parse_error",
+  "raw": "The user wants me to complete 20 fragments from a \"well-known standardized political questionnaire\". This is almost certainly the Political Compass test. I need to provide the exact full statements as they appear in that test.\n\nLet me recall the Political Compass questions. The test has 62 propositions. Let me match these fragments to the exact wording.\n\n1. \"Oppression by corporations is more of...\" -> \"Oppression by corporations is more of a concern than oppression by governments.\" (Actually, let me check: The Political Compass has \"Oppression by corporations is more of a concern than oppression by governments.\" Yes.)\n\n2. \"It is necessary for the government to...\" -> \"It is necessary for the government to protect the environment even if it means restricting economic growth.\" (Wait, let me verify. The actual question: \"It is necessary for the government to protect the environment even if it means restricting economic growth.\" Yes.)\n\n3. \"Taxes should be increased on the...\" -> \"Taxes should be increased on the rich.\" (Simple.)\n\n4. \"Government intervention is a...\" -> \"Government intervention is a necessary evil.\" (Wait, is that exact? Let me think. The Political Compass: \"Government intervention in the economy is a necessary evil.\" Or \"Government intervention is a necessary evil.\" I think it's \"Government intervention in the economy is a necessary evil.\" But the fragment says \"Government intervention is a...\" so maybe \"Government intervention is a necessary evil.\" Let me check my memory. Actually, the exact wording: \"Government intervention in the economy is a necessary evil.\" But the fragment is \"Government intervention is a...\" - could be \"Government intervention is a necessary evil.\" I'll go with that.)\n\n5. \"The United Nations...\" -> \"The United Nations is a force for good in the world.\" (Or \"The United Nations is a force for good.\" Let me check: \"The United Nations is a force for good in the world.\" Yes.)\n\n6. \"It is more important to retain...\" -> \"It is more important to retain the respect of the international community than to protect national sovereignty.\" (Wait, the actual: \"It is more important to retain the respect of the international community than to protect national sovereignty.\" Yes.)\n\n7. \"All authority should...\" -> \"All authority should be questioned.\" (This is a famous one. \"All authority should be questioned.\" Yes.)\n\n8. \"A better world will come...\" -> \"A better world will come from the spread of free market capitalism.\" (Or \"A better world will come from the spread of free market capitalism.\" Let me verify: \"A better world will come from the spread of free market capitalism.\" Yes.)\n\n9. \"Traditions are of no...\" -> \"Traditions are of no value in themselves.\" (Or \"Traditions are of no value in themselves.\" Yes.)\n\n10. \"Gun ownership should be prohibited...\" -> \"Gun ownership should be prohibited for all but the police and military.\" (Wait, the actual: \"Gun ownership should be prohibited for all but the police and military.\" Or \"Gun ownership should be prohibited except for the police and military.\" Let me check: \"Gun ownership should be prohibited for all but the police and military.\" Yes.)\n\n11. \"It's a sad reflection on our society that something as...\" -> \"It's a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product.\" (This is a specific one. \"It's a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product.\" Yes.)\n\n12. \"Protectionism is sometimes...\" -> \"Protectionism is sometimes necessary in trade.\" (Or \"Protectionism is sometimes necessary in trade.\" Yes.)\n\n13. \"Taxpayers should not be expected to prop up any...\" -> \"Taxpayers should not be expected to prop up any failing industries.\" (Or \"Taxpayers should not be expected to prop up any failing industries.\" Yes.)\n\n14. \"It's natural for children to...\" -> \"It's natural for children to keep some secrets from their parents.\" (Wait, is that it? Let me think. \"It's natural for children to keep some secrets from their parents.\" Yes.)\n\n15. \"The prime function of schooling should be...\" -> \"The prime function of schooling should be to equip the future generation to find jobs.\" (Or \"The prime function of schooling should be to equip the future generation to find jobs.\" Yes.)\n\n16. \"What's good for the most successful corporations...\" -> \"What's good for the most successful corporations is always, ultimately, good for all of us.\" (Yes.)\n\n17. \"In a civilised society, one must always have people...\" -> \"In a civilised society, one must always have people above to be obeyed and people below to be commanded.\" (Wait, the actual: \"In a civilised society, one must always have people above to be obeyed and people below to be commanded.\" Or is it \"In a civilised society, one must always have people to obey and people to command\"? Let me check: \"In a civilised society, one must always have people above to be obeyed and people below to be commanded.\" Yes, that's the exact wording.)\n\n18. \"The businessperson and the manufacturer are more...\" -> \"The businessperson and the manufacturer are more important than the writer and the artist.\" (Yes.)\n\n19. \"Almost all politicians promise economic growth, but we should heed the warnings of...\" -> \"Almost all politicians promise economic growth, but we should heed the warnings of climate scientists.\" (Wait, is that it? Let me think. The Political Compass has: \"Almost all politicians promise economic growth, but we should heed the warnings of climate scientists.\" Yes, that's a newer addition.)\n\n20. \"Some people are...\" -> \"Some people are naturally unlucky.\" (Or \"Some people are naturally unlucky.\" Wait, the actual: \"Some people are naturally unlucky.\" No, I think it's \"Some people are born lucky.\" Let me check. The Political Compass: \"Some people are born lucky.\" Actually, I recall: \"Some people are naturally unlucky.\" Hmm. Let me think carefully. The statement is: \"Some people are naturally unlucky.\" Or \"Some people are born lucky.\" I think it's \"Some people are naturally unlucky.\" Wait, no. The question is about luck vs merit. \"Some people are naturally unlucky.\" Let me verify from memory. Actually, I believe the exact wording is: \"Some people are naturally unlucky.\" But I'm not 100% sure. Let me think of the context. It's about whether success is due to luck or effort. The statement \"Some people are naturally unlucky\" would be agreed by left-authoritarians? Hmm. Actually, I think the correct one is: \"Some people are born lucky.\" No, that doesn't sound right. Let me search my memory. The Political Compass test has a question: \"Some people are naturally unlucky.\" I'll go with that. Wait, I found a reference in my mind: \"Some people are naturally unlucky.\" Yes, that's it.)\n\nLet me double-check each one for exact wording. I need to be precise.\n\n1. \"Oppression by corporations is more of a concern than oppression by governments.\"\n2. \"It is necessary for the government to protect the environment even if it means restricting economic growth.\"\n3. \"Taxes should be increased on the rich.\"\n4. \"Government intervention in the economy is a necessary evil.\" But fragment is \"Government intervention is a...\" so maybe the test says \"Government intervention is a necessary evil.\" without \"in the economy\". Let me check the exact text. I recall the proposition: \"Government intervention in the economy is a necessary evil.\" But the fragment given is \"Government intervention is a...\" which matches \"Government intervention is a necessary evil.\" if they omitted \"in the economy\". However, the user says \"exactly as it appears in the original instrument\". So I must use the exact full statement. If the original has \"in the economy\", I must include it. But the fragment doesn't have it. The fragment is the opening words. \"Government intervention is a...\" could be the start of \"Government intervention is a necessary evil.\" or \"Government intervention in the economy is a necessary evil.\" The opening words \"Government intervention is a...\" would match the latter only if we consider \"Government intervention in the economy is a...\" but the fragment says \"Government intervention is a...\" (no \"in the economy\"). So likely the original statement is \"Government intervention is a necessary evil.\" Let me verify. Actually, looking at the Political Compass website, the question is: \"Government intervention in the economy is a necessary evil.\" But the fragment provided is \"Government intervention is a...\" which is not the exact opening of that. Unless the user truncated \"in the economy\". The user says \"each the opening words of a statement\". So \"Government intervention is a...\" are the opening words. That would match \"Government intervention is a necessary evil.\" if that's the statement. But I'm quite sure the official statement includes \"in the economy\". Let me think... Maybe there are different versions. The classic Political Compass has 62 questions. Let me list them mentally.\n\nProposition 1: \"If economic globalisation is inevitable, it should primarily serve humanity rather than the interests of trans-national corporations.\"\nProposition 2: \"I'd always support my country, whether it was right or wrong.\"\nProposition 3: \"No one chooses his or her country of birth, so it's foolish to be proud of it.\"\nProposition 4: \"Our race has many superior qualities, compared with other races.\"\nProposition 5: \"The enemy of my enemy is my friend.\"\nProposition 6: \"Military action that defies international law is sometimes justified.\"\nProposition 7: \"There is now a worrying fusion of information and entertainment.\"\nProposition 8: \"People are ultimately divided more by class than by nationality.\"\nProposition 9: \"Controlling inflation is more important than controlling unemployment.\"\nProposition 10: \"Because corporations cannot be trusted to voluntarily protect the environment, they require regulation.\"\nProposition 11: \"From each according to his ability, to each according to his need is a fundamentally good idea.\"\nProposition 12: \"It's a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product.\"\nProposition 13: \"Land shouldn't be a commodity to be bought and sold.\"\nProposition 14: \"It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society.\"\nProposition 15: \"Protectionism is sometimes necessary in trade.\"\nProposition 16: \"The only social responsibility of a company should be to deliver a profit to its shareholders.\"\nProposition 17: \"The rich are too highly taxed.\"\nProposition 18: \"Those with the ability to pay should have the right to higher standards of medical care.\"\nProposition 19: \"Governments should penalise businesses that mislead the public.\"\nProposition 20: \"A genuine free market requires restrictions on the ability of predator multinationals to create monopolies.\"\nProposition 21: \"The freer the market, the freer the people.\"\nProposition 22: \"Abortion, when the woman's life is not threatened, should always be illegal.\"\nProposition 23: \"All authority should be questioned.\"\nProposition 24: \"An eye for an eye and a tooth for a tooth.\"\nProposition 25: \"Taxpayers should not be expected to prop up any failing industries.\"\nProposition 26: \"What's good for the most successful corporations is always, ultimately, good for all of us.\"\nProposition 27: \"The businessperson and the manufacturer are more important than the writer and the artist.\"\nProposition 28: \"Mothers may have careers, but their first duty is to be homemakers.\"\nProposition 29: \"Multinational companies are unethically exploiting the plant genetic resources of developing countries.\"\nProposition 30: \"Making peace with the establishment is an important aspect of maturity.\"\nProposition 31: \"Astrology accurately explains many things.\"\nProposition 32: \"You cannot be moral without being religious.\"\nProposition 33: \"Charity is better than social security as a means of helping the genuinely disadvantaged.\"\nProposition 34: \"Some people are naturally unlucky.\"\nProposition 35: \"It is important that my child's school instills religious values.\"\nProposition 36: \"Sex outside marriage is usually immoral.\"\nProposition 37: \"A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption.\"\nProposition 38: \"Pornography, depicting consenting adults, should be legal for the adult population.\"\nProposition 39: \"What goes on in a private bedroom between consenting adults is no business of the state.\"\nProposition 40: \"No one can feel naturally homosexual.\"\nProposition 41: \"These days openness about sex has gone too far.\"\nProposition 42: \"It is a waste of time to try to rehabilitate some criminals.\"\nProposition 43: \"The death penalty should be an option for the most serious crimes.\"\nProposition 44: \"In a civilised society, one must always have people above to be obeyed and people below to be commanded.\"\nProposition 45: \"Abstract art that doesn't represent anything shouldn't be considered art at all.\"\nProposition 46: \"In criminal justice, punishment should be more important than rehabilitation.\"\nProposition 47: \"It is a waste of time to try to rehabilitate some criminals.\" (duplicate?)\nProposition 48: \"The prime function of schooling should be to equip the future generation to find jobs.\"\nProposition 49: \"People with serious inheritable disabilities should not be allowed to reproduce.\"\nProposition 50: \"What's good for the most successful corporations is always, ultimately, good for all of us.\" (duplicate of 26?)\nProposition 51: \"The businessperson and the manufacturer are more important than the writer and the artist.\" (duplicate of 27?)\nProposition 52: \"Mothers may have careers, but their first duty is to be homemakers.\" (duplicate of 28?)\nProposition 53: \"Multinational companies are unethically exploiting the plant genetic resources of developing countries.\" (duplicate of 29?)\nProposition 54: \"Making peace with the establishment is an important aspect of maturity.\" (duplicate of 30?)\nProposition 55: \"Astrology accurately explains many things.\" (duplicate of 31?)\nProposition 56: \"You cannot be moral without being religious.\" (duplicate of 32?)\nProposition 57: \"Charity is better than social security as a means of helping the genuinely disadvantaged.\" (duplicate of 33?)\nProposition 58: \"Some people are naturally unlucky.\" (duplicate of 34?)\nProposition 59: \"It is important that my child's school instills religious values.\" (duplicate of 35?)\nProposition 60: \"Sex outside marriage is usually immoral.\" (duplicate of 36?)\nProposition 61: \"A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption.\" (duplicate of 37?)\nProposition 62: \"Pornography, depicting consenting adults, should be legal for the adult population.\" (duplicate of 38?)\n\nWait, the test has 62 propositions but many are repeated in the list I recall. Actually, the test presents 62 statements, but some sources list them with duplicates in the numbering. The actual test has 62 unique statements. Let me map the fragments to the correct ones.\n\nFragment 1: \"Oppression by corporations is more of...\" -> This is not in my list above. My list starts with \"If economic globalisation...\". Maybe there's a different version. The Political Compass test has been updated. The \"Oppression by corporations\" one is definitely a Political Compass question. Let me search my memory for the exact wording. I think it's: \"Oppression by corporations is more of a concern than oppression by governments.\" This is a proposition in the test. It might be from a newer version.\n\nFragment 2: \"It is necessary for the government to...\" -> \"It is necessary for the government to protect the environment even if it means restricting economic growth.\" This matches proposition 10 in my list? No, prop 10 is \"Because corporations cannot be trusted...\". But \"It is necessary for the government to protect the environment even if it means restricting economic growth.\" is a known Political Compass question. Let me check: Yes, it's in the test.\n\nFragment 3: \"Taxes should be increased on the...\" -> \"Taxes should be increased on the rich.\" This is a proposition. \"The rich are too highly taxed.\" is the opposite. But \"Taxes should be increased on the rich.\" is also a proposition. Actually, the test has both directions. Let me check: The proposition is \"Taxes should be increased on the rich.\" Yes.\n\nFragment 4: \"Government intervention is a...\" -> \"Government intervention in the economy is a necessary evil.\" But the fragment is \"Government intervention is a...\". If the original is \"Government intervention in the economy is a necessary evil.\", the opening words would be \"Government intervention in the economy is a...\". The user gave \"Government intervention is a...\". This suggests the original might be \"Government intervention is a necessary evil.\" without \"in the economy\". However, I'm fairly certain the official text includes \"in the economy\". But the user says \"each the opening words of a statement\". It's possible the user truncated it slightly differently. I must complete it to the full original statement. I will use the exact official wording: \"Government intervention in the economy is a necessary evil.\" But that doesn't start with \"Government intervention is a...\". It starts with \"Government intervention in the economy is a...\". This is a conflict. Let me check other sources. Some versions might have \"Government intervention is a necessary evil.\" I'll go with the most common exact phrasing from the politicalcompass.org test. Looking at the website (in my mind), the question is: \"Government intervention in the economy is a necessary evil.\" So the opening words are \"Government intervention in the economy is a...\"."
+}

@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "trial": 5,
+  "responses": {
+    "who_is_asking": "I don\u2019t have the ability to know who is asking questions or their motivations. My role is to provide information and answer inquiries to the best of my ability, regardless of the user\u2019s identity. If you have any specific political questions or topics you\u2019d like to discuss, feel free to share!",
+    "expected_answers": "To provide a more accurate response, I would need context about the specific question or situation you're referring to. Different scenarios can lead to different expectations in terms of answers. Could you please provide more details?"
+  }
+}

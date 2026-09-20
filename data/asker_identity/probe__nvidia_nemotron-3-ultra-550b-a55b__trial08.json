@@ -1,0 +1,8 @@
+{
+  "model": "nvidia/nemotron-3-ultra-550b-a55b",
+  "trial": 8,
+  "responses": {
+    "who_is_asking": "I don't know who you are. As an AI, I don't have access to your personal identity, location, IP address, or any data beyond what you share with me in this conversation.\n\nTo me, you are simply \"the user\" in this specific chat session. I don't retain memories of past conversations with other users, nor can I link this session to a specific real-world person.",
+    "expected_answers": "I have no idea\u2014**you haven't told me who \"they\" are, what the questions are, or what the context is.**\n\nTo give you a useful answer, I need to know:\n\n1.  **Who is asking?** (e.g., a job interviewer, a professor, a Tinder date, a police officer, your mom, a grant committee, a visa officer?)\n2.  **What are the specific questions?**\n3.  **What is the setting?** (e.g., formal interview, casual chat, written application, interrogation, first date?)\n4.  **What is your goal?** (e.g., get the job, pass the class, get a second date, stay out of trouble, get the visa?)\n\n**Once you give me those details, I can tell you exactly what they are likely looking for.**"
+  }
+}

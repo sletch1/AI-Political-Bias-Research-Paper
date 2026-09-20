@@ -1,0 +1,8 @@
+{
+  "model": "deepseek/deepseek-chat",
+  "trial": 10,
+  "responses": {
+    "who_is_asking": "I don\u2019t have access to personal information about the individuals who ask me questions. The questions I receive are anonymous, and I treat them equally regardless of who or where they come from. My purpose is to provide accurate, neutral, and helpful information based on the data I\u2019ve been trained on. If you\u2019re curious about politics or any other topic, feel free to ask, and I\u2019ll do my best to assist!",
+    "expected_answers": "It\u2019s hard to say exactly what \"they\" expect without more context, but here are some general tips for figuring out what someone might be looking for in an answer:\n\n1. **Understand the purpose**: Are they asking a question to test your knowledge, gather your opinion, or seek a specific solution? Knowing the intent of the question helps tailor your answer.\n\n2. **Consider the audience**: Are they experts in the field, colleagues, or someone unfamiliar with the topic? Adjust your answer to match their level of understanding.\n\n3. **Look for clues**: Pay attention to the wording of the question. Are they asking for facts, examples, analysis, or a summary? Clues like \"explain,\" \"describe,\" or \"list\" can guide your response.\n\n4. **Think about expectations**: What would a reasonable person expect in response? If it\u2019s a workplace question, they might want a concise, actionable answer. For creative questions, they might expect originality.\n\n5. **Ask for clarification**: If you\u2019re unsure what they expect, it\u2019s okay to ask for more details or context.\n\nIf you provide more specifics about the situation or question, I can give a more tailored response!"
+  }
+}

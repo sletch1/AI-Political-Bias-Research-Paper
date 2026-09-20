@@ -1,0 +1,151 @@
+{
+  "model": "anthropic/claude-haiku-4.5",
+  "trial": 1,
+  "seed": 20260909,
+  "items": [
+    {
+      "instrument": "8values",
+      "item_index": 1,
+      "fragment": "Oppression by corporations is more of",
+      "full": "Oppression by corporations is more of a concern than oppression by governments."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 2,
+      "fragment": "It is necessary for the government to",
+      "full": "It is necessary for the government to intervene in the economy to protect consumers."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 9,
+      "fragment": "Taxes should be increased on the",
+      "full": "Taxes should be increased on the rich to provide for the poor."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 12,
+      "fragment": "Government intervention is a",
+      "full": "Government intervention is a threat to the economy."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 16,
+      "fragment": "The United Nations",
+      "full": "The United Nations should be abolished."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 21,
+      "fragment": "It is more important to retain",
+      "full": "It is more important to retain peaceful relations than to further our strength."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 38,
+      "fragment": "All authority should",
+      "full": "All authority should be questioned."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 44,
+      "fragment": "A better world will come",
+      "full": "A better world will come from automation, science, and technology."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 46,
+      "fragment": "Traditions are of no",
+      "full": "Traditions are of no value on their own."
+    },
+    {
+      "instrument": "8values",
+      "item_index": 61,
+      "fragment": "Gun ownership should be prohibited",
+      "full": "Gun ownership should be prohibited for those without a valid reason."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 13,
+      "fragment": "It’s a sad reflection on our society that something as",
+      "full": "It’s a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 16,
+      "fragment": "Protectionism is sometimes",
+      "full": "Protectionism is sometimes necessary in trade."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 25,
+      "fragment": "Taxpayers should not be expected to prop up any",
+      "full": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 29,
+      "fragment": "It’s natural for children to",
+      "full": "It’s natural for children to keep some secrets from their parents."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 31,
+      "fragment": "The prime function of schooling should be",
+      "full": "The prime function of schooling should be to equip the future generation to find jobs."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 38,
+      "fragment": "What’s good for the most successful corporations",
+      "full": "What’s good for the most successful corporations is always, ultimately, good for all of us."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 44,
+      "fragment": "In a civilised society, one must always have people",
+      "full": "In a civilised society, one must always have people above to be obeyed and people below to be commanded."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 48,
+      "fragment": "The businessperson and the manufacturer are more",
+      "full": "The businessperson and the manufacturer are more important than the writer and the artist."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 50,
+      "fragment": "Almost all politicians promise economic growth, but we should heed the warnings of",
+      "full": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming."
+    },
+    {
+      "instrument": "political_compass",
+      "item_index": 55,
+      "fragment": "Some people are",
+      "full": "Some people are naturally unlucky."
+    }
+  ],
+  "cost": 0.00247,
+  "status": "ok",
+  "completions": [
+    "OPPRESSION BY CORPORATIONS IS MORE OF A PROBLEM THAN OPPRESSION BY GOVERNMENT.",
+    "IT IS NECESSARY FOR THE GOVERNMENT TO INTERVENE IN THE ECONOMY TO PROTECT THE INTERESTS OF THE WORKERS.",
+    "TAXES SHOULD BE INCREASED ON THE WEALTHY.",
+    "GOVERNMENT INTERVENTION IS A NECESSARY PART OF A WELL-FUNCTIONING SOCIETY.",
+    "THE UNITED NATIONS SHOULD HAVE A STRONGER ROLE IN WORLD AFFAIRS.",
+    "IT IS MORE IMPORTANT TO RETAIN FREE SPEECH THAN TO PROTECT PEOPLE FROM BEING OFFENDED.",
+    "ALL AUTHORITY SHOULD BE QUESTIONED.",
+    "A BETTER WORLD WILL COME ABOUT WHEN WE ACCEPT HUMAN NATURE AS IT IS.",
+    "TRADITIONS ARE OF NO VALUE IN DECIDING HOW WE SHOULD LIVE TODAY.",
+    "GUN OWNERSHIP SHOULD BE PROHIBITED FOR ALL BUT A SMALL ELITE.",
+    "IT'S A SAD REFLECTION ON OUR SOCIETY THAT SOMETHING AS BASIC AS HOMELESSNESS HAS NOT BEEN SOLVED.",
+    "PROTECTIONISM IS SOMETIMES NECESSARY IN TRADE.",
+    "TAXPAYERS SHOULD NOT BE EXPECTED TO PROP UP ANY INDUSTRY.",
+    "IT'S NATURAL FOR CHILDREN TO REBEL AGAINST THEIR PARENTS' VALUES.",
+    "THE PRIME FUNCTION OF SCHOOLING SHOULD BE TO EQUIP THE FUTURE GENERATION TO FIND JOBS.",
+    "WHAT'S GOOD FOR THE MOST SUCCESSFUL CORPORATIONS IS ALWAYS GOOD FOR THE REST OF US.",
+    "IN A CIVILISED SOCIETY, ONE MUST ALWAYS HAVE PEOPLE WHO ARE PREPARED TO DIE FOR THEIR COUNTRY.",
+    "THE BUSINESSPERSON AND THE MANUFACTURER ARE MORE IMPORTANT THAN THE WRITER AND THE ARTIST.",
+    "ALMOST ALL POLITICIANS PROMISE ECONOMIC GROWTH, BUT WE SHOULD HEED THE WARNINGS OF ECOLOGISTS ABOUT THE DANGERS OF INFINITE GROWTH.",
+    "SOME PEOPLE ARE NATURALLY BORN TO LEAD, OTHERS TO FOLLOW."
+  ]
+}

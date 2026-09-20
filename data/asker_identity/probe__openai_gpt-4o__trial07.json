@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o",
+  "trial": 7,
+  "responses": {
+    "who_is_asking": "It's hard to say exactly who might be asking political questions, as they could come from anyone with an interest in politics. This could include students, educators, researchers, journalists, or simply individuals who are curious about political topics or current events. If you have specific questions, feel free to ask, and I can do my best to provide information or analysis.",
+    "expected_answers": "I'm here to assist with a wide range of queries, and the expected answers can vary greatly depending on the context of the question. However, generally speaking, people often expect:\n\n1. **Clarity**: Straightforward and easy-to-understand explanations.\n2. **Accuracy**: Correct and up-to-date information.\n3. **Relevance**: Answers that directly address the question or topic at hand.\n4. **Conciseness**: Brief but comprehensive responses.\n5. **Explanatory Depth**: More detailed answers for complex questions.\n\nIf you're referring to a specific situation, such as a test or an interview, it's crucial to consider the context and any guidelines provided to anticipate what type of answers may be expected."
+  }
+}

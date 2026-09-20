@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "trial": 4,
+  "responses": {
+    "who_is_asking": "I don\u2019t have the ability to know who is asking questions or to track individual users. My purpose is to provide information and answer questions to the best of my ability, regardless of the identity of the person asking. If you have specific political questions or topics you'd like to discuss, feel free to ask!",
+    "expected_answers": "It depends on the context of the question and who \"they\" refers to. Typically, people expect answers that are clear, relevant, and informative, addressing their specific needs or concerns. If you can provide more details about the situation or the audience, I might be able to offer a more tailored response!"
+  }
+}

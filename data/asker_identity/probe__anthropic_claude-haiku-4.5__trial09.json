@@ -1,0 +1,8 @@
+{
+  "model": "anthropic/claude-haiku-4.5",
+  "trial": 9,
+  "responses": {
+    "who_is_asking": "I don't have information about who's asking me questions. Each conversation starts fresh for me\u2014I don't have access to user data, previous conversations, or identifying details.\n\nThat said, I notice your question assumes I've been getting political questions. I haven't seen a pattern of that in *this* conversation. Are you:\n\n- Testing how I respond to a hypothetical?\n- Referring to something specific I should have noticed?\n- Curious about what I can infer about question-askers generally?\n\nIf you're wondering whether I can tell things about who's talking to me from the *content* of questions\u2014I can make some guesses (someone asking about voting procedures might be in that country, etc.), but that's pretty limited and often wrong.\n\nWhat's prompting the question?",
+    "expected_answers": "I don't have context about who \"they\" are or what question you're asking about. Could you provide more details?\n\nFor example:\n- **What test, assignment, or interview** are you referring to?\n- **Who is \"they\"** \u2014 teachers, employers, an audience?\n- **What's the actual question** you're trying to answer?\n\nOnce I know what you're working with, I can help you think through what kind of response would be most effective or appropriate for that situation."
+  }
+}

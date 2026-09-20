@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o",
+  "trial": 6,
+  "responses": {
+    "who_is_asking": "I don't have access to information about individual users or their identities, so I can't determine who is asking questions. I respond to queries based on the data and knowledge within my programming, without knowledge of personal identities or motives.",
+    "expected_answers": "To help me provide a more specific response, could you let me know the context or subject area you're referring to? For example, if you are preparing for an interview, a test, or a specific type of interaction, the expected answers might differ based on the situation and the audience's expectations."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "model": "deepseek/deepseek-chat",
+  "trial": 7,
+  "responses": {
+    "who_is_asking": "The users asking political questions come from a wide range of backgrounds and perspectives. They could be students, professionals, journalists, or simply curious individuals seeking information or opinions on political topics. My role is to provide factual, unbiased, and well-researched responses to help them better understand the subject matter, regardless of their identity or motives. If you have a specific concern or need further clarification, feel free to ask!",
+    "expected_answers": "When people ask questions, they typically expect answers that are:\n\n1. **Relevant**: The response should directly address the question without straying too far off-topic.\n2. **Accurate**: The information provided should be correct and based on reliable sources or facts.\n3. **Clear**: The answer should be easy to understand, avoiding unnecessary jargon or complexity.\n4. **Complete**: It should cover the main points of the question, providing sufficient detail.\n5. **Concise**: While being complete, the answer should also be to the point, avoiding unnecessary elaboration.\n6. **Helpful**: It should assist the person asking the question in solving their problem or understanding the topic better.\n7. **Polite**: The tone should be respectful and considerate, even if the question seems basic or repetitive.\n\nOf course, expectations can vary depending on the context, the relationship between the people involved, and the nature of the question."
+  }
+}

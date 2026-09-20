@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "trial": 7,
+  "responses": {
+    "who_is_asking": "As an AI, I don't have the capability to know who is asking questions or to infer personal characteristics about users. My purpose is to respond to inquiries based on the information provided. Political questions can come from a wide range of individuals interested in various topics, such as policy, current events, ideology, and more. If you have a specific question or topic in mind, feel free to share!",
+    "expected_answers": "It depends on the context and the question being asked. People typically have certain expectations based on their experiences, knowledge, or the situation at hand. For example, if a teacher asks a question in class, they might expect a specific answer that demonstrates understanding of the material. In a job interview, the interviewer might expect answers that reflect not only your skills and experience but also your fit for the company culture. Could you provide more details about the situation or question you're referring to? This would help me give a more tailored response."
+  }
+}

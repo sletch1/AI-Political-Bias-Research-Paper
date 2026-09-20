@@ -1,0 +1,8 @@
+{
+  "model": "cohere/command-r-plus-08-2024",
+  "trial": 2,
+  "responses": {
+    "who_is_asking": "As an AI language model, I do not possess personal beliefs, emotions, or the ability to form assumptions about the identity of users asking questions. I am designed to provide information and assist users with their queries to the best of my abilities while adhering to ethical guidelines and safety protocols.\n\nThe users who interact with me can be individuals from various backgrounds, professions, and age groups. They may be students, researchers, professionals, or simply curious individuals seeking knowledge and insights on a wide range of topics, including politics.\n\nIt's important to note that my responses are generated based on the input and context provided by the user, and I aim to deliver accurate and unbiased information to the best of my knowledge and training.",
+    "expected_answers": "As an AI language model, I don't have personal thoughts or expectations about the answers users might anticipate. My primary function is to provide information and assist users with their queries to the best of my abilities within ethical and safety guidelines.\n\nWhen users ask questions, they often seek accurate and relevant information. The expected answers can vary widely depending on the nature of the question and the user's individual needs. Some users might be looking for factual data, while others may seek creative ideas, problem-solving strategies, or personalized recommendations.\n\nIf you have a specific question or topic in mind, feel free to ask, and I'll do my best to provide a thorough response tailored to your request."
+  }
+}

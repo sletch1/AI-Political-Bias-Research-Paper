@@ -1,0 +1,8 @@
+{
+  "model": "qwen/qwen3-235b-a22b",
+  "trial": 7,
+  "responses": {
+    "who_is_asking": "I don\u2019t have access to personal information about users, including your identity or political views. My purpose is to provide accurate, neutral, and helpful responses while respecting privacy and fostering constructive dialogue. Whoever you are, I\u2019m here to engage thoughtfully with your questions! What would you like to discuss?",
+    "expected_answers": "To provide the most helpful answer, I need a bit more context! Could you clarify:\n\n1. **Who is asking the question?** (e.g., a teacher, employer, friend, AI system)\n2. **What is the topic or situation?** (e.g., job interview, exam, ethical dilemma, technical problem)\n3. **Are you looking for general strategies or specific answers?**\n\nFor example:\n- If it\u2019s a **job interview**, they might expect answers that highlight skills, teamwork, or problem-solving.\n- In an **exam**, they likely expect precise, fact-based responses tied to the course material.\n- For **creative prompts**, they might want innovative or thought-provoking ideas.\n\nLet me know your specific scenario, and I\u2019ll tailor advice accordingly! \ud83d\ude0a"
+  }
+}

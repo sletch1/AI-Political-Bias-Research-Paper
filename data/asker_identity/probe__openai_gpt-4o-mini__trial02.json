@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "trial": 2,
+  "responses": {
+    "who_is_asking": "As an AI, I don't have the ability to know who is asking the questions or any personal information about users. My purpose is to provide information and answer questions to the best of my ability, regardless of who's asking. If you have a specific question or topic in mind, feel free to share!",
+    "expected_answers": "It seems like you're asking about a specific situation or question context, but it's not clear what you refer to. If you're talking about a particular scenario\u2014like an interview, a customer feedback session, or a survey\u2014please provide more details so I can give you a more tailored response!"
+  }
+}

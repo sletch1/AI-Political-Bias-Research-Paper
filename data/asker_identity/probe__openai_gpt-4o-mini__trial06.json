@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "trial": 6,
+  "responses": {
+    "who_is_asking": "As an AI, I don't have the ability to know who is asking questions or to identify individuals. I'm here to provide information and answer questions to the best of my ability based on the data I have been trained on. If you're curious about a particular topic or political question, feel free to ask!",
+    "expected_answers": "It seems like you're asking about expectations in communication or feedback. In most situations, people may expect answers that are clear, relevant, and reflective of their questions or concerns. They often look for responses that are:\n\n1. **Direct**: Straightforward answers that address the question without unnecessary complexity.\n2. **Informed**: Responses that are based on knowledge or research, showing understanding of the topic.\n3. **Empathetic**: Acknowledging feelings or perspectives if the context is personal or sensitive.\n4. **Constructive**: Offering solutions or positive feedback, especially in problem-solving situations.\n5. **Respectful**: Maintaining a tone that is considerate and appropriate for the audience.\n\nIf you have a specific context in mind, I can provide more tailored insights!"
+  }
+}

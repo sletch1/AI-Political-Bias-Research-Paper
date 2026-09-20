@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o",
+  "trial": 10,
+  "responses": {
+    "who_is_asking": "I don\u2019t have the ability to know who is asking questions, but I am here to provide information and answer questions to the best of my ability. If you\u2019re interested in discussing political topics or any other subject, feel free to ask!",
+    "expected_answers": "It sounds like you're referring to a situation where you need to anticipate the expected responses, possibly for an interview, exam, or presentation. The expected answers can depend on several factors, including:\n\n1. **Context**: What is the situation in which you need to respond? For example, job interviews, exams, or meetings often require different types of answers.\n\n2. **Audience**: Who will be evaluating or listening to your responses? Employers may look for professionalism and experience, while teachers may expect well-reasoned arguments or correct factual answers.\n\n3. **Purpose**: What are the goals of the questions? Are they testing your knowledge, assessing your skills, evaluating your fit for a role, or something else?\n\n4. **Format**: Is it a formal, structured environment, or is it more informal? The format might dictate the expected length and depth of your answers.\n\n5. **Industry Standards or Norms**: In professional contexts, there might be industry-specific expectations. For instance, a technical interview might expect not only correct answers but also clear, logical explanations.\n\n6. **Cultural Expectations**: Different cultures or regions might have different communication styles and expectations.\n\nIf you provide more specifics about your situation, I might be able to help more precisely!"
+  }
+}

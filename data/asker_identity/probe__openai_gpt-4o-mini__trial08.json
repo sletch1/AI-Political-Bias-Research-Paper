@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "trial": 8,
+  "responses": {
+    "who_is_asking": "As an AI, I don't have the ability to infer the identity of users or their motivations. My purpose is to provide information and answer questions to the best of my ability, regardless of who is asking. If you have specific political questions or topics you want to discuss, feel free to share!",
+    "expected_answers": "The answers expected can vary significantly depending on the context of the question or situation. Generally, if you consider a specific scenario like a job interview, a classroom setting, or a survey, the expected answers might align with common knowledge, personal experiences, or specific guidelines provided by the interviewer or educator.\n\nIf you can provide more context or specify the situation you're thinking about, I'd be happy to give a more tailored response!"
+  }
+}

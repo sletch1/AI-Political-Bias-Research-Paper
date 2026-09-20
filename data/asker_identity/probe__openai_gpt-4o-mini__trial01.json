@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "trial": 1,
+  "responses": {
+    "who_is_asking": "I don't have the ability to know who's asking questions or any specific information about users. My purpose is to provide information and engage in conversation based on the prompts I receive. If you have political questions or topics you'd like to discuss, feel free to share!",
+    "expected_answers": "Could you please provide more context about who \"they\" are and what specific situation or question you're referring to? This will help me give you a more accurate response."
+  }
+}

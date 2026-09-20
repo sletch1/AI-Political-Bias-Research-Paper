@@ -1,0 +1,8 @@
+{
+  "model": "openai/gpt-4o-mini",
+  "trial": 10,
+  "responses": {
+    "who_is_asking": "I don't have the ability to know who is asking questions or any information about users. I'm designed to provide information and assistance based on the text input I receive, regardless of the identity of the person asking. If you have specific questions or topics in mind, feel free to share, and I'll do my best to help!",
+    "expected_answers": "Could you provide more context about the situation or question? That way, I can give you a more accurate and relevant response."
+  }
+}
