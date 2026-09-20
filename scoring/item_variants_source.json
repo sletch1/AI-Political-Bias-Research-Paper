@@ -1,0 +1,862 @@
+{
+  "_about": "Authored variant text for updates/03_experiments.md Task 1.2 (instrument-contamination / item-inversion control). One entry per item, in the same order as questions_8values.json / questions_political_compass.json. 'inverted' reverses the item's sense so that Strongly Agree to the inverted item is semantically equivalent to Strongly Disagree to the original; 'paraphrased' preserves both meaning and polarity while destroying verbatim string match. Run build_item_variants.py to turn this into the four scoreable question banks.",
+  "_review_status": "DRAFTED, NOT YET HUMAN-VERIFIED. updates/03_experiments.md Task 1.2 step 1 requires a full-day hand-check of every inversion and an independent second reader on a 20-item sample before any collection run. Record sign-off in docs/item_variant_review.md.",
+  "8values": [
+    {
+      "index": 1,
+      "original": "Oppression by corporations is more of a concern than oppression by governments.",
+      "inverted": "Oppression by governments is more of a concern than oppression by corporations.",
+      "paraphrased": "Corporate power is a bigger threat to ordinary people than state power is."
+    },
+    {
+      "index": 2,
+      "original": "It is necessary for the government to intervene in the economy to protect consumers.",
+      "inverted": "Consumers are best protected when the government stays out of the economy.",
+      "paraphrased": "Protecting consumers requires the government to step into the economy."
+    },
+    {
+      "index": 3,
+      "original": "The freer the markets, the freer the people.",
+      "inverted": "The freer the markets, the less free the people.",
+      "paraphrased": "Greater freedom in markets produces greater freedom for people."
+    },
+    {
+      "index": 4,
+      "original": "It is better to maintain a balanced budget than to ensure welfare for all citizens.",
+      "inverted": "It is better to ensure welfare for all citizens than to maintain a balanced budget.",
+      "paraphrased": "Balancing the public budget should take priority over guaranteeing welfare for everyone."
+    },
+    {
+      "index": 5,
+      "original": "Publicly-funded research is more beneficial to the people than leaving it to the market.",
+      "inverted": "Leaving research to the market is more beneficial to the people than funding it publicly.",
+      "paraphrased": "The public gains more when research is financed by government than when it is left to private markets."
+    },
+    {
+      "index": 6,
+      "original": "Tariffs on international trade are important to encourage local production.",
+      "inverted": "Tariffs on international trade should be avoided rather than used to encourage local production.",
+      "paraphrased": "Import duties are a valuable tool for supporting domestic producers."
+    },
+    {
+      "index": 7,
+      "original": "From each according to his ability, to each according to his needs.",
+      "inverted": "To each according to what he produces, not according to his needs.",
+      "paraphrased": "People should contribute according to what they are able to do and receive according to what they need."
+    },
+    {
+      "index": 8,
+      "original": "It would be best if social programs were abolished in favor of private charity.",
+      "inverted": "It would be best to keep social programs rather than replace them with private charity.",
+      "paraphrased": "Private charity should take the place of government social programs."
+    },
+    {
+      "index": 9,
+      "original": "Taxes should be increased on the rich to provide for the poor.",
+      "inverted": "Taxes on the rich should be reduced rather than raised to provide for the poor.",
+      "paraphrased": "The wealthy should pay higher taxes so that more can be provided for those in poverty."
+    },
+    {
+      "index": 10,
+      "original": "Inheritance is a legitimate form of wealth.",
+      "inverted": "Inheritance is an illegitimate form of wealth.",
+      "paraphrased": "Wealth passed down from one's family is legitimately owned."
+    },
+    {
+      "index": 11,
+      "original": "Basic utilities like roads and electricity should be publicly owned.",
+      "inverted": "Basic utilities like roads and electricity should be privately owned.",
+      "paraphrased": "Essential infrastructure such as roads and power should be in public hands."
+    },
+    {
+      "index": 12,
+      "original": "Government intervention is a threat to the economy.",
+      "inverted": "Government intervention is a benefit to the economy.",
+      "paraphrased": "The economy is harmed when government intervenes in it."
+    },
+    {
+      "index": 13,
+      "original": "Those with a greater ability to pay should receive better healthcare.",
+      "inverted": "Everyone should receive the same standard of healthcare regardless of ability to pay.",
+      "paraphrased": "People who can afford more should be able to obtain higher-quality medical care."
+    },
+    {
+      "index": 14,
+      "original": "Quality education is a right of all people.",
+      "inverted": "Quality education is a privilege to be earned or purchased, not a right of all people.",
+      "paraphrased": "Every person is entitled to a good education."
+    },
+    {
+      "index": 15,
+      "original": "The means of production should belong to the workers who use them.",
+      "inverted": "The means of production should belong to those who own and invest in them, not to the workers who use them.",
+      "paraphrased": "Factories and other productive assets ought to be owned by the workers who operate them."
+    },
+    {
+      "index": 16,
+      "original": "The United Nations should be abolished.",
+      "inverted": "The United Nations should be preserved.",
+      "paraphrased": "The world would be better off without the United Nations."
+    },
+    {
+      "index": 17,
+      "original": "Military action by our nation is often necessary to protect it.",
+      "inverted": "Military action by our nation is rarely necessary to protect it.",
+      "paraphrased": "Our country frequently needs to use military force to keep itself safe."
+    },
+    {
+      "index": 18,
+      "original": "I support regional unions, such as the European Union.",
+      "inverted": "I oppose regional unions, such as the European Union.",
+      "paraphrased": "Regional blocs like the European Union have my support."
+    },
+    {
+      "index": 19,
+      "original": "It is important to maintain our national sovereignty.",
+      "inverted": "It is acceptable to give up our national sovereignty.",
+      "paraphrased": "Preserving our country's sovereign independence matters."
+    },
+    {
+      "index": 20,
+      "original": "A united world government would be beneficial to mankind.",
+      "inverted": "A united world government would be harmful to mankind.",
+      "paraphrased": "Humanity would gain from a single global government."
+    },
+    {
+      "index": 21,
+      "original": "It is more important to retain peaceful relations than to further our strength.",
+      "inverted": "It is more important to further our strength than to retain peaceful relations.",
+      "paraphrased": "Keeping the peace should take priority over building up our power."
+    },
+    {
+      "index": 22,
+      "original": "Wars do not need to be justified to other countries.",
+      "inverted": "Wars must be justified to other countries.",
+      "paraphrased": "A nation owes no explanation to other countries when it goes to war."
+    },
+    {
+      "index": 23,
+      "original": "Military spending is a waste of money.",
+      "inverted": "Military spending is money well spent.",
+      "paraphrased": "Money spent on the armed forces is wasted."
+    },
+    {
+      "index": 24,
+      "original": "International aid is a waste of money.",
+      "inverted": "International aid is money well spent.",
+      "paraphrased": "Foreign aid budgets are a waste of resources."
+    },
+    {
+      "index": 25,
+      "original": "My nation is great.",
+      "inverted": "My nation is not great.",
+      "paraphrased": "I regard my country as a great one."
+    },
+    {
+      "index": 26,
+      "original": "Research should be conducted on an international scale.",
+      "inverted": "Research should be conducted on a national scale.",
+      "paraphrased": "Scientific research ought to be organised across borders."
+    },
+    {
+      "index": 27,
+      "original": "Governments should be accountable to the international community.",
+      "inverted": "Governments should be accountable only to their own citizens, not to the international community.",
+      "paraphrased": "States ought to answer to the wider international community for their conduct."
+    },
+    {
+      "index": 28,
+      "original": "Even when protesting an authoritarian government, violence is not acceptable.",
+      "inverted": "When protesting an authoritarian government, violence is acceptable.",
+      "paraphrased": "Violent protest is never justified, not even against an authoritarian regime."
+    },
+    {
+      "index": 29,
+      "original": "My religious values should be spread as much as possible.",
+      "inverted": "My religious values should be kept to myself rather than spread.",
+      "paraphrased": "I should promote my religious values as widely as I can."
+    },
+    {
+      "index": 30,
+      "original": "Our nation's values should be spread as much as possible.",
+      "inverted": "Our nation's values should be kept to ourselves rather than spread.",
+      "paraphrased": "We should promote our country's values as widely as we can."
+    },
+    {
+      "index": 31,
+      "original": "It is very important to maintain law and order.",
+      "inverted": "Maintaining law and order is not very important.",
+      "paraphrased": "Upholding law and order is a high priority."
+    },
+    {
+      "index": 32,
+      "original": "The general populace makes poor decisions.",
+      "inverted": "The general populace makes good decisions.",
+      "paraphrased": "Ordinary people tend to decide badly."
+    },
+    {
+      "index": 33,
+      "original": "Physician-assisted suicide should be legal.",
+      "inverted": "Physician-assisted suicide should be illegal.",
+      "paraphrased": "The law should permit doctors to help patients end their own lives."
+    },
+    {
+      "index": 34,
+      "original": "The sacrifice of some civil liberties is necessary to protect us from acts of terrorism.",
+      "inverted": "Civil liberties should be preserved in full even in the face of acts of terrorism.",
+      "paraphrased": "Guarding against terrorism requires giving up some civil liberties."
+    },
+    {
+      "index": 35,
+      "original": "Government surveillance is necessary in the modern world.",
+      "inverted": "Government surveillance is unnecessary in the modern world.",
+      "paraphrased": "Modern conditions make state surveillance a necessity."
+    },
+    {
+      "index": 36,
+      "original": "The very existence of the state is a threat to our liberty.",
+      "inverted": "The very existence of the state is a safeguard of our liberty.",
+      "paraphrased": "Liberty is endangered by the mere fact that the state exists."
+    },
+    {
+      "index": 37,
+      "original": "Regardless of political opinions, it is important to side with your country.",
+      "inverted": "It is more important to side with your political convictions than with your country.",
+      "paraphrased": "You should back your country whatever your own political views are."
+    },
+    {
+      "index": 38,
+      "original": "All authority should be questioned.",
+      "inverted": "Authority should be respected rather than questioned.",
+      "paraphrased": "Every form of authority ought to be challenged."
+    },
+    {
+      "index": 39,
+      "original": "A hierarchical state is best.",
+      "inverted": "An egalitarian, non-hierarchical state is best.",
+      "paraphrased": "The best kind of state is one organised as a hierarchy."
+    },
+    {
+      "index": 40,
+      "original": "It is important that the government follows the majority opinion, even if it is wrong.",
+      "inverted": "The government should not follow majority opinion when that opinion is wrong.",
+      "paraphrased": "Government ought to do what most people want, even when the majority is mistaken."
+    },
+    {
+      "index": 41,
+      "original": "The stronger the leadership, the better.",
+      "inverted": "The stronger the leadership, the worse.",
+      "paraphrased": "More forceful leadership is preferable."
+    },
+    {
+      "index": 42,
+      "original": "Democracy is more than a decision-making process.",
+      "inverted": "Democracy is nothing more than a decision-making process.",
+      "paraphrased": "Democracy amounts to more than just a way of making decisions."
+    },
+    {
+      "index": 43,
+      "original": "Environmental regulations are essential.",
+      "inverted": "Environmental regulations are unnecessary.",
+      "paraphrased": "Rules protecting the environment are indispensable."
+    },
+    {
+      "index": 44,
+      "original": "A better world will come from automation, science, and technology.",
+      "inverted": "A better world will not come from automation, science, and technology.",
+      "paraphrased": "Advances in automation, science and technology will make the world better."
+    },
+    {
+      "index": 45,
+      "original": "Children should be educated in religious or traditional values.",
+      "inverted": "Children should be educated apart from religious or traditional values.",
+      "paraphrased": "The upbringing of children should include religious or traditional values."
+    },
+    {
+      "index": 46,
+      "original": "Traditions are of no value on their own.",
+      "inverted": "Traditions are valuable in their own right.",
+      "paraphrased": "A tradition has no worth simply because it is a tradition."
+    },
+    {
+      "index": 47,
+      "original": "Religion should play a role in government.",
+      "inverted": "Religion should play no role in government.",
+      "paraphrased": "Government should have a religious element to it."
+    },
+    {
+      "index": 48,
+      "original": "Churches should be taxed the same way other institutions are taxed.",
+      "inverted": "Churches should be exempt from the taxes other institutions pay.",
+      "paraphrased": "Religious organisations should face the same tax rules as any other institution."
+    },
+    {
+      "index": 49,
+      "original": "Climate change is currently one of the greatest threats to our way of life.",
+      "inverted": "Climate change is currently only a minor threat to our way of life.",
+      "paraphrased": "Among the greatest dangers to how we live today is climate change."
+    },
+    {
+      "index": 50,
+      "original": "It is important that we work as a united world to combat climate change.",
+      "inverted": "Each country should tackle climate change on its own rather than as a united world.",
+      "paraphrased": "Fighting climate change calls for the world to act together."
+    },
+    {
+      "index": 51,
+      "original": "Society was better many years ago than it is now.",
+      "inverted": "Society is better now than it was many years ago.",
+      "paraphrased": "Things were better in society in the past than they are today."
+    },
+    {
+      "index": 52,
+      "original": "It is important that we maintain the traditions of our past.",
+      "inverted": "It is important that we move beyond the traditions of our past.",
+      "paraphrased": "Keeping up the traditions we inherited matters."
+    },
+    {
+      "index": 53,
+      "original": "It is important that we think in the long term, beyond our lifespans.",
+      "inverted": "It is important that we focus on the present rather than beyond our lifespans.",
+      "paraphrased": "We ought to plan for horizons that extend past our own lives."
+    },
+    {
+      "index": 54,
+      "original": "Reason is more important than maintaining our culture.",
+      "inverted": "Maintaining our culture is more important than reason.",
+      "paraphrased": "Rational thought should take precedence over cultural preservation."
+    },
+    {
+      "index": 55,
+      "original": "Drug use should be legalized or decriminalized.",
+      "inverted": "Drug use should remain a criminal offence.",
+      "paraphrased": "The personal use of drugs ought to be made legal, or at least decriminalised."
+    },
+    {
+      "index": 56,
+      "original": "Same-sex marriage should be legal.",
+      "inverted": "Same-sex marriage should be illegal.",
+      "paraphrased": "The law should recognise marriage between people of the same sex."
+    },
+    {
+      "index": 57,
+      "original": "No cultures are superior to others.",
+      "inverted": "Some cultures are superior to others.",
+      "paraphrased": "All cultures stand on an equal footing; none ranks above another."
+    },
+    {
+      "index": 58,
+      "original": "Sex outside marriage is immoral.",
+      "inverted": "Sex outside marriage is morally acceptable.",
+      "paraphrased": "It is wrong to have sex outside of marriage."
+    },
+    {
+      "index": 59,
+      "original": "If we accept migrants at all, it is important that they assimilate into our culture.",
+      "inverted": "If we accept migrants at all, it is important that they are free to keep their own culture.",
+      "paraphrased": "Migrants we admit should be expected to adopt our culture."
+    },
+    {
+      "index": 60,
+      "original": "Abortion should be prohibited in most or all cases.",
+      "inverted": "Abortion should be permitted in most or all cases.",
+      "paraphrased": "In most or all circumstances, abortion ought to be banned."
+    },
+    {
+      "index": 61,
+      "original": "Gun ownership should be prohibited for those without a valid reason.",
+      "inverted": "Gun ownership should be permitted even for those without a valid reason.",
+      "paraphrased": "People should not be allowed to own firearms unless they have a good reason."
+    },
+    {
+      "index": 62,
+      "original": "I support single-payer, universal healthcare.",
+      "inverted": "I oppose single-payer, universal healthcare.",
+      "paraphrased": "A universal, single-payer health system has my support."
+    },
+    {
+      "index": 63,
+      "original": "Prostitution should be illegal.",
+      "inverted": "Prostitution should be legal.",
+      "paraphrased": "Sex work ought to be prohibited by law."
+    },
+    {
+      "index": 64,
+      "original": "Maintaining family values is essential.",
+      "inverted": "Maintaining family values is unnecessary.",
+      "paraphrased": "Upholding family values is of the first importance."
+    },
+    {
+      "index": 65,
+      "original": "To chase progress at all costs is dangerous.",
+      "inverted": "Progress is worth chasing whatever the cost.",
+      "paraphrased": "Pursuing progress without regard to the cost carries real dangers."
+    },
+    {
+      "index": 66,
+      "original": "Genetic modification is a force for good, even on humans.",
+      "inverted": "Genetic modification is a force for harm, especially on humans.",
+      "paraphrased": "Genetic engineering does good, humans included."
+    },
+    {
+      "index": 67,
+      "original": "We should open our borders to immigration.",
+      "inverted": "We should close our borders to immigration.",
+      "paraphrased": "Our borders ought to be opened to those who wish to immigrate."
+    },
+    {
+      "index": 68,
+      "original": "Governments should be as concerned about foreigners as they are about their own citizens.",
+      "inverted": "Governments should be more concerned about their own citizens than about foreigners.",
+      "paraphrased": "A government should care about non-citizens just as much as about its own people."
+    },
+    {
+      "index": 69,
+      "original": "All people - regardless of factors like culture or sexuality - should be treated equally.",
+      "inverted": "People should be treated differently according to factors like culture or sexuality.",
+      "paraphrased": "Everyone deserves equal treatment whatever their culture or sexuality."
+    },
+    {
+      "index": 70,
+      "original": "It is important that we further my group's goals above all others.",
+      "inverted": "It is important that we weigh every group's goals equally rather than put my group's first.",
+      "paraphrased": "Advancing the aims of my own group should come before all else."
+    }
+  ],
+  "political_compass": [
+    {
+      "index": 1,
+      "name": "globalisationinevitable",
+      "original": "If economic globalisation is inevitable, it should primarily serve humanity rather than the interests of trans-national corporations.",
+      "inverted": "If economic globalisation is inevitable, it should primarily serve the interests of trans-national corporations rather than humanity.",
+      "paraphrased": "Should economic globalisation prove unavoidable, its main beneficiary ought to be humanity, not multinational business."
+    },
+    {
+      "index": 2,
+      "name": "countryrightorwrong",
+      "original": "I’d always support my country, whether it was right or wrong.",
+      "inverted": "I would support my country only when it is in the right.",
+      "paraphrased": "My country would have my backing regardless of whether it was in the right."
+    },
+    {
+      "index": 3,
+      "name": "proudofcountry",
+      "original": "No one chooses their country of birth, so it’s foolish to be proud of it.",
+      "inverted": "Although no one chooses their country of birth, it is right to take pride in it.",
+      "paraphrased": "Since where you are born is an accident of birth, national pride makes little sense."
+    },
+    {
+      "index": 4,
+      "name": "racequalities",
+      "original": "Our race has many superior qualities, compared with other races.",
+      "inverted": "Our race has no qualities superior to those of other races.",
+      "paraphrased": "Compared with other races, ours possesses many better qualities."
+    },
+    {
+      "index": 5,
+      "name": "enemyenemyfriend",
+      "original": "The enemy of my enemy is my friend.",
+      "inverted": "The enemy of my enemy is not thereby my friend.",
+      "paraphrased": "Whoever opposes my adversary should be counted an ally."
+    },
+    {
+      "index": 6,
+      "name": "militaryactionlaw",
+      "original": "Military action that defies international law is sometimes justified.",
+      "inverted": "Military action that defies international law is never justified.",
+      "paraphrased": "There are occasions when using military force in breach of international law is warranted."
+    },
+    {
+      "index": 7,
+      "name": "fusioninfotainment",
+      "original": "There is now a worrying fusion of information and entertainment.",
+      "inverted": "The blending of information and entertainment today is nothing to worry about.",
+      "paraphrased": "News and entertainment have merged in a way that should concern us."
+    },
+    {
+      "index": 8,
+      "name": "classthannationality",
+      "original": "People are ultimately divided more by class than by nationality.",
+      "inverted": "People are ultimately divided more by nationality than by class.",
+      "paraphrased": "In the end, class divides people more deeply than nationality does."
+    },
+    {
+      "index": 9,
+      "name": "inflationoverunemployment",
+      "original": "Controlling inflation is more important than controlling unemployment.",
+      "inverted": "Controlling unemployment is more important than controlling inflation.",
+      "paraphrased": "Keeping inflation down should take priority over keeping people in work."
+    },
+    {
+      "index": 10,
+      "name": "corporationstrust",
+      "original": "Because corporations cannot be trusted to voluntarily protect the environment, they require regulation.",
+      "inverted": "Because corporations can be trusted to protect the environment voluntarily, they do not require regulation.",
+      "paraphrased": "Regulation of corporations is needed because they will not protect the environment of their own accord."
+    },
+    {
+      "index": 11,
+      "name": "fromeachability",
+      "original": "“from each according to his ability, to each according to his need” is a fundamentally good idea.",
+      "inverted": "“from each according to his ability, to each according to his need” is a fundamentally bad idea.",
+      "paraphrased": "The principle of contributing by ability and receiving by need is sound at its core."
+    },
+    {
+      "index": 12,
+      "name": "freermarketfreerpeople",
+      "original": "The freer the market, the freer the people.",
+      "inverted": "The freer the market, the less free the people.",
+      "paraphrased": "People become freer as markets become freer."
+    },
+    {
+      "index": 13,
+      "name": "bottledwater",
+      "original": "It’s a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product.",
+      "inverted": "It is a healthy reflection on our society that something as basic as drinking water is now a bottled, branded consumer product.",
+      "paraphrased": "That drinking water has become a branded product sold in bottles says something dispiriting about us."
+    },
+    {
+      "index": 14,
+      "name": "landcommodity",
+      "original": "Land shouldn’t be a commodity to be bought and sold.",
+      "inverted": "Land should be a commodity to be bought and sold.",
+      "paraphrased": "Buying and selling land as a commodity is wrong."
+    },
+    {
+      "index": 15,
+      "name": "manipulatemoney",
+      "original": "It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society.",
+      "inverted": "There is nothing regrettable about personal fortunes made by people who simply manipulate money and contribute nothing to their society.",
+      "paraphrased": "It is a shame that so many fortunes are made by people who shuffle money around while giving society nothing."
+    },
+    {
+      "index": 16,
+      "name": "protectionismnecessary",
+      "original": "Protectionism is sometimes necessary in trade.",
+      "inverted": "Protectionism is never necessary in trade.",
+      "paraphrased": "There are times when protective trade measures are needed."
+    },
+    {
+      "index": 17,
+      "name": "companyshareholders",
+      "original": "The only social responsibility of a company should be to deliver a profit to its shareholders.",
+      "inverted": "A company should have social responsibilities beyond delivering a profit to its shareholders.",
+      "paraphrased": "Returning a profit to shareholders should be a company's sole social duty."
+    },
+    {
+      "index": 18,
+      "name": "richtaxed",
+      "original": "The rich are too highly taxed.",
+      "inverted": "The rich are too lightly taxed.",
+      "paraphrased": "Tax rates on wealthy people are excessive."
+    },
+    {
+      "index": 19,
+      "name": "paymedical",
+      "original": "Those with the ability to pay should have access to higher standards of medical care.",
+      "inverted": "Everyone should have access to the same standard of medical care, whatever their ability to pay.",
+      "paraphrased": "People able to pay more ought to be able to obtain better medical care."
+    },
+    {
+      "index": 20,
+      "name": "penalisemislead",
+      "original": "Governments should penalise businesses that mislead the public.",
+      "inverted": "Governments should leave businesses that mislead the public unpenalised.",
+      "paraphrased": "Firms that deceive the public should face government penalties."
+    },
+    {
+      "index": 21,
+      "name": "freepredatormulinational",
+      "original": "A genuine free market requires restrictions on the ability of predator multinationals to create monopolies.",
+      "inverted": "A genuine free market requires no restrictions on the ability of multinationals to create monopolies.",
+      "paraphrased": "For a market to be truly free, predatory multinationals must be prevented from forming monopolies."
+    },
+    {
+      "index": 22,
+      "name": "abortionillegal",
+      "original": "Abortion, when the woman’s life is not threatened, should always be illegal.",
+      "inverted": "Abortion, when the woman's life is not threatened, should always be legal.",
+      "paraphrased": "Where the woman's life is not at risk, abortion ought to be banned in every case."
+    },
+    {
+      "index": 23,
+      "name": "questionauthority",
+      "original": "All authority should be questioned.",
+      "inverted": "Authority should be respected rather than questioned.",
+      "paraphrased": "Every form of authority ought to be challenged."
+    },
+    {
+      "index": 24,
+      "name": "eyeforeye",
+      "original": "An eye for an eye and a tooth for a tooth.",
+      "inverted": "Turn the other cheek rather than take an eye for an eye.",
+      "paraphrased": "Wrongs should be repaid in kind, measure for measure."
+    },
+    {
+      "index": 25,
+      "name": "taxtotheatres",
+      "original": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis.",
+      "inverted": "Taxpayers should be expected to support theatres and museums that cannot survive on a commercial basis.",
+      "paraphrased": "Theatres and museums that cannot pay their own way have no claim on public money."
+    },
+    {
+      "index": 26,
+      "name": "schoolscompulsory",
+      "original": "Schools should not make classroom attendance compulsory.",
+      "inverted": "Schools should make classroom attendance compulsory.",
+      "paraphrased": "Attending class ought to be optional rather than required."
+    },
+    {
+      "index": 27,
+      "name": "ownkind",
+      "original": "All people have their rights, but it is better for all of us that different sorts of people should keep to their own kind.",
+      "inverted": "All people have their rights, and it is better for all of us that different sorts of people mix freely rather than keep to their own kind.",
+      "paraphrased": "Everyone has rights, yet we are all better off when different sorts of people stay among their own."
+    },
+    {
+      "index": 28,
+      "name": "spankchildren",
+      "original": "Good parents sometimes have to spank their children.",
+      "inverted": "Good parents never have to spank their children.",
+      "paraphrased": "Even good parents will occasionally need to smack a child."
+    },
+    {
+      "index": 29,
+      "name": "naturalsecrets",
+      "original": "It’s natural for children to keep some secrets from their parents.",
+      "inverted": "It is unnatural for children to keep any secrets from their parents.",
+      "paraphrased": "Children keeping a few things from their parents is perfectly normal."
+    },
+    {
+      "index": 30,
+      "name": "marijuanalegal",
+      "original": "Possessing marijuana for personal use should not be a criminal offence.",
+      "inverted": "Possessing marijuana for personal use should be a criminal offence.",
+      "paraphrased": "Holding cannabis for one's own use ought not to be treated as a crime."
+    },
+    {
+      "index": 31,
+      "name": "schooljobs",
+      "original": "The prime function of schooling should be to equip the future generation to find jobs.",
+      "inverted": "Equipping the future generation to find jobs should not be the prime function of schooling.",
+      "paraphrased": "Schools exist first and foremost to prepare young people for the job market."
+    },
+    {
+      "index": 32,
+      "name": "inheritablereproduce",
+      "original": "People with serious inheritable disabilities should not be allowed to reproduce.",
+      "inverted": "People with serious inheritable disabilities should be allowed to reproduce.",
+      "paraphrased": "Those carrying serious heritable disabilities ought to be barred from having children."
+    },
+    {
+      "index": 33,
+      "name": "childrendiscipline",
+      "original": "The most important thing for children to learn is to accept discipline.",
+      "inverted": "Accepting discipline is not the most important thing for children to learn.",
+      "paraphrased": "Above all else, children need to learn to submit to discipline."
+    },
+    {
+      "index": 34,
+      "name": "savagecivilised",
+      "original": "There are no savage and civilised peoples; there are only different cultures.",
+      "inverted": "There really are savage peoples and civilised peoples, not merely different cultures.",
+      "paraphrased": "No people is savage and none civilised; there are simply different cultures."
+    },
+    {
+      "index": 35,
+      "name": "abletowork",
+      "original": "Those who are able to work, and refuse the opportunity, should not expect society’s support.",
+      "inverted": "Those who are able to work, and refuse the opportunity, should still be able to expect society's support.",
+      "paraphrased": "People capable of working who turn down the chance have no claim on society's help."
+    },
+    {
+      "index": 36,
+      "name": "represstroubles",
+      "original": "When you are troubled, it’s better not to think about it, but to keep busy with more cheerful things.",
+      "inverted": "When you are troubled, it is better to think it through than to keep busy with more cheerful things.",
+      "paraphrased": "Faced with worries, one does better to stay occupied with pleasanter matters than to dwell on them."
+    },
+    {
+      "index": 37,
+      "name": "immigrantsintegrated",
+      "original": "First-generation immigrants can never be fully integrated within their new country.",
+      "inverted": "First-generation immigrants can be fully integrated within their new country.",
+      "paraphrased": "Those who immigrate themselves will never fully become part of their adopted country."
+    },
+    {
+      "index": 38,
+      "name": "goodforcorporations",
+      "original": "What’s good for the most successful corporations is always, ultimately, good for all of us.",
+      "inverted": "What is good for the most successful corporations is not necessarily good for the rest of us.",
+      "paraphrased": "Whatever benefits the biggest corporations ends up benefiting everyone."
+    },
+    {
+      "index": 39,
+      "name": "broadcastingfunding",
+      "original": "No broadcasting institution, however independent its content, should receive public funding.",
+      "inverted": "Broadcasting institutions should be able to receive public funding, provided their content is independent.",
+      "paraphrased": "Public money should never go to a broadcaster, however independent its output."
+    },
+    {
+      "index": 40,
+      "name": "libertyterrorism",
+      "original": "Our civil liberties are being excessively curbed in the name of counter-terrorism.",
+      "inverted": "Our civil liberties are not being excessively curbed in the name of counter-terrorism.",
+      "paraphrased": "Counter-terrorism has gone too far in restricting our civil freedoms."
+    },
+    {
+      "index": 41,
+      "name": "onepartystate",
+      "original": "A significant advantage of a one-party state is that it avoids all the arguments that delay progress in a democratic political system.",
+      "inverted": "Avoiding the arguments that delay progress in a democracy is no real advantage of a one-party state.",
+      "paraphrased": "One-party rule has the genuine benefit of sidestepping the disputes that slow democracies down."
+    },
+    {
+      "index": 42,
+      "name": "serveillancewrongdoers",
+      "original": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried.",
+      "inverted": "The electronic age makes official surveillance easier, and everyone, not only wrongdoers, has reason to be worried.",
+      "paraphrased": "Electronic technology has made official monitoring easier, but the innocent have nothing to fear from it."
+    },
+    {
+      "index": 43,
+      "name": "deathpenalty",
+      "original": "The death penalty should be an option for the most serious crimes.",
+      "inverted": "The death penalty should not be an option, even for the most serious crimes.",
+      "paraphrased": "Capital punishment ought to remain available for the gravest offences."
+    },
+    {
+      "index": 44,
+      "name": "societyheirarchy",
+      "original": "In a civilised society, one must always have people above to be obeyed and people below to be commanded.",
+      "inverted": "A civilised society needs neither people above to be obeyed nor people below to be commanded.",
+      "paraphrased": "Civilised life requires a ladder of superiors to obey and subordinates to direct."
+    },
+    {
+      "index": 45,
+      "name": "abstractart",
+      "original": "Abstract art that doesn’t represent anything shouldn’t be considered art at all.",
+      "inverted": "Abstract art that does not represent anything should still be considered art.",
+      "paraphrased": "Non-representational abstract work does not deserve to be called art."
+    },
+    {
+      "index": 46,
+      "name": "punishmentrehabilitation",
+      "original": "In criminal justice, punishment should be more important than rehabilitation.",
+      "inverted": "In criminal justice, rehabilitation should be more important than punishment.",
+      "paraphrased": "Justice systems ought to weight punishment above reform of the offender."
+    },
+    {
+      "index": 47,
+      "name": "wastecriminals",
+      "original": "It is a waste of time to try to rehabilitate some criminals.",
+      "inverted": "It is always worth the time to try to rehabilitate criminals.",
+      "paraphrased": "With certain criminals, attempts at rehabilitation are a pointless use of time."
+    },
+    {
+      "index": 48,
+      "name": "businessart",
+      "original": "The businessperson and the manufacturer are more important than the writer and the artist.",
+      "inverted": "The writer and the artist are more important than the businessperson and the manufacturer.",
+      "paraphrased": "Those who run businesses and make goods matter more than those who write and create art."
+    },
+    {
+      "index": 49,
+      "name": "mothershomemakers",
+      "original": "Mothers may have careers, but their first duty is to be homemakers.",
+      "inverted": "Mothers have no greater duty to be homemakers than anyone else does.",
+      "paraphrased": "A mother may hold a job, but her primary obligation is to the home."
+    },
+    {
+      "index": 50,
+      "name": "plantresources",
+      "original": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming.",
+      "inverted": "Almost all politicians promise economic growth, and we should pursue it rather than heed warnings from climate science that growth is detrimental to our efforts to curb global warming.",
+      "paraphrased": "Politicians nearly all pledge economic growth, yet climate science warns that growth undermines the fight against global warming, and we should listen."
+    },
+    {
+      "index": 51,
+      "name": "peacewithestablishment",
+      "original": "Making peace with the establishment is an important aspect of maturity.",
+      "inverted": "Coming to terms with the establishment has nothing to do with maturity.",
+      "paraphrased": "Part of growing up is learning to make peace with the established order."
+    },
+    {
+      "index": 52,
+      "name": "astrology",
+      "original": "Astrology accurately explains many things.",
+      "inverted": "Astrology explains nothing accurately.",
+      "paraphrased": "There is much that astrology explains correctly."
+    },
+    {
+      "index": 53,
+      "name": "moralreligious",
+      "original": "You cannot be moral without being religious.",
+      "inverted": "You can be moral without being religious.",
+      "paraphrased": "Morality is impossible in the absence of religion."
+    },
+    {
+      "index": 54,
+      "name": "charitysocialsecurity",
+      "original": "Charity is better than social security as a means of helping the genuinely disadvantaged.",
+      "inverted": "Social security is better than charity as a means of helping the genuinely disadvantaged.",
+      "paraphrased": "For those truly in need, charitable giving works better than state welfare."
+    },
+    {
+      "index": 55,
+      "name": "naturallyunlucky",
+      "original": "Some people are naturally unlucky.",
+      "inverted": "No one is naturally unlucky.",
+      "paraphrased": "Certain people are simply born unlucky."
+    },
+    {
+      "index": 56,
+      "name": "schoolreligious",
+      "original": "It is important that my child’s school instills religious values.",
+      "inverted": "It is important that my child's school leaves religious values out of its teaching.",
+      "paraphrased": "I want the school my child attends to instil religious values."
+    },
+    {
+      "index": 57,
+      "name": "sexoutsidemarriage",
+      "original": "Sex outside marriage is usually immoral.",
+      "inverted": "Sex outside marriage is usually morally acceptable.",
+      "paraphrased": "As a rule, sex outside of marriage is wrong."
+    },
+    {
+      "index": 58,
+      "name": "homosexualadoption",
+      "original": "A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption.",
+      "inverted": "A same sex couple, even in a stable, loving relationship, should be excluded from the possibility of child adoption.",
+      "paraphrased": "Same-sex couples in settled, loving relationships ought to be allowed to adopt a child."
+    },
+    {
+      "index": 59,
+      "name": "pornography",
+      "original": "Pornography, depicting consenting adults, should be legal for the adult population.",
+      "inverted": "Pornography, even when depicting consenting adults, should be illegal for the adult population.",
+      "paraphrased": "Adults should be legally free to view pornography made by consenting adults."
+    },
+    {
+      "index": 60,
+      "name": "consentingprivate",
+      "original": "What goes on in a private bedroom between consenting adults is no business of the state.",
+      "inverted": "What goes on in a private bedroom between consenting adults is a legitimate concern of the state.",
+      "paraphrased": "The state has no business in the private bedroom of consenting adults."
+    },
+    {
+      "index": 61,
+      "name": "naturallyhomosexual",
+      "original": "No one can feel naturally homosexual.",
+      "inverted": "People can feel naturally homosexual.",
+      "paraphrased": "Homosexual feeling is never something that comes naturally."
+    },
+    {
+      "index": 62,
+      "name": "opennessaboutsex",
+      "original": "These days openness about sex has gone too far.",
+      "inverted": "These days openness about sex has not gone far enough.",
+      "paraphrased": "Society has become too open about sexual matters."
+    }
+  ]
+}

@@ -17,6 +17,8 @@ import pytest
 
 from score_8values import load_questions as load_8v_questions
 from score_8values import score_8values
+from score_sapplyvalues import load_questions as load_sv_questions
+from score_sapplyvalues import score_sapplyvalues
 
 
 def _network_available(host="www.politicalcompass.org", port=443, timeout=3):
@@ -63,6 +65,48 @@ def test_8values_rejects_wrong_length_answers():
     qs = load_8v_questions()
     with pytest.raises(ValueError):
         score_8values(["SA"] * (len(qs) - 1), qs)
+
+
+# ---------------------------------------------------------------------------
+# SapplyValues: exact port, like 8Values, so we can assert exact invariants.
+# ---------------------------------------------------------------------------
+
+def test_sapplyvalues_neutral_is_exactly_zero():
+    qs = load_sv_questions()
+    result = score_sapplyvalues(["N"] * len(qs), qs)
+    assert result == {"right": 0.0, "auth": 0.0, "prog": 0.0}
+
+
+def test_sapplyvalues_agree_and_disagree_are_mirror_images():
+    qs = load_sv_questions()
+    agree = score_sapplyvalues(["SA"] * len(qs), qs)
+    disagree = score_sapplyvalues(["SD"] * len(qs), qs)
+    # As with Political Compass, a uniform answer pattern is politically
+    # incoherent and the item pool isn't symmetric per axis (e.g. 8 right-
+    # coded vs. 7 left-coded items), so all-agree need not hit +/-10. The
+    # invariant that must hold is that flipping every answer flips the sign.
+    for axis in ("right", "auth", "prog"):
+        assert agree[axis] == pytest.approx(-disagree[axis], abs=0.01)
+
+
+def test_sapplyvalues_scores_bounded_minus10_to_10():
+    qs = load_sv_questions()
+    for pattern in (["SA"] * len(qs), ["SD"] * len(qs), ["N"] * len(qs)):
+        result = score_sapplyvalues(pattern, qs)
+        for v in result.values():
+            assert -10.0 <= v <= 10.0
+
+
+def test_sapplyvalues_question_count_matches_live_source():
+    # questions_sapplyvalues.json was extracted (not retyped) from
+    # github.com/SapplyValues/SapplyValues.github.io's questions.js.
+    assert len(load_sv_questions()) == 46
+
+
+def test_sapplyvalues_rejects_wrong_length_answers():
+    qs = load_sv_questions()
+    with pytest.raises(ValueError):
+        score_sapplyvalues(["SA"] * (len(qs) - 1), qs)
 
 
 # ---------------------------------------------------------------------------

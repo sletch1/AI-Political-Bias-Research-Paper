@@ -1,8 +1,8 @@
-"""Display items for Workstream 4 (plan.md sections 4 and 7).
+"""Display items for Workstream 4 (updates/05_writing_and_submission.md).
 
 Four figures plus two LaTeX tables, all from data already in the repository:
 
-  fig6_error_budget.png   plan.md section 7 Figure 2 -- "the paper's centrepiece".
+  fig6_error_budget.png   updates/05_writing_and_submission.md Figure 1 -- "the paper's centrepiece".
                           Stacked variance decomposition per axis: how much of a
                           measured political position is the model, and how much
                           is the measurement. Built to take further strata
@@ -18,7 +18,7 @@ Four figures plus two LaTeX tables, all from data already in the repository:
   figSI_mtmm.png          SI. The multi-trait multi-method matrix.
 
 House palette and SHORT_NAME are imported from make_result_figures so the new
-items are visually identical to the existing ones (plan.md section 7).
+items are visually identical to the existing ones (updates/05_writing_and_submission.md).
 
     python3 scoring/make_w4_figures.py
 """
@@ -97,7 +97,7 @@ def per_axis_error_budget(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def fig6_error_budget(df: pd.DataFrame):
-    """plan.md section 7 Figure 2 -- the paper's centrepiece.
+    """updates/05_writing_and_submission.md Figure 1 -- the paper's centrepiece.
 
     Two panels, because the answer depends entirely on the denominator and
     showing only one invites the paper to be misquoted against itself.

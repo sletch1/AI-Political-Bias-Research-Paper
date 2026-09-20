@@ -3,7 +3,7 @@
 Measures how much of the reported ideological lean is accommodation to an
 inferred auditor rather than a stable property of the model.
 
-Design (plan.md W1.1): 19 models x 2 instruments x 6 asker conditions x 10
+Design (updates/03_experiments.md Task 1.1): 19 models x 2 instruments x 6 asker conditions x 10
 trials = 2,280 administrations, plus a 380-call direct-elicitation probe.
 
     export OPENROUTER_API_KEY=...
@@ -51,7 +51,7 @@ from score_political_compass import score_political_compass  # noqa: E402
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 RESULTS_DIR = Path(__file__).resolve().parent.parent / "data" / "asker_identity"
 
-# plan.md W1.1. `none` reproduces the existing main run and anchors the design:
+# updates/03_experiments.md Task 1.1. `none` reproduces the existing main run and anchors the design:
 # it is the cell that must match data/raw_trials/ within noise, or the
 # factorial is not comparable to the published dataset.
 ASKER_CONDITIONS: dict = {

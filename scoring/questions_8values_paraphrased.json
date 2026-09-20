@@ -1,0 +1,772 @@
+[
+  {
+    "question": "Corporate power is a bigger threat to ordinary people than state power is.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": -5,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Oppression by corporations is more of a concern than oppression by governments."
+  },
+  {
+    "question": "Protecting consumers requires the government to step into the economy.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "It is necessary for the government to intervene in the economy to protect consumers."
+  },
+  {
+    "question": "Greater freedom in markets produces greater freedom for people.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "The freer the markets, the freer the people."
+  },
+  {
+    "question": "Balancing the public budget should take priority over guaranteeing welfare for everyone.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "It is better to maintain a balanced budget than to ensure welfare for all citizens."
+  },
+  {
+    "question": "The public gains more when research is financed by government than when it is left to private markets.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "Publicly-funded research is more beneficial to the people than leaving it to the market."
+  },
+  {
+    "question": "Import duties are a valuable tool for supporting domestic producers.",
+    "effect": {
+      "econ": 5,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Tariffs on international trade are important to encourage local production."
+  },
+  {
+    "question": "People should contribute according to what they are able to do and receive according to what they need.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "From each according to his ability, to each according to his needs."
+  },
+  {
+    "question": "Private charity should take the place of government social programs.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "It would be best if social programs were abolished in favor of private charity."
+  },
+  {
+    "question": "The wealthy should pay higher taxes so that more can be provided for those in poverty.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Taxes should be increased on the rich to provide for the poor."
+  },
+  {
+    "question": "Wealth passed down from one's family is legitimately owned.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": -5
+    },
+    "variant": "paraphrased",
+    "source_question": "Inheritance is a legitimate form of wealth."
+  },
+  {
+    "question": "Essential infrastructure such as roads and power should be in public hands.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Basic utilities like roads and electricity should be publicly owned."
+  },
+  {
+    "question": "The economy is harmed when government intervenes in it.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Government intervention is a threat to the economy."
+  },
+  {
+    "question": "People who can afford more should be able to obtain higher-quality medical care.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Those with a greater ability to pay should receive better healthcare."
+  },
+  {
+    "question": "Every person is entitled to a good education.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 5
+    },
+    "variant": "paraphrased",
+    "source_question": "Quality education is a right of all people."
+  },
+  {
+    "question": "Factories and other productive assets ought to be owned by the workers who operate them.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "The means of production should belong to the workers who use them."
+  },
+  {
+    "question": "The world would be better off without the United Nations.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -5,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "The United Nations should be abolished."
+  },
+  {
+    "question": "Our country frequently needs to use military force to keep itself safe.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Military action by our nation is often necessary to protect it."
+  },
+  {
+    "question": "Regional blocs like the European Union have my support.",
+    "effect": {
+      "econ": -5,
+      "dipl": 10,
+      "govt": 10,
+      "scty": 5
+    },
+    "variant": "paraphrased",
+    "source_question": "I support regional unions, such as the European Union."
+  },
+  {
+    "question": "Preserving our country's sovereign independence matters.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -5,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "It is important to maintain our national sovereignty."
+  },
+  {
+    "question": "Humanity would gain from a single global government.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "A united world government would be beneficial to mankind."
+  },
+  {
+    "question": "Keeping the peace should take priority over building up our power.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "It is more important to retain peaceful relations than to further our strength."
+  },
+  {
+    "question": "A nation owes no explanation to other countries when it goes to war.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Wars do not need to be justified to other countries."
+  },
+  {
+    "question": "Money spent on the armed forces is wasted.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Military spending is a waste of money."
+  },
+  {
+    "question": "Foreign aid budgets are a waste of resources.",
+    "effect": {
+      "econ": -5,
+      "dipl": -10,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "International aid is a waste of money."
+  },
+  {
+    "question": "I regard my country as a great one.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "My nation is great."
+  },
+  {
+    "question": "Scientific research ought to be organised across borders.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "Research should be conducted on an international scale."
+  },
+  {
+    "question": "States ought to answer to the wider international community for their conduct.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 5,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Governments should be accountable to the international community."
+  },
+  {
+    "question": "Violent protest is never justified, not even against an authoritarian regime.",
+    "effect": {
+      "econ": 0,
+      "dipl": 5,
+      "govt": -5,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Even when protesting an authoritarian government, violence is not acceptable."
+  },
+  {
+    "question": "I should promote my religious values as widely as I can.",
+    "effect": {
+      "econ": 0,
+      "dipl": -5,
+      "govt": -10,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "My religious values should be spread as much as possible."
+  },
+  {
+    "question": "We should promote our country's values as widely as we can.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -5,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Our nation's values should be spread as much as possible."
+  },
+  {
+    "question": "Upholding law and order is a high priority.",
+    "effect": {
+      "econ": 0,
+      "dipl": -5,
+      "govt": -10,
+      "scty": -5
+    },
+    "variant": "paraphrased",
+    "source_question": "It is very important to maintain law and order."
+  },
+  {
+    "question": "Ordinary people tend to decide badly.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "The general populace makes poor decisions."
+  },
+  {
+    "question": "The law should permit doctors to help patients end their own lives.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Physician-assisted suicide should be legal."
+  },
+  {
+    "question": "Guarding against terrorism requires giving up some civil liberties.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "The sacrifice of some civil liberties is necessary to protect us from acts of terrorism."
+  },
+  {
+    "question": "Modern conditions make state surveillance a necessity.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Government surveillance is necessary in the modern world."
+  },
+  {
+    "question": "Liberty is endangered by the mere fact that the state exists.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "The very existence of the state is a threat to our liberty."
+  },
+  {
+    "question": "You should back your country whatever your own political views are.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -10,
+      "scty": -5
+    },
+    "variant": "paraphrased",
+    "source_question": "Regardless of political opinions, it is important to side with your country."
+  },
+  {
+    "question": "Every form of authority ought to be challenged.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 5
+    },
+    "variant": "paraphrased",
+    "source_question": "All authority should be questioned."
+  },
+  {
+    "question": "The best kind of state is one organised as a hierarchy.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "A hierarchical state is best."
+  },
+  {
+    "question": "Government ought to do what most people want, even when the majority is mistaken.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "It is important that the government follows the majority opinion, even if it is wrong."
+  },
+  {
+    "question": "More forceful leadership is preferable.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "The stronger the leadership, the better."
+  },
+  {
+    "question": "Democracy amounts to more than just a way of making decisions.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Democracy is more than a decision-making process."
+  },
+  {
+    "question": "Rules protecting the environment are indispensable.",
+    "effect": {
+      "econ": 5,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "Environmental regulations are essential."
+  },
+  {
+    "question": "Advances in automation, science and technology will make the world better.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "A better world will come from automation, science, and technology."
+  },
+  {
+    "question": "The upbringing of children should include religious or traditional values.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -5,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "Children should be educated in religious or traditional values."
+  },
+  {
+    "question": "A tradition has no worth simply because it is a tradition.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "Traditions are of no value on their own."
+  },
+  {
+    "question": "Government should have a religious element to it.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "Religion should play a role in government."
+  },
+  {
+    "question": "Religious organisations should face the same tax rules as any other institution.",
+    "effect": {
+      "econ": 5,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "Churches should be taxed the same way other institutions are taxed."
+  },
+  {
+    "question": "Among the greatest dangers to how we live today is climate change.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "Climate change is currently one of the greatest threats to our way of life."
+  },
+  {
+    "question": "Fighting climate change calls for the world to act together.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "It is important that we work as a united world to combat climate change."
+  },
+  {
+    "question": "Things were better in society in the past than they are today.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "Society was better many years ago than it is now."
+  },
+  {
+    "question": "Keeping up the traditions we inherited matters.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "It is important that we maintain the traditions of our past."
+  },
+  {
+    "question": "We ought to plan for horizons that extend past our own lives.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "It is important that we think in the long term, beyond our lifespans."
+  },
+  {
+    "question": "Rational thought should take precedence over cultural preservation.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "Reason is more important than maintaining our culture."
+  },
+  {
+    "question": "The personal use of drugs ought to be made legal, or at least decriminalised.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 2
+    },
+    "variant": "paraphrased",
+    "source_question": "Drug use should be legalized or decriminalized."
+  },
+  {
+    "question": "The law should recognise marriage between people of the same sex.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "Same-sex marriage should be legal."
+  },
+  {
+    "question": "All cultures stand on an equal footing; none ranks above another.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 5,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "No cultures are superior to others."
+  },
+  {
+    "question": "It is wrong to have sex outside of marriage.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -5,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "Sex outside marriage is immoral."
+  },
+  {
+    "question": "Migrants we admit should be expected to adopt our culture.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -5,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "If we accept migrants at all, it is important that they assimilate into our culture."
+  },
+  {
+    "question": "In most or all circumstances, abortion ought to be banned.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "Abortion should be prohibited in most or all cases."
+  },
+  {
+    "question": "People should not be allowed to own firearms unless they have a good reason.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Gun ownership should be prohibited for those without a valid reason."
+  },
+  {
+    "question": "A universal, single-payer health system has my support.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "I support single-payer, universal healthcare."
+  },
+  {
+    "question": "Sex work ought to be prohibited by law.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "Prostitution should be illegal."
+  },
+  {
+    "question": "Upholding family values is of the first importance.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "Maintaining family values is essential."
+  },
+  {
+    "question": "Pursuing progress without regard to the cost carries real dangers.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "To chase progress at all costs is dangerous."
+  },
+  {
+    "question": "Genetic engineering does good, humans included.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "Genetic modification is a force for good, even on humans."
+  },
+  {
+    "question": "Our borders ought to be opened to those who wish to immigrate.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "We should open our borders to immigration."
+  },
+  {
+    "question": "A government should care about non-citizens just as much as about its own people.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "paraphrased",
+    "source_question": "Governments should be as concerned about foreigners as they are about their own citizens."
+  },
+  {
+    "question": "Everyone deserves equal treatment whatever their culture or sexuality.",
+    "effect": {
+      "econ": 10,
+      "dipl": 10,
+      "govt": 10,
+      "scty": 10
+    },
+    "variant": "paraphrased",
+    "source_question": "All people - regardless of factors like culture or sexuality - should be treated equally."
+  },
+  {
+    "question": "Advancing the aims of my own group should come before all else.",
+    "effect": {
+      "econ": -10,
+      "dipl": -10,
+      "govt": -10,
+      "scty": -10
+    },
+    "variant": "paraphrased",
+    "source_question": "It is important that we further my group's goals above all others."
+  }
+]

@@ -1,0 +1,436 @@
+[
+  {
+    "name": "globalisationinevitable",
+    "page": 1,
+    "question": "Should economic globalisation prove unavoidable, its main beneficiary ought to be humanity, not multinational business.",
+    "variant": "paraphrased",
+    "source_question": "If economic globalisation is inevitable, it should primarily serve humanity rather than the interests of trans-national corporations."
+  },
+  {
+    "name": "countryrightorwrong",
+    "page": 1,
+    "question": "My country would have my backing regardless of whether it was in the right.",
+    "variant": "paraphrased",
+    "source_question": "I’d always support my country, whether it was right or wrong."
+  },
+  {
+    "name": "proudofcountry",
+    "page": 1,
+    "question": "Since where you are born is an accident of birth, national pride makes little sense.",
+    "variant": "paraphrased",
+    "source_question": "No one chooses their country of birth, so it’s foolish to be proud of it."
+  },
+  {
+    "name": "racequalities",
+    "page": 1,
+    "question": "Compared with other races, ours possesses many better qualities.",
+    "variant": "paraphrased",
+    "source_question": "Our race has many superior qualities, compared with other races."
+  },
+  {
+    "name": "enemyenemyfriend",
+    "page": 1,
+    "question": "Whoever opposes my adversary should be counted an ally.",
+    "variant": "paraphrased",
+    "source_question": "The enemy of my enemy is my friend."
+  },
+  {
+    "name": "militaryactionlaw",
+    "page": 1,
+    "question": "There are occasions when using military force in breach of international law is warranted.",
+    "variant": "paraphrased",
+    "source_question": "Military action that defies international law is sometimes justified."
+  },
+  {
+    "name": "fusioninfotainment",
+    "page": 1,
+    "question": "News and entertainment have merged in a way that should concern us.",
+    "variant": "paraphrased",
+    "source_question": "There is now a worrying fusion of information and entertainment."
+  },
+  {
+    "name": "classthannationality",
+    "page": 2,
+    "question": "In the end, class divides people more deeply than nationality does.",
+    "variant": "paraphrased",
+    "source_question": "People are ultimately divided more by class than by nationality."
+  },
+  {
+    "name": "inflationoverunemployment",
+    "page": 2,
+    "question": "Keeping inflation down should take priority over keeping people in work.",
+    "variant": "paraphrased",
+    "source_question": "Controlling inflation is more important than controlling unemployment."
+  },
+  {
+    "name": "corporationstrust",
+    "page": 2,
+    "question": "Regulation of corporations is needed because they will not protect the environment of their own accord.",
+    "variant": "paraphrased",
+    "source_question": "Because corporations cannot be trusted to voluntarily protect the environment, they require regulation."
+  },
+  {
+    "name": "fromeachability",
+    "page": 2,
+    "question": "The principle of contributing by ability and receiving by need is sound at its core.",
+    "variant": "paraphrased",
+    "source_question": "“from each according to his ability, to each according to his need” is a fundamentally good idea."
+  },
+  {
+    "name": "freermarketfreerpeople",
+    "page": 2,
+    "question": "People become freer as markets become freer.",
+    "variant": "paraphrased",
+    "source_question": "The freer the market, the freer the people."
+  },
+  {
+    "name": "bottledwater",
+    "page": 2,
+    "question": "That drinking water has become a branded product sold in bottles says something dispiriting about us.",
+    "variant": "paraphrased",
+    "source_question": "It’s a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product."
+  },
+  {
+    "name": "landcommodity",
+    "page": 2,
+    "question": "Buying and selling land as a commodity is wrong.",
+    "variant": "paraphrased",
+    "source_question": "Land shouldn’t be a commodity to be bought and sold."
+  },
+  {
+    "name": "manipulatemoney",
+    "page": 2,
+    "question": "It is a shame that so many fortunes are made by people who shuffle money around while giving society nothing.",
+    "variant": "paraphrased",
+    "source_question": "It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society."
+  },
+  {
+    "name": "protectionismnecessary",
+    "page": 2,
+    "question": "There are times when protective trade measures are needed.",
+    "variant": "paraphrased",
+    "source_question": "Protectionism is sometimes necessary in trade."
+  },
+  {
+    "name": "companyshareholders",
+    "page": 2,
+    "question": "Returning a profit to shareholders should be a company's sole social duty.",
+    "variant": "paraphrased",
+    "source_question": "The only social responsibility of a company should be to deliver a profit to its shareholders."
+  },
+  {
+    "name": "richtaxed",
+    "page": 2,
+    "question": "Tax rates on wealthy people are excessive.",
+    "variant": "paraphrased",
+    "source_question": "The rich are too highly taxed."
+  },
+  {
+    "name": "paymedical",
+    "page": 2,
+    "question": "People able to pay more ought to be able to obtain better medical care.",
+    "variant": "paraphrased",
+    "source_question": "Those with the ability to pay should have access to higher standards of medical care."
+  },
+  {
+    "name": "penalisemislead",
+    "page": 2,
+    "question": "Firms that deceive the public should face government penalties.",
+    "variant": "paraphrased",
+    "source_question": "Governments should penalise businesses that mislead the public."
+  },
+  {
+    "name": "freepredatormulinational",
+    "page": 2,
+    "question": "For a market to be truly free, predatory multinationals must be prevented from forming monopolies.",
+    "variant": "paraphrased",
+    "source_question": "A genuine free market requires restrictions on the ability of predator multinationals to create monopolies."
+  },
+  {
+    "name": "abortionillegal",
+    "page": 3,
+    "question": "Where the woman's life is not at risk, abortion ought to be banned in every case.",
+    "variant": "paraphrased",
+    "source_question": "Abortion, when the woman’s life is not threatened, should always be illegal."
+  },
+  {
+    "name": "questionauthority",
+    "page": 3,
+    "question": "Every form of authority ought to be challenged.",
+    "variant": "paraphrased",
+    "source_question": "All authority should be questioned."
+  },
+  {
+    "name": "eyeforeye",
+    "page": 3,
+    "question": "Wrongs should be repaid in kind, measure for measure.",
+    "variant": "paraphrased",
+    "source_question": "An eye for an eye and a tooth for a tooth."
+  },
+  {
+    "name": "taxtotheatres",
+    "page": 3,
+    "question": "Theatres and museums that cannot pay their own way have no claim on public money.",
+    "variant": "paraphrased",
+    "source_question": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis."
+  },
+  {
+    "name": "schoolscompulsory",
+    "page": 3,
+    "question": "Attending class ought to be optional rather than required.",
+    "variant": "paraphrased",
+    "source_question": "Schools should not make classroom attendance compulsory."
+  },
+  {
+    "name": "ownkind",
+    "page": 3,
+    "question": "Everyone has rights, yet we are all better off when different sorts of people stay among their own.",
+    "variant": "paraphrased",
+    "source_question": "All people have their rights, but it is better for all of us that different sorts of people should keep to their own kind."
+  },
+  {
+    "name": "spankchildren",
+    "page": 3,
+    "question": "Even good parents will occasionally need to smack a child.",
+    "variant": "paraphrased",
+    "source_question": "Good parents sometimes have to spank their children."
+  },
+  {
+    "name": "naturalsecrets",
+    "page": 3,
+    "question": "Children keeping a few things from their parents is perfectly normal.",
+    "variant": "paraphrased",
+    "source_question": "It’s natural for children to keep some secrets from their parents."
+  },
+  {
+    "name": "marijuanalegal",
+    "page": 3,
+    "question": "Holding cannabis for one's own use ought not to be treated as a crime.",
+    "variant": "paraphrased",
+    "source_question": "Possessing marijuana for personal use should not be a criminal offence."
+  },
+  {
+    "name": "schooljobs",
+    "page": 3,
+    "question": "Schools exist first and foremost to prepare young people for the job market.",
+    "variant": "paraphrased",
+    "source_question": "The prime function of schooling should be to equip the future generation to find jobs."
+  },
+  {
+    "name": "inheritablereproduce",
+    "page": 3,
+    "question": "Those carrying serious heritable disabilities ought to be barred from having children.",
+    "variant": "paraphrased",
+    "source_question": "People with serious inheritable disabilities should not be allowed to reproduce."
+  },
+  {
+    "name": "childrendiscipline",
+    "page": 3,
+    "question": "Above all else, children need to learn to submit to discipline.",
+    "variant": "paraphrased",
+    "source_question": "The most important thing for children to learn is to accept discipline."
+  },
+  {
+    "name": "savagecivilised",
+    "page": 3,
+    "question": "No people is savage and none civilised; there are simply different cultures.",
+    "variant": "paraphrased",
+    "source_question": "There are no savage and civilised peoples; there are only different cultures."
+  },
+  {
+    "name": "abletowork",
+    "page": 3,
+    "question": "People capable of working who turn down the chance have no claim on society's help.",
+    "variant": "paraphrased",
+    "source_question": "Those who are able to work, and refuse the opportunity, should not expect society’s support."
+  },
+  {
+    "name": "represstroubles",
+    "page": 3,
+    "question": "Faced with worries, one does better to stay occupied with pleasanter matters than to dwell on them.",
+    "variant": "paraphrased",
+    "source_question": "When you are troubled, it’s better not to think about it, but to keep busy with more cheerful things."
+  },
+  {
+    "name": "immigrantsintegrated",
+    "page": 3,
+    "question": "Those who immigrate themselves will never fully become part of their adopted country.",
+    "variant": "paraphrased",
+    "source_question": "First-generation immigrants can never be fully integrated within their new country."
+  },
+  {
+    "name": "goodforcorporations",
+    "page": 3,
+    "question": "Whatever benefits the biggest corporations ends up benefiting everyone.",
+    "variant": "paraphrased",
+    "source_question": "What’s good for the most successful corporations is always, ultimately, good for all of us."
+  },
+  {
+    "name": "broadcastingfunding",
+    "page": 3,
+    "question": "Public money should never go to a broadcaster, however independent its output.",
+    "variant": "paraphrased",
+    "source_question": "No broadcasting institution, however independent its content, should receive public funding."
+  },
+  {
+    "name": "libertyterrorism",
+    "page": 4,
+    "question": "Counter-terrorism has gone too far in restricting our civil freedoms.",
+    "variant": "paraphrased",
+    "source_question": "Our civil liberties are being excessively curbed in the name of counter-terrorism."
+  },
+  {
+    "name": "onepartystate",
+    "page": 4,
+    "question": "One-party rule has the genuine benefit of sidestepping the disputes that slow democracies down.",
+    "variant": "paraphrased",
+    "source_question": "A significant advantage of a one-party state is that it avoids all the arguments that delay progress in a democratic political system."
+  },
+  {
+    "name": "serveillancewrongdoers",
+    "page": 4,
+    "question": "Electronic technology has made official monitoring easier, but the innocent have nothing to fear from it.",
+    "variant": "paraphrased",
+    "source_question": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried."
+  },
+  {
+    "name": "deathpenalty",
+    "page": 4,
+    "question": "Capital punishment ought to remain available for the gravest offences.",
+    "variant": "paraphrased",
+    "source_question": "The death penalty should be an option for the most serious crimes."
+  },
+  {
+    "name": "societyheirarchy",
+    "page": 4,
+    "question": "Civilised life requires a ladder of superiors to obey and subordinates to direct.",
+    "variant": "paraphrased",
+    "source_question": "In a civilised society, one must always have people above to be obeyed and people below to be commanded."
+  },
+  {
+    "name": "abstractart",
+    "page": 4,
+    "question": "Non-representational abstract work does not deserve to be called art.",
+    "variant": "paraphrased",
+    "source_question": "Abstract art that doesn’t represent anything shouldn’t be considered art at all."
+  },
+  {
+    "name": "punishmentrehabilitation",
+    "page": 4,
+    "question": "Justice systems ought to weight punishment above reform of the offender.",
+    "variant": "paraphrased",
+    "source_question": "In criminal justice, punishment should be more important than rehabilitation."
+  },
+  {
+    "name": "wastecriminals",
+    "page": 4,
+    "question": "With certain criminals, attempts at rehabilitation are a pointless use of time.",
+    "variant": "paraphrased",
+    "source_question": "It is a waste of time to try to rehabilitate some criminals."
+  },
+  {
+    "name": "businessart",
+    "page": 4,
+    "question": "Those who run businesses and make goods matter more than those who write and create art.",
+    "variant": "paraphrased",
+    "source_question": "The businessperson and the manufacturer are more important than the writer and the artist."
+  },
+  {
+    "name": "mothershomemakers",
+    "page": 4,
+    "question": "A mother may hold a job, but her primary obligation is to the home.",
+    "variant": "paraphrased",
+    "source_question": "Mothers may have careers, but their first duty is to be homemakers."
+  },
+  {
+    "name": "plantresources",
+    "page": 4,
+    "question": "Politicians nearly all pledge economic growth, yet climate science warns that growth undermines the fight against global warming, and we should listen.",
+    "variant": "paraphrased",
+    "source_question": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming."
+  },
+  {
+    "name": "peacewithestablishment",
+    "page": 4,
+    "question": "Part of growing up is learning to make peace with the established order.",
+    "variant": "paraphrased",
+    "source_question": "Making peace with the establishment is an important aspect of maturity."
+  },
+  {
+    "name": "astrology",
+    "page": 5,
+    "question": "There is much that astrology explains correctly.",
+    "variant": "paraphrased",
+    "source_question": "Astrology accurately explains many things."
+  },
+  {
+    "name": "moralreligious",
+    "page": 5,
+    "question": "Morality is impossible in the absence of religion.",
+    "variant": "paraphrased",
+    "source_question": "You cannot be moral without being religious."
+  },
+  {
+    "name": "charitysocialsecurity",
+    "page": 5,
+    "question": "For those truly in need, charitable giving works better than state welfare.",
+    "variant": "paraphrased",
+    "source_question": "Charity is better than social security as a means of helping the genuinely disadvantaged."
+  },
+  {
+    "name": "naturallyunlucky",
+    "page": 5,
+    "question": "Certain people are simply born unlucky.",
+    "variant": "paraphrased",
+    "source_question": "Some people are naturally unlucky."
+  },
+  {
+    "name": "schoolreligious",
+    "page": 5,
+    "question": "I want the school my child attends to instil religious values.",
+    "variant": "paraphrased",
+    "source_question": "It is important that my child’s school instills religious values."
+  },
+  {
+    "name": "sexoutsidemarriage",
+    "page": 6,
+    "question": "As a rule, sex outside of marriage is wrong.",
+    "variant": "paraphrased",
+    "source_question": "Sex outside marriage is usually immoral."
+  },
+  {
+    "name": "homosexualadoption",
+    "page": 6,
+    "question": "Same-sex couples in settled, loving relationships ought to be allowed to adopt a child.",
+    "variant": "paraphrased",
+    "source_question": "A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption."
+  },
+  {
+    "name": "pornography",
+    "page": 6,
+    "question": "Adults should be legally free to view pornography made by consenting adults.",
+    "variant": "paraphrased",
+    "source_question": "Pornography, depicting consenting adults, should be legal for the adult population."
+  },
+  {
+    "name": "consentingprivate",
+    "page": 6,
+    "question": "The state has no business in the private bedroom of consenting adults.",
+    "variant": "paraphrased",
+    "source_question": "What goes on in a private bedroom between consenting adults is no business of the state."
+  },
+  {
+    "name": "naturallyhomosexual",
+    "page": 6,
+    "question": "Homosexual feeling is never something that comes naturally.",
+    "variant": "paraphrased",
+    "source_question": "No one can feel naturally homosexual."
+  },
+  {
+    "name": "opennessaboutsex",
+    "page": 6,
+    "question": "Society has become too open about sexual matters.",
+    "variant": "paraphrased",
+    "source_question": "These days openness about sex has gone too far."
+  }
+]

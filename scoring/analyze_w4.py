@@ -1,6 +1,6 @@
 """Workstream 4 — re-analysis of the existing 2,280-administration dataset.
 
-Implements every task in plan.md W4. Costs nothing to run and touches no API:
+Implements every task in Workstream 4 (see updates/02_where_the_paper_stands.md). Costs nothing to run and touches no API:
 all five analyses operate on data already in the repository.
 
     python3 scoring/analyze_w4.py [--out results/w4]
@@ -262,7 +262,7 @@ def task_4_3(df: pd.DataFrame) -> dict:
     """Crossed random-effects decomposition of the 2,280 administrations.
 
     Delegates to variance_components.variance_decomposition, which is the
-    paper's single statistical model (plan.md section 5). Rolling a second
+    paper's single statistical model (updates/04_analysis.md). Rolling a second
     decomposition here would let W4 and the manuscript quote different error
     budgets computed two different ways, which is exactly the failure the
     shared module exists to prevent.
@@ -273,7 +273,7 @@ def task_4_3(df: pd.DataFrame) -> dict:
     the last being pure trial-to-trial instability, which is the quantity the
     manuscript calls stability.
     """
-    from variance_components import variance_decomposition
+    from variance_components import cluster_bootstrap_variance_shares, variance_decomposition
 
     out = variance_decomposition(
         df, value="value", random_effects=["model", "trait", "model:trait"], z_within="trait"
@@ -284,6 +284,23 @@ def task_4_3(df: pd.DataFrame) -> dict:
         "model share is the ICC for model identity, i.e. how much of a measured "
         "political position is actually about the model"
     )
+
+    # oct_fix.md F4 / updates/04_analysis.md Gate A: every variance share needs a
+    # 95% CI before it goes in the abstract. Cluster bootstrap over the 19 models
+    # (>= 2000 resamples, seed recorded) -- resampling rows instead of models
+    # would understate the interval, since rows from one model are not independent.
+    boot = cluster_bootstrap_variance_shares(
+        df, value="value", random_effects=["model", "trait", "model:trait"],
+        cluster="model", z_within="trait", n_boot=2000,
+    )
+    out["bootstrap_ci"] = {
+        "cluster_column": boot["cluster_column"],
+        "n_clusters": boot["n_clusters"],
+        "variance_share_ci": boot["variance_share_ci"],
+        "n_boot_requested": boot["n_boot_requested"],
+        "n_boot_failed": boot["n_boot_failed"],
+        "seed": boot["seed"],
+    }
     return out
 
 
@@ -357,7 +374,7 @@ def task_4_4(df: pd.DataFrame) -> dict:
 def task_4_5(df: pd.DataFrame) -> dict:
     """Cohort spread as a fraction of the instrument's full range.
 
-    plan.md asks for the spread as a fraction of the *human/party* spread. No
+    updates/04_analysis.md asks for the spread as a fraction of the *human/party* spread. No
     party-calibrated reference distribution ships with this repository, so the
     denominator here is the instrument's own full range, which is a strictly
     conservative stand-in: it makes the cohort look *wider* than a party-spread
@@ -386,7 +403,7 @@ def task_4_5(df: pd.DataFrame) -> dict:
         "caveat": (
             "Denominator is the instrument's full range, not a party/human spread. "
             "Substitute reference_spread once a calibrated human distribution exists "
-            "(plan.md W5) and the fractions will shrink, strengthening the claim."
+            "(updates/03_experiments.md Task 1.5, human-norm instrument) and the fractions will shrink, strengthening the claim."
         ),
     }
 

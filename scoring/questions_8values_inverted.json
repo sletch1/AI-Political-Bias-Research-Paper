@@ -1,0 +1,772 @@
+[
+  {
+    "question": "Oppression by governments is more of a concern than oppression by corporations.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": -5,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Oppression by corporations is more of a concern than oppression by governments."
+  },
+  {
+    "question": "Consumers are best protected when the government stays out of the economy.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "It is necessary for the government to intervene in the economy to protect consumers."
+  },
+  {
+    "question": "The freer the markets, the less free the people.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "The freer the markets, the freer the people."
+  },
+  {
+    "question": "It is better to ensure welfare for all citizens than to maintain a balanced budget.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "It is better to maintain a balanced budget than to ensure welfare for all citizens."
+  },
+  {
+    "question": "Leaving research to the market is more beneficial to the people than funding it publicly.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "Publicly-funded research is more beneficial to the people than leaving it to the market."
+  },
+  {
+    "question": "Tariffs on international trade should be avoided rather than used to encourage local production.",
+    "effect": {
+      "econ": 5,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Tariffs on international trade are important to encourage local production."
+  },
+  {
+    "question": "To each according to what he produces, not according to his needs.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "From each according to his ability, to each according to his needs."
+  },
+  {
+    "question": "It would be best to keep social programs rather than replace them with private charity.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "It would be best if social programs were abolished in favor of private charity."
+  },
+  {
+    "question": "Taxes on the rich should be reduced rather than raised to provide for the poor.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Taxes should be increased on the rich to provide for the poor."
+  },
+  {
+    "question": "Inheritance is an illegitimate form of wealth.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": -5
+    },
+    "variant": "inverted",
+    "source_question": "Inheritance is a legitimate form of wealth."
+  },
+  {
+    "question": "Basic utilities like roads and electricity should be privately owned.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Basic utilities like roads and electricity should be publicly owned."
+  },
+  {
+    "question": "Government intervention is a benefit to the economy.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Government intervention is a threat to the economy."
+  },
+  {
+    "question": "Everyone should receive the same standard of healthcare regardless of ability to pay.",
+    "effect": {
+      "econ": -10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Those with a greater ability to pay should receive better healthcare."
+  },
+  {
+    "question": "Quality education is a privilege to be earned or purchased, not a right of all people.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 5
+    },
+    "variant": "inverted",
+    "source_question": "Quality education is a right of all people."
+  },
+  {
+    "question": "The means of production should belong to those who own and invest in them, not to the workers who use them.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "The means of production should belong to the workers who use them."
+  },
+  {
+    "question": "The United Nations should be preserved.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -5,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "The United Nations should be abolished."
+  },
+  {
+    "question": "Military action by our nation is rarely necessary to protect it.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Military action by our nation is often necessary to protect it."
+  },
+  {
+    "question": "I oppose regional unions, such as the European Union.",
+    "effect": {
+      "econ": -5,
+      "dipl": 10,
+      "govt": 10,
+      "scty": 5
+    },
+    "variant": "inverted",
+    "source_question": "I support regional unions, such as the European Union."
+  },
+  {
+    "question": "It is acceptable to give up our national sovereignty.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -5,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "It is important to maintain our national sovereignty."
+  },
+  {
+    "question": "A united world government would be harmful to mankind.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "A united world government would be beneficial to mankind."
+  },
+  {
+    "question": "It is more important to further our strength than to retain peaceful relations.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "It is more important to retain peaceful relations than to further our strength."
+  },
+  {
+    "question": "Wars must be justified to other countries.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Wars do not need to be justified to other countries."
+  },
+  {
+    "question": "Military spending is money well spent.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Military spending is a waste of money."
+  },
+  {
+    "question": "International aid is money well spent.",
+    "effect": {
+      "econ": -5,
+      "dipl": -10,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "International aid is a waste of money."
+  },
+  {
+    "question": "My nation is not great.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "My nation is great."
+  },
+  {
+    "question": "Research should be conducted on a national scale.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "Research should be conducted on an international scale."
+  },
+  {
+    "question": "Governments should be accountable only to their own citizens, not to the international community.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 5,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Governments should be accountable to the international community."
+  },
+  {
+    "question": "When protesting an authoritarian government, violence is acceptable.",
+    "effect": {
+      "econ": 0,
+      "dipl": 5,
+      "govt": -5,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Even when protesting an authoritarian government, violence is not acceptable."
+  },
+  {
+    "question": "My religious values should be kept to myself rather than spread.",
+    "effect": {
+      "econ": 0,
+      "dipl": -5,
+      "govt": -10,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "My religious values should be spread as much as possible."
+  },
+  {
+    "question": "Our nation's values should be kept to ourselves rather than spread.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -5,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Our nation's values should be spread as much as possible."
+  },
+  {
+    "question": "Maintaining law and order is not very important.",
+    "effect": {
+      "econ": 0,
+      "dipl": -5,
+      "govt": -10,
+      "scty": -5
+    },
+    "variant": "inverted",
+    "source_question": "It is very important to maintain law and order."
+  },
+  {
+    "question": "The general populace makes good decisions.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "The general populace makes poor decisions."
+  },
+  {
+    "question": "Physician-assisted suicide should be illegal.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Physician-assisted suicide should be legal."
+  },
+  {
+    "question": "Civil liberties should be preserved in full even in the face of acts of terrorism.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "The sacrifice of some civil liberties is necessary to protect us from acts of terrorism."
+  },
+  {
+    "question": "Government surveillance is unnecessary in the modern world.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Government surveillance is necessary in the modern world."
+  },
+  {
+    "question": "The very existence of the state is a safeguard of our liberty.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "The very existence of the state is a threat to our liberty."
+  },
+  {
+    "question": "It is more important to side with your political convictions than with your country.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -10,
+      "scty": -5
+    },
+    "variant": "inverted",
+    "source_question": "Regardless of political opinions, it is important to side with your country."
+  },
+  {
+    "question": "Authority should be respected rather than questioned.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 5
+    },
+    "variant": "inverted",
+    "source_question": "All authority should be questioned."
+  },
+  {
+    "question": "An egalitarian, non-hierarchical state is best.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "A hierarchical state is best."
+  },
+  {
+    "question": "The government should not follow majority opinion when that opinion is wrong.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "It is important that the government follows the majority opinion, even if it is wrong."
+  },
+  {
+    "question": "The stronger the leadership, the worse.",
+    "effect": {
+      "econ": 0,
+      "dipl": -10,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "The stronger the leadership, the better."
+  },
+  {
+    "question": "Democracy is nothing more than a decision-making process.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Democracy is more than a decision-making process."
+  },
+  {
+    "question": "Environmental regulations are unnecessary.",
+    "effect": {
+      "econ": 5,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "Environmental regulations are essential."
+  },
+  {
+    "question": "A better world will not come from automation, science, and technology.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "A better world will come from automation, science, and technology."
+  },
+  {
+    "question": "Children should be educated apart from religious or traditional values.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -5,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "Children should be educated in religious or traditional values."
+  },
+  {
+    "question": "Traditions are valuable in their own right.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "Traditions are of no value on their own."
+  },
+  {
+    "question": "Religion should play no role in government.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "Religion should play a role in government."
+  },
+  {
+    "question": "Churches should be exempt from the taxes other institutions pay.",
+    "effect": {
+      "econ": 5,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "Churches should be taxed the same way other institutions are taxed."
+  },
+  {
+    "question": "Climate change is currently only a minor threat to our way of life.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "Climate change is currently one of the greatest threats to our way of life."
+  },
+  {
+    "question": "Each country should tackle climate change on its own rather than as a united world.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "It is important that we work as a united world to combat climate change."
+  },
+  {
+    "question": "Society is better now than it was many years ago.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "Society was better many years ago than it is now."
+  },
+  {
+    "question": "It is important that we move beyond the traditions of our past.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "It is important that we maintain the traditions of our past."
+  },
+  {
+    "question": "It is important that we focus on the present rather than beyond our lifespans.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "It is important that we think in the long term, beyond our lifespans."
+  },
+  {
+    "question": "Maintaining our culture is more important than reason.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "Reason is more important than maintaining our culture."
+  },
+  {
+    "question": "Drug use should remain a criminal offence.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 2
+    },
+    "variant": "inverted",
+    "source_question": "Drug use should be legalized or decriminalized."
+  },
+  {
+    "question": "Same-sex marriage should be illegal.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 10,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "Same-sex marriage should be legal."
+  },
+  {
+    "question": "Some cultures are superior to others.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 5,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "No cultures are superior to others."
+  },
+  {
+    "question": "Sex outside marriage is morally acceptable.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -5,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "Sex outside marriage is immoral."
+  },
+  {
+    "question": "If we accept migrants at all, it is important that they are free to keep their own culture.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -5,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "If we accept migrants at all, it is important that they assimilate into our culture."
+  },
+  {
+    "question": "Abortion should be permitted in most or all cases.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "Abortion should be prohibited in most or all cases."
+  },
+  {
+    "question": "Gun ownership should be permitted even for those without a valid reason.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Gun ownership should be prohibited for those without a valid reason."
+  },
+  {
+    "question": "I oppose single-payer, universal healthcare.",
+    "effect": {
+      "econ": 10,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "I support single-payer, universal healthcare."
+  },
+  {
+    "question": "Prostitution should be legal.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": -10,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "Prostitution should be illegal."
+  },
+  {
+    "question": "Maintaining family values is unnecessary.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "Maintaining family values is essential."
+  },
+  {
+    "question": "Progress is worth chasing whatever the cost.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "To chase progress at all costs is dangerous."
+  },
+  {
+    "question": "Genetic modification is a force for harm, especially on humans.",
+    "effect": {
+      "econ": 0,
+      "dipl": 0,
+      "govt": 0,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "Genetic modification is a force for good, even on humans."
+  },
+  {
+    "question": "We should close our borders to immigration.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 10,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "We should open our borders to immigration."
+  },
+  {
+    "question": "Governments should be more concerned about their own citizens than about foreigners.",
+    "effect": {
+      "econ": 0,
+      "dipl": 10,
+      "govt": 0,
+      "scty": 0
+    },
+    "variant": "inverted",
+    "source_question": "Governments should be as concerned about foreigners as they are about their own citizens."
+  },
+  {
+    "question": "People should be treated differently according to factors like culture or sexuality.",
+    "effect": {
+      "econ": 10,
+      "dipl": 10,
+      "govt": 10,
+      "scty": 10
+    },
+    "variant": "inverted",
+    "source_question": "All people - regardless of factors like culture or sexuality - should be treated equally."
+  },
+  {
+    "question": "It is important that we weigh every group's goals equally rather than put my group's first.",
+    "effect": {
+      "econ": -10,
+      "dipl": -10,
+      "govt": -10,
+      "scty": -10
+    },
+    "variant": "inverted",
+    "source_question": "It is important that we further my group's goals above all others."
+  }
+]

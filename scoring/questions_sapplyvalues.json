@@ -1,0 +1,370 @@
+[
+  {
+    "question": "Freedom of business is the best practical way a society can prosper.",
+    "effect": {
+      "right": 1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Charity is a better way of helping those in need than social welfare.",
+    "effect": {
+      "right": 1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Wages are always fair, as employers know best what a worker's labour is worth.",
+    "effect": {
+      "right": 1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "It is \"human nature\" to be greedy.",
+    "effect": {
+      "right": 1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "\"Exploitation\" is an outdated term, as the struggles of 1800s capitalism don't exist anymore.",
+    "effect": {
+      "right": 1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Communism is an ideal that can never work in practice.",
+    "effect": {
+      "right": 1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Taxation of the wealthy is a bad idea, society would be better off without it.",
+    "effect": {
+      "right": 1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "The harder you work, the more you progress up the social ladder.",
+    "effect": {
+      "right": 1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Organisations and corporations cannot be trusted and need to be regulated by the government.",
+    "effect": {
+      "right": -1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "A government that provides for everyone is an inherently good idea.",
+    "effect": {
+      "right": -1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "The current welfare system should be expanded to further combat inequality.",
+    "effect": {
+      "right": -1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Land should not be a commodity to be bought and sold.",
+    "effect": {
+      "right": -1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "All industry and the bank should be nationalised.",
+    "effect": {
+      "right": -1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Class is the primary division of society.",
+    "effect": {
+      "right": -1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Economic inequality is too high in the world.",
+    "effect": {
+      "right": -1,
+      "auth": 0,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Sometimes it is right that the government may spy on its citizens to combat extremists and terrorists.",
+    "effect": {
+      "right": 0,
+      "auth": 1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Authority figures, if morally correct, are a good thing for society.",
+    "effect": {
+      "right": 0,
+      "auth": 1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Strength is necessary for any government to succeed.",
+    "effect": {
+      "right": 0,
+      "auth": 1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Only the government can fairly and effectively regulate organisations.",
+    "effect": {
+      "right": 0,
+      "auth": 1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Society requires structure and bureaucracy in order to function.",
+    "effect": {
+      "right": 0,
+      "auth": 1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Mandatory IDs should be used to ensure public safety.",
+    "effect": {
+      "right": 0,
+      "auth": 1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "In times of crisis, safety becomes more important than civil liberties.",
+    "effect": {
+      "right": 0,
+      "auth": 1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "If you have nothing to hide, you have nothing to fear.",
+    "effect": {
+      "right": 0,
+      "auth": 1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "The government should be less involved in the day to day life of its citizens.",
+    "effect": {
+      "right": 0,
+      "auth": -1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Without democracy, a society is nothing.",
+    "effect": {
+      "right": 0,
+      "auth": -1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Jury nullification should be legal.",
+    "effect": {
+      "right": 0,
+      "auth": -1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "The smaller the government, the freer the people.",
+    "effect": {
+      "right": 0,
+      "auth": -1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "The government should, at most, provide emergency services and law enforcement.",
+    "effect": {
+      "right": 0,
+      "auth": -1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "The police were not created to protect the people, but to uphold the status quo by force.",
+    "effect": {
+      "right": 0,
+      "auth": -1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "State schools are a bad idea because our state shouldn't be influencing our children.",
+    "effect": {
+      "right": 0,
+      "auth": -1,
+      "prog": 0
+    }
+  },
+  {
+    "question": "Two consenting individuals should be able to do whatever they want with each other, even if it makes me uncomfortable.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": 1
+    }
+  },
+  {
+    "question": "An individual's body is their own property, and they should be able to do anything they desire to it.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": 1
+    }
+  },
+  {
+    "question": "A person should be able to worship whomever or whatever they want.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": 1
+    }
+  },
+  {
+    "question": "Nudism is perfectly natural.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": 1
+    }
+  },
+  {
+    "question": "Animals deserve certain universal rights.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": 1
+    }
+  },
+  {
+    "question": "Gender is a social construct, not a natural state of affairs.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": 1
+    }
+  },
+  {
+    "question": "Laws based on cultural values, rather than ethical ones, aren't justice.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": 1
+    }
+  },
+  {
+    "question": "Autonomy of body extends even to minors, the mentally ill, and serious criminals.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": 1
+    }
+  },
+  {
+    "question": "Homosexuality is against my values.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": -1
+    }
+  },
+  {
+    "question": "Transgender individuals should not be able to adopt children.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": -1
+    }
+  },
+  {
+    "question": "Drugs are harmful and should be banned.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": -1
+    }
+  },
+  {
+    "question": "The death penalty should exist for certain crimes.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": -1
+    }
+  },
+  {
+    "question": "Victimless crimes should still be punished.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": -1
+    }
+  },
+  {
+    "question": "One cannot be moral without religion.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": -1
+    }
+  },
+  {
+    "question": "Parents should hold absolute power over their children, as they are older and more experienced.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": -1
+    }
+  },
+  {
+    "question": "Multiculturalism is bad.",
+    "effect": {
+      "right": 0,
+      "auth": 0,
+      "prog": -1
+    }
+  }
+]

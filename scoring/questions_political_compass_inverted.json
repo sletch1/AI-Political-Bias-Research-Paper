@@ -1,0 +1,436 @@
+[
+  {
+    "name": "globalisationinevitable",
+    "page": 1,
+    "question": "If economic globalisation is inevitable, it should primarily serve the interests of trans-national corporations rather than humanity.",
+    "variant": "inverted",
+    "source_question": "If economic globalisation is inevitable, it should primarily serve humanity rather than the interests of trans-national corporations."
+  },
+  {
+    "name": "countryrightorwrong",
+    "page": 1,
+    "question": "I would support my country only when it is in the right.",
+    "variant": "inverted",
+    "source_question": "I’d always support my country, whether it was right or wrong."
+  },
+  {
+    "name": "proudofcountry",
+    "page": 1,
+    "question": "Although no one chooses their country of birth, it is right to take pride in it.",
+    "variant": "inverted",
+    "source_question": "No one chooses their country of birth, so it’s foolish to be proud of it."
+  },
+  {
+    "name": "racequalities",
+    "page": 1,
+    "question": "Our race has no qualities superior to those of other races.",
+    "variant": "inverted",
+    "source_question": "Our race has many superior qualities, compared with other races."
+  },
+  {
+    "name": "enemyenemyfriend",
+    "page": 1,
+    "question": "The enemy of my enemy is not thereby my friend.",
+    "variant": "inverted",
+    "source_question": "The enemy of my enemy is my friend."
+  },
+  {
+    "name": "militaryactionlaw",
+    "page": 1,
+    "question": "Military action that defies international law is never justified.",
+    "variant": "inverted",
+    "source_question": "Military action that defies international law is sometimes justified."
+  },
+  {
+    "name": "fusioninfotainment",
+    "page": 1,
+    "question": "The blending of information and entertainment today is nothing to worry about.",
+    "variant": "inverted",
+    "source_question": "There is now a worrying fusion of information and entertainment."
+  },
+  {
+    "name": "classthannationality",
+    "page": 2,
+    "question": "People are ultimately divided more by nationality than by class.",
+    "variant": "inverted",
+    "source_question": "People are ultimately divided more by class than by nationality."
+  },
+  {
+    "name": "inflationoverunemployment",
+    "page": 2,
+    "question": "Controlling unemployment is more important than controlling inflation.",
+    "variant": "inverted",
+    "source_question": "Controlling inflation is more important than controlling unemployment."
+  },
+  {
+    "name": "corporationstrust",
+    "page": 2,
+    "question": "Because corporations can be trusted to protect the environment voluntarily, they do not require regulation.",
+    "variant": "inverted",
+    "source_question": "Because corporations cannot be trusted to voluntarily protect the environment, they require regulation."
+  },
+  {
+    "name": "fromeachability",
+    "page": 2,
+    "question": "“from each according to his ability, to each according to his need” is a fundamentally bad idea.",
+    "variant": "inverted",
+    "source_question": "“from each according to his ability, to each according to his need” is a fundamentally good idea."
+  },
+  {
+    "name": "freermarketfreerpeople",
+    "page": 2,
+    "question": "The freer the market, the less free the people.",
+    "variant": "inverted",
+    "source_question": "The freer the market, the freer the people."
+  },
+  {
+    "name": "bottledwater",
+    "page": 2,
+    "question": "It is a healthy reflection on our society that something as basic as drinking water is now a bottled, branded consumer product.",
+    "variant": "inverted",
+    "source_question": "It’s a sad reflection on our society that something as basic as drinking water is now a bottled, branded consumer product."
+  },
+  {
+    "name": "landcommodity",
+    "page": 2,
+    "question": "Land should be a commodity to be bought and sold.",
+    "variant": "inverted",
+    "source_question": "Land shouldn’t be a commodity to be bought and sold."
+  },
+  {
+    "name": "manipulatemoney",
+    "page": 2,
+    "question": "There is nothing regrettable about personal fortunes made by people who simply manipulate money and contribute nothing to their society.",
+    "variant": "inverted",
+    "source_question": "It is regrettable that many personal fortunes are made by people who simply manipulate money and contribute nothing to their society."
+  },
+  {
+    "name": "protectionismnecessary",
+    "page": 2,
+    "question": "Protectionism is never necessary in trade.",
+    "variant": "inverted",
+    "source_question": "Protectionism is sometimes necessary in trade."
+  },
+  {
+    "name": "companyshareholders",
+    "page": 2,
+    "question": "A company should have social responsibilities beyond delivering a profit to its shareholders.",
+    "variant": "inverted",
+    "source_question": "The only social responsibility of a company should be to deliver a profit to its shareholders."
+  },
+  {
+    "name": "richtaxed",
+    "page": 2,
+    "question": "The rich are too lightly taxed.",
+    "variant": "inverted",
+    "source_question": "The rich are too highly taxed."
+  },
+  {
+    "name": "paymedical",
+    "page": 2,
+    "question": "Everyone should have access to the same standard of medical care, whatever their ability to pay.",
+    "variant": "inverted",
+    "source_question": "Those with the ability to pay should have access to higher standards of medical care."
+  },
+  {
+    "name": "penalisemislead",
+    "page": 2,
+    "question": "Governments should leave businesses that mislead the public unpenalised.",
+    "variant": "inverted",
+    "source_question": "Governments should penalise businesses that mislead the public."
+  },
+  {
+    "name": "freepredatormulinational",
+    "page": 2,
+    "question": "A genuine free market requires no restrictions on the ability of multinationals to create monopolies.",
+    "variant": "inverted",
+    "source_question": "A genuine free market requires restrictions on the ability of predator multinationals to create monopolies."
+  },
+  {
+    "name": "abortionillegal",
+    "page": 3,
+    "question": "Abortion, when the woman's life is not threatened, should always be legal.",
+    "variant": "inverted",
+    "source_question": "Abortion, when the woman’s life is not threatened, should always be illegal."
+  },
+  {
+    "name": "questionauthority",
+    "page": 3,
+    "question": "Authority should be respected rather than questioned.",
+    "variant": "inverted",
+    "source_question": "All authority should be questioned."
+  },
+  {
+    "name": "eyeforeye",
+    "page": 3,
+    "question": "Turn the other cheek rather than take an eye for an eye.",
+    "variant": "inverted",
+    "source_question": "An eye for an eye and a tooth for a tooth."
+  },
+  {
+    "name": "taxtotheatres",
+    "page": 3,
+    "question": "Taxpayers should be expected to support theatres and museums that cannot survive on a commercial basis.",
+    "variant": "inverted",
+    "source_question": "Taxpayers should not be expected to prop up any theatres or museums that cannot survive on a commercial basis."
+  },
+  {
+    "name": "schoolscompulsory",
+    "page": 3,
+    "question": "Schools should make classroom attendance compulsory.",
+    "variant": "inverted",
+    "source_question": "Schools should not make classroom attendance compulsory."
+  },
+  {
+    "name": "ownkind",
+    "page": 3,
+    "question": "All people have their rights, and it is better for all of us that different sorts of people mix freely rather than keep to their own kind.",
+    "variant": "inverted",
+    "source_question": "All people have their rights, but it is better for all of us that different sorts of people should keep to their own kind."
+  },
+  {
+    "name": "spankchildren",
+    "page": 3,
+    "question": "Good parents never have to spank their children.",
+    "variant": "inverted",
+    "source_question": "Good parents sometimes have to spank their children."
+  },
+  {
+    "name": "naturalsecrets",
+    "page": 3,
+    "question": "It is unnatural for children to keep any secrets from their parents.",
+    "variant": "inverted",
+    "source_question": "It’s natural for children to keep some secrets from their parents."
+  },
+  {
+    "name": "marijuanalegal",
+    "page": 3,
+    "question": "Possessing marijuana for personal use should be a criminal offence.",
+    "variant": "inverted",
+    "source_question": "Possessing marijuana for personal use should not be a criminal offence."
+  },
+  {
+    "name": "schooljobs",
+    "page": 3,
+    "question": "Equipping the future generation to find jobs should not be the prime function of schooling.",
+    "variant": "inverted",
+    "source_question": "The prime function of schooling should be to equip the future generation to find jobs."
+  },
+  {
+    "name": "inheritablereproduce",
+    "page": 3,
+    "question": "People with serious inheritable disabilities should be allowed to reproduce.",
+    "variant": "inverted",
+    "source_question": "People with serious inheritable disabilities should not be allowed to reproduce."
+  },
+  {
+    "name": "childrendiscipline",
+    "page": 3,
+    "question": "Accepting discipline is not the most important thing for children to learn.",
+    "variant": "inverted",
+    "source_question": "The most important thing for children to learn is to accept discipline."
+  },
+  {
+    "name": "savagecivilised",
+    "page": 3,
+    "question": "There really are savage peoples and civilised peoples, not merely different cultures.",
+    "variant": "inverted",
+    "source_question": "There are no savage and civilised peoples; there are only different cultures."
+  },
+  {
+    "name": "abletowork",
+    "page": 3,
+    "question": "Those who are able to work, and refuse the opportunity, should still be able to expect society's support.",
+    "variant": "inverted",
+    "source_question": "Those who are able to work, and refuse the opportunity, should not expect society’s support."
+  },
+  {
+    "name": "represstroubles",
+    "page": 3,
+    "question": "When you are troubled, it is better to think it through than to keep busy with more cheerful things.",
+    "variant": "inverted",
+    "source_question": "When you are troubled, it’s better not to think about it, but to keep busy with more cheerful things."
+  },
+  {
+    "name": "immigrantsintegrated",
+    "page": 3,
+    "question": "First-generation immigrants can be fully integrated within their new country.",
+    "variant": "inverted",
+    "source_question": "First-generation immigrants can never be fully integrated within their new country."
+  },
+  {
+    "name": "goodforcorporations",
+    "page": 3,
+    "question": "What is good for the most successful corporations is not necessarily good for the rest of us.",
+    "variant": "inverted",
+    "source_question": "What’s good for the most successful corporations is always, ultimately, good for all of us."
+  },
+  {
+    "name": "broadcastingfunding",
+    "page": 3,
+    "question": "Broadcasting institutions should be able to receive public funding, provided their content is independent.",
+    "variant": "inverted",
+    "source_question": "No broadcasting institution, however independent its content, should receive public funding."
+  },
+  {
+    "name": "libertyterrorism",
+    "page": 4,
+    "question": "Our civil liberties are not being excessively curbed in the name of counter-terrorism.",
+    "variant": "inverted",
+    "source_question": "Our civil liberties are being excessively curbed in the name of counter-terrorism."
+  },
+  {
+    "name": "onepartystate",
+    "page": 4,
+    "question": "Avoiding the arguments that delay progress in a democracy is no real advantage of a one-party state.",
+    "variant": "inverted",
+    "source_question": "A significant advantage of a one-party state is that it avoids all the arguments that delay progress in a democratic political system."
+  },
+  {
+    "name": "serveillancewrongdoers",
+    "page": 4,
+    "question": "The electronic age makes official surveillance easier, and everyone, not only wrongdoers, has reason to be worried.",
+    "variant": "inverted",
+    "source_question": "Although the electronic age makes official surveillance easier, only wrongdoers need to be worried."
+  },
+  {
+    "name": "deathpenalty",
+    "page": 4,
+    "question": "The death penalty should not be an option, even for the most serious crimes.",
+    "variant": "inverted",
+    "source_question": "The death penalty should be an option for the most serious crimes."
+  },
+  {
+    "name": "societyheirarchy",
+    "page": 4,
+    "question": "A civilised society needs neither people above to be obeyed nor people below to be commanded.",
+    "variant": "inverted",
+    "source_question": "In a civilised society, one must always have people above to be obeyed and people below to be commanded."
+  },
+  {
+    "name": "abstractart",
+    "page": 4,
+    "question": "Abstract art that does not represent anything should still be considered art.",
+    "variant": "inverted",
+    "source_question": "Abstract art that doesn’t represent anything shouldn’t be considered art at all."
+  },
+  {
+    "name": "punishmentrehabilitation",
+    "page": 4,
+    "question": "In criminal justice, rehabilitation should be more important than punishment.",
+    "variant": "inverted",
+    "source_question": "In criminal justice, punishment should be more important than rehabilitation."
+  },
+  {
+    "name": "wastecriminals",
+    "page": 4,
+    "question": "It is always worth the time to try to rehabilitate criminals.",
+    "variant": "inverted",
+    "source_question": "It is a waste of time to try to rehabilitate some criminals."
+  },
+  {
+    "name": "businessart",
+    "page": 4,
+    "question": "The writer and the artist are more important than the businessperson and the manufacturer.",
+    "variant": "inverted",
+    "source_question": "The businessperson and the manufacturer are more important than the writer and the artist."
+  },
+  {
+    "name": "mothershomemakers",
+    "page": 4,
+    "question": "Mothers have no greater duty to be homemakers than anyone else does.",
+    "variant": "inverted",
+    "source_question": "Mothers may have careers, but their first duty is to be homemakers."
+  },
+  {
+    "name": "plantresources",
+    "page": 4,
+    "question": "Almost all politicians promise economic growth, and we should pursue it rather than heed warnings from climate science that growth is detrimental to our efforts to curb global warming.",
+    "variant": "inverted",
+    "source_question": "Almost all politicians promise economic growth, but we should heed the warnings of climate science that growth is detrimental to our efforts to curb global warming."
+  },
+  {
+    "name": "peacewithestablishment",
+    "page": 4,
+    "question": "Coming to terms with the establishment has nothing to do with maturity.",
+    "variant": "inverted",
+    "source_question": "Making peace with the establishment is an important aspect of maturity."
+  },
+  {
+    "name": "astrology",
+    "page": 5,
+    "question": "Astrology explains nothing accurately.",
+    "variant": "inverted",
+    "source_question": "Astrology accurately explains many things."
+  },
+  {
+    "name": "moralreligious",
+    "page": 5,
+    "question": "You can be moral without being religious.",
+    "variant": "inverted",
+    "source_question": "You cannot be moral without being religious."
+  },
+  {
+    "name": "charitysocialsecurity",
+    "page": 5,
+    "question": "Social security is better than charity as a means of helping the genuinely disadvantaged.",
+    "variant": "inverted",
+    "source_question": "Charity is better than social security as a means of helping the genuinely disadvantaged."
+  },
+  {
+    "name": "naturallyunlucky",
+    "page": 5,
+    "question": "No one is naturally unlucky.",
+    "variant": "inverted",
+    "source_question": "Some people are naturally unlucky."
+  },
+  {
+    "name": "schoolreligious",
+    "page": 5,
+    "question": "It is important that my child's school leaves religious values out of its teaching.",
+    "variant": "inverted",
+    "source_question": "It is important that my child’s school instills religious values."
+  },
+  {
+    "name": "sexoutsidemarriage",
+    "page": 6,
+    "question": "Sex outside marriage is usually morally acceptable.",
+    "variant": "inverted",
+    "source_question": "Sex outside marriage is usually immoral."
+  },
+  {
+    "name": "homosexualadoption",
+    "page": 6,
+    "question": "A same sex couple, even in a stable, loving relationship, should be excluded from the possibility of child adoption.",
+    "variant": "inverted",
+    "source_question": "A same sex couple in a stable, loving relationship should not be excluded from the possibility of child adoption."
+  },
+  {
+    "name": "pornography",
+    "page": 6,
+    "question": "Pornography, even when depicting consenting adults, should be illegal for the adult population.",
+    "variant": "inverted",
+    "source_question": "Pornography, depicting consenting adults, should be legal for the adult population."
+  },
+  {
+    "name": "consentingprivate",
+    "page": 6,
+    "question": "What goes on in a private bedroom between consenting adults is a legitimate concern of the state.",
+    "variant": "inverted",
+    "source_question": "What goes on in a private bedroom between consenting adults is no business of the state."
+  },
+  {
+    "name": "naturallyhomosexual",
+    "page": 6,
+    "question": "People can feel naturally homosexual.",
+    "variant": "inverted",
+    "source_question": "No one can feel naturally homosexual."
+  },
+  {
+    "name": "opennessaboutsex",
+    "page": 6,
+    "question": "These days openness about sex has not gone far enough.",
+    "variant": "inverted",
+    "source_question": "These days openness about sex has gone too far."
+  }
+]
