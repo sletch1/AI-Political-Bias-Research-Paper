@@ -232,6 +232,17 @@ def bootstrap_ci(x, y=None, statistic=None, n_boot: int = 10000,
             "n_boot": int(len(draws)), "alpha": alpha}
 
 
+def _cluster_resample(df: pd.DataFrame, cluster: str, clusters, rng) -> pd.DataFrame:
+    """One cluster-bootstrap resample: draw cluster IDs with replacement and
+    keep every row belonging to a drawn ID, repeated for each time it was
+    drawn. Shared by every cluster-bootstrap function below so the resampling
+    itself is implemented once."""
+    picked = rng.choice(clusters, size=len(clusters), replace=True)
+    counts = pd.Series(picked).value_counts()
+    parts = [df[df[cluster] == cid] for cid in counts.index for _ in range(counts[cid])]
+    return pd.concat(parts, ignore_index=True)
+
+
 def cluster_bootstrap_variance_shares(df: pd.DataFrame, value: str, random_effects,
                                       cluster: str, fixed_effects=(), z_within=None,
                                       n_boot: int = 2000, alpha: float = 0.05,
@@ -259,10 +270,7 @@ def cluster_bootstrap_variance_shares(df: pd.DataFrame, value: str, random_effec
     draws: dict = {k: [] for k in point["variance_share"]}
     n_failed = 0
     for _ in range(n_boot):
-        picked = rng.choice(clusters, size=n, replace=True)
-        counts = pd.Series(picked).value_counts()
-        parts = [df[df[cluster] == cid] for cid in counts.index for _ in range(counts[cid])]
-        resample = pd.concat(parts, ignore_index=True)
+        resample = _cluster_resample(df, cluster, clusters, rng)
         try:
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
@@ -288,6 +296,62 @@ def cluster_bootstrap_variance_shares(df: pd.DataFrame, value: str, random_effec
         "cluster_column": cluster,
         "n_clusters": int(n),
         "variance_share_ci": ci,
+        "n_boot_requested": n_boot,
+        "n_boot_failed": n_failed,
+        "alpha": alpha,
+        "seed": seed,
+    }
+
+
+def cluster_bootstrap_eta_squared(df: pd.DataFrame, value: str, factors,
+                                  cluster: str, n_boot: int = 2000, alpha: float = 0.05,
+                                  seed: int = 20260920) -> dict:
+    """95% CIs on partial eta-squared for each factor, by resampling whole
+    clusters (see `_cluster_resample`) and refitting `partial_eta_squared` on
+    each resample.
+
+    The asker-identity, contamination, and response-format arms
+    (oct_fix.md checklist: "every variance share has a 95% CI") report
+    partial eta-squared from a fixed-effects ANOVA rather than the
+    random-effects variance shares `cluster_bootstrap_variance_shares`
+    handles, so this is a separate function rather than a variant call --
+    the two statistics are estimated by different models and are not
+    interchangeable inputs to one bootstrap loop.
+    """
+    rng = np.random.default_rng(seed)
+    point = partial_eta_squared(df, value=value, factors=factors)
+    clusters = df[cluster].unique()
+    n = len(clusters)
+
+    usable = [f for f in factors if isinstance(point.get(f), dict)]
+    draws: dict = {f: [] for f in usable}
+    n_failed = 0
+    for _ in range(n_boot):
+        resample = _cluster_resample(df, cluster, clusters, rng)
+        try:
+            fit = partial_eta_squared(resample, value=value, factors=factors)
+        except Exception:
+            n_failed += 1
+            continue
+        for f in usable:
+            entry = fit.get(f)
+            if isinstance(entry, dict) and "partial_eta_squared" in entry:
+                draws[f].append(entry["partial_eta_squared"])
+
+    ci = {}
+    for f, vals in draws.items():
+        arr = np.asarray([v for v in vals if np.isfinite(v)])
+        if len(arr) < 10:
+            ci[f] = {"ci_lower": float("nan"), "ci_upper": float("nan"), "n_boot": int(len(arr))}
+            continue
+        lo, hi = np.percentile(arr, [100 * alpha / 2, 100 * (1 - alpha / 2)])
+        ci[f] = {"ci_lower": float(lo), "ci_upper": float(hi), "n_boot": int(len(arr))}
+
+    return {
+        "point_estimate": point,
+        "cluster_column": cluster,
+        "n_clusters": int(n),
+        "eta_squared_ci": ci,
         "n_boot_requested": n_boot,
         "n_boot_failed": n_failed,
         "alpha": alpha,

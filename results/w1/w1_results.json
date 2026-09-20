@@ -70,6 +70,11 @@
         "trait": "8values:equality",
         "eta_sq_model": 0.24360155110391818,
         "eta_sq_condition": 0.81084672335087,
+        "eta_sq_condition_ci": {
+          "ci_lower": 0.7283678313738842,
+          "ci_upper": 0.889965042777193,
+          "n_boot": 2000
+        },
         "p_condition": 0.0,
         "condition_means": {
           "apolitical": 69.44555555555556,
@@ -87,6 +92,11 @@
         "trait": "8values:liberty",
         "eta_sq_model": 0.16327432734938083,
         "eta_sq_condition": 0.7708585594782776,
+        "eta_sq_condition_ci": {
+          "ci_lower": 0.6640958709398063,
+          "ci_upper": 0.8738824445386878,
+          "n_boot": 2000
+        },
         "p_condition": 0.0,
         "condition_means": {
           "apolitical": 63.92611111111111,
@@ -104,6 +114,11 @@
         "trait": "8values:peace",
         "eta_sq_model": 0.17611830185717936,
         "eta_sq_condition": 0.7967215668464929,
+        "eta_sq_condition_ci": {
+          "ci_lower": 0.704177590342584,
+          "ci_upper": 0.8849366339760549,
+          "n_boot": 2000
+        },
         "p_condition": 0.0,
         "condition_means": {
           "apolitical": 67.67777777777778,
@@ -121,6 +136,11 @@
         "trait": "8values:progress",
         "eta_sq_model": 0.280220702312137,
         "eta_sq_condition": 0.7828502353066075,
+        "eta_sq_condition_ci": {
+          "ci_lower": 0.6949977273744198,
+          "ci_upper": 0.8680241925514777,
+          "n_boot": 2000
+        },
         "p_condition": 0.0,
         "condition_means": {
           "apolitical": 72.11111111111111,
@@ -138,6 +158,11 @@
         "trait": "political_compass:economic",
         "eta_sq_model": 0.21494955742379832,
         "eta_sq_condition": 0.8367740286727671,
+        "eta_sq_condition_ci": {
+          "ci_lower": 0.7420304403281138,
+          "ci_upper": 0.9257169649371739,
+          "n_boot": 2000
+        },
         "p_condition": 0.0,
         "condition_means": {
           "apolitical": -6.107055555555555,
@@ -155,6 +180,11 @@
         "trait": "political_compass:social",
         "eta_sq_model": 0.35284280471012386,
         "eta_sq_condition": 0.7656456986683622,
+        "eta_sq_condition_ci": {
+          "ci_lower": 0.6518975249477075,
+          "ci_upper": 0.8743492457696295,
+          "n_boot": 2000
+        },
         "p_condition": 0.0,
         "condition_means": {
           "apolitical": -6.382777777777778,
@@ -1938,6 +1968,13 @@
       }
     ],
     "mean_contamination_index": 0.04571064814814815,
+    "mean_contamination_index_ci": {
+      "estimate": 0.04571064814814815,
+      "ci_lower": 0.037755115740740745,
+      "ci_upper": 0.05492159722222222,
+      "n_boot": 2000,
+      "alpha": 0.05
+    },
     "max_contamination_index": 0.18040000000000006,
     "n_cells_flagged_after_fdr": 65,
     "n_models_flagged_after_fdr": 17,
@@ -3751,7 +3788,34 @@
         "scale": 0.01995345258466095,
         "item_order": 0.04009511723344346,
         "option_order": 0.057917763948781634,
-        "elicitation": 0.06234797088142373
+        "elicitation": 0.06234797088142373,
+        "eta_squared_ci": {
+          "model": {
+            "ci_lower": 0.1400222683528725,
+            "ci_upper": 0.5180830575055203,
+            "n_boot": 2000
+          },
+          "scale": {
+            "ci_lower": 0.007574892916861724,
+            "ci_upper": 0.047141482671093964,
+            "n_boot": 2000
+          },
+          "item_order": {
+            "ci_lower": 0.012520829716490819,
+            "ci_upper": 0.08298182530799655,
+            "n_boot": 2000
+          },
+          "option_order": {
+            "ci_lower": 0.009758465717681493,
+            "ci_upper": 0.1460197698647817,
+            "n_boot": 2000
+          },
+          "elicitation": {
+            "ci_lower": 0.015623325842151642,
+            "ci_upper": 0.12716137412092918,
+            "n_boot": 2000
+          }
+        }
       },
       {
         "trait": "8values:liberty",
@@ -3759,7 +3823,34 @@
         "scale": 0.06711625892926418,
         "item_order": 0.01333657083744192,
         "option_order": 0.040942339081475126,
-        "elicitation": 0.36641196423168565
+        "elicitation": 0.36641196423168565,
+        "eta_squared_ci": {
+          "model": {
+            "ci_lower": 0.07544850629944093,
+            "ci_upper": 0.21228449639454255,
+            "n_boot": 2000
+          },
+          "scale": {
+            "ci_lower": 0.03632115362296582,
+            "ci_upper": 0.1092005954011801,
+            "n_boot": 2000
+          },
+          "item_order": {
+            "ci_lower": 0.0013464669772085634,
+            "ci_upper": 0.033406067683891934,
+            "n_boot": 2000
+          },
+          "option_order": {
+            "ci_lower": 0.01719197672113613,
+            "ci_upper": 0.07917520037276371,
+            "n_boot": 2000
+          },
+          "elicitation": {
+            "ci_lower": 0.2723336336266559,
+            "ci_upper": 0.46169680339268404,
+            "n_boot": 2000
+          }
+        }
       },
       {
         "trait": "8values:peace",
@@ -3767,7 +3858,34 @@
         "scale": 0.06011637120351363,
         "item_order": 0.08788043608489123,
         "option_order": 0.03545790806443404,
-        "elicitation": 0.38766415260132076
+        "elicitation": 0.38766415260132076,
+        "eta_squared_ci": {
+          "model": {
+            "ci_lower": 0.13045368035389182,
+            "ci_upper": 0.39968574745935376,
+            "n_boot": 2000
+          },
+          "scale": {
+            "ci_lower": 0.02970140644928927,
+            "ci_upper": 0.10725455847848514,
+            "n_boot": 2000
+          },
+          "item_order": {
+            "ci_lower": 0.04956436258677321,
+            "ci_upper": 0.12849698909514787,
+            "n_boot": 2000
+          },
+          "option_order": {
+            "ci_lower": 0.011438584037277598,
+            "ci_upper": 0.07925897776124483,
+            "n_boot": 2000
+          },
+          "elicitation": {
+            "ci_lower": 0.2979460404097153,
+            "ci_upper": 0.4781568056043949,
+            "n_boot": 2000
+          }
+        }
       },
       {
         "trait": "8values:progress",
@@ -3775,7 +3893,34 @@
         "scale": 0.0730593402711393,
         "item_order": 0.024535438680558047,
         "option_order": 0.05132930315279677,
-        "elicitation": 0.29254511689934426
+        "elicitation": 0.29254511689934426,
+        "eta_squared_ci": {
+          "model": {
+            "ci_lower": 0.1091232634698083,
+            "ci_upper": 0.26167611344750175,
+            "n_boot": 2000
+          },
+          "scale": {
+            "ci_lower": 0.041774150758244914,
+            "ci_upper": 0.12121519059621046,
+            "n_boot": 2000
+          },
+          "item_order": {
+            "ci_lower": 0.008387554099745557,
+            "ci_upper": 0.04581703106221525,
+            "n_boot": 2000
+          },
+          "option_order": {
+            "ci_lower": 0.023285434586841302,
+            "ci_upper": 0.09776761293108745,
+            "n_boot": 2000
+          },
+          "elicitation": {
+            "ci_lower": 0.17885167426067994,
+            "ci_upper": 0.4111832426243514,
+            "n_boot": 2000
+          }
+        }
       },
       {
         "trait": "political_compass:economic",
@@ -3783,7 +3928,34 @@
         "scale": 0.0440141247082361,
         "item_order": 0.003841599563438789,
         "option_order": 0.05737564084470473,
-        "elicitation": 0.5428898677572737
+        "elicitation": 0.5428898677572737,
+        "eta_squared_ci": {
+          "model": {
+            "ci_lower": 0.04132390279293574,
+            "ci_upper": 0.16912330469220432,
+            "n_boot": 2000
+          },
+          "scale": {
+            "ci_lower": 0.026496455811605504,
+            "ci_upper": 0.06853232656780729,
+            "n_boot": 2000
+          },
+          "item_order": {
+            "ci_lower": 2.4618116242368013e-05,
+            "ci_upper": 0.01641157224511158,
+            "n_boot": 2000
+          },
+          "option_order": {
+            "ci_lower": 0.035790151668756306,
+            "ci_upper": 0.08627883116092398,
+            "n_boot": 2000
+          },
+          "elicitation": {
+            "ci_lower": 0.4892575470619794,
+            "ci_upper": 0.5925973018863356,
+            "n_boot": 2000
+          }
+        }
       },
       {
         "trait": "political_compass:social",
@@ -3791,7 +3963,34 @@
         "scale": 0.07353392363834185,
         "item_order": 2.4275116069550665e-06,
         "option_order": 0.07728310100822201,
-        "elicitation": 0.6967378089954122
+        "elicitation": 0.6967378089954122,
+        "eta_squared_ci": {
+          "model": {
+            "ci_lower": 0.09286198662783561,
+            "ci_upper": 0.2563290029790743,
+            "n_boot": 2000
+          },
+          "scale": {
+            "ci_lower": 0.05481117424488935,
+            "ci_upper": 0.09815434675829303,
+            "n_boot": 2000
+          },
+          "item_order": {
+            "ci_lower": 1.000882907244041e-06,
+            "ci_upper": 0.005526869477682355,
+            "n_boot": 2000
+          },
+          "option_order": {
+            "ci_lower": 0.05183234715703269,
+            "ci_upper": 0.10923279769155864,
+            "n_boot": 2000
+          },
+          "elicitation": {
+            "ci_lower": 0.6591277165554142,
+            "ci_upper": 0.7355492006805434,
+            "n_boot": 2000
+          }
+        }
       }
     ],
     "design_averaged_positions": [

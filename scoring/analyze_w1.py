@@ -41,6 +41,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from variance_components import (  # noqa: E402
     benjamini_hochberg,
     bootstrap_ci,
+    cluster_bootstrap_eta_squared,
     partial_eta_squared,
     variance_decomposition,
 )
@@ -158,9 +159,12 @@ def asker_arm(asker: pd.DataFrame, baseline: pd.DataFrame) -> dict:
     per_axis = []
     for trait, grp in asker.groupby("trait"):
         eta = partial_eta_squared(grp, "value", ["model", "condition"])
+        boot = cluster_bootstrap_eta_squared(
+            grp, "value", factors=["model", "condition"], cluster="model", n_boot=2000)
         entry = {"trait": trait,
                  "eta_sq_model": eta.get("model", {}).get("partial_eta_squared"),
                  "eta_sq_condition": eta.get("condition", {}).get("partial_eta_squared"),
+                 "eta_sq_condition_ci": boot["eta_squared_ci"].get("condition"),
                  "p_condition": eta.get("condition", {}).get("p_value")}
         means = grp.groupby("condition")["value"].mean()
         entry["condition_means"] = {c: float(v) for c, v in means.items()}
@@ -257,9 +261,20 @@ def contamination_arm(variants: pd.DataFrame, baseline: pd.DataFrame) -> dict:
     cis = [r["ci_inverted"] for r in inverted_rows if "ci_inverted" in r]
     n_models_flagged = len({r["model"] for r in inverted_rows
                             if r.get("inverted_differs_after_fdr")})
+
+    # Per-model mean, then bootstrap over models (not over the raw model:trait
+    # cells, which are not independent within a model) -- one row per model,
+    # so the plain i.i.d. bootstrap_ci is the right tool here, unlike the
+    # cluster-bootstrap functions used for the ANOVA-based arms.
+    per_model_ci = (pd.DataFrame(inverted_rows).groupby("model")["ci_inverted"].mean()
+                    if inverted_rows else pd.Series(dtype=float))
+    mean_ci_bootstrap = (bootstrap_ci(per_model_ci.values, n_boot=2000)
+                        if len(per_model_ci) >= 4 else None)
+
     out.update({
         "per_cell": sorted(rows, key=lambda r: -r.get("ci_inverted", 0)),
         "mean_contamination_index": float(np.mean(cis)) if cis else None,
+        "mean_contamination_index_ci": mean_ci_bootstrap,
         "max_contamination_index": float(np.max(cis)) if cis else None,
         "n_cells_flagged_after_fdr": bh["n_rejected"],
         "n_models_flagged_after_fdr": n_models_flagged,
@@ -334,13 +349,16 @@ def format_arm(fmt: pd.DataFrame) -> dict:
         fixed_effects=["scale", "item_order", "option_order", "elicitation"],
         z_within="trait")
 
+    factors = ["model", "scale", "item_order", "option_order", "elicitation"]
     per_axis = []
     for trait, grp in fmt.groupby("trait"):
-        eta = partial_eta_squared(
-            grp, "value", ["model", "scale", "item_order", "option_order", "elicitation"])
+        eta = partial_eta_squared(grp, "value", factors)
+        boot = cluster_bootstrap_eta_squared(grp, "value", factors=factors, cluster="model",
+                                             n_boot=2000)
         per_axis.append({"trait": trait,
                          **{k: v["partial_eta_squared"] for k, v in eta.items()
-                            if isinstance(v, dict)}})
+                            if isinstance(v, dict)},
+                         "eta_squared_ci": boot["eta_squared_ci"]})
     out["partial_eta_squared_per_axis"] = per_axis
 
     # Debevc et al.'s point: a model's position under a varied design is an

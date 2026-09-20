@@ -188,6 +188,26 @@ def test_cluster_bootstrap_uses_every_cluster_and_records_seed():
     assert out["variance_share_ci"]["model"]["n_boot"] <= 50
 
 
+def test_cluster_bootstrap_eta_squared_brackets_a_strong_condition_effect():
+    df = synthetic_panel(condition_effect=5.0, noise=0.5)
+    out = vc.cluster_bootstrap_eta_squared(
+        df, "value", factors=["model", "condition"], cluster="model", n_boot=200,
+    )
+    point = out["point_estimate"]["condition"]["partial_eta_squared"]
+    ci = out["eta_squared_ci"]["condition"]
+    assert ci["ci_lower"] < point < ci["ci_upper"]
+    assert point > 0.5
+
+
+def test_cluster_bootstrap_eta_squared_is_narrow_for_a_null_effect():
+    df = synthetic_panel(condition_effect=0.0, noise=3.0)
+    out = vc.cluster_bootstrap_eta_squared(
+        df, "value", factors=["model", "condition"], cluster="model", n_boot=200,
+    )
+    ci = out["eta_squared_ci"]["condition"]
+    assert ci["ci_upper"] < 0.3
+
+
 # ---------------------------------------------------------------------------
 # MTMM
 # ---------------------------------------------------------------------------
