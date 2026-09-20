@@ -338,6 +338,71 @@ point that forced-choice and open-ended elicitation can diverge
 % =============================================================================
 
 
+\section{Item-Response-Theory Reanalysis}
+\label{si:irt}
+
+The published Political Compass and 8Values scoring keys treat every item as
+equally informative and cannot separate a model declining to engage from a
+model holding a genuinely moderate position \cite{wachter2025irt}. We refit a
+graded-response IRT model separately on each of the six axes (the four
+8Values axes and the two Political Compass axes), using every item-level
+response in the baseline dataset (19 models $\times$ 60 trials), and compare
+the resulting latent trait ($\theta$) against each model's published axis
+score.
+
+\textbf{The published scores track the IRT-derived positions closely on five
+of the six axes.} Spearman correlations between $\theta$ and the published
+score range from $\rho=0.86$ to $\rho=0.94$ ($p<10^{-5}$ in every case) on
+8Values equality, peace, liberty, and progress and on the Political Compass
+social axis, with narrow Bland-Altman limits of agreement
+(Table~\ref{stab:irt-summary}). \textbf{The exception is the Political
+Compass economic axis}, where $\rho=0.64$ and the limits of agreement are
+roughly twice as wide as on any other axis. That axis has only 11 items, the
+fewest of the six, and half its information comes from just 2 of them
+(Table~\ref{stab:irt-summary}) -- the published economic score for this
+instrument rests on the fewest and least-distributed items in the study,
+which is a specific, checkable reason to weight it less heavily than the
+other five axes rather than a general indictment of the scoring approach.
+
+\textbf{Information is concentrated in a minority of items on every axis.}
+Between 4 and 12 items (out of 11 to 50 per axis) carry half of each axis's
+total discrimination, and the top decile of items by discrimination carries
+24-33\% of it. A small, identifiable subset of items is doing most of the
+work of separating models on every axis we fit, on both instruments.
+
+\textbf{Neutral-response rates vary roughly five-fold across models on
+8Values} (9\% to 52\% of items answered at the scale midpoint), which is the
+avoidance behaviour Wachter et al. (2025) predicts: at least part of the
+apparent centrism in the most avoidant models is a refusal to commit to
+either pole rather than a moderate position, and it is not evenly distributed
+across the cohort. We do not have a validated way to convert a neutral-rate
+estimate into a bias correction for the published score, so we report it as a
+per-model caveat rather than an adjustment.
+
+\begin{table}[H]
+\centering
+\caption{IRT reanalysis summary by axis. $\rho$ is the Spearman correlation
+between the IRT latent trait and the published axis score across the 19
+models; LoA is the Bland-Altman 95\% limits of agreement, in the published
+score's own units after within-axis standardization; ``items for half
+info.'' is the minimum number of items whose summed discrimination reaches
+half the axis total.}
+\label{stab:irt-summary}
+\footnotesize
+\begin{tabular}{llrrrr}
+\toprule
+Instrument & Axis & Items & $\rho$ & LoA & Items for half info. \\
+\midrule
+8Values & Equality & 22 & 0.91 & $\pm 0.83$ & 4 \\
+8Values & Peace & 24 & 0.86 & $\pm 0.88$ & 6 \\
+8Values & Liberty & 37 & 0.92 & $\pm 0.61$ & 7 \\
+8Values & Progress & 33 & 0.88 & $\pm 0.81$ & 7 \\
+Political Compass & Economic & 11 & 0.64 & $\pm 1.27$ & 2 \\
+Political Compass & Social & 50 & 0.94 & $\pm 0.63$ & 12 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Multi-trait multi-method matrix}
 
 The full correlation matrix behind the convergent-validity result in the main
