@@ -2151,24 +2151,53 @@
     "fixed_effects": [],
     "z_within": "trait",
     "variance_components": {
-      "model": 0.12908848609185689,
-      "trait": 0.5192941541732605,
-      "model:trait": 0.000400923713538894,
-      "residual": 0.3461844520085
+      "model": 0.12908848800165923,
+      "trait": 0.5192941543709928,
+      "model:trait": 0.00040092370557381495,
+      "residual": 0.34618445199799974
     },
     "variance_share": {
-      "model": 0.12974134245288468,
-      "trait": 0.5219204495312781,
-      "model:trait": 0.00040295135833197414,
-      "residual": 0.34793525665750524
+      "model": 0.12974134409993632,
+      "trait": 0.5219204486341682,
+      "model:trait": 0.0004029513494805617,
+      "residual": 0.347935255916415
     },
-    "total_variance": 0.9949680159871563,
+    "total_variance": 0.9949680180762255,
     "icc": {
-      "model": 0.12974134245288468,
-      "trait": 0.5219204495312781,
-      "model:trait": 0.00040295135833197414
+      "model": 0.12974134409993632,
+      "trait": 0.5219204486341682,
+      "model:trait": 0.0004029513494805617
     },
-    "interpretation": "the residual share is the fraction of variation that is pure trial-to-trial instability rather than any stable property of a model or an instrument; the model share is the ICC for model identity, i.e. how much of a measured political position is actually about the model"
+    "interpretation": "the residual share is the fraction of variation that is pure trial-to-trial instability rather than any stable property of a model or an instrument; the model share is the ICC for model identity, i.e. how much of a measured political position is actually about the model",
+    "bootstrap_ci": {
+      "cluster_column": "model",
+      "n_clusters": 19,
+      "variance_share_ci": {
+        "model": {
+          "ci_lower": 0.00022406388960618926,
+          "ci_upper": 0.21937553626788947,
+          "n_boot": 2000
+        },
+        "trait": {
+          "ci_lower": 0.3501415979611734,
+          "ci_upper": 0.7191359446781125,
+          "n_boot": 2000
+        },
+        "model:trait": {
+          "ci_lower": 1.0946485385474674e-08,
+          "ci_upper": 0.019072276957410792,
+          "n_boot": 2000
+        },
+        "residual": {
+          "ci_lower": 0.18924222615072714,
+          "ci_upper": 0.49345525539329593,
+          "n_boot": 2000
+        }
+      },
+      "n_boot_requested": 2000,
+      "n_boot_failed": 0,
+      "seed": 20260919
+    }
   },
   "task_4_4": {
     "n_units": 19,
@@ -2330,6 +2359,6 @@
         "cohort_spread_as_frac_of_reference": null
       }
     },
-    "caveat": "Denominator is the instrument's full range, not a party/human spread. Substitute reference_spread once a calibrated human distribution exists (plan.md W5) and the fractions will shrink, strengthening the claim."
+    "caveat": "Denominator is the instrument's full range, not a party/human spread. Substitute reference_spread once a calibrated human distribution exists (updates/03_experiments.md Task 1.5, human-norm instrument) and the fractions will shrink, strengthening the claim."
   }
 }

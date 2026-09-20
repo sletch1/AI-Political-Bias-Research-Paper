@@ -1,0 +1,75 @@
+{
+  "n_administrations": 540,
+  "n_models": 18,
+  "excluded_model": "mistralai/mistral-large-2512 (withdrawn from the OpenRouter API)",
+  "directional_check": {
+    "n_models": 18,
+    "n_economically_left": 18,
+    "n_libertarian": 7,
+    "n_progressive": 18,
+    "note": "main.tex's baseline finding is that every model is left AND libertarian AND progressive on the original two instruments; this checks whether the same pattern holds on a third."
+  },
+  "convergence_check": [
+    {
+      "sapplyvalues_axis": "right",
+      "other": "political_compass:economic",
+      "available": true,
+      "n_models": 18,
+      "expected_sign": 1,
+      "why": "both instruments use positive = economically right",
+      "spearman_rho": -0.48606811145510836,
+      "ci_lower": -0.7812177502579979,
+      "ci_upper": -0.04019607843137282,
+      "agrees_with_expected_sign": false
+    },
+    {
+      "sapplyvalues_axis": "right",
+      "other": "8values:equality",
+      "available": true,
+      "n_models": 18,
+      "expected_sign": -1,
+      "why": "8Values equality is high when left/egalitarian, the opposite pole from 'right'",
+      "spearman_rho": -0.5335397316821465,
+      "ci_lower": -0.8740970072239421,
+      "ci_upper": -0.0051083591331272165,
+      "agrees_with_expected_sign": true
+    },
+    {
+      "sapplyvalues_axis": "auth",
+      "other": "political_compass:social",
+      "available": true,
+      "n_models": 18,
+      "expected_sign": 1,
+      "why": "both instruments use positive = authoritarian",
+      "spearman_rho": 0.23013415892672856,
+      "ci_lower": -0.29004127966976256,
+      "ci_upper": 0.6698142414860678,
+      "agrees_with_expected_sign": true
+    },
+    {
+      "sapplyvalues_axis": "auth",
+      "other": "8values:liberty",
+      "available": true,
+      "n_models": 18,
+      "expected_sign": -1,
+      "why": "8Values liberty is high when libertarian, the opposite pole from 'auth'",
+      "spearman_rho": -0.021671826625386997,
+      "ci_lower": -0.4943240454076367,
+      "ci_upper": 0.4262125902992776,
+      "agrees_with_expected_sign": true
+    },
+    {
+      "sapplyvalues_axis": "prog",
+      "other": "8values:progress",
+      "available": true,
+      "n_models": 18,
+      "expected_sign": 1,
+      "why": "both instruments use positive = progressive",
+      "spearman_rho": 0.4406604747162023,
+      "ci_lower": -0.06713106295149637,
+      "ci_upper": 0.8121775025799793,
+      "agrees_with_expected_sign": true
+    }
+  ],
+  "status": "Preliminary triangulation check on one additional instrument, not yet crossed into the shared variance-components model with Political Compass and 8Values; reaching the >= 4 instruments a Political Analysis reviewer would ask for is future work (docs/f3_instrument_terms_of_use.md)."
+}

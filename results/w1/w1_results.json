@@ -1,0 +1,5533 @@
+{
+  "baseline": {
+    "n_rows": 8460,
+    "models": 19
+  },
+  "task_1_1_asker_identity": {
+    "available": true,
+    "n_administrations": 6480,
+    "conditions": [
+      "apolitical",
+      "conservative",
+      "journalist",
+      "none",
+      "progressive",
+      "researcher"
+    ],
+    "models": 18,
+    "anchor_check": {
+      "available": true,
+      "per_trait": [
+        {
+          "trait": "8values:equality",
+          "n_cells": 18,
+          "mean_drift": -0.166574074074071,
+          "max_abs_drift": 3.230000000000018,
+          "max_abs_drift_as_frac_of_scale": 0.03230000000000018
+        },
+        {
+          "trait": "8values:liberty",
+          "n_cells": 18,
+          "mean_drift": -0.06212962962962681,
+          "max_abs_drift": 2.4000000000000057,
+          "max_abs_drift_as_frac_of_scale": 0.024000000000000056
+        },
+        {
+          "trait": "8values:peace",
+          "n_cells": 18,
+          "mean_drift": -0.19092592592592558,
+          "max_abs_drift": 2.671666666666667,
+          "max_abs_drift_as_frac_of_scale": 0.02671666666666667
+        },
+        {
+          "trait": "8values:progress",
+          "n_cells": 18,
+          "mean_drift": -0.11277777777777863,
+          "max_abs_drift": 2.913333333333341,
+          "max_abs_drift_as_frac_of_scale": 0.02913333333333341
+        },
+        {
+          "trait": "political_compass:economic",
+          "n_cells": 18,
+          "mean_drift": 0.032175925925925775,
+          "max_abs_drift": 0.41799999999999926,
+          "max_abs_drift_as_frac_of_scale": 0.020899999999999964
+        },
+        {
+          "trait": "political_compass:social",
+          "n_cells": 18,
+          "mean_drift": -0.004629629629629515,
+          "max_abs_drift": 0.48983333333333334,
+          "max_abs_drift_as_frac_of_scale": 0.02449166666666667
+        }
+      ],
+      "worst_drift_as_frac_of_scale": 0.03230000000000018,
+      "anchor_holds": true,
+      "note": "A drift above 5% of scale means the anchor cell no longer reproduces data/raw_trials/; investigate model version drift (updates/03_experiments.md Task 3.1 (drift)) before interpreting any condition effect."
+    },
+    "per_axis": [
+      {
+        "trait": "8values:equality",
+        "eta_sq_model": 0.24360155110391818,
+        "eta_sq_condition": 0.81084672335087,
+        "p_condition": 0.0,
+        "condition_means": {
+          "apolitical": 69.44555555555556,
+          "conservative": 35.64,
+          "journalist": 69.86,
+          "none": 71.38666666666667,
+          "progressive": 83.71111111111111,
+          "researcher": 69.44333333333333
+        },
+        "shift_conservative": -35.74666666666667,
+        "shift_progressive": 12.324444444444438,
+        "asymmetry_ratio": 2.900468806346918
+      },
+      {
+        "trait": "8values:liberty",
+        "eta_sq_model": 0.16327432734938083,
+        "eta_sq_condition": 0.7708585594782776,
+        "p_condition": 0.0,
+        "condition_means": {
+          "apolitical": 63.92611111111111,
+          "conservative": 37.00333333333334,
+          "journalist": 64.34444444444445,
+          "none": 65.83166666666666,
+          "progressive": 72.64166666666667,
+          "researcher": 64.22277777777778
+        },
+        "shift_conservative": -28.828333333333326,
+        "shift_progressive": 6.810000000000002,
+        "asymmetry_ratio": 4.233235438081251
+      },
+      {
+        "trait": "8values:peace",
+        "eta_sq_model": 0.17611830185717936,
+        "eta_sq_condition": 0.7967215668464929,
+        "p_condition": 0.0,
+        "condition_means": {
+          "apolitical": 67.67777777777778,
+          "conservative": 36.07388888888889,
+          "journalist": 68.68944444444445,
+          "none": 69.71222222222222,
+          "progressive": 77.12555555555556,
+          "researcher": 68.84944444444444
+        },
+        "shift_conservative": -33.638333333333335,
+        "shift_progressive": 7.413333333333341,
+        "asymmetry_ratio": 4.537544964028773
+      },
+      {
+        "trait": "8values:progress",
+        "eta_sq_model": 0.280220702312137,
+        "eta_sq_condition": 0.7828502353066075,
+        "p_condition": 0.0,
+        "condition_means": {
+          "apolitical": 72.11111111111111,
+          "conservative": 39.58111111111111,
+          "journalist": 72.18388888888889,
+          "none": 73.67222222222222,
+          "progressive": 82.19833333333334,
+          "researcher": 72.14111111111112
+        },
+        "shift_conservative": -34.091111111111104,
+        "shift_progressive": 8.52611111111112,
+        "asymmetry_ratio": 3.9984361764514187
+      },
+      {
+        "trait": "political_compass:economic",
+        "eta_sq_model": 0.21494955742379832,
+        "eta_sq_condition": 0.8367740286727671,
+        "p_condition": 0.0,
+        "condition_means": {
+          "apolitical": -6.107055555555555,
+          "conservative": 1.897722222222222,
+          "journalist": -6.241722222222222,
+          "none": -6.2730555555555565,
+          "progressive": -7.7011666666666665,
+          "researcher": -6.310277777777777
+        },
+        "shift_conservative": 8.17077777777778,
+        "shift_progressive": -1.42811111111111,
+        "asymmetry_ratio": 5.721388002800908
+      },
+      {
+        "trait": "political_compass:social",
+        "eta_sq_model": 0.35284280471012386,
+        "eta_sq_condition": 0.7656456986683622,
+        "p_condition": 0.0,
+        "condition_means": {
+          "apolitical": -6.382777777777778,
+          "conservative": -0.8996666666666666,
+          "journalist": -6.439277777777777,
+          "none": -6.447333333333333,
+          "progressive": -7.269444444444445,
+          "researcher": -6.4848888888888885
+        },
+        "shift_conservative": 5.547666666666666,
+        "shift_progressive": -0.8221111111111119,
+        "asymmetry_ratio": 6.748074064062704
+      }
+    ],
+    "variance_decomposition": {
+      "method": "mixedlm_vc",
+      "n_observations": 6480,
+      "fixed_effects": [
+        "condition"
+      ],
+      "z_within": "trait",
+      "variance_components": {
+        "model": 0.012435931131763368,
+        "model:condition": 0.015980878805522215,
+        "residual": 0.8876956438373613
+      },
+      "variance_share": {
+        "model": 0.013574677519690681,
+        "model:condition": 0.017444232680907674,
+        "residual": 0.9689810897994017
+      },
+      "total_variance": 0.9161124537746469,
+      "icc": {
+        "model": 0.013574677519690681,
+        "model:condition": 0.017444232680907674
+      }
+    },
+    "gate_a": {
+      "max_condition_eta_squared": 0.8367740286727671,
+      "mean_condition_eta_squared": 0.7939494687205628,
+      "verdict": "PROCEED: a measurement factor explains a non-trivial share of variance; the error-budget thesis is confirmed and NMI remains the target"
+    }
+  },
+  "task_1_2_contamination": {
+    "available": true,
+    "conditions": [
+      "inverted",
+      "original",
+      "paraphrased"
+    ],
+    "models": 18,
+    "original_source": "re-collected alongside the variants",
+    "per_cell": [
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "8values:equality",
+        "mean_original": 60.93000000000001,
+        "n_original": 10,
+        "mean_inverted": 42.89,
+        "ci_inverted": 0.18040000000000006,
+        "t_inverted": 10.79489303032249,
+        "p_inverted": 2.316144142321306e-07,
+        "mean_paraphrased": 58.830000000000005,
+        "ci_paraphrased": 0.021000000000000015,
+        "t_paraphrased": 2.4771301735902065,
+        "p_paraphrased": 0.023409365113794326,
+        "p_inverted_bh": 1.1370162153213683e-06,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "political_compass:economic",
+        "mean_original": -5.279000000000001,
+        "n_original": 10,
+        "mean_inverted": -7.7780000000000005,
+        "ci_inverted": 0.12494999999999998,
+        "t_inverted": 14.955613337361827,
+        "p_inverted": 3.0435539001827905e-11,
+        "mean_paraphrased": -6.1899999999999995,
+        "ci_paraphrased": 0.04554999999999994,
+        "t_paraphrased": 3.4135069625480337,
+        "p_paraphrased": 0.004120605729672938,
+        "p_inverted_bh": 1.0956794040658046e-09,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "8values:progress",
+        "mean_original": 77.36,
+        "n_original": 10,
+        "mean_inverted": 64.99,
+        "ci_inverted": 0.12370000000000005,
+        "t_inverted": 13.511708407966712,
+        "p_inverted": 1.7868683067714344e-09,
+        "mean_paraphrased": 75.08,
+        "ci_paraphrased": 0.02280000000000001,
+        "t_paraphrased": 2.391842335499358,
+        "p_paraphrased": 0.02986430382641989,
+        "p_inverted_bh": 1.9298177713131493e-08,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "8values:equality",
+        "mean_original": 74.35,
+        "n_original": 10,
+        "mean_inverted": 86.56000000000002,
+        "ci_inverted": 0.12210000000000022,
+        "t_inverted": -8.240537442623104,
+        "p_inverted": 1.0964925547442695e-06,
+        "mean_paraphrased": 84.11000000000001,
+        "ci_paraphrased": 0.09760000000000019,
+        "t_paraphrased": -6.94170271115157,
+        "p_paraphrased": 1.7257318265361085e-05,
+        "p_inverted_bh": 4.312188652882451e-06,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "8values:liberty",
+        "mean_original": 69.08,
+        "n_original": 10,
+        "mean_inverted": 57.379999999999995,
+        "ci_inverted": 0.11700000000000003,
+        "t_inverted": 16.920428255785207,
+        "p_inverted": 8.025935405423013e-10,
+        "mean_paraphrased": 71.46000000000001,
+        "ci_paraphrased": 0.023800000000000095,
+        "t_paraphrased": -6.149690590754785,
+        "p_paraphrased": 8.31882317754454e-06,
+        "p_inverted_bh": 9.631122486507615e-09,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "8values:peace",
+        "mean_original": 74.71000000000001,
+        "n_original": 10,
+        "mean_inverted": 63.55,
+        "ci_inverted": 0.1116000000000001,
+        "t_inverted": 7.372339334236654,
+        "p_inverted": 8.055766727799461e-07,
+        "mean_paraphrased": 69.39000000000001,
+        "ci_paraphrased": 0.053199999999999935,
+        "t_paraphrased": 3.804985986518638,
+        "p_paraphrased": 0.0014500323525502821,
+        "p_inverted_bh": 3.3462415638551606e-06,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "8values:progress",
+        "mean_original": 79.15,
+        "n_original": 10,
+        "mean_inverted": 68.2,
+        "ci_inverted": 0.10950000000000003,
+        "t_inverted": 14.349904514139718,
+        "p_inverted": 5.354039164373166e-11,
+        "mean_paraphrased": 80.97999999999999,
+        "ci_paraphrased": 0.01829999999999984,
+        "t_paraphrased": -2.311686529743507,
+        "p_paraphrased": 0.033064002483470176,
+        "p_inverted_bh": 1.1564724595046038e-09,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "8values:peace",
+        "mean_original": 69.45,
+        "n_original": 10,
+        "mean_inverted": 58.720000000000006,
+        "ci_inverted": 0.10729999999999996,
+        "t_inverted": 6.869475791604195,
+        "p_inverted": 2.370156892704027e-06,
+        "mean_paraphrased": 65.1,
+        "ci_paraphrased": 0.04350000000000009,
+        "t_paraphrased": 3.5167027164256477,
+        "p_paraphrased": 0.005454283926198586,
+        "p_inverted_bh": 8.826791186621894e-06,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "political_compass:social",
+        "mean_original": -6.287,
+        "n_original": 10,
+        "mean_inverted": -4.189,
+        "ci_inverted": 0.1049,
+        "t_inverted": -9.965274745814579,
+        "p_inverted": 1.0287912335909251e-07,
+        "mean_paraphrased": -5.569999999999999,
+        "ci_paraphrased": 0.03585000000000003,
+        "t_paraphrased": -2.2228227760671566,
+        "p_paraphrased": 0.04088970203068483,
+        "p_inverted_bh": 5.2909263441819e-07,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "8values:peace",
+        "mean_original": 65.99,
+        "n_original": 10,
+        "mean_inverted": 55.86999999999999,
+        "ci_inverted": 0.10120000000000004,
+        "t_inverted": 23.129121019135557,
+        "p_inverted": 3.733008054101734e-10,
+        "mean_paraphrased": 62.31000000000002,
+        "ci_paraphrased": 0.036799999999999784,
+        "t_paraphrased": 23.655935952422663,
+        "p_paraphrased": 5.2148193016255796e-15,
+        "p_inverted_bh": 5.759498140614104e-09,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "8values:peace",
+        "mean_original": 74.06000000000002,
+        "n_original": 10,
+        "mean_inverted": 64.42999999999999,
+        "ci_inverted": 0.09630000000000023,
+        "t_inverted": 8.17377846486164,
+        "p_inverted": 5.1293115205766656e-06,
+        "mean_paraphrased": 62.77,
+        "ci_paraphrased": 0.11290000000000014,
+        "t_paraphrased": 8.088509565863362,
+        "p_paraphrased": 3.530063465030301e-07,
+        "p_inverted_bh": 1.8465521474075998e-05,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "political_compass:social",
+        "mean_original": -6.011000000000001,
+        "n_original": 10,
+        "mean_inverted": -4.168999999999999,
+        "ci_inverted": 0.09210000000000011,
+        "t_inverted": -9.102442817189605,
+        "p_inverted": 3.89843550016148e-08,
+        "mean_paraphrased": -5.79,
+        "ci_paraphrased": 0.01105000000000005,
+        "t_paraphrased": -1.0796713980408905,
+        "p_paraphrased": 0.29467111334810026,
+        "p_inverted_bh": 2.2159528106181044e-07,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "political_compass:economic",
+        "mean_original": -6.05,
+        "n_original": 10,
+        "mean_inverted": -7.877999999999998,
+        "ci_inverted": 0.09139999999999993,
+        "t_inverted": 17.149562528377313,
+        "p_inverted": 3.015046565994183e-09,
+        "mean_paraphrased": -6.0,
+        "ci_paraphrased": 0.002499999999999991,
+        "t_paraphrased": -1.4999999999999947,
+        "p_paraphrased": 0.16785065605707616,
+        "p_inverted_bh": 2.960227537521562e-08,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "political_compass:social",
+        "mean_original": -5.261000000000001,
+        "n_original": 10,
+        "mean_inverted": -3.44,
+        "ci_inverted": 0.09105000000000005,
+        "t_inverted": -7.920644410919597,
+        "p_inverted": 4.7113926751466305e-07,
+        "mean_paraphrased": -4.436,
+        "ci_paraphrased": 0.04125000000000005,
+        "t_paraphrased": -2.8331117458898865,
+        "p_paraphrased": 0.011340363680557224,
+        "p_inverted_bh": 2.120126703815984e-06,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "political_compass:economic",
+        "mean_original": -6.326,
+        "n_original": 10,
+        "mean_inverted": -8.065999999999999,
+        "ci_inverted": 0.08699999999999997,
+        "t_inverted": 4.858541177721551,
+        "p_inverted": 0.0001479831977089553,
+        "mean_paraphrased": -5.95,
+        "ci_paraphrased": 0.018799999999999973,
+        "t_paraphrased": -1.6022921249736533,
+        "p_paraphrased": 0.13633961466464636,
+        "p_inverted_bh": 0.0003716787291294691,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "political_compass:social",
+        "mean_original": -5.362,
+        "n_original": 10,
+        "mean_inverted": -3.781,
+        "ci_inverted": 0.07905,
+        "t_inverted": -41.08842704184455,
+        "p_inverted": 5.4414163824442505e-18,
+        "mean_paraphrased": -5.2219999999999995,
+        "ci_paraphrased": 0.007000000000000029,
+        "t_paraphrased": -0.8115854902723169,
+        "p_paraphrased": 0.4372777593241818,
+        "p_inverted_bh": 5.8767296930397905e-16,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "8values:peace",
+        "mean_original": 66.70000000000002,
+        "n_original": 10,
+        "mean_inverted": 58.89,
+        "ci_inverted": 0.07810000000000017,
+        "t_inverted": 5.238989395346714,
+        "p_inverted": 0.0005354809732657259,
+        "mean_paraphrased": 67.38000000000001,
+        "ci_paraphrased": 0.006799999999999926,
+        "t_paraphrased": -1.8993392529458144,
+        "p_paraphrased": 0.08998310339586432,
+        "p_inverted_bh": 0.001257216198102139,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "political_compass:economic",
+        "mean_original": -6.7509999999999994,
+        "n_original": 10,
+        "mean_inverted": -8.301,
+        "ci_inverted": 0.07750000000000004,
+        "t_inverted": 5.862368192285771,
+        "p_inverted": 5.169917452861713e-05,
+        "mean_paraphrased": -5.89,
+        "ci_paraphrased": 0.04304999999999999,
+        "t_paraphrased": -2.5622919614260757,
+        "p_paraphrased": 0.019590418810460218,
+        "p_inverted_bh": 0.00013618319144123538,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "8values:progress",
+        "mean_original": 74.06,
+        "n_original": 10,
+        "mean_inverted": 66.39000000000001,
+        "ci_inverted": 0.07669999999999988,
+        "t_inverted": 7.934812989576442,
+        "p_inverted": 1.3257520611579402e-05,
+        "mean_paraphrased": 65.97,
+        "ci_paraphrased": 0.08090000000000003,
+        "t_paraphrased": 7.136846337211573,
+        "p_paraphrased": 2.6348809503457894e-06,
+        "p_inverted_bh": 4.0908920744302154e-05,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "8values:progress",
+        "mean_original": 76.44000000000001,
+        "n_original": 10,
+        "mean_inverted": 68.86000000000001,
+        "ci_inverted": 0.07579999999999998,
+        "t_inverted": 11.68877483730482,
+        "p_inverted": 8.424464257765212e-09,
+        "mean_paraphrased": 74.84,
+        "ci_paraphrased": 0.016000000000000084,
+        "t_paraphrased": 4.554317479728216,
+        "p_paraphrased": 0.0007475321981989857,
+        "p_inverted_bh": 7.189700782608663e-08,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "political_compass:social",
+        "mean_original": -6.195,
+        "n_original": 10,
+        "mean_inverted": -4.688000000000001,
+        "ci_inverted": 0.07534999999999999,
+        "t_inverted": -10.050116558049822,
+        "p_inverted": 9.636151840625679e-09,
+        "mean_paraphrased": -5.817,
+        "ci_paraphrased": 0.018900000000000007,
+        "t_paraphrased": -2.8853373949133703,
+        "p_paraphrased": 0.01152016314299854,
+        "p_inverted_bh": 7.189700782608663e-08,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "political_compass:social",
+        "mean_original": -6.183,
+        "n_original": 10,
+        "mean_inverted": -7.62,
+        "ci_inverted": 0.07185000000000001,
+        "t_inverted": 18.62746192843003,
+        "p_inverted": 3.80263955092255e-12,
+        "mean_paraphrased": -5.385,
+        "ci_paraphrased": 0.039900000000000005,
+        "t_paraphrased": -7.631560589384679,
+        "p_paraphrased": 4.702311012418059e-06,
+        "p_inverted_bh": 2.0534253574981767e-10,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "political_compass:economic",
+        "mean_original": -6.441,
+        "n_original": 10,
+        "mean_inverted": -7.8759999999999994,
+        "ci_inverted": 0.07174999999999998,
+        "t_inverted": 6.055858677284189,
+        "p_inverted": 1.3253947581795781e-05,
+        "mean_paraphrased": -5.952,
+        "ci_paraphrased": 0.024449999999999993,
+        "t_paraphrased": -2.293013379866067,
+        "p_paraphrased": 0.038116249671487044,
+        "p_inverted_bh": 4.0908920744302154e-05,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "political_compass:social",
+        "mean_original": -6.529999999999999,
+        "n_original": 10,
+        "mean_inverted": -5.119,
+        "ci_inverted": 0.07054999999999997,
+        "t_inverted": -8.082174817776234,
+        "p_inverted": 6.483761071363152e-07,
+        "mean_paraphrased": -6.587999999999999,
+        "ci_paraphrased": 0.0028999999999999916,
+        "t_paraphrased": 0.3691481331817884,
+        "p_paraphrased": 0.7187000212289101,
+        "p_inverted_bh": 2.800984782828882e-06,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "political_compass:economic",
+        "mean_original": -6.325,
+        "n_original": 10,
+        "mean_inverted": -7.716999999999999,
+        "ci_inverted": 0.06959999999999993,
+        "t_inverted": 6.311744304692899,
+        "p_inverted": 3.165146348490218e-05,
+        "mean_paraphrased": -6.077,
+        "ci_paraphrased": 0.012400000000000012,
+        "t_paraphrased": -0.542443810298945,
+        "p_paraphrased": 0.5966394523994747,
+        "p_inverted_bh": 8.99567909570904e-05,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "8values:peace",
+        "mean_original": 68.99999999999999,
+        "n_original": 10,
+        "mean_inverted": 62.14,
+        "ci_inverted": 0.06859999999999986,
+        "t_inverted": 12.660361019513394,
+        "p_inverted": 8.687236791779614e-09,
+        "mean_paraphrased": 67.2,
+        "ci_paraphrased": 0.01799999999999983,
+        "t_paraphrased": 2.302986499531482,
+        "p_paraphrased": 0.034120771671807756,
+        "p_inverted_bh": 7.189700782608663e-08,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "8values:peace",
+        "mean_original": 67.79,
+        "n_original": 10,
+        "mean_inverted": 61.0,
+        "ci_inverted": 0.06790000000000006,
+        "t_inverted": 5.692054107949947,
+        "p_inverted": 3.7445467443299215e-05,
+        "mean_paraphrased": 58.67999999999999,
+        "ci_paraphrased": 0.09110000000000014,
+        "t_paraphrased": 3.3927805070630543,
+        "p_paraphrased": 0.005454167998804688,
+        "p_inverted_bh": 0.0001036951406122132,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "political_compass:economic",
+        "mean_original": -6.677000000000001,
+        "n_original": 10,
+        "mean_inverted": -8.0,
+        "ci_inverted": 0.06614999999999993,
+        "t_inverted": 13.29061048167,
+        "p_inverted": 3.2110249757624434e-07,
+        "mean_paraphrased": -5.277,
+        "ci_paraphrased": 0.07000000000000006,
+        "t_paraphrased": -10.232890201933026,
+        "p_paraphrased": 6.4789261773046796e-09,
+        "p_inverted_bh": 1.5077856407927995e-06,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "political_compass:social",
+        "mean_original": -5.925,
+        "n_original": 10,
+        "mean_inverted": -7.217999999999999,
+        "ci_inverted": 0.06464999999999996,
+        "t_inverted": 4.173282048504043,
+        "p_inverted": 0.0008310536099108358,
+        "mean_paraphrased": -5.461999999999999,
+        "ci_paraphrased": 0.02315000000000005,
+        "t_paraphrased": -2.0599128296056373,
+        "p_paraphrased": 0.05417840633467773,
+        "p_inverted_bh": 0.001759878232752358,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "political_compass:social",
+        "mean_original": -7.645000000000001,
+        "n_original": 10,
+        "mean_inverted": -6.375,
+        "ci_inverted": 0.06350000000000007,
+        "t_inverted": -13.955950328707534,
+        "p_inverted": 4.598804854355142e-11,
+        "mean_paraphrased": -8.173,
+        "ci_paraphrased": 0.026399999999999934,
+        "t_paraphrased": 5.502587907557639,
+        "p_paraphrased": 3.4822715977738136e-05,
+        "p_inverted_bh": 1.1564724595046038e-09,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "political_compass:social",
+        "mean_original": -7.692,
+        "n_original": 10,
+        "mean_inverted": -6.436,
+        "ci_inverted": 0.06280000000000001,
+        "t_inverted": -13.830899293347935,
+        "p_inverted": 6.843105160740089e-11,
+        "mean_paraphrased": -7.034000000000001,
+        "ci_paraphrased": 0.03289999999999997,
+        "t_paraphrased": -9.613839052546755,
+        "p_paraphrased": 1.1524663342676822e-07,
+        "p_inverted_bh": 1.231758928933216e-09,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "8values:equality",
+        "mean_original": 74.72999999999999,
+        "n_original": 10,
+        "mean_inverted": 68.7,
+        "ci_inverted": 0.06029999999999987,
+        "t_inverted": 7.751678660887485,
+        "p_inverted": 1.7451342489469022e-05,
+        "mean_paraphrased": 66.22,
+        "ci_paraphrased": 0.08509999999999991,
+        "t_paraphrased": 10.808001349292047,
+        "p_paraphrased": 6.250186137222407e-07,
+        "p_inverted_bh": 5.1147307284918956e-05,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "8values:peace",
+        "mean_original": 70.92,
+        "n_original": 10,
+        "mean_inverted": 64.99000000000001,
+        "ci_inverted": 0.05929999999999993,
+        "t_inverted": 7.197947239500565,
+        "p_inverted": 8.634994829870303e-06,
+        "mean_paraphrased": 66.34,
+        "ci_paraphrased": 0.04579999999999998,
+        "t_paraphrased": 12.994687231453105,
+        "p_paraphrased": 8.363868894060339e-08,
+        "p_inverted_bh": 2.8259983079575537e-05,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "8values:liberty",
+        "mean_original": 67.61,
+        "n_original": 10,
+        "mean_inverted": 61.69,
+        "ci_inverted": 0.059200000000000016,
+        "t_inverted": 9.776854507129542,
+        "p_inverted": 1.3346427343958937e-08,
+        "mean_paraphrased": 64.62,
+        "ci_paraphrased": 0.029899999999999947,
+        "t_paraphrased": 5.880861000923727,
+        "p_paraphrased": 3.905486893364802e-05,
+        "p_inverted_bh": 9.008838457172283e-08,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "8values:progress",
+        "mean_original": 77.8,
+        "n_original": 10,
+        "mean_inverted": 72.08000000000001,
+        "ci_inverted": 0.05719999999999985,
+        "t_inverted": 4.5391742761782945,
+        "p_inverted": 0.000682177221346592,
+        "mean_paraphrased": 75.19,
+        "ci_paraphrased": 0.026099999999999995,
+        "t_paraphrased": 1.8773739778721055,
+        "p_paraphrased": 0.08628377128212719,
+        "p_inverted_bh": 0.0015035742837843252,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "8values:equality",
+        "mean_original": 74.38,
+        "n_original": 10,
+        "mean_inverted": 80.00000000000001,
+        "ci_inverted": 0.05620000000000019,
+        "t_inverted": -4.973559523795114,
+        "p_inverted": 0.00010041556071623837,
+        "mean_paraphrased": 69.08000000000001,
+        "ci_paraphrased": 0.05299999999999983,
+        "t_paraphrased": 5.018695371506114,
+        "p_paraphrased": 0.00010554129365463838,
+        "p_inverted_bh": 0.00025821144184175584,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "8values:progress",
+        "mean_original": 73.50999999999999,
+        "n_original": 10,
+        "mean_inverted": 67.94,
+        "ci_inverted": 0.05569999999999993,
+        "t_inverted": 3.626333165838198,
+        "p_inverted": 0.0019339490078701786,
+        "mean_paraphrased": 73.05,
+        "ci_paraphrased": 0.0045999999999999375,
+        "t_paraphrased": 0.24699868105598227,
+        "p_paraphrased": 0.8079465889988771,
+        "p_inverted_bh": 0.0036643244359645492,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "political_compass:social",
+        "mean_original": -6.802,
+        "n_original": 10,
+        "mean_inverted": -5.697,
+        "ci_inverted": 0.05524999999999998,
+        "t_inverted": -10.956836858503896,
+        "p_inverted": 2.8635507199395527e-08,
+        "mean_paraphrased": -6.478,
+        "ci_paraphrased": 0.016199999999999992,
+        "t_paraphrased": -2.814472529162843,
+        "p_paraphrased": 0.011711564464586996,
+        "p_inverted_bh": 1.7181304319637316e-07,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "political_compass:economic",
+        "mean_original": -6.25,
+        "n_original": 10,
+        "mean_inverted": -7.350999999999999,
+        "ci_inverted": 0.05504999999999995,
+        "t_inverted": 11.170711050273344,
+        "p_inverted": 9.98569553140092e-09,
+        "mean_paraphrased": -6.3,
+        "ci_paraphrased": 0.002499999999999991,
+        "t_paraphrased": 0.42857142857142705,
+        "p_paraphrased": 0.6733220369505314,
+        "p_inverted_bh": 7.189700782608663e-08,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "8values:equality",
+        "mean_original": 72.23,
+        "n_original": 10,
+        "mean_inverted": 77.69999999999999,
+        "ci_inverted": 0.054699999999999846,
+        "t_inverted": -4.314523607083004,
+        "p_inverted": 0.0008609477134333555,
+        "mean_paraphrased": 62.290000000000006,
+        "ci_paraphrased": 0.09939999999999997,
+        "t_paraphrased": 6.162814653821153,
+        "p_paraphrased": 6.373418468394946e-05,
+        "p_inverted_bh": 0.0017881221740538922,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "8values:progress",
+        "mean_original": 80.68999999999998,
+        "n_original": 10,
+        "mean_inverted": 75.35000000000001,
+        "ci_inverted": 0.05339999999999975,
+        "t_inverted": 9.82360020586837,
+        "p_inverted": 1.790438215931743e-08,
+        "mean_paraphrased": 80.43999999999998,
+        "ci_paraphrased": 0.0025,
+        "t_paraphrased": 0.319763286559616,
+        "p_paraphrased": 0.7542283720719086,
+        "p_inverted_bh": 1.1374548665919307e-07,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "8values:equality",
+        "mean_original": 63.92,
+        "n_original": 10,
+        "mean_inverted": 58.910000000000004,
+        "ci_inverted": 0.05009999999999998,
+        "t_inverted": 1.188699547676386,
+        "p_inverted": 0.25017405788883607,
+        "mean_paraphrased": 67.18,
+        "ci_paraphrased": 0.03260000000000005,
+        "t_paraphrased": -0.8640627942053262,
+        "p_paraphrased": 0.3990732132361581,
+        "p_inverted_bh": 0.3255276897830638,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "8values:equality",
+        "mean_original": 82.31,
+        "n_original": 10,
+        "mean_inverted": 77.39,
+        "ci_inverted": 0.049200000000000015,
+        "t_inverted": 3.842421267308173,
+        "p_inverted": 0.0015524410087250208,
+        "mean_paraphrased": 80.39,
+        "ci_paraphrased": 0.019200000000000016,
+        "t_paraphrased": 1.3659494349021382,
+        "p_paraphrased": 0.19326633213363417,
+        "p_inverted_bh": 0.003048429617132768,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "8values:liberty",
+        "mean_original": 67.8,
+        "n_original": 10,
+        "mean_inverted": 63.00999999999999,
+        "ci_inverted": 0.04790000000000006,
+        "t_inverted": 3.8867802296398652,
+        "p_inverted": 0.002461308065190721,
+        "mean_paraphrased": 62.989999999999995,
+        "ci_paraphrased": 0.048100000000000025,
+        "t_paraphrased": 3.2164580137677485,
+        "p_paraphrased": 0.0049942371362296095,
+        "p_inverted_bh": 0.004583125362768929,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "8values:equality",
+        "mean_original": 71.99,
+        "n_original": 10,
+        "mean_inverted": 76.72999999999999,
+        "ci_inverted": 0.04739999999999995,
+        "t_inverted": -4.607035022818902,
+        "p_inverted": 0.0002887412904091662,
+        "mean_paraphrased": 73.21000000000001,
+        "ci_paraphrased": 0.012200000000000131,
+        "t_paraphrased": -1.0560319045084483,
+        "p_paraphrased": 0.30811285752948797,
+        "p_inverted_bh": 0.0006929790969819989,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "8values:equality",
+        "mean_original": 71.14000000000001,
+        "n_original": 10,
+        "mean_inverted": 66.41,
+        "ci_inverted": 0.04730000000000018,
+        "t_inverted": 2.7215438144958073,
+        "p_inverted": 0.015491243523765404,
+        "mean_paraphrased": 60.85,
+        "ci_paraphrased": 0.10290000000000013,
+        "t_paraphrased": 3.037807605487748,
+        "p_paraphrased": 0.01186563329236281,
+        "p_inverted_bh": 0.026532179474299335,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "political_compass:social",
+        "mean_original": -7.44,
+        "n_original": 10,
+        "mean_inverted": -6.51,
+        "ci_inverted": 0.04650000000000003,
+        "t_inverted": -27.90000000000002,
+        "p_inverted": 4.742500818090852e-10,
+        "mean_paraphrased": -6.93,
+        "ci_paraphrased": 0.025500000000000033,
+        "t_paraphrased": -31.23099422048567,
+        "p_paraphrased": 1.734918339048626e-10,
+        "p_inverted_bh": 6.40237610442265e-09,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "8values:liberty",
+        "mean_original": 65.05999999999999,
+        "n_original": 10,
+        "mean_inverted": 60.459999999999994,
+        "ci_inverted": 0.045999999999999944,
+        "t_inverted": 4.254560502963664,
+        "p_inverted": 0.0007429668667609465,
+        "mean_paraphrased": 63.79,
+        "ci_paraphrased": 0.012699999999999888,
+        "t_paraphrased": 1.5419541890867443,
+        "p_paraphrased": 0.14074041716858643,
+        "p_inverted_bh": 0.0016048084322036443,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "8values:progress",
+        "mean_original": 65.89,
+        "n_original": 10,
+        "mean_inverted": 61.31999999999999,
+        "ci_inverted": 0.045700000000000074,
+        "t_inverted": 1.0287341011506843,
+        "p_inverted": 0.3173954900617926,
+        "mean_paraphrased": 72.12,
+        "ci_paraphrased": 0.06230000000000004,
+        "t_paraphrased": -1.5583416235290402,
+        "p_paraphrased": 0.13672605486920741,
+        "p_inverted_bh": 0.4032789756079247,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "8values:equality",
+        "mean_original": 68.77,
+        "n_original": 10,
+        "mean_inverted": 64.34,
+        "ci_inverted": 0.04429999999999992,
+        "t_inverted": 7.286705494101103,
+        "p_inverted": 1.7522688606870383e-05,
+        "mean_paraphrased": 71.35,
+        "ci_paraphrased": 0.025799999999999983,
+        "t_paraphrased": -4.219628727660593,
+        "p_paraphrased": 0.0014368922453598398,
+        "p_inverted_bh": 5.1147307284918956e-05,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "8values:progress",
+        "mean_original": 67.05,
+        "n_original": 10,
+        "mean_inverted": 71.33000000000001,
+        "ci_inverted": 0.04280000000000015,
+        "t_inverted": -2.035363765588929,
+        "p_inverted": 0.058360108649557714,
+        "mean_paraphrased": 69.03999999999999,
+        "ci_paraphrased": 0.01989999999999995,
+        "t_paraphrased": -1.5719836871167778,
+        "p_paraphrased": 0.14664956164054055,
+        "p_inverted_bh": 0.09134625701669903,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "8values:liberty",
+        "mean_original": 62.279999999999994,
+        "n_original": 10,
+        "mean_inverted": 58.08,
+        "ci_inverted": 0.041999999999999954,
+        "t_inverted": 6.467749803531308,
+        "p_inverted": 7.490099222556779e-06,
+        "mean_paraphrased": 62.419999999999995,
+        "ci_paraphrased": 0.0014000000000000056,
+        "t_paraphrased": -0.23207607869383218,
+        "p_paraphrased": 0.8198931083171355,
+        "p_inverted_bh": 2.6094539226972005e-05,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "political_compass:economic",
+        "mean_original": -5.851999999999999,
+        "n_original": 10,
+        "mean_inverted": -6.679,
+        "ci_inverted": 0.04135000000000004,
+        "t_inverted": 2.0216316246896766,
+        "p_inverted": 0.06285175094346657,
+        "mean_paraphrased": -5.978,
+        "ci_paraphrased": 0.0063000000000000165,
+        "t_paraphrased": 0.4364733117348314,
+        "p_paraphrased": 0.6677138096478306,
+        "p_inverted_bh": 0.09697127288420557,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "political_compass:economic",
+        "mean_original": -6.675999999999999,
+        "n_original": 10,
+        "mean_inverted": -5.853,
+        "ci_inverted": 0.04114999999999998,
+        "t_inverted": -2.8883910722474773,
+        "p_inverted": 0.00985478498672858,
+        "mean_paraphrased": -6.014,
+        "ci_paraphrased": 0.03309999999999995,
+        "t_paraphrased": -2.0951418726437607,
+        "p_paraphrased": 0.05161570346469286,
+        "p_inverted_bh": 0.017447816042076826,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "8values:liberty",
+        "mean_original": 60.39000000000001,
+        "n_original": 10,
+        "mean_inverted": 56.529999999999994,
+        "ci_inverted": 0.038600000000000134,
+        "t_inverted": 1.323044134455494,
+        "p_inverted": 0.2024706298595971,
+        "mean_paraphrased": 65.47,
+        "ci_paraphrased": 0.050799999999999915,
+        "t_paraphrased": -1.8141700183563596,
+        "p_paraphrased": 0.0863569496475023,
+        "p_inverted_bh": 0.2733353503104561,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "8values:progress",
+        "mean_original": 71.47999999999999,
+        "n_original": 10,
+        "mean_inverted": 67.64,
+        "ci_inverted": 0.03839999999999989,
+        "t_inverted": 7.265572527526252,
+        "p_inverted": 1.1179748359324874e-06,
+        "mean_paraphrased": 72.13,
+        "ci_paraphrased": 0.006500000000000057,
+        "t_paraphrased": -1.5036970553917426,
+        "p_paraphrased": 0.15963424982886554,
+        "p_inverted_bh": 4.312188652882451e-06,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "8values:peace",
+        "mean_original": 64.12,
+        "n_original": 10,
+        "mean_inverted": 60.339999999999996,
+        "ci_inverted": 0.037800000000000084,
+        "t_inverted": 4.327739934994496,
+        "p_inverted": 0.000600406696894506,
+        "mean_paraphrased": 60.540000000000006,
+        "ci_paraphrased": 0.035799999999999985,
+        "t_paraphrased": 2.668868733871436,
+        "p_paraphrased": 0.021344593552901345,
+        "p_inverted_bh": 0.0013509150680126385,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "8values:peace",
+        "mean_original": 73.1,
+        "n_original": 10,
+        "mean_inverted": 69.32,
+        "ci_inverted": 0.037800000000000014,
+        "t_inverted": 5.34240413673725,
+        "p_inverted": 5.023491273655132e-05,
+        "mean_paraphrased": 69.88,
+        "ci_paraphrased": 0.032199999999999986,
+        "t_paraphrased": 4.357013029083214,
+        "p_paraphrased": 0.00043644773249024307,
+        "p_inverted_bh": 0.00013563426438868855,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "8values:peace",
+        "mean_original": 62.379999999999995,
+        "n_original": 10,
+        "mean_inverted": 58.839999999999996,
+        "ci_inverted": 0.035399999999999994,
+        "t_inverted": 1.0093889655076782,
+        "p_inverted": 0.32673297758009234,
+        "mean_paraphrased": 65.61000000000001,
+        "ci_paraphrased": 0.03230000000000018,
+        "t_paraphrased": -1.016343797255882,
+        "p_paraphrased": 0.3229492912237316,
+        "p_inverted_bh": 0.40559955837528705,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "8values:progress",
+        "mean_original": 70.29999999999998,
+        "n_original": 10,
+        "mean_inverted": 66.79,
+        "ci_inverted": 0.03509999999999977,
+        "t_inverted": 2.1200860037270552,
+        "p_inverted": 0.048560365426629774,
+        "mean_paraphrased": 63.11,
+        "ci_paraphrased": 0.07189999999999984,
+        "t_paraphrased": 1.7879961083394496,
+        "p_paraphrased": 0.10144401982978045,
+        "p_inverted_bh": 0.07712528626582375,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "8values:liberty",
+        "mean_original": 65.60999999999999,
+        "n_original": 10,
+        "mean_inverted": 69.04,
+        "ci_inverted": 0.03430000000000021,
+        "t_inverted": -1.7429340815341128,
+        "p_inverted": 0.10446447004595143,
+        "mean_paraphrased": 66.57000000000001,
+        "ci_paraphrased": 0.009600000000000221,
+        "t_paraphrased": -1.0390275692832318,
+        "p_paraphrased": 0.3217038622151539,
+        "p_inverted_bh": 0.14844951006529938,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "8values:progress",
+        "mean_original": 84.35999999999999,
+        "n_original": 10,
+        "mean_inverted": 80.96000000000001,
+        "ci_inverted": 0.03399999999999977,
+        "t_inverted": 3.7723998610004563,
+        "p_inverted": 0.0018131072579201256,
+        "mean_paraphrased": 79.46,
+        "ci_paraphrased": 0.04899999999999991,
+        "t_paraphrased": 3.115777674342432,
+        "p_paraphrased": 0.007558704837029313,
+        "p_inverted_bh": 0.003496706854560242,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "8values:equality",
+        "mean_original": 71.05,
+        "n_original": 10,
+        "mean_inverted": 68.17000000000002,
+        "ci_inverted": 0.028799999999999812,
+        "t_inverted": 4.681156616128229,
+        "p_inverted": 0.0002481387482354495,
+        "mean_paraphrased": 69.9,
+        "ci_paraphrased": 0.011499999999999915,
+        "t_paraphrased": 3.273857812999619,
+        "p_paraphrased": 0.009623219316161271,
+        "p_inverted_bh": 0.0006090678365779215,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "political_compass:social",
+        "mean_original": -6.467999999999999,
+        "n_original": 10,
+        "mean_inverted": -5.9399999999999995,
+        "ci_inverted": 0.02639999999999998,
+        "t_inverted": -3.435887424296923,
+        "p_inverted": 0.003635473536331716,
+        "mean_paraphrased": -5.708,
+        "ci_paraphrased": 0.037999999999999944,
+        "t_paraphrased": -5.151940534295527,
+        "p_paraphrased": 0.00010325476929657833,
+        "p_inverted_bh": 0.006654765117352972,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "8values:peace",
+        "mean_original": 66.47,
+        "n_original": 10,
+        "mean_inverted": 63.839999999999996,
+        "ci_inverted": 0.026300000000000025,
+        "t_inverted": 10.032453401891075,
+        "p_inverted": 9.317031859761415e-08,
+        "mean_paraphrased": 65.22,
+        "ci_paraphrased": 0.0125,
+        "t_paraphrased": 4.5823801842387955,
+        "p_paraphrased": 0.00034325979799400925,
+        "p_inverted_bh": 5.031197204271164e-07,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "political_compass:social",
+        "mean_original": -7.220000000000001,
+        "n_original": 10,
+        "mean_inverted": -6.7090000000000005,
+        "ci_inverted": 0.025550000000000007,
+        "t_inverted": -2.78419570540241,
+        "p_inverted": 0.015722773021807013,
+        "mean_paraphrased": -7.840000000000001,
+        "ci_paraphrased": 0.031000000000000007,
+        "t_paraphrased": 3.6594609451281874,
+        "p_paraphrased": 0.004625974928656635,
+        "p_inverted_bh": 0.026532179474299335,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "8values:liberty",
+        "mean_original": 67.95,
+        "n_original": 10,
+        "mean_inverted": 70.49999999999999,
+        "ci_inverted": 0.02549999999999983,
+        "t_inverted": -3.807666970626124,
+        "p_inverted": 0.0012970803720037548,
+        "mean_paraphrased": 67.53999999999999,
+        "ci_paraphrased": 0.004100000000000108,
+        "t_paraphrased": 0.651816308899706,
+        "p_paraphrased": 0.5231004076525863,
+        "p_inverted_bh": 0.0025941607440075095,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "8values:liberty",
+        "mean_original": 59.160000000000004,
+        "n_original": 10,
+        "mean_inverted": 61.6,
+        "ci_inverted": 0.024399999999999977,
+        "t_inverted": -3.084354843067618,
+        "p_inverted": 0.010094918693698395,
+        "mean_paraphrased": 58.9,
+        "ci_paraphrased": 0.002600000000000051,
+        "t_paraphrased": 0.21956243709352785,
+        "p_paraphrased": 0.8306424577617751,
+        "p_inverted_bh": 0.017584697079345592,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "8values:equality",
+        "mean_original": 71.01,
+        "n_original": 10,
+        "mean_inverted": 68.6,
+        "ci_inverted": 0.024100000000000107,
+        "t_inverted": 9.102444373936022,
+        "p_inverted": 7.782265226115915e-06,
+        "mean_paraphrased": 71.68,
+        "ci_paraphrased": 0.006700000000000017,
+        "t_paraphrased": -2.3048700691151707,
+        "p_paraphrased": 0.03897258756829719,
+        "p_inverted_bh": 2.6265145138141214e-05,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "8values:equality",
+        "mean_original": 70.87,
+        "n_original": 10,
+        "mean_inverted": 68.48,
+        "ci_inverted": 0.023900000000000005,
+        "t_inverted": 4.256336110100331,
+        "p_inverted": 0.0005712250474656751,
+        "mean_paraphrased": 71.06000000000002,
+        "ci_paraphrased": 0.0019000000000001195,
+        "t_paraphrased": -0.554025079197523,
+        "p_paraphrased": 0.5912405879987745,
+        "p_inverted_bh": 0.0013126022367296365,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "political_compass:social",
+        "mean_original": -6.901999999999999,
+        "n_original": 10,
+        "mean_inverted": -6.435,
+        "ci_inverted": 0.023349999999999982,
+        "t_inverted": -1.6420187539444198,
+        "p_inverted": 0.11799437751367282,
+        "mean_paraphrased": -6.76,
+        "ci_paraphrased": 0.007099999999999973,
+        "t_paraphrased": -0.643848405844657,
+        "p_paraphrased": 0.5303992895521377,
+        "p_inverted_bh": 0.16549860742177488,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "8values:peace",
+        "mean_original": 73.0,
+        "n_original": 10,
+        "mean_inverted": 70.72999999999999,
+        "ci_inverted": 0.022700000000000102,
+        "t_inverted": 0.7452706470614894,
+        "p_inverted": 0.4660303049617064,
+        "mean_paraphrased": 73.49999999999999,
+        "ci_paraphrased": 0.004999999999999858,
+        "t_paraphrased": -0.14841013859773625,
+        "p_paraphrased": 0.8836713161788694,
+        "p_inverted_bh": 0.5470790536506989,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "political_compass:economic",
+        "mean_original": -6.315,
+        "n_original": 10,
+        "mean_inverted": -6.767,
+        "ci_inverted": 0.0226,
+        "t_inverted": 1.9713425824117585,
+        "p_inverted": 0.06775049648699458,
+        "mean_paraphrased": -7.114999999999999,
+        "ci_paraphrased": 0.039999999999999945,
+        "t_paraphrased": 3.2586024893237617,
+        "p_paraphrased": 0.004719967314504042,
+        "p_inverted_bh": 0.10153533432944618,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "8values:progress",
+        "mean_original": 74.44,
+        "n_original": 10,
+        "mean_inverted": 76.61999999999999,
+        "ci_inverted": 0.021799999999999927,
+        "t_inverted": -0.6473788056628634,
+        "p_inverted": 0.5255641154612496,
+        "mean_paraphrased": 81.56,
+        "ci_paraphrased": 0.07120000000000004,
+        "t_paraphrased": -2.3086995067622986,
+        "p_paraphrased": 0.03368950984032076,
+        "p_inverted_bh": 0.6103325211808059,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "8values:peace",
+        "mean_original": 66.22999999999999,
+        "n_original": 10,
+        "mean_inverted": 64.11999999999999,
+        "ci_inverted": 0.021099999999999994,
+        "t_inverted": 1.198148271956184,
+        "p_inverted": 0.24668213657228522,
+        "mean_paraphrased": 64.52000000000001,
+        "ci_paraphrased": 0.017099999999999796,
+        "t_paraphrased": 0.9236768304827391,
+        "p_paraphrased": 0.3678814413521201,
+        "p_inverted_bh": 0.3248984237781317,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "8values:progress",
+        "mean_original": 73.2,
+        "n_original": 10,
+        "mean_inverted": 75.28,
+        "ci_inverted": 0.02079999999999998,
+        "t_inverted": -2.13934614269987,
+        "p_inverted": 0.04676398102478633,
+        "mean_paraphrased": 72.09,
+        "ci_paraphrased": 0.011099999999999994,
+        "t_paraphrased": 1.0520447478570836,
+        "p_paraphrased": 0.3066993229753046,
+        "p_inverted_bh": 0.0753807455324914,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "8values:equality",
+        "mean_original": 69.69000000000001,
+        "n_original": 10,
+        "mean_inverted": 71.66000000000001,
+        "ci_inverted": 0.01969999999999999,
+        "t_inverted": -1.472479123614654,
+        "p_inverted": 0.15922879700311776,
+        "mean_paraphrased": 71.51,
+        "ci_paraphrased": 0.01819999999999993,
+        "t_paraphrased": -1.8456270661622518,
+        "p_paraphrased": 0.08385579156728624,
+        "p_inverted_bh": 0.2176798743840091,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "8values:liberty",
+        "mean_original": 64.57,
+        "n_original": 10,
+        "mean_inverted": 66.53,
+        "ci_inverted": 0.01960000000000008,
+        "t_inverted": -1.9569365306095687,
+        "p_inverted": 0.06863036487082937,
+        "mean_paraphrased": 66.17999999999999,
+        "ci_paraphrased": 0.016099999999999993,
+        "t_paraphrased": -1.880972901551744,
+        "p_paraphrased": 0.07679792267263562,
+        "p_inverted_bh": 0.10153533432944618,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "political_compass:social",
+        "mean_original": -6.245,
+        "n_original": 10,
+        "mean_inverted": -5.8549999999999995,
+        "ci_inverted": 0.019500000000000028,
+        "t_inverted": -2.415427972428181,
+        "p_inverted": 0.03566931747307367,
+        "mean_paraphrased": -5.975,
+        "ci_paraphrased": 0.013500000000000022,
+        "t_paraphrased": -4.716801854594239,
+        "p_paraphrased": 0.00017490509033866563,
+        "p_inverted_bh": 0.05836797404684782,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "political_compass:economic",
+        "mean_original": -5.042,
+        "n_original": 10,
+        "mean_inverted": -5.430000000000001,
+        "ci_inverted": 0.01940000000000004,
+        "t_inverted": 1.7914138317181307,
+        "p_inverted": 0.09841985917112374,
+        "mean_paraphrased": -5.275,
+        "ci_paraphrased": 0.011650000000000027,
+        "t_paraphrased": 2.6840776838205866,
+        "p_paraphrased": 0.021857366130791155,
+        "p_inverted_bh": 0.14172459720641817,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "8values:peace",
+        "mean_original": 67.72999999999999,
+        "n_original": 10,
+        "mean_inverted": 69.66,
+        "ci_inverted": 0.019300000000000067,
+        "t_inverted": -1.5619865700604862,
+        "p_inverted": 0.14260136042204755,
+        "mean_paraphrased": 67.89000000000001,
+        "ci_paraphrased": 0.00160000000000025,
+        "t_paraphrased": -0.17703862422101235,
+        "p_paraphrased": 0.8616512045982582,
+        "p_inverted_bh": 0.19744803750745044,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "8values:liberty",
+        "mean_original": 69.41999999999999,
+        "n_original": 10,
+        "mean_inverted": 71.22,
+        "ci_inverted": 0.018000000000000113,
+        "t_inverted": -2.404587937091967,
+        "p_inverted": 0.02845702085638804,
+        "mean_paraphrased": 68.83999999999999,
+        "ci_paraphrased": 0.005799999999999983,
+        "t_paraphrased": 0.5869542129208566,
+        "p_paraphrased": 0.5649304583215236,
+        "p_inverted_bh": 0.0472824346536909,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "8values:peace",
+        "mean_original": 73.77000000000001,
+        "n_original": 10,
+        "mean_inverted": 71.99,
+        "ci_inverted": 0.017800000000000153,
+        "t_inverted": 1.961565661958495,
+        "p_inverted": 0.0676664024752996,
+        "mean_paraphrased": 69.34,
+        "ci_paraphrased": 0.04430000000000007,
+        "t_paraphrased": 3.6026315839972263,
+        "p_paraphrased": 0.0022105821100881283,
+        "p_inverted_bh": 0.10153533432944618,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "8values:progress",
+        "mean_original": 77.73,
+        "n_original": 10,
+        "mean_inverted": 75.95,
+        "ci_inverted": 0.01780000000000001,
+        "t_inverted": 1.317230226389731,
+        "p_inverted": 0.20862666108407651,
+        "mean_paraphrased": 67.78,
+        "ci_paraphrased": 0.09950000000000003,
+        "t_paraphrased": 5.238801580339762,
+        "p_paraphrased": 0.00024259010478868342,
+        "p_inverted_bh": 0.27816888144543533,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "8values:liberty",
+        "mean_original": 70.44,
+        "n_original": 10,
+        "mean_inverted": 72.14,
+        "ci_inverted": 0.01700000000000003,
+        "t_inverted": -0.5258995297812494,
+        "p_inverted": 0.6054082432147709,
+        "mean_paraphrased": 72.34,
+        "ci_paraphrased": 0.01900000000000006,
+        "t_paraphrased": -0.6175083364188148,
+        "p_paraphrased": 0.5448826521460916,
+        "p_inverted_bh": 0.6577792302158076,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "political_compass:economic",
+        "mean_original": -8.103,
+        "n_original": 10,
+        "mean_inverted": -7.7909999999999995,
+        "ci_inverted": 0.015600000000000013,
+        "t_inverted": -1.9128748886313633,
+        "p_inverted": 0.08120084869914924,
+        "mean_paraphrased": -8.663,
+        "ci_paraphrased": 0.028000000000000025,
+        "t_paraphrased": 2.8240200333874146,
+        "p_paraphrased": 0.01152477402490379,
+        "p_inverted_bh": 0.11850934675010971,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "8values:progress",
+        "mean_original": 65.77000000000001,
+        "n_original": 10,
+        "mean_inverted": 64.30999999999999,
+        "ci_inverted": 0.014600000000000222,
+        "t_inverted": 3.308134453935769,
+        "p_inverted": 0.0058026731577522535,
+        "mean_paraphrased": 68.11000000000001,
+        "ci_paraphrased": 0.023400000000000035,
+        "t_paraphrased": -4.975096191988444,
+        "p_paraphrased": 0.0001659858917641314,
+        "p_inverted_bh": 0.010444811683954057,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "political_compass:economic",
+        "mean_original": -7.090999999999999,
+        "n_original": 10,
+        "mean_inverted": -7.379,
+        "ci_inverted": 0.014400000000000013,
+        "t_inverted": 4.42188206744454,
+        "p_inverted": 0.0011223484461364217,
+        "mean_paraphrased": -8.103,
+        "ci_paraphrased": 0.05060000000000002,
+        "t_paraphrased": 13.955118060875167,
+        "p_paraphrased": 7.5296797927684e-10,
+        "p_inverted_bh": 0.0022870496638251613,
+        "inverted_differs_after_fdr": true
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "8values:peace",
+        "mean_original": 71.48999999999998,
+        "n_original": 10,
+        "mean_inverted": 70.11,
+        "ci_inverted": 0.013799999999999812,
+        "t_inverted": 1.138041390597494,
+        "p_inverted": 0.27025379461445576,
+        "mean_paraphrased": 61.220000000000006,
+        "ci_paraphrased": 0.10269999999999975,
+        "t_paraphrased": 5.778291532198388,
+        "p_paraphrased": 3.976538162628806e-05,
+        "p_inverted_bh": 0.34746916450430027,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "8values:equality",
+        "mean_original": 76.8,
+        "n_original": 10,
+        "mean_inverted": 75.51,
+        "ci_inverted": 0.01289999999999992,
+        "t_inverted": 0.3991071653319854,
+        "p_inverted": 0.6945098262395968,
+        "mean_paraphrased": 80.97,
+        "ci_paraphrased": 0.041700000000000015,
+        "t_paraphrased": -1.2416355121140914,
+        "p_paraphrased": 0.23037860383224634,
+        "p_inverted_bh": 0.7282238954745287,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "political_compass:economic",
+        "mean_original": -5.988,
+        "n_original": 10,
+        "mean_inverted": -5.7379999999999995,
+        "ci_inverted": 0.012500000000000044,
+        "t_inverted": -0.7835951117578708,
+        "p_inverted": 0.4456428578273042,
+        "mean_paraphrased": -5.414,
+        "ci_paraphrased": 0.028700000000000038,
+        "t_paraphrased": -1.9346849176885037,
+        "p_paraphrased": 0.071248034320766,
+        "p_inverted_bh": 0.5288948202785588,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "8values:liberty",
+        "mean_original": 62.39,
+        "n_original": 10,
+        "mean_inverted": 61.21999999999999,
+        "ci_inverted": 0.011700000000000089,
+        "t_inverted": 1.016196732018158,
+        "p_inverted": 0.3231005682901824,
+        "mean_paraphrased": 57.48,
+        "ci_paraphrased": 0.04910000000000004,
+        "t_paraphrased": 2.122546695021086,
+        "p_paraphrased": 0.056753078774903404,
+        "p_inverted_bh": 0.40559955837528705,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "8values:liberty",
+        "mean_original": 63.29,
+        "n_original": 10,
+        "mean_inverted": 64.21000000000001,
+        "ci_inverted": 0.009200000000000088,
+        "t_inverted": -0.5617023872261401,
+        "p_inverted": 0.5818977569297419,
+        "mean_paraphrased": 67.45,
+        "ci_paraphrased": 0.04160000000000004,
+        "t_paraphrased": -3.3040161898004574,
+        "p_paraphrased": 0.0040672388117031074,
+        "p_inverted_bh": 0.6546349765459596,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "political_compass:economic",
+        "mean_original": -5.878,
+        "n_original": 10,
+        "mean_inverted": -5.702,
+        "ci_inverted": 0.008800000000000007,
+        "t_inverted": -0.5210862380337732,
+        "p_inverted": 0.6090548427924145,
+        "mean_paraphrased": -5.462999999999999,
+        "ci_paraphrased": 0.020750000000000046,
+        "t_paraphrased": -1.258232582382096,
+        "p_paraphrased": 0.22592311763102776,
+        "p_inverted_bh": 0.6577792302158076,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "8values:liberty",
+        "mean_original": 69.07000000000001,
+        "n_original": 10,
+        "mean_inverted": 69.85,
+        "ci_inverted": 0.0077999999999998695,
+        "t_inverted": -0.6168026481126017,
+        "p_inverted": 0.5451047344465186,
+        "mean_paraphrased": 58.459999999999994,
+        "ci_paraphrased": 0.10610000000000014,
+        "t_paraphrased": 5.843318640609814,
+        "p_paraphrased": 4.310720153136927e-05,
+        "p_inverted_bh": 0.6262905459598299,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "political_compass:social",
+        "mean_original": -6.3950000000000005,
+        "n_original": 10,
+        "mean_inverted": -6.242,
+        "ci_inverted": 0.007650000000000023,
+        "t_inverted": -0.5787906981690837,
+        "p_inverted": 0.5711938433588554,
+        "mean_paraphrased": -6.339,
+        "ci_paraphrased": 0.0028000000000000026,
+        "t_paraphrased": -0.19195625462846205,
+        "p_paraphrased": 0.8499880324426271,
+        "p_inverted_bh": 0.6493572113974356,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "8values:equality",
+        "mean_original": 70.69999999999999,
+        "n_original": 10,
+        "mean_inverted": 71.42,
+        "ci_inverted": 0.007200000000000131,
+        "t_inverted": -0.3901078363758978,
+        "p_inverted": 0.7024863087243456,
+        "mean_paraphrased": 69.22999999999999,
+        "ci_paraphrased": 0.014699999999999989,
+        "t_paraphrased": 0.7038938020722499,
+        "p_paraphrased": 0.4909499080180081,
+        "p_inverted_bh": 0.7295050129060512,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "8values:equality",
+        "mean_original": 68.01000000000002,
+        "n_original": 10,
+        "mean_inverted": 67.31,
+        "ci_inverted": 0.00700000000000017,
+        "t_inverted": 0.539637177423729,
+        "p_inverted": 0.5985429705959489,
+        "mean_paraphrased": 73.97000000000001,
+        "ci_paraphrased": 0.05959999999999994,
+        "t_paraphrased": -4.581152967931886,
+        "p_paraphrased": 0.0005004774439394623,
+        "p_inverted_bh": 0.6577792302158076,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "8values:progress",
+        "mean_original": 66.31,
+        "n_original": 10,
+        "mean_inverted": 66.99999999999999,
+        "ci_inverted": 0.006899999999999835,
+        "t_inverted": -0.5313827188153842,
+        "p_inverted": 0.6019909681440052,
+        "mean_paraphrased": 67.23,
+        "ci_paraphrased": 0.009200000000000017,
+        "t_paraphrased": -0.40334758786628505,
+        "p_paraphrased": 0.6940817299848046,
+        "p_inverted_bh": 0.6577792302158076,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "8values:peace",
+        "mean_original": 70.4,
+        "n_original": 10,
+        "mean_inverted": 69.74,
+        "ci_inverted": 0.006600000000000108,
+        "t_inverted": 0.3290035316457896,
+        "p_inverted": 0.7469005489523406,
+        "mean_paraphrased": 67.09,
+        "ci_paraphrased": 0.033100000000000025,
+        "t_paraphrased": 2.960698751020386,
+        "p_paraphrased": 0.010863337285313319,
+        "p_inverted_bh": 0.7682405646366932,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "8values:liberty",
+        "mean_original": 68.49000000000001,
+        "n_original": 10,
+        "mean_inverted": 67.86,
+        "ci_inverted": 0.006300000000000096,
+        "t_inverted": 0.45446218730480137,
+        "p_inverted": 0.6558825444827201,
+        "mean_paraphrased": 63.95,
+        "ci_paraphrased": 0.045400000000000065,
+        "t_paraphrased": 4.143781807831883,
+        "p_paraphrased": 0.000616017490087971,
+        "p_inverted_bh": 0.701339750535978,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "8values:liberty",
+        "mean_original": 63.11,
+        "n_original": 10,
+        "mean_inverted": 62.620000000000005,
+        "ci_inverted": 0.004899999999999949,
+        "t_inverted": 0.8725149668903,
+        "p_inverted": 0.39967764964158436,
+        "mean_paraphrased": 61.160000000000004,
+        "ci_paraphrased": 0.01949999999999996,
+        "t_paraphrased": 3.534565770449227,
+        "p_paraphrased": 0.004330208836097929,
+        "p_inverted_bh": 0.47961317956990124,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "8values:equality",
+        "mean_original": 67.04,
+        "n_original": 10,
+        "mean_inverted": 66.59,
+        "ci_inverted": 0.004500000000000028,
+        "t_inverted": 0.4256049978150745,
+        "p_inverted": 0.6755043103326546,
+        "mean_paraphrased": 67.13000000000001,
+        "ci_paraphrased": 0.0009000000000000341,
+        "t_paraphrased": -0.04093141382542142,
+        "p_paraphrased": 0.9680819989210282,
+        "p_inverted_bh": 0.7152398579992814,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "8values:progress",
+        "mean_original": 67.48,
+        "n_original": 10,
+        "mean_inverted": 67.05,
+        "ci_inverted": 0.0043000000000000685,
+        "t_inverted": 0.9378160637348388,
+        "p_inverted": 0.36940938403318613,
+        "mean_paraphrased": 73.10999999999999,
+        "ci_paraphrased": 0.056299999999999815,
+        "t_paraphrased": -6.0723582358128585,
+        "p_paraphrased": 3.0262412837063227e-05,
+        "p_inverted_bh": 0.4482720615234169,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "8values:liberty",
+        "mean_original": 63.379999999999995,
+        "n_original": 10,
+        "mean_inverted": 63.06000000000002,
+        "ci_inverted": 0.00319999999999979,
+        "t_inverted": 0.9486832980504508,
+        "p_inverted": 0.35534776904039034,
+        "mean_paraphrased": 64.78999999999999,
+        "ci_paraphrased": 0.014099999999999967,
+        "t_paraphrased": -3.3147172311348827,
+        "p_paraphrased": 0.004463153715380901,
+        "p_inverted_bh": 0.4361086256404791,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "political_compass:economic",
+        "mean_original": -6.4159999999999995,
+        "n_original": 10,
+        "mean_inverted": -6.441,
+        "ci_inverted": 0.0012500000000000178,
+        "t_inverted": 0.2551950588835295,
+        "p_inverted": 0.8039275433092241,
+        "mean_paraphrased": -6.601999999999999,
+        "ci_paraphrased": 0.009299999999999998,
+        "t_paraphrased": 2.945832042293768,
+        "p_paraphrased": 0.013749189316834599,
+        "p_inverted_bh": 0.8190959875226057,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "political_compass:social",
+        "mean_original": -5.057,
+        "n_original": 10,
+        "mean_inverted": -5.067,
+        "ci_inverted": 0.0004999999999999894,
+        "t_inverted": 0.04733946235533368,
+        "p_inverted": 0.962788270466765,
+        "mean_paraphrased": -5.629,
+        "ci_paraphrased": 0.02859999999999996,
+        "t_paraphrased": 1.6461766531059143,
+        "p_paraphrased": 0.12227555183881562,
+        "p_inverted_bh": 0.9717862916860806,
+        "inverted_differs_after_fdr": false
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "political_compass:economic",
+        "mean_original": -6.275,
+        "n_original": 10,
+        "mean_inverted": -6.275,
+        "ci_inverted": 0.0,
+        "t_inverted": 0.0,
+        "p_inverted": 1.0,
+        "mean_paraphrased": -5.4670000000000005,
+        "ci_paraphrased": 0.04039999999999999,
+        "t_paraphrased": -5.815341294859472,
+        "p_paraphrased": 0.00019835519258121635,
+        "p_inverted_bh": 1.0,
+        "inverted_differs_after_fdr": false
+      }
+    ],
+    "mean_contamination_index": 0.04571064814814815,
+    "max_contamination_index": 0.18040000000000006,
+    "n_cells_flagged_after_fdr": 65,
+    "n_models_flagged_after_fdr": 17,
+    "n_models": 18
+  },
+  "task_1_2_memorisation": {
+    "available": true,
+    "per_model": [
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.7,
+        "near_rate": 0.7,
+        "mean_similarity": 0.914635,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.8354
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.5714
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.6724
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.8101
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.6395
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.7639
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 1.0
+          }
+        ]
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.6,
+        "near_rate": 0.65,
+        "mean_similarity": 0.9102150000000002,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.8977
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.7731
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.608
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.6541
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.9065
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.8491
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.7955
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.7203
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 1.0
+          }
+        ]
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.25,
+        "near_rate": 0.35,
+        "mean_similarity": 0.8027750000000001,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.6509
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.7731
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6882
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.8354
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.6118
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.5775
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.6882
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.7627
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.7373
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.6012
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.8077
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.9581
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.9418
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.7203
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.7013
+          }
+        ]
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.25,
+        "near_rate": 0.3,
+        "mean_similarity": 0.788625,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.7129
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6882
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.7595
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.6667
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.6423
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.8
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.6309
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.9058
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.6522
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.5565
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.6667
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.8696
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.8712
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.75
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.6
+          }
+        ]
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.2,
+        "near_rate": 0.25,
+        "mean_similarity": 0.762535,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 0.929
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.8432
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.7129
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.623
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.6535
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.6135
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.5692
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.6275
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.7717
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.7103
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.6061
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.7143
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.869
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.6907
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.6804
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.6364
+          }
+        ]
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.2,
+        "near_rate": 0.25,
+        "mean_similarity": 0.7766449999999999,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.679
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.784
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6723
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.5741
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.6846
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.9457
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.8101
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.7705
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.7373
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.6878
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.6721
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.6885
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.8098
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.6738
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.7203
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.623
+          }
+        ]
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.1,
+        "near_rate": 0.2,
+        "mean_similarity": 0.73956,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 0.9057
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.6667
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.7129
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6882
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.7226
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.5417
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.7111
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.6733
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.7094
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.7339
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.5896
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.6792
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.7355
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.7975
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.6782
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.9213
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.7244
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.6
+          }
+        ]
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.1,
+        "near_rate": 0.15,
+        "mean_similarity": 0.7225499999999999,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 0.929
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.559
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.7129
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.8113
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.6065
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.6783
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.6154
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.6519
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.623
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.7358
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.6441
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.6306
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.7738
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.7337
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.7182
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.7914
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.6528
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.5833
+          }
+        ]
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.05,
+        "near_rate": 0.1,
+        "mean_similarity": 0.674555,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.9333
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.6719
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6341
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.5333
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.641
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 0.6733
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.5588
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.6071
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.6308
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.6847
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.7368
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.5761
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.6061
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.6707
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.7765
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.6409
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.7629
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.7164
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.4364
+          }
+        ]
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.1,
+        "near_rate": 0.1,
+        "mean_similarity": 0.70745,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 0.8555
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.8324
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.6613
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6935
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.4615
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.6849
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.5442
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.7529
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.622
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.6393
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.7257
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.6012
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.6815
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.7108
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.7273
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.7513
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.6667
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.537
+          }
+        ]
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.05,
+        "near_rate": 0.05,
+        "mean_similarity": 0.7088150000000001,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 0.8623
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.7571
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.7049
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6882
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.5517
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.6115
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.6093
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.8
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.7153
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.641
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.75
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.6364
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.6261
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.7294
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.7727
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.7322
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.759
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.7164
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.5128
+          }
+        ]
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.0,
+        "near_rate": 0.05,
+        "mean_similarity": 0.65953,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 0.929
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.6286
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.6423
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6299
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.4952
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.6438
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 0.6914
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.5385
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.6
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.6906
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.6278
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.7573
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.5902
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.6225
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.7251
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.7898
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.6328
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.828
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.6762
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.4516
+          }
+        ]
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.0,
+        "near_rate": 0.05,
+        "mean_similarity": 0.68842,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 0.9686
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.6892
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.672
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.5983
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.4779
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.7105
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 0.764
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.5581
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.7021
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.6833
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.7429
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.7368
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.6171
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.6165
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.7037
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.8242
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.6667
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.8623
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.6923
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.4819
+          }
+        ]
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.05,
+        "near_rate": 0.05,
+        "mean_similarity": 0.709855,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 0.8795
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.8254
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.7551
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6882
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.6214
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.5604
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 1.0
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.6056
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.625
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.7705
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.7207
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.5752
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.7411
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.7317
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.6556
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.7975
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.6731
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.7708
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.6598
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.5405
+          }
+        ]
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.0,
+        "near_rate": 0.05,
+        "mean_similarity": 0.67994,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 0.9359
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.7875
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.7049
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6182
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.5614
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.7044
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 0.6327
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.5785
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.7229
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.672
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.7053
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.75
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.6171
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.6393
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.659
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.8095
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.6477
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.7636
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.6929
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.396
+          }
+        ]
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trial": 1,
+        "n_items": 20,
+        "exact_rate": 0.0,
+        "near_rate": 0.0,
+        "mean_similarity": 0.6410799999999999,
+        "items": [
+          {
+            "instrument": "8values",
+            "item": 1,
+            "similarity": 0.7299
+          },
+          {
+            "instrument": "8values",
+            "item": 2,
+            "similarity": 0.6918
+          },
+          {
+            "instrument": "8values",
+            "item": 9,
+            "similarity": 0.672
+          },
+          {
+            "instrument": "8values",
+            "item": 12,
+            "similarity": 0.6333
+          },
+          {
+            "instrument": "8values",
+            "item": 16,
+            "similarity": 0.439
+          },
+          {
+            "instrument": "8values",
+            "item": 21,
+            "similarity": 0.646
+          },
+          {
+            "instrument": "8values",
+            "item": 38,
+            "similarity": 0.6667
+          },
+          {
+            "instrument": "8values",
+            "item": 44,
+            "similarity": 0.5736
+          },
+          {
+            "instrument": "8values",
+            "item": 46,
+            "similarity": 0.6327
+          },
+          {
+            "instrument": "8values",
+            "item": 61,
+            "similarity": 0.5655
+          },
+          {
+            "instrument": "political_compass",
+            "item": 13,
+            "similarity": 0.7273
+          },
+          {
+            "instrument": "political_compass",
+            "item": 16,
+            "similarity": 0.6324
+          },
+          {
+            "instrument": "political_compass",
+            "item": 25,
+            "similarity": 0.5699
+          },
+          {
+            "instrument": "political_compass",
+            "item": 29,
+            "similarity": 0.5839
+          },
+          {
+            "instrument": "political_compass",
+            "item": 31,
+            "similarity": 0.6588
+          },
+          {
+            "instrument": "political_compass",
+            "item": 38,
+            "similarity": 0.7243
+          },
+          {
+            "instrument": "political_compass",
+            "item": 44,
+            "similarity": 0.6383
+          },
+          {
+            "instrument": "political_compass",
+            "item": 48,
+            "similarity": 0.7668
+          },
+          {
+            "instrument": "political_compass",
+            "item": 50,
+            "similarity": 0.7138
+          },
+          {
+            "instrument": "political_compass",
+            "item": 55,
+            "similarity": 0.5556
+          }
+        ]
+      }
+    ],
+    "mean_exact_rate": 0.165625,
+    "mean_near_rate": 0.20625,
+    "note": "A high verbatim-completion rate is direct evidence the item bank is in pretraining data, independent of any score shift."
+  },
+  "task_1_3_format": {
+    "available": true,
+    "n_configs": 24,
+    "models": 18,
+    "variance_decomposition": {
+      "method": "mixedlm_vc",
+      "n_observations": 12712,
+      "fixed_effects": [
+        "scale",
+        "item_order",
+        "option_order",
+        "elicitation"
+      ],
+      "z_within": "trait",
+      "variance_components": {
+        "model": 0.026090470921808617,
+        "model:scale": 0.07950665272480245,
+        "model:elicitation": 0.004589415382727779,
+        "residual": 0.8746297884295176
+      },
+      "variance_share": {
+        "model": 0.02649272782583778,
+        "model:scale": 0.0807324680836225,
+        "model:elicitation": 0.00466017393778386,
+        "residual": 0.8881146301527558
+      },
+      "total_variance": 0.9848163274588564,
+      "icc": {
+        "model": 0.02649272782583778,
+        "model:scale": 0.0807324680836225,
+        "model:elicitation": 0.00466017393778386
+      }
+    },
+    "partial_eta_squared_per_axis": [
+      {
+        "trait": "8values:equality",
+        "model": 0.42379872398850715,
+        "scale": 0.01995345258466095,
+        "item_order": 0.04009511723344346,
+        "option_order": 0.057917763948781634,
+        "elicitation": 0.06234797088142373
+      },
+      {
+        "trait": "8values:liberty",
+        "model": 0.15182152771160445,
+        "scale": 0.06711625892926418,
+        "item_order": 0.01333657083744192,
+        "option_order": 0.040942339081475126,
+        "elicitation": 0.36641196423168565
+      },
+      {
+        "trait": "8values:peace",
+        "model": 0.30303596501752106,
+        "scale": 0.06011637120351363,
+        "item_order": 0.08788043608489123,
+        "option_order": 0.03545790806443404,
+        "elicitation": 0.38766415260132076
+      },
+      {
+        "trait": "8values:progress",
+        "model": 0.19127056889097127,
+        "scale": 0.0730593402711393,
+        "item_order": 0.024535438680558047,
+        "option_order": 0.05132930315279677,
+        "elicitation": 0.29254511689934426
+      },
+      {
+        "trait": "political_compass:economic",
+        "model": 0.11229924309897962,
+        "scale": 0.0440141247082361,
+        "item_order": 0.003841599563438789,
+        "option_order": 0.05737564084470473,
+        "elicitation": 0.5428898677572737
+      },
+      {
+        "trait": "political_compass:social",
+        "model": 0.17227295798403738,
+        "scale": 0.07353392363834185,
+        "item_order": 2.4275116069550665e-06,
+        "option_order": 0.07728310100822201,
+        "elicitation": 0.6967378089954122
+      }
+    ],
+    "design_averaged_positions": [
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 53.38666666666666,
+        "min_config_mean": 16.580000000000002,
+        "max_config_mean": 71.8,
+        "range_as_frac_of_scale": 0.5522,
+        "bootstrap_ci": {
+          "estimate": 53.38666666666666,
+          "ci_lower": 46.591208333333334,
+          "ci_upper": 59.491666666666674,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -5.070583333333333,
+        "min_config_mean": -7.9799999999999995,
+        "max_config_mean": 0.748,
+        "range_as_frac_of_scale": 0.4364,
+        "bootstrap_ci": {
+          "estimate": -5.070583333333333,
+          "ci_lower": -6.157142708333334,
+          "ci_upper": -4.098367708333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 58.826666666666675,
+        "min_config_mean": 36.519999999999996,
+        "max_config_mean": 77.26,
+        "range_as_frac_of_scale": 0.4074000000000001,
+        "bootstrap_ci": {
+          "estimate": 58.826666666666675,
+          "ci_lower": 53.65077083333333,
+          "ci_upper": 64.22245833333332,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.968135416666667,
+        "min_config_mean": -8.308,
+        "max_config_mean": -0.585,
+        "range_as_frac_of_scale": 0.38615,
+        "bootstrap_ci": {
+          "estimate": -4.968135416666667,
+          "ci_lower": -5.906611458333333,
+          "ci_upper": -4.113437239583334,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.864916666666667,
+        "min_config_mean": -8.149000000000001,
+        "max_config_mean": -0.7539999999999999,
+        "range_as_frac_of_scale": 0.3697500000000001,
+        "bootstrap_ci": {
+          "estimate": -4.864916666666667,
+          "ci_lower": -5.963426041666668,
+          "ci_upper": -3.8846531250000007,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.769291666666667,
+        "min_config_mean": -8.040000000000001,
+        "max_config_mean": -0.6599999999999999,
+        "range_as_frac_of_scale": 0.36900000000000005,
+        "bootstrap_ci": {
+          "estimate": -4.769291666666667,
+          "ci_lower": -5.708013541666667,
+          "ci_upper": -3.9028510416666697,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.501416666666667,
+        "min_config_mean": -7.264,
+        "max_config_mean": 0.039999999999999945,
+        "range_as_frac_of_scale": 0.3652,
+        "bootstrap_ci": {
+          "estimate": -4.501416666666667,
+          "ci_lower": -5.413447135416665,
+          "ci_upper": -3.66694375,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.1671249999999995,
+        "min_config_mean": -7.029000000000001,
+        "max_config_mean": 0.23199999999999998,
+        "range_as_frac_of_scale": 0.36305000000000004,
+        "bootstrap_ci": {
+          "estimate": -4.1671249999999995,
+          "ci_lower": -5.174955208333333,
+          "ci_upper": -3.1910406250000003,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -3.862979166666667,
+        "min_config_mean": -6.45,
+        "max_config_mean": 0.787,
+        "range_as_frac_of_scale": 0.36185,
+        "bootstrap_ci": {
+          "estimate": -3.862979166666667,
+          "ci_lower": -4.751140104166667,
+          "ci_upper": -3.012961979166667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -3.6631666666666667,
+        "min_config_mean": -6.292,
+        "max_config_mean": 0.938,
+        "range_as_frac_of_scale": 0.3615,
+        "bootstrap_ci": {
+          "estimate": -3.6631666666666667,
+          "ci_lower": -4.602567708333334,
+          "ci_upper": -2.7750770833333336,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -3.7912916666666674,
+        "min_config_mean": -7.214,
+        "max_config_mean": -0.122,
+        "range_as_frac_of_scale": 0.3546,
+        "bootstrap_ci": {
+          "estimate": -3.7912916666666674,
+          "ci_lower": -4.710722916666667,
+          "ci_upper": -2.9420572916666674,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 68.59416666666665,
+        "min_config_mean": 48.62,
+        "max_config_mean": 83.5,
+        "range_as_frac_of_scale": 0.3488,
+        "bootstrap_ci": {
+          "estimate": 68.59416666666665,
+          "ci_lower": 63.49333333333334,
+          "ci_upper": 73.9123125,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.631541666666666,
+        "min_config_mean": -7.0040000000000004,
+        "max_config_mean": -0.08400000000000005,
+        "range_as_frac_of_scale": 0.34600000000000003,
+        "bootstrap_ci": {
+          "estimate": -4.631541666666666,
+          "ci_lower": -5.448703125000001,
+          "ci_upper": -3.8649645833333337,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.737666666666667,
+        "min_config_mean": -7.394,
+        "max_config_mean": -0.65,
+        "range_as_frac_of_scale": 0.3372,
+        "bootstrap_ci": {
+          "estimate": -4.737666666666667,
+          "ci_lower": -5.626172916666666,
+          "ci_upper": -3.9049218750000003,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -3.6634166666666665,
+        "min_config_mean": -5.970000000000001,
+        "max_config_mean": 0.666,
+        "range_as_frac_of_scale": 0.33180000000000004,
+        "bootstrap_ci": {
+          "estimate": -3.6634166666666665,
+          "ci_lower": -4.399107291666667,
+          "ci_upper": -2.914888541666668,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -3.78425,
+        "min_config_mean": -6.388,
+        "max_config_mean": 0.11099999999999999,
+        "range_as_frac_of_scale": 0.32494999999999996,
+        "bootstrap_ci": {
+          "estimate": -3.78425,
+          "ci_lower": -4.547111458333333,
+          "ci_upper": -3.0636145833333335,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.436583333333334,
+        "min_config_mean": -6.862,
+        "max_config_mean": -0.43599999999999994,
+        "range_as_frac_of_scale": 0.32130000000000003,
+        "bootstrap_ci": {
+          "estimate": -4.436583333333334,
+          "ci_lower": -5.254047916666667,
+          "ci_upper": -3.6569645833333344,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.949791666666667,
+        "min_config_mean": -7.384,
+        "max_config_mean": -1.026,
+        "range_as_frac_of_scale": 0.3179,
+        "bootstrap_ci": {
+          "estimate": -4.949791666666667,
+          "ci_lower": -5.797659374999999,
+          "ci_upper": -4.1823958333333335,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.827375,
+        "min_config_mean": -7.460000000000001,
+        "max_config_mean": -1.1179999999999999,
+        "range_as_frac_of_scale": 0.31710000000000005,
+        "bootstrap_ci": {
+          "estimate": -4.827375,
+          "ci_lower": -5.725073958333334,
+          "ci_upper": -4.030532291666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -5.029583333333333,
+        "min_config_mean": -7.5040000000000004,
+        "max_config_mean": -1.353,
+        "range_as_frac_of_scale": 0.30755000000000005,
+        "bootstrap_ci": {
+          "estimate": -5.029583333333333,
+          "ci_lower": -5.680378125,
+          "ci_upper": -4.384779166666666,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -4.672802083333333,
+        "min_config_mean": -6.906999999999999,
+        "max_config_mean": -0.764,
+        "range_as_frac_of_scale": 0.3071499999999999,
+        "bootstrap_ci": {
+          "estimate": -4.672802083333333,
+          "ci_lower": -5.51056328125,
+          "ci_upper": -3.8478916666666683,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -5.18375,
+        "min_config_mean": -7.628,
+        "max_config_mean": -1.5150000000000001,
+        "range_as_frac_of_scale": 0.30565,
+        "bootstrap_ci": {
+          "estimate": -5.18375,
+          "ci_lower": -5.873005208333334,
+          "ci_upper": -4.520996875,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -5.3694999999999995,
+        "min_config_mean": -7.675999999999999,
+        "max_config_mean": -1.714,
+        "range_as_frac_of_scale": 0.2981,
+        "bootstrap_ci": {
+          "estimate": -5.3694999999999995,
+          "ci_lower": -6.082063541666666,
+          "ci_upper": -4.703581250000001,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -4.8834583333333335,
+        "min_config_mean": -7.2299999999999995,
+        "max_config_mean": -1.313,
+        "range_as_frac_of_scale": 0.29585,
+        "bootstrap_ci": {
+          "estimate": -4.8834583333333335,
+          "ci_lower": -5.644915624999999,
+          "ci_upper": -4.152639583333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 60.91166666666667,
+        "min_config_mean": 43.92,
+        "max_config_mean": 73.34,
+        "range_as_frac_of_scale": 0.2942,
+        "bootstrap_ci": {
+          "estimate": 60.91166666666667,
+          "ci_lower": 56.74875,
+          "ci_upper": 65.13933333333334,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -5.382020833333333,
+        "min_config_mean": -8.552000000000001,
+        "max_config_mean": -2.7009999999999996,
+        "range_as_frac_of_scale": 0.2925500000000001,
+        "bootstrap_ci": {
+          "estimate": -5.382020833333333,
+          "ci_lower": -6.161069270833333,
+          "ci_upper": -4.679185416666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -5.755916666666667,
+        "min_config_mean": -7.928,
+        "max_config_mean": -2.478,
+        "range_as_frac_of_scale": 0.27249999999999996,
+        "bootstrap_ci": {
+          "estimate": -5.755916666666667,
+          "ci_lower": -6.4167177083333335,
+          "ci_upper": -5.1360625,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -4.109583333333333,
+        "min_config_mean": -6.651999999999999,
+        "max_config_mean": -1.404,
+        "range_as_frac_of_scale": 0.26239999999999997,
+        "bootstrap_ci": {
+          "estimate": -4.109583333333333,
+          "ci_lower": -4.848485416666666,
+          "ci_upper": -3.441098958333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -4.6383020833333335,
+        "min_config_mean": -7.0280000000000005,
+        "max_config_mean": -1.813,
+        "range_as_frac_of_scale": 0.26075000000000004,
+        "bootstrap_ci": {
+          "estimate": -4.6383020833333335,
+          "ci_lower": -5.19950703125,
+          "ci_upper": -4.113840625,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "x-ai/grok-4.20",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -5.006333333333333,
+        "min_config_mean": -7.279999999999999,
+        "max_config_mean": -2.128,
+        "range_as_frac_of_scale": 0.25759999999999994,
+        "bootstrap_ci": {
+          "estimate": -5.006333333333333,
+          "ci_lower": -5.641640624999999,
+          "ci_upper": -4.413877083333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -4.246333333333333,
+        "min_config_mean": -6.58,
+        "max_config_mean": -1.6019999999999999,
+        "range_as_frac_of_scale": 0.24889999999999998,
+        "bootstrap_ci": {
+          "estimate": -4.246333333333333,
+          "ci_lower": -4.909632291666667,
+          "ci_upper": -3.6321052083333334,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -5.005833333333333,
+        "min_config_mean": -6.676,
+        "max_config_mean": -1.7280000000000002,
+        "range_as_frac_of_scale": 0.2474,
+        "bootstrap_ci": {
+          "estimate": -5.005833333333333,
+          "ci_lower": -5.510912499999999,
+          "ci_upper": -4.482086458333334,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -4.894291666666667,
+        "min_config_mean": -6.94,
+        "max_config_mean": -2.038,
+        "range_as_frac_of_scale": 0.24510000000000004,
+        "bootstrap_ci": {
+          "estimate": -4.894291666666667,
+          "ci_lower": -5.4551010416666665,
+          "ci_upper": -4.356826041666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 66.54666666666667,
+        "min_config_mean": 54.58,
+        "max_config_mean": 78.53999999999999,
+        "range_as_frac_of_scale": 0.23959999999999992,
+        "bootstrap_ci": {
+          "estimate": 66.54666666666667,
+          "ci_lower": 64.03137499999998,
+          "ci_upper": 69.54022916666666,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 71.94416666666667,
+        "min_config_mean": 60.36,
+        "max_config_mean": 84.24,
+        "range_as_frac_of_scale": 0.23879999999999996,
+        "bootstrap_ci": {
+          "estimate": 71.94416666666667,
+          "ci_lower": 69.10635416666666,
+          "ci_upper": 75.17420833333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -5.164253472222223,
+        "min_config_mean": -7.279999999999999,
+        "max_config_mean": -2.7649999999999997,
+        "range_as_frac_of_scale": 0.22574999999999998,
+        "bootstrap_ci": {
+          "estimate": -5.164253472222223,
+          "ci_lower": -5.750314843750001,
+          "ci_upper": -4.6319822916666675,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 77.0725,
+        "min_config_mean": 65.7,
+        "max_config_mean": 88.03999999999999,
+        "range_as_frac_of_scale": 0.2233999999999999,
+        "bootstrap_ci": {
+          "estimate": 77.0725,
+          "ci_lower": 74.89802083333332,
+          "ci_upper": 79.53583333333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 67.81333333333333,
+        "min_config_mean": 58.67999999999999,
+        "max_config_mean": 80.22,
+        "range_as_frac_of_scale": 0.21540000000000006,
+        "bootstrap_ci": {
+          "estimate": 67.81333333333333,
+          "ci_lower": 65.68322916666668,
+          "ci_upper": 70.299375,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 77.05499999999999,
+        "min_config_mean": 65.86,
+        "max_config_mean": 87.03999999999999,
+        "range_as_frac_of_scale": 0.21179999999999993,
+        "bootstrap_ci": {
+          "estimate": 77.05499999999999,
+          "ci_lower": 74.95154166666667,
+          "ci_upper": 79.16010416666666,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 80.0075,
+        "min_config_mean": 68.96000000000001,
+        "max_config_mean": 89.74,
+        "range_as_frac_of_scale": 0.20779999999999987,
+        "bootstrap_ci": {
+          "estimate": 80.0075,
+          "ci_lower": 77.75195833333333,
+          "ci_upper": 82.12070833333334,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 74.21333333333332,
+        "min_config_mean": 63.660000000000004,
+        "max_config_mean": 84.34,
+        "range_as_frac_of_scale": 0.20679999999999998,
+        "bootstrap_ci": {
+          "estimate": 74.21333333333332,
+          "ci_lower": 72.1558125,
+          "ci_upper": 76.38710416666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 69.51083333333334,
+        "min_config_mean": 57.92,
+        "max_config_mean": 78.56,
+        "range_as_frac_of_scale": 0.2064,
+        "bootstrap_ci": {
+          "estimate": 69.51083333333334,
+          "ci_lower": 67.2699375,
+          "ci_upper": 71.80606250000001,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 69.8425,
+        "min_config_mean": 59.86,
+        "max_config_mean": 80.22,
+        "range_as_frac_of_scale": 0.2036,
+        "bootstrap_ci": {
+          "estimate": 69.8425,
+          "ci_lower": 67.46889583333335,
+          "ci_upper": 72.35541666666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 68.5525,
+        "min_config_mean": 57.879999999999995,
+        "max_config_mean": 78.14000000000001,
+        "range_as_frac_of_scale": 0.2026000000000002,
+        "bootstrap_ci": {
+          "estimate": 68.5525,
+          "ci_lower": 66.32164583333333,
+          "ci_upper": 70.72502083333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 70.07666666666667,
+        "min_config_mean": 60.17999999999999,
+        "max_config_mean": 80.38,
+        "range_as_frac_of_scale": 0.20200000000000004,
+        "bootstrap_ci": {
+          "estimate": 70.07666666666667,
+          "ci_lower": 68.02127083333333,
+          "ci_upper": 72.25920833333332,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 74.19416666666666,
+        "min_config_mean": 62.67999999999999,
+        "max_config_mean": 82.8,
+        "range_as_frac_of_scale": 0.20120000000000005,
+        "bootstrap_ci": {
+          "estimate": 74.19416666666666,
+          "ci_lower": 72.16904166666667,
+          "ci_upper": 76.288375,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 74.56833333333334,
+        "min_config_mean": 64.0,
+        "max_config_mean": 84.12,
+        "range_as_frac_of_scale": 0.20120000000000005,
+        "bootstrap_ci": {
+          "estimate": 74.56833333333334,
+          "ci_lower": 72.58652083333332,
+          "ci_upper": 76.48435416666666,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -4.9259861111111105,
+        "min_config_mean": -6.552,
+        "max_config_mean": -2.591,
+        "range_as_frac_of_scale": 0.19804999999999998,
+        "bootstrap_ci": {
+          "estimate": -4.9259861111111105,
+          "ci_lower": -5.365148611111111,
+          "ci_upper": -4.517848958333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -4.973208333333333,
+        "min_config_mean": -6.553,
+        "max_config_mean": -2.5975,
+        "range_as_frac_of_scale": 0.19777499999999998,
+        "bootstrap_ci": {
+          "estimate": -4.973208333333333,
+          "ci_lower": -5.448533854166666,
+          "ci_upper": -4.507304166666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 74.89999999999999,
+        "min_config_mean": 65.2,
+        "max_config_mean": 84.96000000000001,
+        "range_as_frac_of_scale": 0.19760000000000005,
+        "bootstrap_ci": {
+          "estimate": 74.89999999999999,
+          "ci_lower": 72.7723125,
+          "ci_upper": 77.08268749999999,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 74.55416666666666,
+        "min_config_mean": 65.38000000000001,
+        "max_config_mean": 84.96000000000001,
+        "range_as_frac_of_scale": 0.19579999999999997,
+        "bootstrap_ci": {
+          "estimate": 74.55416666666666,
+          "ci_lower": 72.32972916666667,
+          "ci_upper": 76.71416666666666,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 70.65916666666666,
+        "min_config_mean": 60.660000000000004,
+        "max_config_mean": 80.0,
+        "range_as_frac_of_scale": 0.19339999999999996,
+        "bootstrap_ci": {
+          "estimate": 70.65916666666666,
+          "ci_lower": 68.87987500000001,
+          "ci_upper": 72.53850000000001,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -4.7755625,
+        "min_config_mean": -6.2825,
+        "max_config_mean": -2.427,
+        "range_as_frac_of_scale": 0.19277499999999997,
+        "bootstrap_ci": {
+          "estimate": -4.7755625,
+          "ci_lower": -5.297011458333333,
+          "ci_upper": -4.262217708333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 72.97166666666666,
+        "min_config_mean": 62.879999999999995,
+        "max_config_mean": 82.12,
+        "range_as_frac_of_scale": 0.1924000000000001,
+        "bootstrap_ci": {
+          "estimate": 72.97166666666666,
+          "ci_lower": 70.97816666666667,
+          "ci_upper": 75.14527083333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-235b-a22b",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 69.02166666666666,
+        "min_config_mean": 58.1,
+        "max_config_mean": 77.28,
+        "range_as_frac_of_scale": 0.1918,
+        "bootstrap_ci": {
+          "estimate": 69.02166666666666,
+          "ci_lower": 67.16497916666667,
+          "ci_upper": 71.01591666666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 65.87916666666666,
+        "min_config_mean": 55.36,
+        "max_config_mean": 74.52000000000001,
+        "range_as_frac_of_scale": 0.1916000000000001,
+        "bootstrap_ci": {
+          "estimate": 65.87916666666666,
+          "ci_lower": 63.92154166666666,
+          "ci_upper": 67.83522916666666,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 77.10083333333334,
+        "min_config_mean": 66.44,
+        "max_config_mean": 85.42,
+        "range_as_frac_of_scale": 0.18980000000000005,
+        "bootstrap_ci": {
+          "estimate": 77.10083333333334,
+          "ci_lower": 75.22500000000001,
+          "ci_upper": 79.27204166666665,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "google/gemini-2.5-flash",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 68.33416666666666,
+        "min_config_mean": 59.06,
+        "max_config_mean": 77.88,
+        "range_as_frac_of_scale": 0.18819999999999992,
+        "bootstrap_ci": {
+          "estimate": 68.33416666666666,
+          "ci_lower": 66.22491666666667,
+          "ci_upper": 70.5720625,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-sonnet-4.5",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 65.46333333333334,
+        "min_config_mean": 56.8,
+        "max_config_mean": 75.47999999999999,
+        "range_as_frac_of_scale": 0.18679999999999994,
+        "bootstrap_ci": {
+          "estimate": 65.46333333333334,
+          "ci_lower": 63.54235416666666,
+          "ci_upper": 67.56189583333334,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 74.4975,
+        "min_config_mean": 65.04,
+        "max_config_mean": 83.66,
+        "range_as_frac_of_scale": 0.1861999999999999,
+        "bootstrap_ci": {
+          "estimate": 74.4975,
+          "ci_lower": 72.35485416666667,
+          "ci_upper": 76.91352083333334,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 77.88083333333334,
+        "min_config_mean": 68.32000000000001,
+        "max_config_mean": 86.72,
+        "range_as_frac_of_scale": 0.1839999999999999,
+        "bootstrap_ci": {
+          "estimate": 77.88083333333334,
+          "ci_lower": 75.59075,
+          "ci_upper": 80.3600625,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -5.137625,
+        "min_config_mean": -6.703999999999999,
+        "max_config_mean": -3.091,
+        "range_as_frac_of_scale": 0.18064999999999992,
+        "bootstrap_ci": {
+          "estimate": -5.137625,
+          "ci_lower": -5.583160416666667,
+          "ci_upper": -4.710276041666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 74.50916666666667,
+        "min_config_mean": 64.72,
+        "max_config_mean": 82.52000000000001,
+        "range_as_frac_of_scale": 0.1780000000000001,
+        "bootstrap_ci": {
+          "estimate": 74.50916666666667,
+          "ci_lower": 72.50147916666667,
+          "ci_upper": 76.50170833333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 74.58187500000001,
+        "min_config_mean": 64.86,
+        "max_config_mean": 82.58,
+        "range_as_frac_of_scale": 0.1772,
+        "bootstrap_ci": {
+          "estimate": 74.58187500000001,
+          "ci_lower": 72.79603125,
+          "ci_upper": 76.20457638888888,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 66.51083333333334,
+        "min_config_mean": 58.339999999999996,
+        "max_config_mean": 75.78,
+        "range_as_frac_of_scale": 0.17440000000000005,
+        "bootstrap_ci": {
+          "estimate": 66.51083333333334,
+          "ci_lower": 64.610375,
+          "ci_upper": 68.66677083333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 78.6975,
+        "min_config_mean": 68.86,
+        "max_config_mean": 85.72,
+        "range_as_frac_of_scale": 0.1686,
+        "bootstrap_ci": {
+          "estimate": 78.6975,
+          "ci_lower": 76.66660416666667,
+          "ci_upper": 80.58941666666665,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 71.1975,
+        "min_config_mean": 63.0,
+        "max_config_mean": 79.82000000000001,
+        "range_as_frac_of_scale": 0.16820000000000007,
+        "bootstrap_ci": {
+          "estimate": 71.1975,
+          "ci_lower": 69.204625,
+          "ci_upper": 73.3453125,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "political_compass:social",
+        "n_configs": 24,
+        "design_averaged_mean": -5.866499999999999,
+        "min_config_mean": -7.590000000000001,
+        "max_config_mean": -4.252,
+        "range_as_frac_of_scale": 0.16690000000000005,
+        "bootstrap_ci": {
+          "estimate": -5.866499999999999,
+          "ci_lower": -6.3494166666666665,
+          "ci_upper": -5.438590625000001,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "8values:liberty",
+        "n_configs": 23,
+        "design_averaged_mean": 65.4722463768116,
+        "min_config_mean": 56.7,
+        "max_config_mean": 73.38,
+        "range_as_frac_of_scale": 0.16679999999999992,
+        "bootstrap_ci": {
+          "estimate": 65.4722463768116,
+          "ci_lower": 63.21054891304347,
+          "ci_upper": 67.81091666666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "8values:peace",
+        "n_configs": 23,
+        "design_averaged_mean": 72.60108695652174,
+        "min_config_mean": 63.9,
+        "max_config_mean": 80.53999999999999,
+        "range_as_frac_of_scale": 0.16639999999999994,
+        "bootstrap_ci": {
+          "estimate": 72.60108695652174,
+          "ci_lower": 70.29850362318842,
+          "ci_upper": 74.91735507246376,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 77.66583333333334,
+        "min_config_mean": 68.46,
+        "max_config_mean": 85.0,
+        "range_as_frac_of_scale": 0.16540000000000007,
+        "bootstrap_ci": {
+          "estimate": 77.66583333333334,
+          "ci_lower": 75.8856875,
+          "ci_upper": 79.43420833333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 64.79416666666667,
+        "min_config_mean": 55.96,
+        "max_config_mean": 72.46,
+        "range_as_frac_of_scale": 0.16499999999999992,
+        "bootstrap_ci": {
+          "estimate": 64.79416666666667,
+          "ci_lower": 62.8998125,
+          "ci_upper": 66.64604166666666,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "8values:progress",
+        "n_configs": 23,
+        "design_averaged_mean": 74.18557971014492,
+        "min_config_mean": 65.92,
+        "max_config_mean": 82.2,
+        "range_as_frac_of_scale": 0.1628,
+        "bootstrap_ci": {
+          "estimate": 74.18557971014492,
+          "ci_lower": 72.16415760869566,
+          "ci_upper": 76.20573913043476,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 70.28750000000001,
+        "min_config_mean": 60.94,
+        "max_config_mean": 77.12,
+        "range_as_frac_of_scale": 0.16180000000000005,
+        "bootstrap_ci": {
+          "estimate": 70.28750000000001,
+          "ci_lower": 68.6915625,
+          "ci_upper": 71.83335416666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 74.3,
+        "min_config_mean": 65.97999999999999,
+        "max_config_mean": 82.06,
+        "range_as_frac_of_scale": 0.16080000000000014,
+        "bootstrap_ci": {
+          "estimate": 74.3,
+          "ci_lower": 72.23410416666667,
+          "ci_upper": 76.08625,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 70.72666666666667,
+        "min_config_mean": 61.46,
+        "max_config_mean": 77.53999999999999,
+        "range_as_frac_of_scale": 0.16079999999999992,
+        "bootstrap_ci": {
+          "estimate": 70.72666666666667,
+          "ci_lower": 69.19714583333334,
+          "ci_upper": 72.21089583333332,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "mistralai/mistral-small-3.2-24b-instruct",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 71.75583333333333,
+        "min_config_mean": 64.44,
+        "max_config_mean": 80.38,
+        "range_as_frac_of_scale": 0.1594,
+        "bootstrap_ci": {
+          "estimate": 71.75583333333333,
+          "ci_lower": 69.90879166666666,
+          "ci_upper": 73.64333333333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 67.16333333333334,
+        "min_config_mean": 61.660000000000004,
+        "max_config_mean": 77.38,
+        "range_as_frac_of_scale": 0.15719999999999992,
+        "bootstrap_ci": {
+          "estimate": 67.16333333333334,
+          "ci_lower": 65.4873125,
+          "ci_upper": 68.913375,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "political_compass:economic",
+        "n_configs": 24,
+        "design_averaged_mean": -5.5595,
+        "min_config_mean": -6.8149999999999995,
+        "max_config_mean": -3.7039999999999997,
+        "range_as_frac_of_scale": 0.15555,
+        "bootstrap_ci": {
+          "estimate": -5.5595,
+          "ci_lower": -5.932462500000001,
+          "ci_upper": -5.223373958333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "qwen/qwen3-30b-a3b",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 66.02666666666667,
+        "min_config_mean": 58.04,
+        "max_config_mean": 73.44,
+        "range_as_frac_of_scale": 0.154,
+        "bootstrap_ci": {
+          "estimate": 66.02666666666667,
+          "ci_lower": 64.266375,
+          "ci_upper": 67.89,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 66.6775,
+        "min_config_mean": 59.2,
+        "max_config_mean": 74.6,
+        "range_as_frac_of_scale": 0.15399999999999991,
+        "bootstrap_ci": {
+          "estimate": 66.6775,
+          "ci_lower": 64.90202083333332,
+          "ci_upper": 68.6775,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 72.41562499999999,
+        "min_config_mean": 62.5,
+        "max_config_mean": 77.72,
+        "range_as_frac_of_scale": 0.1522,
+        "bootstrap_ci": {
+          "estimate": 72.41562499999999,
+          "ci_lower": 70.78112847222222,
+          "ci_upper": 73.91281597222223,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 73.99666666666667,
+        "min_config_mean": 66.62,
+        "max_config_mean": 81.8,
+        "range_as_frac_of_scale": 0.15179999999999993,
+        "bootstrap_ci": {
+          "estimate": 73.99666666666667,
+          "ci_lower": 72.32579166666667,
+          "ci_upper": 75.79933333333334,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-v3.2",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 74.50666666666666,
+        "min_config_mean": 65.2,
+        "max_config_mean": 80.36,
+        "range_as_frac_of_scale": 0.15159999999999996,
+        "bootstrap_ci": {
+          "estimate": 74.50666666666666,
+          "ci_lower": 72.70154166666667,
+          "ci_upper": 76.1885,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-3.3-70b-instruct",
+        "trait": "8values:equality",
+        "n_configs": 23,
+        "design_averaged_mean": 76.40173913043478,
+        "min_config_mean": 68.85999999999999,
+        "max_config_mean": 84.0,
+        "range_as_frac_of_scale": 0.15140000000000015,
+        "bootstrap_ci": {
+          "estimate": 76.40173913043478,
+          "ci_lower": 74.40704166666667,
+          "ci_upper": 78.29875543478262,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 73.06083333333333,
+        "min_config_mean": 64.44,
+        "max_config_mean": 79.48,
+        "range_as_frac_of_scale": 0.15040000000000006,
+        "bootstrap_ci": {
+          "estimate": 73.06083333333333,
+          "ci_lower": 71.4733125,
+          "ci_upper": 74.585,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 68.31520833333333,
+        "min_config_mean": 60.08,
+        "max_config_mean": 75.03999999999999,
+        "range_as_frac_of_scale": 0.14959999999999993,
+        "bootstrap_ci": {
+          "estimate": 68.31520833333333,
+          "ci_lower": 66.51376041666666,
+          "ci_upper": 70.02542361111111,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 72.2698611111111,
+        "min_config_mean": 64.425,
+        "max_config_mean": 79.36,
+        "range_as_frac_of_scale": 0.14935,
+        "bootstrap_ci": {
+          "estimate": 72.2698611111111,
+          "ci_lower": 70.75236631944445,
+          "ci_upper": 73.71114930555555,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 70.28833333333334,
+        "min_config_mean": 62.980000000000004,
+        "max_config_mean": 77.8,
+        "range_as_frac_of_scale": 0.14819999999999994,
+        "bootstrap_ci": {
+          "estimate": 70.28833333333334,
+          "ci_lower": 68.63047916666666,
+          "ci_upper": 72.06860416666666,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 72.35583333333334,
+        "min_config_mean": 66.76,
+        "max_config_mean": 81.12,
+        "range_as_frac_of_scale": 0.1436,
+        "bootstrap_ci": {
+          "estimate": 72.35583333333334,
+          "ci_lower": 71.01414583333333,
+          "ci_upper": 73.80920833333332,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 66.08166666666666,
+        "min_config_mean": 60.14,
+        "max_config_mean": 74.2,
+        "range_as_frac_of_scale": 0.14060000000000003,
+        "bootstrap_ci": {
+          "estimate": 66.08166666666666,
+          "ci_lower": 64.55233333333332,
+          "ci_upper": 67.84752083333335,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 69.9875,
+        "min_config_mean": 63.02,
+        "max_config_mean": 77.02000000000001,
+        "range_as_frac_of_scale": 0.14000000000000007,
+        "bootstrap_ci": {
+          "estimate": 69.9875,
+          "ci_lower": 68.41645833333334,
+          "ci_upper": 71.46439583333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-opus-4.5",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 70.11916666666667,
+        "min_config_mean": 62.67999999999999,
+        "max_config_mean": 76.66,
+        "range_as_frac_of_scale": 0.13980000000000004,
+        "bootstrap_ci": {
+          "estimate": 70.11916666666667,
+          "ci_lower": 68.634875,
+          "ci_upper": 71.537625,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 66.2375,
+        "min_config_mean": 58.67999999999999,
+        "max_config_mean": 72.44,
+        "range_as_frac_of_scale": 0.13760000000000006,
+        "bootstrap_ci": {
+          "estimate": 66.2375,
+          "ci_lower": 64.67247916666666,
+          "ci_upper": 67.90014583333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 74.13020833333333,
+        "min_config_mean": 65.88,
+        "max_config_mean": 79.45,
+        "range_as_frac_of_scale": 0.13570000000000007,
+        "bootstrap_ci": {
+          "estimate": 74.13020833333333,
+          "ci_lower": 72.40643229166668,
+          "ci_upper": 75.75659027777778,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 64.96979166666667,
+        "min_config_mean": 57.3,
+        "max_config_mean": 70.4,
+        "range_as_frac_of_scale": 0.1310000000000001,
+        "bootstrap_ci": {
+          "estimate": 64.96979166666667,
+          "ci_lower": 63.422869791666656,
+          "ci_upper": 66.46387152777778,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 73.005,
+        "min_config_mean": 65.67999999999999,
+        "max_config_mean": 78.32000000000001,
+        "range_as_frac_of_scale": 0.12640000000000015,
+        "bootstrap_ci": {
+          "estimate": 73.005,
+          "ci_lower": 71.57822916666667,
+          "ci_upper": 74.37916666666668,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 62.821666666666665,
+        "min_config_mean": 57.4,
+        "max_config_mean": 69.9,
+        "range_as_frac_of_scale": 0.12500000000000008,
+        "bootstrap_ci": {
+          "estimate": 62.821666666666665,
+          "ci_lower": 61.637229166666664,
+          "ci_upper": 64.21337499999998,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "anthropic/claude-haiku-4.5",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 64.2275,
+        "min_config_mean": 58.48,
+        "max_config_mean": 70.97999999999999,
+        "range_as_frac_of_scale": 0.12499999999999993,
+        "bootstrap_ci": {
+          "estimate": 64.2275,
+          "ci_lower": 62.77495833333333,
+          "ci_upper": 65.72670833333333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-5-mini",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 65.4801388888889,
+        "min_config_mean": 58.14,
+        "max_config_mean": 70.36,
+        "range_as_frac_of_scale": 0.12219999999999999,
+        "bootstrap_ci": {
+          "estimate": 65.4801388888889,
+          "ci_lower": 64.01378125000001,
+          "ci_upper": 66.85706770833333,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "trait": "8values:peace",
+        "n_configs": 24,
+        "design_averaged_mean": 67.58256944444445,
+        "min_config_mean": 62.0,
+        "max_config_mean": 74.16,
+        "range_as_frac_of_scale": 0.12159999999999997,
+        "bootstrap_ci": {
+          "estimate": 67.58256944444445,
+          "ci_lower": 66.19876736111111,
+          "ci_upper": 69.02614409722221,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "openai/gpt-4o-mini",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 65.64083333333333,
+        "min_config_mean": 59.44,
+        "max_config_mean": 71.17999999999999,
+        "range_as_frac_of_scale": 0.11739999999999995,
+        "bootstrap_ci": {
+          "estimate": 65.64083333333333,
+          "ci_lower": 64.32829166666667,
+          "ci_upper": 67.02087499999999,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "meta-llama/llama-4-maverick",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 73.67916666666667,
+        "min_config_mean": 67.3,
+        "max_config_mean": 78.88,
+        "range_as_frac_of_scale": 0.11579999999999999,
+        "bootstrap_ci": {
+          "estimate": 73.67916666666667,
+          "ci_lower": 72.42333333333333,
+          "ci_upper": 75.04091666666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "8values:equality",
+        "n_configs": 24,
+        "design_averaged_mean": 71.89666666666666,
+        "min_config_mean": 67.56,
+        "max_config_mean": 78.47999999999999,
+        "range_as_frac_of_scale": 0.10919999999999988,
+        "bootstrap_ci": {
+          "estimate": 71.89666666666666,
+          "ci_lower": 70.65654166666667,
+          "ci_upper": 73.1119375,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "deepseek/deepseek-chat",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 63.98083333333333,
+        "min_config_mean": 58.04,
+        "max_config_mean": 68.6,
+        "range_as_frac_of_scale": 0.10559999999999996,
+        "bootstrap_ci": {
+          "estimate": 63.98083333333333,
+          "ci_lower": 62.714104166666665,
+          "ci_upper": 65.16675000000001,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "cohere/command-r-plus-08-2024",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 71.99333333333333,
+        "min_config_mean": 67.47999999999999,
+        "max_config_mean": 77.32000000000001,
+        "range_as_frac_of_scale": 0.09840000000000018,
+        "bootstrap_ci": {
+          "estimate": 71.99333333333333,
+          "ci_lower": 70.93333333333334,
+          "ci_upper": 73.12122916666667,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "8values:progress",
+        "n_configs": 24,
+        "design_averaged_mean": 70.02333333333333,
+        "min_config_mean": 65.52000000000001,
+        "max_config_mean": 75.22,
+        "range_as_frac_of_scale": 0.09699999999999989,
+        "bootstrap_ci": {
+          "estimate": 70.02333333333333,
+          "ci_lower": 68.78904166666666,
+          "ci_upper": 71.17004166666666,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      },
+      {
+        "model": "amazon/nova-pro-v1",
+        "trait": "8values:liberty",
+        "n_configs": 24,
+        "design_averaged_mean": 62.63833333333332,
+        "min_config_mean": 57.8,
+        "max_config_mean": 67.17999999999999,
+        "range_as_frac_of_scale": 0.09379999999999995,
+        "bootstrap_ci": {
+          "estimate": 62.63833333333332,
+          "ci_lower": 61.612479166666674,
+          "ci_upper": 63.640874999999994,
+          "n_boot": 2000,
+          "alpha": 0.05
+        }
+      }
+    ]
+  },
+  "failures": {
+    "asker": 0,
+    "variants": 0,
+    "format": 81
+  }
+}
