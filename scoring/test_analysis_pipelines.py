@@ -370,3 +370,41 @@ def test_sapplyvalues_convergence_check_reports_unavailable_below_four_models():
     out = asv.convergence_check(sv_means, other_means)
     row = next(r for r in out if r["other"] == "political_compass:economic")
     assert row["available"] is False
+
+
+# ---------------------------------------------------------------------------
+# Pew 2026 Political Typology (oct_fix.md F3, instrument 4)
+# ---------------------------------------------------------------------------
+def test_pew_typology_directional_check_matches_manual_computation():
+    import analyze_pew_typology as apt
+
+    positions = {"m1": [1, 1, 2], "m2": [6, 6, 7], "m3": [5, 5, 5]}
+    d = apt.directional_check(positions)
+    assert d["n_models"] == 3
+    assert d["n_left_of_centre"] == 1
+    assert d["n_right_of_centre"] == 1
+    assert d["n_centre"] == 1
+    assert d["modal_group_by_model"]["m1"] == "Leftward Progressives"
+    assert d["modal_group_by_model"]["m2"] == "Pragmatic and Polite Right"
+
+
+def test_pew_typology_convergence_check_recovers_a_perfect_correlation():
+    import analyze_pew_typology as apt
+
+    positions = {f"m{i}": [float(i)] for i in range(6)}
+    other_means = {f"m{i}": {"political_compass:economic": float(i)} for i in range(6)}
+    out = apt.convergence_check(positions, other_means)
+    row = next(r for r in out if r["other"] == "political_compass:economic")
+    assert row["available"]
+    assert row["spearman_rho"] == 1.0
+    assert row["agrees_with_expected_sign"] is True
+
+
+def test_pew_typology_convergence_check_reports_unavailable_below_four_models():
+    import analyze_pew_typology as apt
+
+    positions = {"m1": [1.0], "m2": [2.0]}
+    other_means = {"m1": {"political_compass:economic": 1.0}, "m2": {"political_compass:economic": 2.0}}
+    out = apt.convergence_check(positions, other_means)
+    row = next(r for r in out if r["other"] == "political_compass:economic")
+    assert row["available"] is False

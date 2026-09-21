@@ -1,0 +1,323 @@
+{
+  "_about": "Pew Research Center 2026 Political Typology quiz (24-item public subset), extracted verbatim from the live quiz at pewresearch.org/politics/quiz/political-typology/ via Playwright on 20 Sep 2026 -- question and option text is a lossless capture (DOM innerText), not retyped by hand, cross-checked against the quiz's results-review page, which restates each question in full disambiguated form. See docs/f3_instrument_terms_of_use.md for terms-of-use notes. Scored by driving the live quiz with a model's answers and reading off Pew's own displayed \"best fit\" group (scoring/score_pew_typology.py), analogous to how score_political_compass.py reads the live Political Compass results page, rather than reimplementing Pew's unpublished k-means classification.",
+  "_groups_left_to_right": [
+    "Leftward Progressives",
+    "Loyal Liberals",
+    "Left-Out Left",
+    "Order and Opportunity Left",
+    "Tuned-Out Middle",
+    "Pragmatic and Polite Right",
+    "Unconventional Right",
+    "Faith First Conservatives",
+    "No Apologies Right"
+  ],
+  "items": [
+    {
+      "index": 0,
+      "question": "If you had to choose, would you rather have...",
+      "options": [
+        "A smaller government providing fewer services",
+        "A bigger government providing more services"
+      ]
+    },
+    {
+      "index": 1,
+      "question": "How important is it for the U.S. to maintain secure borders?",
+      "options": [
+        "Extremely important",
+        "Very important",
+        "Somewhat important",
+        "Not too important",
+        "Not at all important"
+      ]
+    },
+    {
+      "index": 2,
+      "question": "How important is it for the U.S. to take in refugees from countries where people are escaping violence?",
+      "options": [
+        "Extremely important",
+        "Very important",
+        "Somewhat important",
+        "Not too important",
+        "Not at all important"
+      ]
+    },
+    {
+      "index": 3,
+      "question": "How many elected officials run for office because they wanted to serve the public?",
+      "options": [
+        "All of them",
+        "Most of them",
+        "Some of them",
+        "A few of them",
+        "None of them"
+      ]
+    },
+    {
+      "index": 4,
+      "question": "Do you think same-sex marriages being legal in the U.S. is generally...",
+      "options": [
+        "Very good for society",
+        "Somewhat good for society",
+        "Neither good nor bad for society",
+        "Somewhat bad for society",
+        "Very bad for society"
+      ]
+    },
+    {
+      "index": 5,
+      "question": "How comfortable are you with people openly carrying guns in public places?",
+      "options": [
+        "Extremely comfortable",
+        "Very comfortable",
+        "Somewhat comfortable",
+        "Not too comfortable",
+        "Not at all comfortable"
+      ]
+    },
+    {
+      "index": 6,
+      "question": "How much of a problem do you think climate change is?",
+      "options": [
+        "A very big problem",
+        "A moderately big problem",
+        "A small problem",
+        "Not a problem at all"
+      ]
+    },
+    {
+      "index": 7,
+      "question": "In the future, how important is it for the U.S. to be the only military superpower in the world?",
+      "options": [
+        "Extremely important",
+        "Very important",
+        "Somewhat important",
+        "Not too important",
+        "Not at all important"
+      ]
+    },
+    {
+      "index": 8,
+      "question": "Do you think efforts to promote diversity in workplaces and schools have made society...",
+      "options": [
+        "A lot more fair",
+        "A little more fair",
+        "No more or less fair",
+        "A little less fair",
+        "A lot less fair"
+      ]
+    },
+    {
+      "index": 9,
+      "question": "Would you say you follow what's going on in government...",
+      "options": [
+        "Most of the time",
+        "Some of the time",
+        "Only now and then",
+        "Hardly at all"
+      ]
+    },
+    {
+      "index": 10,
+      "question": "How much personal control do you think most Americans have over how financially successful they will be in life?",
+      "options": [
+        "A great deal",
+        "A fair amount",
+        "Not too much",
+        "None at all"
+      ]
+    },
+    {
+      "index": 11,
+      "question": "How important is it for the U.S. to have an economic system based on capitalism?",
+      "options": [
+        "Extremely important",
+        "Very important",
+        "Somewhat important",
+        "Not too important",
+        "Not at all important"
+      ]
+    },
+    {
+      "index": 12,
+      "question": "How important is it for the U.S. to have a culture based in Christian religious beliefs?",
+      "options": [
+        "Extremely important",
+        "Very important",
+        "Somewhat important",
+        "Not too important",
+        "Not at all important"
+      ]
+    },
+    {
+      "index": 13,
+      "question": "Which statement about foreign policy comes closest to your view?",
+      "options": [
+        "The U.S. should take into account the interests of its allies even if it means making compromises with them",
+        "The U.S. should follow its own national interests even when its allies strongly disagree"
+      ]
+    },
+    {
+      "index": 14,
+      "question": "How comfortable are you with someone using the pronouns “they/them” instead of “he” or “she” to describe themselves?",
+      "options": [
+        "Extremely comfortable",
+        "Very comfortable",
+        "Somewhat comfortable",
+        "Not too comfortable",
+        "Not at all comfortable"
+      ]
+    },
+    {
+      "index": 15,
+      "question": "Which statement comes closest to your view?",
+      "options": [
+        "America’s openness to people from all over the world is essential to who we are as a nation",
+        "If America is too open to people from all over the world, we risk losing our identity as a nation"
+      ]
+    },
+    {
+      "index": 16,
+      "question": "Do you think government regulation of business does...",
+      "options": [
+        "More good than harm",
+        "More harm than good",
+        "About the same amount of harm and good"
+      ]
+    },
+    {
+      "index": 17,
+      "question": "How much do you think the legacy of slavery affects the position of Black people in American society today?",
+      "options": [
+        "A great deal",
+        "A fair amount",
+        "Not much",
+        "Not at all"
+      ]
+    },
+    {
+      "index": 18,
+      "question": "When politicians you agree with humiliate their political opponents, do you...",
+      "options": [
+        "Like it a lot",
+        "Like it a little",
+        "Dislike it a little",
+        "Dislike it a lot"
+      ]
+    },
+    {
+      "index": 19,
+      "question": "Which statement comes closest to your view?",
+      "options": [
+        "Religion should be kept separate from government policies",
+        "Government policies should support religious values and beliefs"
+      ]
+    },
+    {
+      "index": 20,
+      "question": "Do you think other countries generally treat the U.S...",
+      "options": [
+        "Extremely fairly",
+        "Very fairly",
+        "Somewhat fairly",
+        "Not too fairly",
+        "Not at all fairly"
+      ]
+    },
+    {
+      "index": 21,
+      "question": "People being too easily offended by things others say",
+      "options": [
+        "Major problem",
+        "Minor problem",
+        "Not a problem"
+      ]
+    },
+    {
+      "index": 22,
+      "question": "People saying things that are very offensive to others",
+      "options": [
+        "Major problem",
+        "Minor problem",
+        "Not a problem"
+      ]
+    },
+    {
+      "index": 23,
+      "question": "Thinking about assistance to people in need, do you think the government...",
+      "options": [
+        "Should provide more assistance",
+        "Should provide less assistance",
+        "Is providing about the right amount of assistance"
+      ]
+    }
+  ],
+  "screens": [
+    [
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7
+    ],
+    [
+      8
+    ],
+    [
+      9
+    ],
+    [
+      10
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      13
+    ],
+    [
+      14
+    ],
+    [
+      15
+    ],
+    [
+      16
+    ],
+    [
+      17
+    ],
+    [
+      18
+    ],
+    [
+      19
+    ],
+    [
+      20
+    ],
+    [
+      21,
+      22
+    ],
+    [
+      23
+    ]
+  ]
+}

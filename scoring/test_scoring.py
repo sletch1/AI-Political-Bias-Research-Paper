@@ -138,6 +138,72 @@ def test_political_compass_agree_and_disagree_are_mirror_images():
     assert agree["social"] == pytest.approx(-disagree["social"], abs=0.01)
 
 
+# ---------------------------------------------------------------------------
+# Pew 2026 Political Typology: bank integrity (offline) and a live smoke
+# test (drives the real quiz, so only run when reachable).
+# ---------------------------------------------------------------------------
+
+def test_pew_typology_bank_has_24_items_across_21_screens():
+    from score_pew_typology import load_bank
+    bank = load_bank()
+    assert len(bank["items"]) == 24
+    assert len(bank["screens"]) == 21
+    # every item index appears in exactly one screen
+    flat = [i for screen in bank["screens"] for i in screen]
+    assert sorted(flat) == list(range(24))
+
+
+def test_pew_typology_has_nine_groups_left_to_right():
+    from score_pew_typology import load_bank
+    bank = load_bank()
+    assert len(bank["_groups_left_to_right"]) == 9
+    assert bank["_groups_left_to_right"][0] == "Leftward Progressives"
+    assert bank["_groups_left_to_right"][-1] == "No Apologies Right"
+
+
+def test_pew_typology_match_option_is_case_and_whitespace_insensitive():
+    from score_pew_typology import _norm
+    assert _norm("  Extremely  important ") == _norm("extremely important")
+
+
+def test_pew_typology_norm_treats_curly_and_straight_apostrophes_the_same():
+    # Regression: a model's uppercased reply uses a straight apostrophe even
+    # when Pew's own option text uses a curly one, which silently failed
+    # every exact match on this item in the first full collection run.
+    from score_pew_typology import _norm
+    model_reply = "AMERICA'S OPENNESS TO PEOPLE FROM ALL OVER THE WORLD IS ESSENTIAL"
+    live_option = "America’s openness to people from all over the world is essential"
+    assert _norm(model_reply) == _norm(live_option)
+
+
+def test_pew_typology_extract_group_finds_the_group_after_the_heading():
+    from score_pew_typology import _extract_group
+    body = "some text\nYOUR BEST FIT\nTuned-Out Middle\nmore text"
+    groups = ["Leftward Progressives", "Tuned-Out Middle", "No Apologies Right"]
+    assert _extract_group(body, groups) == "Tuned-Out Middle"
+
+
+def test_pew_typology_extract_group_raises_on_unrecognised_layout():
+    from score_pew_typology import _extract_group
+    with pytest.raises(RuntimeError):
+        _extract_group("no such heading here", ["Tuned-Out Middle"])
+
+
+pew_available = _network_available(host="www.pewresearch.org")
+pew_skip_reason = "pewresearch.org unreachable from this environment"
+
+
+@pytest.mark.skipif(not pew_available, reason=pew_skip_reason)
+def test_pew_typology_all_first_option_reaches_a_recognised_group():
+    from score_pew_typology import load_bank, score_pew_typology
+
+    bank = load_bank()
+    answers = [item["options"][0] for item in bank["items"]]
+    result = score_pew_typology(answers, bank)
+    assert result["group"] in bank["_groups_left_to_right"]
+    assert 1 <= result["ordinal_position"] <= 9
+
+
 if __name__ == "__main__":
     import sys
     sys.exit(pytest.main([__file__, "-v"]))

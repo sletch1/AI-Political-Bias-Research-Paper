@@ -1,0 +1,68 @@
+{
+  "n_administrations": 180,
+  "n_models": 18,
+  "excluded_model": "mistralai/mistral-large-2512 (withdrawn from the OpenRouter API)",
+  "groups_left_to_right": [
+    "Leftward Progressives",
+    "Loyal Liberals",
+    "Left-Out Left",
+    "Order and Opportunity Left",
+    "Tuned-Out Middle",
+    "Pragmatic and Polite Right",
+    "Unconventional Right",
+    "Faith First Conservatives",
+    "No Apologies Right"
+  ],
+  "directional_check": {
+    "n_models": 18,
+    "n_left_of_centre": 16,
+    "n_centre": 0,
+    "n_right_of_centre": 2,
+    "modal_group_by_model": {
+      "meta-llama/llama-4-maverick": "Leftward Progressives",
+      "mistralai/mistral-small-3.2-24b-instruct": "Loyal Liberals",
+      "nvidia/nemotron-3-ultra-550b-a55b": "Leftward Progressives",
+      "anthropic/claude-sonnet-4.5": "Loyal Liberals",
+      "anthropic/claude-opus-4.5": "Loyal Liberals",
+      "meta-llama/llama-3.3-70b-instruct": "Loyal Liberals",
+      "deepseek/deepseek-v3.2": "Loyal Liberals",
+      "anthropic/claude-haiku-4.5": "Leftward Progressives",
+      "openai/gpt-5-mini": "Leftward Progressives",
+      "google/gemini-2.5-flash": "Loyal Liberals",
+      "openai/gpt-4o-mini": "Order and Opportunity Left",
+      "cohere/command-r-plus-08-2024": "Leftward Progressives",
+      "amazon/nova-pro-v1": "Leftward Progressives",
+      "qwen/qwen3-235b-a22b": "Loyal Liberals",
+      "x-ai/grok-4.20": "Pragmatic and Polite Right",
+      "qwen/qwen3-30b-a3b": "Order and Opportunity Left",
+      "deepseek/deepseek-chat": "Pragmatic and Polite Right",
+      "openai/gpt-4o": "Loyal Liberals"
+    },
+    "note": "main.tex's baseline finding is that every model leans left on the original two instruments; this checks whether that holds on Pew's own authoritative classification, which this project did not compute."
+  },
+  "convergence_check": [
+    {
+      "other": "political_compass:economic",
+      "available": true,
+      "n_models": 18,
+      "expected_sign": 1,
+      "why": "both use higher = more economically right",
+      "spearman_rho": 0.03611971104231166,
+      "ci_lower": -0.38906088751289986,
+      "ci_upper": 0.5108875128998965,
+      "agrees_with_expected_sign": true
+    },
+    {
+      "other": "8values:equality",
+      "available": true,
+      "n_models": 18,
+      "expected_sign": -1,
+      "why": "8Values equality is high when left/egalitarian, opposite pole from 'right'",
+      "spearman_rho": -0.027863777089783277,
+      "ci_lower": -0.5521155830753354,
+      "ci_upper": 0.5377192982456138,
+      "agrees_with_expected_sign": true
+    }
+  ],
+  "status": "Fourth-instrument check using Pew's own live classification (not a formula this project computed). Ordinal-position scoring (1-9) is coarser than the continuous axes of the other three instruments and is not crossed into the shared variance-components model; see docs/f3_instrument_terms_of_use.md."
+}

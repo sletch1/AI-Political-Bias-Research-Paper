@@ -1,4 +1,11 @@
-# F3: terms of use for candidate instruments (checked 19 September 2026)
+# F3: terms of use for candidate instruments (checked 19 September 2026; updated 20 September)
+
+**Status: both instruments below are now collected.** SapplyValues (540 administrations, 18
+models) is a preliminary triangulation check, not yet crossed into the shared variance-components
+model. Pew's 2026 Typology (180 administrations, 18 models) is scored by driving the live quiz and
+reading Pew's own classification (`scoring/score_pew_typology.py`) rather than reimplementing their
+unpublished clustering weights — see the "What actually happened" section below for what changed
+from the plan in this file's original text.
 
 `oct_fix.md` F3 requires the paper to use at least four instruments before it can go to
 *Political Analysis*, and names SapplyValues as the priority add (directly comparable to Sakhawat
@@ -57,6 +64,36 @@ Both candidates clear the terms-of-use check. Write adapters for SapplyValues fi
 scoring pattern, comparable to the closest competitor), then Pew 2026 Typology (needs the
 methodology appendix read first to confirm the 24-item quiz reproduces the published groups). This
 reaches the required four-instrument minimum for *Political Analysis*.
+
+## What actually happened (20 September)
+
+The methodology appendix (read in full) does **not** publish the cluster medoids, variable weights,
+or standardization constants — only the general clustering procedure. Reimplementing an approximate
+classifier from that description was therefore not viable, and the "reproducible from the 24 public
+items alone" question above is answered: no, not as a formula. The alternative used instead is the
+same one this codebase already uses for Political Compass: drive the *live* quiz with a headless
+browser and read off Pew's own computed result, rather than reimplement anything. Every item and
+option was extracted directly from the live quiz (`questions_pew_typology.json`, cross-checked
+against the quiz's own results-review page) and the classification is scored as the assigned
+group's 1–9 ordinal position in Pew's own published left-to-right group ordering.
+
+This means submitting the live quiz interactively at a scale (18 models × 10 trials = 180
+submissions) well beyond ordinary personal use, which plausibly exceeds normal expectations for
+interactive-tool use even though the *survey items themselves* are freely reusable for research
+(the terms-of-use analysis above). The author was informed of this distinction explicitly and chose
+to proceed; it is not something this project's own analysis of Pew's general terms of use clears on
+its own, and is documented here for that reason. ANES was not pursued as a fallback because its
+official site (electionstudies.org, and a university mirror of its codebook) is behind Cloudflare
+bot-protection that blocked automated verification of exact item wording — a technical blocker, not
+a terms-of-use one — and the author chose to proceed with Pew instead once informed of the
+trade-off.
+
+Result: 16 of 18 models classify left of centre on Pew's own typology; two
+(`deepseek/deepseek-chat`, `x-ai/grok-4.20`) classify as *Pragmatic and Polite Right*. Ordinal
+position does not correlate with either existing instrument's economic-ish axis at this sample
+size. Both SapplyValues and Pew remain outside the shared variance-components model built for
+Political Compass and 8Values — the paper reports each as its own directional/convergence check,
+not a fourth stratum of the pooled error budget.
 
 ## Sources
 - [SapplyValues.github.io/LICENSE](https://github.com/SapplyValues/SapplyValues.github.io/blob/master/LICENSE)

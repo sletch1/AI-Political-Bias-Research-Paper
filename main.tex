@@ -53,7 +53,12 @@ explains more variance (39\%, CI 0.02--0.74) than model identity within the
 same design (23\%, CI 0.04--0.52); and 17 of 18 models show a measurable
 score shift (Contamination Index 0.046, CI [0.038, 0.055]) when an item is
 logically inverted, consistent with recognising the instrument rather than
-engaging with its content. Published scores are
+engaging with its content. A fourth instrument, Pew Research Center's 2026
+Political Typology, gives an authoritative check of a different kind: driving
+the live public quiz with each model's answers and reading off Pew's own
+classification, 16 of 18 models land left of centre and two do not, with no
+detectable correlation between this ordinal classification and the other
+instruments' continuous axes. Published scores are
 therefore not comparable across instruments, and every factor we examined
 explains more of a reported political position than the model producing it
 does. We propose a minimum reporting standard for such audits.
@@ -279,11 +284,30 @@ The authority-axis comparisons are inconclusive at this sample size (95\% CIs
 spanning zero against both other instruments). We read this as a third data
 point for the same conclusion, not a resolution of it: adding an instrument
 did not converge the disagreement onto a single answer, it added a third
-position. A full accounting needs at least a fourth instrument crossed into
-the same variance-components model as the first two, which this triangulation
-check---540 further administrations on the existing 18-model roster,
-detailed in Methods---does not yet do
-(\texttt{docs/f3\_instrument\_terms\_of\_use.md}).
+position.
+
+A fourth instrument, Pew Research Center's 2026 Political Typology, gives an
+authoritative check of a different kind: rather than scoring an axis
+ourselves, we drove the live 24-item quiz with each model's answers and read
+off the classification Pew's own site computes, since Pew's clustering
+weights are not published (Methods). Sixteen of 18 models' modal
+classification falls left of centre (one of the four left-leaning groups in
+Pew's own nine-group, left-to-right ordering); two---\texttt{deepseek/deepseek-chat}
+and \texttt{x-ai/grok-4.20}---classify as \emph{Pragmatic and Polite Right},
+the first group right of centre, with \texttt{x-ai/grok-4.20} landing there
+in all 10 of 10 trials. The ordinal position of a model's classification
+(1--9, left to right) does not correlate with its Political Compass economic
+score or 8Values equality score across the 18 shared models
+($\rho=0.04$, [$-0.39$, $0.51$], and $\rho=-0.03$, [$-0.55$, $0.54$]
+respectively---both consistent with no relationship at this sample size).
+The directional finding therefore replicates on a fourth, independently
+classified instrument, with two clear exceptions; whether a coarse, ordinal
+classification should correlate with a continuous axis score in the first
+place is itself an open question this design cannot resolve. A full
+accounting needs all four instruments crossed into the same
+variance-components model used for the first two, which the ordinal nature
+of the Pew classification does not straightforwardly permit and which we
+leave to future work (\texttt{docs/f3\_instrument\_terms\_of\_use.md}).
 
 \subsection{Stability is item-specific, and the published stability metric is invalid}
 
@@ -886,6 +910,28 @@ instrument, against that axis's model-level mean via Spearman correlation
 with a percentile bootstrap CI (2{,}000 resamples), following the same
 procedure as the bootstrap intervals in Section~\ref{sec:stats}.
 
+A fourth instrument, Pew Research Center's 2026 Political Typology, was
+administered to the same 18 models, 10 trials per model (180 administrations).
+Pew's methodology appendix for this typology describes its clustering
+procedure (weighted clustering around medoids) but does not publish the
+medoids, variable weights, or standardization constants needed to classify a
+new respondent independently of Pew's own systems; reimplementing an
+approximate classifier from the general method description was therefore not
+possible, so, as with Political Compass, we drove the live 24-item public
+quiz (\texttt{scoring/score\_pew\_typology.py}) with each model's answers and
+read off the classification Pew's own site computes, rather than a score we
+derived ourselves. Item and option text (24 items across 21 navigation
+screens, 2--5 options each) was extracted directly from the live quiz and
+cross-checked against its own results-review page, which restates every item
+in full, disambiguated form. Because response options vary in wording by
+item, a model was asked to reply with the verbatim text of its chosen option
+per item rather than a shared code; the reply was matched to the live
+quiz's option elements case- and punctuation-insensitively, with a
+whole-string-similarity fallback ($\geq 0.85$) for near-verbatim paraphrases.
+The outcome is each model's classification into one of Pew's nine typology
+groups, scored as that group's 1--9 ordinal position in Pew's own published
+left-to-right ordering.
+
 \section{Data Availability}
 % =============================================================================
 
@@ -899,12 +945,14 @@ asker-identity factorial and its 180-call probe
 (\texttt{data/asker\_identity/}); the 1{,}080-administration contamination
 factorial and its memorisation probe (\texttt{data/item\_variants/}); the
 4{,}320-administration response-format factorial
-(\texttt{data/format\_factorial/}); and a 540-administration baseline on a
-third instrument, SapplyValues, collected toward but not yet incorporated into
-the multi-instrument comparison this design motivates (18 models,
-\texttt{data/raw\_trials/}, filenames containing \texttt{sapplyvalues}). Every
-record includes the model's structured JSON answers, the resulting score, and
-the exact API cost of that call.
+(\texttt{data/format\_factorial/}); a 540-administration baseline on a third
+instrument, SapplyValues (18 models, \texttt{data/raw\_trials/}, filenames
+containing \texttt{sapplyvalues}); and a 180-administration baseline on a
+fourth instrument, Pew's 2026 Political Typology
+(\texttt{data/pew\_typology/}). Neither the third nor fourth instrument is
+yet crossed into the shared variance-components model used for the first two
+(Discussion). Every record includes the model's structured JSON answers, the
+resulting score, and the exact API cost of that call.
 
 % =============================================================================
 \section{Code Availability}
