@@ -91,9 +91,30 @@ trade-off.
 Result: 16 of 18 models classify left of centre on Pew's own typology; two
 (`deepseek/deepseek-chat`, `x-ai/grok-4.20`) classify as *Pragmatic and Polite Right*. Ordinal
 position does not correlate with either existing instrument's economic-ish axis at this sample
-size. Both SapplyValues and Pew remain outside the shared variance-components model built for
-Political Compass and 8Values — the paper reports each as its own directional/convergence check,
-not a fourth stratum of the pooled error budget.
+size.
+
+## Update (21 September): both instruments crossed into the shared model
+
+`scoring/analyze_f3_variance_components.py` now folds all four instruments into the same
+`variance_decomposition` / `cluster_bootstrap_variance_shares` model Political Compass and 8Values
+already used (`variance_components.py`; results in
+`results/f3_variance_components/f3_variance_components.json`), rather than leaving SapplyValues and
+Pew as separate directional/convergence checks. Each instrument's axis is one more trait level
+(`sapplyvalues:right`, `sapplyvalues:auth`, `sapplyvalues:prog`, `pew_typology:position`), z-scored
+within trait as before so the four incompatible scales (±10, 0–100, ±10, ordinal 1–9) don't dominate
+each other.
+
+The result is not a stronger version of the two-instrument finding; it is a different one. Pooled
+over all four instruments, model identity's variance share falls from 12.97% (Political Compass +
+8Values only) to **1.89%**. A per-instrument breakdown shows why: adding SapplyValues alone drops it
+to 0.49%, while adding Pew alone (a coarser, single-axis instrument) only drops it to 8.21% — so the
+collapse is driven by SapplyValues actively disagreeing with Political Compass on which models rank
+where (the ρ=−0.49 MTMM disagreement already reported), not by Pew's coarseness diluting the signal.
+Between-model spread and within-model trial noise are proportionally in line with the other
+instruments for SapplyValues too (ratio ≈1.9 for all three continuous instruments), so this is not a
+SapplyValues data-quality artefact — it is what "a variance component estimated from two instruments
+is meaningless" (the *Political Analysis* objection F3 exists to pre-empt) looks like quantitatively.
+See `main.tex` Sections 3.2/Discussion for how this is written up.
 
 ## Sources
 - [SapplyValues.github.io/LICENSE](https://github.com/SapplyValues/SapplyValues.github.io/blob/master/LICENSE)

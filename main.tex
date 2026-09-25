@@ -17,6 +17,11 @@
 \usepackage{xurl}
 \usepackage{setspace}
 
+\hypersetup{
+  pdftitle={An error budget for political-bias measurement in large language models},
+  pdfsubject={error-budget-llm-political-bias}
+}
+
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
 
@@ -902,13 +907,12 @@ A third instrument, SapplyValues, was administered to the same 18 models at
 its own native scale (46 items, three axes, $-10$ to $+10$ each), 30 trials
 per model, following the same lossless-port scoring approach as the other two
 instruments (\texttt{scoring/score\_sapplyvalues.py}, ported from the
-instrument's own open-source scoring code). This is a directional and
-convergence check, not a fourth stratum in the shared variance-components
-model: each model's mean position is compared against the instrument's own
-neutral point and, where an axis claims to share a construct with an existing
-instrument, against that axis's model-level mean via Spearman correlation
-with a percentile bootstrap CI (2{,}000 resamples), following the same
-procedure as the bootstrap intervals in Section~\ref{sec:stats}.
+instrument's own open-source scoring code). Each model's mean position is
+compared against the instrument's own neutral point and, where an axis claims
+to share a construct with an existing instrument, against that axis's
+model-level mean via Spearman correlation with a percentile bootstrap CI
+(2{,}000 resamples), following the same procedure as the bootstrap intervals
+in Section~\ref{sec:stats}.
 
 A fourth instrument, Pew Research Center's 2026 Political Typology, was
 administered to the same 18 models, 10 trials per model (180 administrations).
@@ -932,6 +936,37 @@ The outcome is each model's classification into one of Pew's nine typology
 groups, scored as that group's 1--9 ordinal position in Pew's own published
 left-to-right ordering.
 
+Reusing the quiz's item text and published group definitions for research is
+covered by Pew's general terms of use, but submitting the interactive quiz
+programmatically 180 times (18 models $\times$ 10 trials) is a separate
+question from reusing the items themselves, and plausibly exceeds ordinary
+personal use of that interactive tool even though no respondent microdata or
+personal information is accessed at any point. We disclose this distinction
+explicitly rather than treating it as settled by the terms-of-use analysis
+above; see the Ethics Declarations below and
+\texttt{docs/f3\_instrument\_terms\_of\_use.md} in the released repository for
+the full analysis.
+
+Both instruments were then folded into the same crossed random-effects model
+used for the two-instrument budget above (\texttt{scoring/analyze\_f3\_variance\_components.py}),
+rather than left as separate directional checks. Each instrument's axis
+enters as one more trait level (\texttt{sapplyvalues:right}, \texttt{sapplyvalues:auth},
+\texttt{sapplyvalues:prog}, \texttt{pew\_typology:position}), z-scored within
+trait exactly as the two-instrument model requires, since the four instruments'
+scales are mutually incompatible ($\pm10$, $0$--$100$, $\pm10$, and an ordinal
+1--9 classification). Pew contributes a single trait, its one composite
+left-right placement, rather than per-axis scores like the other three, since
+that ordinal classification is Pew's own output and not a score this project
+computed. Instrument identity remains folded into trait rather than fit as its
+own term, matching how the pooled two-instrument figure above is defined;
+separating instrument-level variance from axis-within-instrument variance is a
+further extension we do not attempt here. The two added instruments were
+collected for 18 of the 19 models (\texttt{mistralai/mistral-large-2512} was
+withdrawn from OpenRouter partway through collection), so the pooled panel is
+unbalanced by one model on those two traits; the crossed model does not
+require balance, and results/f3\_variance\_components/f3\_variance\_components.json
+records the composition explicitly.
+
 \section{Data Availability}
 % =============================================================================
 
@@ -949,10 +984,11 @@ factorial and its memorisation probe (\texttt{data/item\_variants/}); the
 instrument, SapplyValues (18 models, \texttt{data/raw\_trials/}, filenames
 containing \texttt{sapplyvalues}); and a 180-administration baseline on a
 fourth instrument, Pew's 2026 Political Typology
-(\texttt{data/pew\_typology/}). Neither the third nor fourth instrument is
-yet crossed into the shared variance-components model used for the first two
-(Discussion). Every record includes the model's structured JSON answers, the
-resulting score, and the exact API cost of that call.
+(\texttt{data/pew\_typology/}). Both the third and fourth instrument are now
+crossed into the shared variance-components model used for the first two
+(\texttt{scoring/analyze\_f3\_variance\_components.py}; Discussion). Every
+record includes the model's structured JSON answers, the resulting score, and
+the exact API cost of that call.
 
 % =============================================================================
 \section{Code Availability}
@@ -990,6 +1026,18 @@ All data consist of text outputs generated by third-party large language models
 accessed via a commercial API (OpenRouter); no personal, sensitive, or
 identifiable information is involved. Institutional ethics review was therefore
 not required.
+
+One instrument, Pew Research Center's 2026 Political Typology (Methods), was
+scored by programmatically driving Pew's live public quiz and reading off its
+own classification, rather than reimplementing Pew's unpublished clustering
+procedure, following the same approach already used for Political Compass.
+Reusing the instrument's item text and published group definitions for
+research is covered by Pew's general terms of use. Submitting the interactive
+quiz itself 180 times in an automated fashion is a distinct question: it
+plausibly exceeds ordinary personal use of that interactive tool, even though
+it accesses no respondent microdata or personal information at any point. We
+disclose this explicitly rather than treating it as settled by the
+terms-of-use analysis for the survey items.
 
 % =============================================================================
 \clearpage

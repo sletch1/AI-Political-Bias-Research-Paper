@@ -1,0 +1,103 @@
+{
+  "instruments": [
+    "8values",
+    "pew_typology",
+    "political_compass",
+    "sapplyvalues"
+  ],
+  "traits": [
+    "8values:equality",
+    "8values:liberty",
+    "8values:peace",
+    "8values:progress",
+    "pew_typology:position",
+    "political_compass:economic",
+    "political_compass:social",
+    "sapplyvalues:auth",
+    "sapplyvalues:prog",
+    "sapplyvalues:right"
+  ],
+  "panel": {
+    "per_instrument": {
+      "8values": {
+        "n_administrations": 4560,
+        "n_models": 19,
+        "n_axes": 4
+      },
+      "pew_typology": {
+        "n_administrations": 180,
+        "n_models": 18,
+        "n_axes": 1
+      },
+      "political_compass": {
+        "n_administrations": 2280,
+        "n_models": 19,
+        "n_axes": 2
+      },
+      "sapplyvalues": {
+        "n_administrations": 1620,
+        "n_models": 18,
+        "n_axes": 3
+      }
+    },
+    "n_models_common_to_all_four": 18,
+    "models_missing_from_at_least_one_instrument": [
+      "mistralai/mistral-large-2512"
+    ]
+  },
+  "decomposition": {
+    "method": "mixedlm_vc",
+    "n_observations": 8640,
+    "fixed_effects": [],
+    "z_within": "trait",
+    "variance_components": {
+      "model": 0.018883439208561992,
+      "trait": 0.6338145004890096,
+      "model:trait": 4.0326207787887214e-06,
+      "residual": 0.3458170257133443
+    },
+    "variance_share": {
+      "model": 0.018911447098939025,
+      "trait": 0.6347545732614005,
+      "model:trait": 4.038601956235107e-06,
+      "residual": 0.3463299410377042
+    },
+    "total_variance": 0.9985189980316946,
+    "icc": {
+      "model": 0.018911447098939025,
+      "trait": 0.6347545732614005,
+      "model:trait": 4.038601956235107e-06
+    },
+    "interpretation": "same quantities as analyze_w4.py task 4.3 (model share = ICC for model identity, residual = pure trial-to-trial instability), now estimated over all four instruments' traits instead of two"
+  },
+  "bootstrap_ci": {
+    "cluster_column": "model",
+    "n_clusters": 19,
+    "variance_share_ci": {
+      "model": {
+        "ci_lower": 1.6994664466459238e-05,
+        "ci_upper": 0.05965567685593893,
+        "n_boot": 200
+      },
+      "trait": {
+        "ci_lower": 0.5061450029164555,
+        "ci_upper": 0.7716732556717677,
+        "n_boot": 200
+      },
+      "model:trait": {
+        "ci_lower": 1.4371785145826872e-08,
+        "ci_upper": 0.008299305131153196,
+        "n_boot": 200
+      },
+      "residual": {
+        "ci_lower": 0.20469858719208123,
+        "ci_upper": 0.47132464598561463,
+        "n_boot": 200
+      }
+    },
+    "n_boot_requested": 200,
+    "n_boot_failed": 0,
+    "seed": 20260919
+  },
+  "note": "Instrument identity is folded into 'trait' (instrument:axis), the same design analyze_w4.py task 4.3 uses for the two-instrument headline figure; this does not separately estimate an instrument-level term distinct from axis-within-instrument. The model:trait cells are unbalanced (19 models on Political Compass/8Values, 18 on SapplyValues/Pew) because mistralai/mistral-large-2512 was withdrawn from OpenRouter partway through collection; see panel.models_missing_from_at_least_one_instrument."
+}
