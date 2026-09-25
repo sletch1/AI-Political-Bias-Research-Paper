@@ -1,11 +1,16 @@
 # An error budget for political-bias measurement in large language models
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22968158.svg)](https://doi.org/10.5281/zenodo.22968158)
+
 Code, data, and analysis supporting the paper **"An error budget for
 political-bias measurement in large language models"**, formatted as a
 Letter for submission to *Political Analysis*: `pa_letter.tex` / `pa_letter.pdf`
 (the ~1,150-word Letter), with full methods and extended results in the web
 appendix, `pa_appendix.tex` / `pa_appendix.pdf`. Target venue: see `impr.md`
 (private, not part of this repository) for the current submission plan.
+
+This snapshot (release `v0.4.1`) is archived at Zenodo with DOI
+[10.5281/zenodo.22968158](https://doi.org/10.5281/zenodo.22968158).
 
 **Research question:** Large language models are widely reported to lean
 left of centre on standardized political instruments. How much of a reported
