@@ -713,7 +713,9 @@ Pol.\ Compass & Social   & 163.3 & 1370.3 & 867.5 & 0.7239 \\
 \section{Post-hoc Comparisons: Games-Howell as the Primary Test, Corrected for the Full Test Family}
 
 With 19 groups, each axis has 171 pairwise comparisons, and six axes give a
-full family of 1{,}026 pairwise tests reported across this paper. Because
+full family of 1{,}026 pairwise tests reported across this paper
+(\texttt{scoring/analyze\_posthoc.py}; results/posthoc/posthoc\_results.json).
+Because
 equal variances are rejected on every axis, Games-Howell is treated as
 primary, with Tukey HSD reported alongside. At raw $p<0.05$, Games-Howell
 finds between 121 and 144 of the 171 pairs significant per axis (equality:
@@ -853,7 +855,7 @@ erratic behavior. anthropic/claude-haiku-4.5's economic-axis ISS ($44.42$)
 reflects a genuinely larger absolute range ($-7.38$ to $-6.38$) and is a
 more straightforward instance of comparatively lower consistency. Across
 all 114 model--axis cells, ISS correlates with absolute dispersion (standard
-deviation) at only $\rho = 0.47$
+deviation) at only $\rho = 0.46$
 (Figure~\ref{sfig:iss-repair}), which is the quantitative version of the
 same point: ISS is not, in general, a good proxy for how much a model's
 answers actually vary.
@@ -866,7 +868,7 @@ dispersion. Each point is one model--axis cell. Normalising by each
 sample's own observed range inflates the score for models whose answers are
 tightly clustered: the highlighted cell registers 65.2 on a standard
 deviation of 0.060. Across all 114 cells the metric correlates with
-absolute dispersion at only $\rho=0.47$.}
+absolute dispersion at only $\rho=0.46$.}
 \label{sfig:iss-repair}
 \end{figure}
 

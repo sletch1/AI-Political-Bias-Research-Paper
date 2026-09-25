@@ -1,0 +1,40 @@
+{
+  "n_axes": 6,
+  "n_pairs_per_axis": 171,
+  "n_tests_total": 1026,
+  "n_significant_raw_total": 812,
+  "n_significant_fdr_total": 809,
+  "per_axis": {
+    "equality": {
+      "raw_significant": 142,
+      "fdr_significant": 142,
+      "n_pairs": 171
+    },
+    "peace": {
+      "raw_significant": 136,
+      "fdr_significant": 136,
+      "n_pairs": 171
+    },
+    "liberty": {
+      "raw_significant": 131,
+      "fdr_significant": 131,
+      "n_pairs": 171
+    },
+    "progress": {
+      "raw_significant": 144,
+      "fdr_significant": 142,
+      "n_pairs": 171
+    },
+    "economic": {
+      "raw_significant": 121,
+      "fdr_significant": 120,
+      "n_pairs": 171
+    },
+    "social": {
+      "raw_significant": 138,
+      "fdr_significant": 138,
+      "n_pairs": 171
+    }
+  },
+  "method": "Games-Howell per axis (pingouin.pairwise_gameshowell); Benjamini-Hochberg FDR correction across the pooled family of all six axes' tests"
+}
