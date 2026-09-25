@@ -6,9 +6,14 @@ Editor" to the sign-off) directly into the submission system, or export to
 PDF if a file upload is required.
 
 The suggested-reviewers list is drawn from the paper's own closest prior
-work; check each for a real conflict (co-authorship, same institution,
-recent collaboration, etc.) before including them in ScholarOne, and drop
-any that fail that check.
+work. No conflict is evident from anything in this project: the author has
+no stated institutional affiliation, and nothing in the repository or its
+history shows co-authorship, employment, or collaboration with any of the
+four. That is an inference from context, not a firsthand confirmation from
+the author personally knowing each name -- if any of them turn out to be a
+recent collaborator, advisor, or the same institution in a way this project
+has no way of seeing, swap that one for another author from the appendix's
+related-work list.
 -->
 
 Dear Editor,
@@ -54,9 +59,10 @@ Sachin Letchumanan
 
 ---
 
-**Suggested reviewers** (check each for a conflict before submitting; this
-list is drawn only from the paper's own closest cited prior work, not
-independent vetting):
+**Suggested reviewers** (drawn from the paper's own closest cited prior
+work; no conflict with the author is evident from this project's own
+history — see the note at the top of this file for what that inference
+does and doesn't cover):
 
 - An author of the three-instrument, 26-model comparison this Letter
   positions itself against directly (Sakhawat et al. 2026) — closest
@@ -67,8 +73,3 @@ independent vetting):
   Letter's contamination factorial extends (Bianchi et al. 2026).
 - An author of the behavioural-validity study cited in the Discussion as
   the natural next step (Barmettler 2026).
-
-If any of these have an unresolved conflict (recent co-authorship, same
-institution, active collaboration), replace them with another author from
-the related-work list in the appendix before entering names into
-ScholarOne.
