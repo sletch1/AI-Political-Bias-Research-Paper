@@ -519,6 +519,27 @@ The failure is one of transportability. It also has a straightforward
 remedy, which is to report the apparatus alongside the estimate rather than
 the estimate alone.
 
+That remedy has precedent in this journal specifically, applied to the same
+underlying algorithmic-fidelity assumption from a different angle. A study
+using ChatGPT to approximate American National Election Study responses
+finds the LLM's synthetic responses show systematically \emph{less}
+variance than the human responses they are meant to approximate, that
+minor prompt-wording changes shift the resulting distribution, and that the
+same prompt produces significantly different results three months apart
+\citep{bisbee2024}. Our finding is the mirror image at a different level:
+even holding the prompt, the model, and the calendar date fixed, trial-to-trial
+variance within a single administration exceeds the variance between
+models. Both results caution against treating a single LLM output, or a
+small unexamined sample of them, as a valid measurement without first
+characterizing its error. A third study in this journal, evaluating LLMs'
+zero-shot fidelity to human-written codebooks for political-text coding
+rather than questionnaire response, reaches a structurally similar
+conclusion for a different measurement task \citep{halterman2025codebook}:
+across three independent lines of work on three different LLM measurement
+tasks, published in the same venue within about two years, none finds an
+off-the-shelf LLM output safe to treat as a measurement without
+characterizing how it fails.
+
 Nor are we claiming that a questionnaire score predicts what a model would
 do given a real decision. A dual-instrument study comparing an abstract
 voting-advice questionnaire against real referendum outcomes finds that the
