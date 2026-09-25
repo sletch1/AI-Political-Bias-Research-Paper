@@ -318,9 +318,13 @@ organizations, chosen to be cheap and organizationally diverse rather than
 exhaustive: \texttt{openai/gpt-4o-mini}, \texttt{anthropic/claude-haiku-4.5},
 \texttt{deepseek/deepseek-chat}, \texttt{meta-llama/llama-3.3-70b-instruct},
 and \texttt{google/gemini-2.5-flash}. Both arms are released alongside this
-paper as two more scripts in the \texttt{scoring/} directory:
+paper as two collection scripts in the \texttt{scoring/} directory,
 \texttt{collect\_prompt\_variants.py} (the prompt-robustness check) and
-\texttt{collect\_openended.py} (the open-ended-generation arm).
+\texttt{collect\_openended.py} (the open-ended-generation arm), and one
+analysis script, \texttt{analyze\_prompt\_robustness.py}, which computes
+every number reported in Sections~\ref{si:prompt-robustness}
+and~\ref{si:openended-results} from the raw data
+(\texttt{results/prompt\_robustness/prompt\_robustness\_results.json}).
 
 \subsubsection{Prompt-robustness check}
 The main collection run uses one fixed instructional wrapper per test. To
@@ -395,7 +399,11 @@ Benjamini-Hochberg corrected across all 108 model-axis cells. A companion
 memorisation probe gave each of the 18 models the first half (by word count,
 minimum three words) of 20 items (10 per instrument, seeded selection) and
 asked for a verbatim completion, scored by sequence similarity to the true
-completion; 0.90 similarity is reported as ``near-verbatim.''
+completion; 0.90 similarity is reported as ``near-verbatim.'' Two of the 18
+models (\texttt{anthropic/claude-sonnet-4.5},
+\texttt{nvidia/nemotron-3-ultra-550b-a55b}) returned a response the
+pipeline could not parse on this probe and are excluded from the rates
+reported below, which are therefore computed over 16 models.
 
 Response format was realised as a fractional factorial over four response
 scales (the instrument's own native scale, and three- and seven-point
@@ -733,6 +741,33 @@ each instrument's own $-10$-to-$10$ or 0-to-100 scale, is unremarkable.
 Readers should interpret the reported Hedges' $g$ values alongside the raw
 mean differences in Table~\ref{stab:descriptive}, not in isolation.
 
+\section{Item-Level Instability is Concentrated in a Minority of Items}
+\label{si:item-entropy}
+
+Aggregating consistency to the axis level, as Section~\ref{si:consistency}
+does, hides where inconsistency actually lives. Measured per item, 44.8\%
+of model--item cells are perfectly stable across all 60 repetitions, and
+the most volatile decile of items carries only 14.4\% (8Values) and 15.9\%
+(Political Compass) of that instrument's total response entropy
+(Figure~\ref{sfig:item-entropy}). Instability is a property of particular
+contested items, not a global trait of a model, and a model-level or
+axis-level stability score averages the two together---the reason
+recommendation 6 of the minimum reporting standard (Section~\ref{si:box1})
+asks for item-level results specifically, rather than an axis-level summary
+alone.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/fig8_item_entropy.png}
+\caption{Per-item response entropy by model. Each point is one questionnaire
+item; orange marks the model mean. 44.8\% of model--item cells are perfectly
+stable across all 60 repetitions, and the most volatile decile of items
+carries under 16\% of total entropy, so inconsistency is concentrated in
+particular contested items rather than distributed across a model's
+responses.}
+\label{sfig:item-entropy}
+\end{figure}
+
 \section{Consistency: Range-Normalized Stability Varies by Model, not by Provider}
 \label{si:consistency}
 
@@ -886,10 +921,10 @@ administrations, every model's mean score on every Political Compass axis,
 under every prompt variant, remained on the same side of center as its
 baseline score: no paraphrase flipped a model from economically left to
 right, or from socially libertarian to authoritarian. The largest single
-shift observed was \texttt{openai/gpt-4o-mini}'s 8Values equality score,
-ranging from 74.09 to 85.70 (an 11.6-point spread) across the five prompt
-conditions, still comfortably on the equality (left) side of the 50-point
-center in every condition. The directional finding that every model leans
+shift observed was \texttt{deepseek/deepseek-chat}'s 8Values equality
+score, ranging from 66.45 to 78.19 (an 11.7-point spread) across the five
+prompt conditions, still comfortably on the equality (left) side of the
+50-point center in every condition. The directional finding that every model leans
 the same way on every axis is therefore robust to prompt wording; the exact
 magnitude of that lean, and consequently any fine-grained ranking between
 closely-scored models, should be treated as sensitive to the specific
@@ -945,7 +980,7 @@ total discrimination, and the top decile of items by discrimination
 carries 24--33\% of it. A small, identifiable subset of items is doing most
 of the work of separating models on every axis we fit, on both instruments.
 
-\textbf{Neutral-response rates vary roughly five-fold across models on
+\textbf{Neutral-response rates vary roughly six-fold across models on
 8Values} (9\% to 52\% of items answered at the scale midpoint), which is the
 avoidance behaviour \citet{wachter2025irt} predict: at least part of the
 apparent centrism in the most avoidant models is a refusal to commit to

@@ -401,7 +401,8 @@ Benjamini-Hochberg correction across all 108 model-axis cells, 65
 key-flipping, and 17 of the 18 models show this on at least one axis. A
 companion memorisation probe---asking each model to complete a masked item
 verbatim---finds a mean exact-completion rate of 16.6\% and a near-verbatim
-rate of 20.6\% across 20 probed items. Both instruments are therefore
+rate of 20.6\% across 20 probed items and the 16 of 18 models whose response
+this probe parsed successfully (Methods). Both instruments are therefore
 represented, at least in part, in these models' training data, and part of a
 reported score reflects recognising the test rather than engaging with what it
 asks.
@@ -424,8 +425,8 @@ engagement \cite{wachter2025irt}, is a further, cheap addition on data already
 collected here; we report it in Supplementary Section~S8. The IRT-derived
 positions track the published axis scores closely on five of the six axes
 ($\rho \geq 0.86$), but on 8Values the model that answers most items neutrally
-does so five times more often than the model that answers least neutrally
-(52\% versus 9\% of items), which is the avoidance behaviour that account
+does so roughly six times more often than the model that answers least
+neutrally (52\% versus 9\% of items), which is the avoidance behaviour that account
 predicts. A concurrent, more exhaustive robustness design samples 300 prompt
 configurations across an eight-dimensional perturbation space---language,
 framing, instructions, answer format, option order, and persona
@@ -804,12 +805,14 @@ exhaustive:
   \item[] \texttt{google/gemini-2.5-flash}
 \end{itemize}
 
-Both arms are released alongside this paper, as two more scripts in the
-\texttt{scoring/} directory:
+Both arms are released alongside this paper, as two collection scripts and
+one analysis script in the \texttt{scoring/} directory:
 
 \begin{itemize}[nosep, leftmargin=1.5em]
   \item[] \texttt{collect\_prompt\_variants.py} -- the prompt-robustness check
   \item[] \texttt{collect\_openended.py} -- the open-ended-generation arm
+  \item[] \texttt{analyze\_prompt\_robustness.py} -- computes every number
+        reported for both arms below from the raw data
 \end{itemize}
 
 \subsubsection{Prompt-robustness check}
@@ -884,7 +887,10 @@ corrected across all 108 model-axis cells. A companion memorisation probe gave
 each of the 18 models the first half (by word count, minimum three words) of
 20 items (10 per instrument, seeded selection) and asked for a verbatim
 completion, scored by sequence similarity to the true completion; 0.90
-similarity is reported as ``near-verbatim.''
+similarity is reported as ``near-verbatim.'' Two of the 18 models
+(\texttt{anthropic/claude-sonnet-4.5}, \texttt{nvidia/nemotron-3-ultra-550b-a55b})
+returned a response the pipeline could not parse on this probe and are
+excluded from the rates below, which are therefore computed over 16 models.
 
 Response format was realised as a fractional factorial over four response
 scales (the instrument's own native scale, and three- and seven-point
