@@ -57,36 +57,76 @@ reporting standard for such audits.
 \end{abstract}
 
 Large language models now mediate political information for hundreds of
-millions of people, and a substantial literature reports they lean left of
-centre, replicated across model families, providers, and languages
-\citep{rozado2024, motoki2024, hartmann2023, feng2023, buyl2026,
-peng2026beyond, sakhawat2026polalign}. Each assumption behind this
-measurement has since been challenged in isolation: models accommodate the
-political identity they infer for the asker \citep{tornberg2026sycophancy};
-the instruments themselves appear in pretraining data
-\citep{bianchi2026plasticity}; forced-choice framing produces answers models
-do not give when responding freely \citep{rottger2024}. None has been
-quantified against the others, so the field has no estimate of how much of a
-reported score is the model and how much is the apparatus. The closest
-existing study administers three instruments to 26 models and obtains a
-comparable model-versus-prompt split, but measures each cell once, so trial
-noise cannot be separated from the instrument term
-\citep{sakhawat2026polalign}; repeating each cell and scoring against each
-instrument's own authoritative engine, rather than an approximate formula, is
-what makes the noise term below possible.
+millions of people, and whether that matters depends on whether a measured
+lean transfers to behaviour. There is evidence that it does: interacting
+with a politically biased model shifts the policy views and voting
+intentions of users who were undecided beforehand
+\citep{fisher2026biasedai}, models can be as persuasive as targeted human
+messaging on contested policy questions \citep{bai2025persuade,
+hackenburg2025levers}, and merely perceiving a model as politically biased
+changes how much people trust its outputs on unrelated tasks
+\citep{digiuseppe2026perceived}. A measured political lean is therefore a
+reasonable object of study, and auditing it is a reasonable thing to do. A
+substantial literature has done exactly that, replicated across model
+families, providers, and languages \citep{rozado2024, motoki2024,
+hartmann2023, feng2023, buyl2026, peng2026beyond, sakhawat2026polalign}.
+Rozado (2024) and Motoki et al.
+(2024) established the finding on early GPT-family models using the
+Political Compass; Hartmann et al. (2023) and Feng et al. (2023) extended it
+across a wider model set and connected the lean to downstream generation
+behaviour; Buyl et al. (2026) and Peng et al. (2026) trace it to specific
+choices in pretraining data and alignment fine-tuning. All of them measure
+model identity's contribution to a reported score; none quantifies it
+against the contribution of the measurement apparatus itself.
 
-We supply that estimate. Administering the Political Compass and 8Values to
-19 models from 11 organizations, spanning open and closed weights and
-roughly two orders of magnitude in price, 60 times each (2{,}280
-administrations), we decompose a measured political position into variance
-from model identity, instrument and axis choice, and residual trial noise,
-each with a 95\% CI from a cluster bootstrap over the 19 models. Pooled
+Each assumption behind that apparatus has since been challenged in
+isolation. Models accommodate the political identity they infer for the
+asker \citep{tornberg2026sycophancy}; the instruments themselves appear in
+pretraining data \citep{bianchi2026plasticity}; forced-choice framing
+produces answers models do not give when responding freely
+\citep{rottger2024}. None has been quantified against the others, so the
+field has no estimate of how much of a reported score is the model and how
+much is the apparatus. The closest existing study administers three
+instruments to 26 models and obtains a comparable model-versus-prompt split,
+but measures each cell once, so trial noise cannot be separated from the
+instrument term \citep{sakhawat2026polalign}; repeating each cell and
+scoring against each instrument's own authoritative engine, rather than an
+approximate formula, is what makes the noise term below possible.
+
+We supply that estimate. Nineteen models from 11 organizations (OpenAI,
+Anthropic, DeepSeek, Google, Meta, Mistral, Alibaba, xAI, Cohere, Amazon,
+NVIDIA), spanning open and closed weights, four countries, and roughly two
+orders of magnitude in per-token price, were each administered the Political
+Compass and 8Values 60 times per instrument (2{,}280 administrations),
+collected programmatically via a single API gateway with pinned model
+identifiers and fixed decoding temperature. Both instruments were chosen
+for the same reason they dominate the prior literature---a clear, structured
+item format that supports objective, cross-model comparison---and both are
+scored against their own authoritative source rather than an approximate
+cross-test formula: 8Values via a lossless port of its own open-source
+scoring algorithm, verified against exact invariants, and Political
+Compass, whose per-item weights are not published, by driving the real
+form with a headless browser and reading the score off the site's own
+results page, the same value a human respondent would see. Total API cost
+for the full run was \$9.30; every raw response, score, and per-call cost
+is released alongside this Letter. We decompose the resulting
+measured political position into variance from model identity, instrument
+and axis choice, and residual trial noise, each with a 95\% CI from a
+cluster bootstrap over the 19 models. Pooled
 across instruments, instrument and axis choice accounts for 52.2\% of
 variance ([35.0\%, 71.9\%]) and model identity for only 13.0\% ([0.02\%,
 21.9\%]) (Fig.~\ref{fig:error-budget}a; Table~\ref{tab:factors}): which
 questionnaire an auditor picks moves a reported score roughly four times
 more than which model is audited, and residual trial-to-trial noise (34.8\%,
-[18.9\%, 49.3\%]) exceeds the model term. Conditional on a fixed axis, where
+[18.9\%, 49.3\%]) exceeds the model term. Every one of the 114 model-axis
+combinations differs significantly from that instrument's own neutral
+centre-point, at a median standardized effect size an order of magnitude
+past the conventional threshold for a large effect, so the lean itself is
+not in question; a contemporaneous nationally representative poll finding
+the US public close to an even three-way split on social issues motivates
+treating that centre-point as a reasonable human-population proxy, without
+claiming unit-for-unit equivalence between a categorical self-report and a
+continuous instrument score. Conditional on a fixed axis, where
 the between-instrument term is removed by construction, model identity
 accounts for 66.6\% of remaining variance (Fig.~\ref{fig:error-budget}b):
 models are clearly separable once the instrument is held constant, and both
@@ -98,71 +138,148 @@ position. A multi-trait multi-method analysis finds convergent
 validity---the same construct measured by both instruments---averaging
 $r=-0.26$ across the 19 models, against $r=+0.52$ for discriminant validity
 (different constructs, same instrument); the Campbell--Fiske ordering, which
-requires the first to exceed the second, is inverted. Crossing two further
-instruments, SapplyValues and Pew Research Center's 2026 Political
-Typology, scored by driving Pew's live public quiz and reading off its own
-classification rather than reimplementing its unpublished clustering
-procedure, into the same crossed random-effects model collapses the pooled
-model-identity share further, to 1.89\% (8{,}640 administrations;
-Table~\ref{tab:factors}).\footnote{Automating Pew's live quiz at this scale
-(18 models $\times$ 10 trials) is a distinct question from the survey items'
-own reuse terms and plausibly exceeds ordinary personal use of that
+requires the first to exceed the second, is inverted. A third instrument,
+SapplyValues (46 items, three axes, administered natively rather than
+mapped onto the other two), partly replicates the directional finding---all
+18 models scored are economically left and culturally progressive---but not
+the libertarian one, with only 7 of 18 scoring libertarian on its authority
+axis, and its economic axis disagrees with Political Compass on model
+ranking ($\rho=-0.49$) while agreeing with 8Values' equality axis
+($\rho=-0.53$). A fourth, Pew Research Center's 2026 Political Typology,
+gives an authoritative check of a different kind: rather than scoring an
+axis ourselves, we drove the live 24-item quiz with each model's answers and
+read off the classification Pew's own site computes, since Pew's clustering
+weights are not published.\footnote{Automating Pew's live quiz at this
+scale (18 models $\times$ 10 trials) is a distinct question from the survey
+items' own reuse terms and plausibly exceeds ordinary personal use of that
 interactive tool; we disclose this explicitly (web appendix, Ethics
-Declarations).} The collapse is driven by SapplyValues actively disagreeing
-with Political Compass on model ranking ($\rho=-0.49$), not by Pew's
-coarser ordinal scale diluting the signal: adding SapplyValues alone drops
-the model share to 0.49\%, adding Pew alone only to 8.21\%.
+Declarations).} Sixteen of 18 models classify left of centre; two,
+\texttt{deepseek/deepseek-chat} and \texttt{x-ai/grok-4.20}, classify as
+\emph{Pragmatic and Polite Right}, the first group right of centre.
+
+Crossing both instruments into the same crossed random-effects model used
+for the two-instrument budget above collapses the pooled model-identity
+share further, to 1.89\% (8{,}640 administrations; Table~\ref{tab:factors}).
+The collapse is driven by SapplyValues actively disagreeing with Political
+Compass on model ranking, not by Pew's coarser ordinal scale diluting the
+signal: adding SapplyValues alone drops the model share to 0.49\%, adding
+Pew alone only to 8.21\%. That per-instrument breakdown is itself the answer
+to the objection this crossing exists to pre-empt---that a variance
+component estimated from only two instruments is meaningless---since it
+shows the collapse is not an artefact of diluting a real signal with a weak
+instrument.
 
 Three further apparatus components, each demonstrated only in isolation in
 the prior literature, are larger than the model term when measured directly
-on the same models (Table~\ref{tab:factors}). Framing the asker's identity
+on the same 18 of the 19 models (one was withdrawn from the API between
+collection rounds; Table~\ref{tab:factors}). Framing the asker's identity
 ---conservative, progressive, apolitical, journalist, academic researcher,
-or none---explains more variance ($\eta^2=0.79$, [0.65, 0.93]) than model
-identity does under the field's standard unattributed condition
-($\eta^2=0.56$--$0.73$); accommodation is asymmetric, moving scores 2.9--6.7
-times further from baseline for a conservative framing than a progressive
-one. Sense-inverting instrument items with the scoring key flipped produces
-a Contamination Index averaging 0.046 ([0.038, 0.055]) of the instrument's
-own range, with 17 of 18 models shifting on at least one axis after
-correction, and a companion memorisation probe (16 of 18 models parsed)
-finds a 16.6\% verbatim item-completion rate. Free-text elicitation, judged
-onto the same scale,
-versus a forced label explains more variance (39\%, [0.02, 0.74]) than
-model identity within the same design (23\%, [0.04, 0.52]).
+or none, crossed with both instruments at ten repetitions per cell
+(2{,}160 administrations)---explains more variance ($\eta^2=0.79$, [0.65,
+0.93]) than model identity does under the field's standard unattributed
+condition ($\eta^2=0.56$--$0.73$); accommodation is asymmetric, moving
+scores 2.9--6.7 times further from baseline for a conservative framing than
+a progressive one, on top of a baseline that already leans left. Sense-inverting
+instrument items with the scoring key flipped, at the same repetition rate
+(1{,}080 administrations), produces a Contamination Index averaging 0.046
+([0.038, 0.055]) of the instrument's own range, with 17 of 18 models
+shifting on at least one axis after Benjamini-Hochberg correction; a
+companion memorisation probe, giving each model the first half of a masked
+item and scoring the completion by sequence similarity (16 of 18 models
+parsed), finds a 16.6\% verbatim and 20.6\% near-verbatim completion rate,
+evidence the instruments are represented in these models' training data.
+Crossing four response scales, two item orders, two option orders, and two
+elicitation modes (24 cells, five repetitions each, 4{,}320
+administrations), free-text elicitation judged onto the same scale versus a
+forced label explains more variance (39\%, [0.02, 0.74]) than model
+identity within the same design (23\%, [0.04, 0.52]).
 
 None of these three factors is folded into the pooled budget above, since
 each was collected as its own factorial against the field's standard
-baseline rather than crossed with instrument simultaneously; doing so is
-the natural next step and would likely push the already-small model share
-down further still. That is the direction every factor examined has
-pushed, and none has pushed the other way.
+baseline rather than crossed with instrument simultaneously, at a cost
+proportional to the product of all four factors rather than their sum; a
+single design crossing instrument, asker, contamination, and format at once
+is the natural next step, and on the evidence so far would likely push the
+already-small model share down further still. That is the direction every
+factor examined has pushed, and none has pushed the other way.
+
+Two further checks corroborate the design without changing its
+conclusions. A graded-response item-response-theory reanalysis of the same
+item-level responses, which separates response avoidance from ideological
+engagement, tracks the published axis scores closely on five of the six
+axes ($\rho \geq 0.86$); on 8Values, the model answering most items
+neutrally does so roughly six times more often than the least avoidant
+model (52\% versus 9\% of items), consistent with some of the apparent
+centrism being avoidance rather than moderation. And measured per item
+rather than per axis, 44.8\% of model--item cells are perfectly stable
+across all 60 repetitions, while the most volatile decile of items carries
+under 16\% of total response entropy on either instrument: inconsistency is
+concentrated in a minority of contested items, not distributed evenly
+across a model's answers, which is why the reporting standard below asks
+for item-level results specifically rather than an axis-level summary
+alone.
 
 We are not arguing models are politically neutral, nor that any specific
 published estimate is wrong, nor that a questionnaire score predicts
 real-world behaviour: a separate, dual-instrument study finds voting-advice
 questionnaires and concrete referendum votes disagree
 \citep{barmettler2026instrument}, a behavioural-validity question this
-design does not test. Within a single study using one instrument, model
-identity is clearly measurable and rank orderings are meaningful. The
-failure is transportability: published magnitudes are not comparable across
-studies using different instruments, askers, or elicitation formats, and
-every apparatus component we examined explains more of a reported score
-than the model producing it does.
+design does not test and does not need to in order for the
+instrument-comparability problem to hold. Within a single study using one
+instrument, model identity is clearly measurable, accounts for roughly
+two-thirds of the remaining variance once the instrument is held fixed, and
+rank orderings obtained that way are meaningful. The failure is
+transportability: published magnitudes are not comparable across studies
+using different instruments, askers, or elicitation formats, and every
+apparatus component we examined explains more of a reported score than the
+model producing it does. This corrects our own earlier analysis as much as
+anyone's: a range-normalized stability metric we previously reported
+assigns one of the worst instability scores in the cohort to a model whose
+sixty answers varied by six hundredths of a point on a twenty-point scale,
+because dividing an already-tiny standard deviation by an even tinier
+observed range inflates the ratio. We report that failure explicitly rather
+than quietly replacing it, since any scale-free consistency statistic that
+divides by observed spread inverts the same way on tightly clustered
+responses, and it is not unique to this dataset: several published
+consistency measures in this literature are constructed the same way, and
+would invert on the same kind of model. We flag it for the same reason we
+report the rest of this apparatus explicitly, rather than folding it into a
+single headline coefficient: a methodology that only survives scrutiny when
+its failure modes are hidden is not one auditors of a politically
+consequential technology should be relying on.
 
-We propose that a political-bias audit report, at minimum: the instrument,
-named; the asker condition, including the absence of one; the repetition
-count and dispersion, in the instrument's own units; a variance
-decomposition across whatever was varied; a contamination check; and
-item-level, not only axis-level, results. Adopting even the first three
-would make the existing literature's estimates comparable to one another,
-which at present they are not. Full methods, the complete four-instrument
-crossing, and item-response-theory, prompt-robustness, and
-open-ended-generation checks that corroborate these results are in the web
+On this evidence, we propose that a political-bias audit of a language
+model report the following alongside any score. \emph{The instrument,
+named, with its items}: scores from different instruments are not on a
+common scale and should not be compared numerically. \emph{The asker
+condition}, including the absence of one: an unattributed prompt is a
+condition, not a neutral baseline. \emph{Repetition count and dispersion},
+in the instrument's own units: trial noise here exceeded the model effect.
+\emph{An error budget, or at minimum a variance decomposition} across
+whatever was varied: a point estimate without a denominator cannot be
+compared to another study's point estimate. \emph{A contamination check}
+for instruments that appear in pretraining corpora, such as an
+item-inversion or paraphrase control. \emph{Item-level results}, or at
+least the dispersion across items, since aggregate stability scores conceal
+that inconsistency concentrates in a minority of contested items. Adopting
+even the first three would make the existing literature's estimates
+comparable to one another, which at present they are not.
+
+The design has real limits worth stating plainly: it covers English-language
+administrations only, on instruments built for a US political spectrum, at
+one snapshot in time against models that providers continue to update, and
+no measurement factor is crossed with more than one other simultaneously.
+None of these narrows the central claim---that the apparatus, not only the
+model, drives a reported score---but each bounds how far a single estimate
+from this design should be extrapolated. Full methods, the complete
+four-instrument crossing, the item-response-theory and item-entropy
+analyses summarised above, and the prompt-robustness and
+open-ended-generation checks that corroborate these results, are in the web
 appendix.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/fig6_error_budget.png}
+\includegraphics[width=\textwidth]{figures/fig6_error_budget.png}
 \caption{\textbf{The error budget.} Variance components of a measured
 political position, from a crossed random-effects model on 2{,}280
 administrations. (\textbf{a}) Pooled across instruments: instrument and
@@ -184,8 +301,8 @@ share is reported under whichever baseline each factor's own design used;
 intervals are cluster bootstraps over models. Full designs in the web
 appendix.}
 \label{tab:factors}
-\footnotesize
-\begin{tabular}{lp{3.6cm}p{3.6cm}r}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{lp{4.6cm}p{4.6cm}r}
 \toprule
 Factor & Model identity & Factor itself & $n$ \\
 \midrule
@@ -198,6 +315,7 @@ Instrument contamination & --- & CI 0.046 [0.038, 0.055]; 17/18 models & 1{,}080
 \end{tabular}
 \end{table}
 
+\clearpage
 \bibliographystyle{chicago}
 \bibliography{references}
 
