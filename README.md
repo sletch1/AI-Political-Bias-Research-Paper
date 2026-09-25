@@ -3,7 +3,7 @@
 Code, data, and analysis supporting the paper **"An error budget for
 political-bias measurement in large language models"** (`main.tex` / `main.pdf`,
 supplementary information in `supplementary.tex` / `supplementary.pdf`).
-Target venue: see `oct_fix.md` (private, not part of this repository) for the
+Target venue: see `impr.md` (private, not part of this repository) for the
 current submission plan; the paper is written to be adaptable across a short
 list of target journals rather than tied to one.
 
