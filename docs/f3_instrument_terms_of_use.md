@@ -27,7 +27,7 @@ before writing scoring adapters.
   anything.
 - **Comparability:** Sakhawat et al. 2026 use Political Compass, 8Values, *and* SapplyValues on 26
   models — adding it here makes our results directly comparable to the closest competing study
-  (already engaged in `pa_letter.tex`'s opening paragraph).
+  (already engaged in `pa_article.tex`'s Introduction).
 
 ## 2. Pew Research 2026 Political Typology — recommend as instrument 4 over ANES
 
@@ -114,7 +114,7 @@ Between-model spread and within-model trial noise are proportionally in line wit
 instruments for SapplyValues too (ratio ≈1.9 for all three continuous instruments), so this is not a
 SapplyValues data-quality artefact — it is what "a variance component estimated from two instruments
 is meaningless" (the *Political Analysis* objection F3 exists to pre-empt) looks like quantitatively.
-See `pa_letter.tex` and `pa_appendix.tex`'s "Multi-Trait Multi-Method Matrix" section for how this
+See `pa_article.tex` and `pa_appendix.tex`'s "Multi-Trait Multi-Method Matrix" section for how this
 is written up.
 
 ## Sources

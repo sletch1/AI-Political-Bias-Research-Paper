@@ -3,11 +3,12 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22968158.svg)](https://doi.org/10.5281/zenodo.22968158)
 
 Code, data, and analysis supporting the paper **"An error budget for
-political-bias measurement in large language models"**, formatted as a
-Letter for submission to *Political Analysis*: `pa_letter.tex` / `pa_letter.pdf`
-(the ~1,150-word Letter), with full methods and extended results in the web
-appendix, `pa_appendix.tex` / `pa_appendix.pdf`. Target venue: see `impr.md`
-(private, not part of this repository) for the current submission plan.
+political-bias measurement in large language models"**, submitted as a
+Research Article to *Political Analysis*: `pa_article.tex` / `pa_article.pdf`
+(the manuscript), with full methods and extended results in the web
+appendix, submitted as supplementary material, `pa_appendix.tex` /
+`pa_appendix.pdf`. Target venue: see `impr.md` (private, not part of this
+repository) for the current submission plan.
 
 This snapshot (release `v0.4.1`) is archived at Zenodo with DOI
 [10.5281/zenodo.22968158](https://doi.org/10.5281/zenodo.22968158).
@@ -81,9 +82,8 @@ required for its current claims.
 
 | Path | Description |
 |---|---|
-| `pa_letter.tex` / `pa_letter.pdf` | The Letter (Political Analysis submission, single-anonymized). |
-| `pa_appendix.tex` / `pa_appendix.pdf` | Web appendix: full methods, extended discussion, all supporting results. |
-| `pa_titlepage.tex` / `pa_titlepage.pdf` | Separate title page (author identity, submitted apart from the blinded Letter/appendix). |
+| `pa_article.tex` / `pa_article.pdf` | The manuscript (Political Analysis Research Article submission). |
+| `pa_appendix.tex` / `pa_appendix.pdf` | Web appendix / supplementary material: full methods, extended discussion, all supporting results. |
 | `pa_cover_letter.md` | Submission cover letter. |
 | `references.bib` | Bibliography. |
 | `.zenodo.json` | Metadata for the GitHub→Zenodo archival DOI. |
@@ -158,4 +158,4 @@ addresses directly.
 ## Citation
 
 If you use this code or data, please cite the accompanying paper (see
-`pa_letter.tex` for full reference details).
+`pa_article.tex` for full reference details).
