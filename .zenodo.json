@@ -1,0 +1,28 @@
+{
+  "title": "An error budget for political-bias measurement in large language models: data and code",
+  "description": "<p>Raw per-trial data, scoring adapters, and statistical-analysis code for \"An error budget for political-bias measurement in large language models.\" Nineteen large language models were administered up to four standardized political-orientation instruments (Political Compass, 8Values, SapplyValues, Pew Research Center's 2026 Political Typology) repeatedly, alongside factorial designs varying asker identity, instrument contamination, and response format, decomposing a measured political position into variance from model identity, instrument choice, and trial noise.</p><p>Includes: raw per-trial administrations (data/), authoritative scoring adapters and collection scripts (scoring/), and the statistical-analysis pipeline that reproduces every number reported in the paper from this data.</p>",
+  "creators": [
+    {
+      "name": "Letchumanan, Sachin",
+      "affiliation": "Independent Researcher"
+    }
+  ],
+  "upload_type": "dataset",
+  "access_right": "open",
+  "keywords": [
+    "large language models",
+    "political bias",
+    "measurement validity",
+    "generalizability theory",
+    "variance decomposition",
+    "Political Compass",
+    "8Values"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/sletch1/AI-Political-Bias-Research-Paper",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    }
+  ]
+}
