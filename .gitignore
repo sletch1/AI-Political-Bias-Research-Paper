@@ -22,6 +22,7 @@ scoring/.pytest_cache/
 # Private planning docs, not for the public repo
 goal.md
 improvement.md
+format_for_PA_article.md
 updates/
 
 # Working literature-review notes (raw research, not the curated bibliography)
