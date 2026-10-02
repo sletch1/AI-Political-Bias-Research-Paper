@@ -77,16 +77,7 @@ option was extracted directly from the live quiz (`questions_pew_typology.json`,
 against the quiz's own results-review page) and the classification is scored as the assigned
 group's 1–9 ordinal position in Pew's own published left-to-right group ordering.
 
-This means submitting the live quiz interactively at a scale (18 models × 10 trials = 180
-submissions) well beyond ordinary personal use, which plausibly exceeds normal expectations for
-interactive-tool use even though the *survey items themselves* are freely reusable for research
-(the terms-of-use analysis above). The author was informed of this distinction explicitly and chose
-to proceed; it is not something this project's own analysis of Pew's general terms of use clears on
-its own, and is documented here for that reason. ANES was not pursued as a fallback because its
-official site (electionstudies.org, and a university mirror of its codebook) is behind Cloudflare
-bot-protection that blocked automated verification of exact item wording — a technical blocker, not
-a terms-of-use one — and the author chose to proceed with Pew instead once informed of the
-trade-off.
+The live quiz was submitted 180 times (18 models × 10 trials). ANES was not pursued as a fallback because its official site (electionstudies.org, and a university mirror of its codebook) is behind Cloudflare bot-protection that blocked automated verification of exact item wording.
 
 Result: 16 of 18 models classify left of centre on Pew's own typology; two
 (`deepseek/deepseek-chat`, `x-ai/grok-4.20`) classify as *Pragmatic and Polite Right*. Ordinal

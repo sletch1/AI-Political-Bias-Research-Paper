@@ -127,7 +127,7 @@ def main(out_dir: str = "results/f3_variance_components", n_boot: int = 2000,
     df = load_pooled_long(instruments)
 
     decomposition = variance_decomposition(
-        df, value="value", random_effects=["model", "trait", "model:trait"], z_within="trait",
+        df, value="value", random_effects=["model", "model:trait"], z_within="trait",
     )
     decomposition["interpretation"] = (
         "same quantities as analyze_w4.py task 4.3 (model share = ICC for model "
@@ -136,7 +136,7 @@ def main(out_dir: str = "results/f3_variance_components", n_boot: int = 2000,
     )
 
     boot = cluster_bootstrap_variance_shares(
-        df, value="value", random_effects=["model", "trait", "model:trait"],
+        df, value="value", random_effects=["model", "model:trait"],
         cluster="model", z_within="trait", n_boot=n_boot,
     )
 

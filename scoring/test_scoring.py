@@ -7,8 +7,11 @@ real Political Compass website) rather than a hand-derived formula. Run with:
 
     python3 -m pytest scoring/test_scoring.py -v
 
-The Political Compass tests require network access (they drive the live
-site) and are skipped automatically if it's unreachable.
+Two tests (Political Compass and Pew mirror/classification) drive the live
+sites through a headless Chromium. They need network access and a Playwright
+Chromium install (`playwright install chromium`); each is skipped, with that
+instruction as the skip reason, if either is missing. Run with `-rs` to see
+skip reasons. All other tests are offline.
 """
 
 import socket
@@ -113,6 +116,19 @@ def test_sapplyvalues_rejects_wrong_length_answers():
 # Political Compass: drives the live site, so only run when reachable.
 # ---------------------------------------------------------------------------
 
+def _chromium_available() -> bool:
+    try:
+        from pathlib import Path
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            return Path(p.chromium.executable_path).exists()
+    except Exception:
+        return False
+
+
+browser_available = _chromium_available()
+browser_skip_reason = "Playwright Chromium not installed: run `playwright install chromium`"
+
 pc_available = _network_available()
 pc_skip_reason = "politicalcompass.org unreachable from this environment"
 
@@ -124,6 +140,7 @@ def test_political_compass_question_count_matches_live_site():
 
 
 @pytest.mark.skipif(not pc_available, reason=pc_skip_reason)
+@pytest.mark.skipif(not browser_available, reason=browser_skip_reason)
 def test_political_compass_agree_and_disagree_are_mirror_images():
     from score_political_compass import load_questions as load_pc_questions
     from score_political_compass import score_political_compass
@@ -194,6 +211,7 @@ pew_skip_reason = "pewresearch.org unreachable from this environment"
 
 
 @pytest.mark.skipif(not pew_available, reason=pew_skip_reason)
+@pytest.mark.skipif(not browser_available, reason=browser_skip_reason)
 def test_pew_typology_all_first_option_reaches_a_recognised_group():
     from score_pew_typology import load_bank, score_pew_typology
 

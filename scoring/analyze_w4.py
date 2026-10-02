@@ -78,6 +78,8 @@ def load_raw_trials() -> pd.DataFrame:
             rec = json.load(fh)
         if rec.get("status") != "ok" or not rec.get("answers"):
             continue
+        if rec["test"] not in ("8values", "political_compass"):
+            continue  # item-level stability is reported for the two baseline instruments
         rows.append(
             {
                 "model": rec["model"],
@@ -276,7 +278,7 @@ def task_4_3(df: pd.DataFrame) -> dict:
     from variance_components import cluster_bootstrap_variance_shares, variance_decomposition
 
     out = variance_decomposition(
-        df, value="value", random_effects=["model", "trait", "model:trait"], z_within="trait"
+        df, value="value", random_effects=["model", "model:trait"], z_within="trait"
     )
     out["interpretation"] = (
         "the residual share is the fraction of variation that is pure trial-to-trial "
@@ -290,7 +292,7 @@ def task_4_3(df: pd.DataFrame) -> dict:
     # (>= 2000 resamples, seed recorded) -- resampling rows instead of models
     # would understate the interval, since rows from one model are not independent.
     boot = cluster_bootstrap_variance_shares(
-        df, value="value", random_effects=["model", "trait", "model:trait"],
+        df, value="value", random_effects=["model", "model:trait"],
         cluster="model", z_within="trait", n_boot=2000,
     )
     out["bootstrap_ci"] = {

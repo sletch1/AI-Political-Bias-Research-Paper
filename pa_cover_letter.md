@@ -31,15 +31,7 @@ left of centre on standardized political instruments. This article shows
 that the measurement apparatus used to obtain that finding, not only the
 models themselves, accounts for most of the variance in a reported score.
 Administering the Political Compass and 8Values to 19 models 60 times
-each, I decompose a measured political position into variance from model
-identity, instrument choice, and trial noise, finding that instrument
-choice alone moves a score roughly four times more than which model is
-audited. Crossing two further instruments into the same model collapses
-the model-identity share further, to under 2%, and three additional
-measurement factors examined in their own factorial designs, asker
-identity, instrument contamination, and response format, each explain
-more variance than model identity does under the field's standard
-protocol.
+each, I decompose a standardized political position into variance from model identity that carries across instruments (13%), model position that depends on the instrument and axis (52%), and trial noise (34%), so the choice of questionnaire reorders the models about four times more than the models differ in a way that transfers. Crossing two further instruments into the same model leaves the transferable model share small (2.1%). Three further measurement factors, asker identity, instrument contamination, and response format, are measured in their own factorial designs; asker identity, and on average response format, explain more variance than model identity does within the same design.
 
 This paper is a measurement-validity contribution to a literature that
 has, so far, quantified each of these apparatus effects only in
@@ -50,7 +42,7 @@ as measurements, and proposes a minimum reporting standard that would
 make the existing literature's estimates comparable to one another for
 the first time.
 
-The manuscript is a Research Article (approximately 5,800 words), with a
+The manuscript is a Research Article (approximately 4,200 words by TeXcount, under the 6,000-word limit), with a
 web appendix, submitted as supplementary material, containing full
 methods, the complete four-instrument crossing, and supporting robustness
 checks. All data and code are released publicly and are cited in the

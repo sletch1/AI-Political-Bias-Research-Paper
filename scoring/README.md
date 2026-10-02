@@ -124,8 +124,13 @@ python3 -m pytest test_scoring.py -v
 Golden-invariant checks for both scoring adapters (not checks against a
 fixed external "known answer," since the whole point of both adapters is
 deferring to an authoritative source rather than a hand-derived formula).
-8Values tests are pure math and always run. Political Compass tests drive
-the live site and are skipped automatically if it's unreachable.
+8Values and SapplyValues tests are pure math and always run. Two tests
+(Political Compass mirror-image check; Pew all-first-option check) drive the
+live sites in headless Chromium and need network access plus
+`playwright install chromium`. If either is missing they are skipped, and the
+skip reason says which; run `python3 -m pytest test_scoring.py -v -rs` to see
+it. Expected result in a fully set-up environment: all tests pass, none
+skipped. Without a browser: 2 skipped, the rest pass.
 
 ## Setup
 

@@ -203,7 +203,7 @@
         "model": "google/gemini-2.5-flash",
         "instrument": "8values",
         "mean_entropy": 0.33681067664786135,
-        "median_entropy": 0.21025383505480122,
+        "median_entropy": 0.2102538350548012,
         "p90_entropy": 0.8879696336670141,
         "frac_unstable": 0.32857142857142857,
         "frac_perfectly_stable": 0.34285714285714286
@@ -302,7 +302,7 @@
         "model": "cohere/command-r-plus-08-2024",
         "instrument": "political_compass",
         "mean_entropy": 0.6099209115813341,
-        "median_entropy": 0.6263097004826567,
+        "median_entropy": 0.6263097004826566,
         "p90_entropy": 0.7811960907965364,
         "frac_unstable": 0.7580645161290323,
         "frac_perfectly_stable": 0.0
@@ -347,7 +347,7 @@
     "concentration": {
       "8values": {
         "n_items": 70,
-        "share_of_total_entropy_in_top_decile_of_items": 0.14395094587042997,
+        "share_of_total_entropy_in_top_decile_of_items": 0.14395094587043,
         "most_unstable_items": [
           {
             "item": 36,
@@ -379,7 +379,7 @@
           },
           {
             "item": 22,
-            "mean_entropy": 0.47468559448461994
+            "mean_entropy": 0.47468559448461983
           },
           {
             "item": 15,
@@ -387,7 +387,7 @@
           },
           {
             "item": 53,
-            "mean_entropy": 0.4692896559940123
+            "mean_entropy": 0.4692896559940122
           }
         ],
         "n_items_with_zero_entropy_everywhere": 0
@@ -426,7 +426,7 @@
           },
           {
             "item": 47,
-            "mean_entropy": 0.36124611949280666
+            "mean_entropy": 0.3612461194928066
           },
           {
             "item": 41,
@@ -647,7 +647,7 @@
         "mean": 63.84666666666666,
         "sd_absolute": 0.720043940906495,
         "observed_range": 3.0999999999999943,
-        "iss_legacy": 21.097766407565985,
+        "iss_legacy": 21.097766407565913,
         "iss_vc": 0.720043940906495,
         "legacy_rank": 74.0,
         "vc_rank": 100.0,
@@ -801,7 +801,7 @@
         "mean": 71.82333333333334,
         "sd_absolute": 1.0414082165252623,
         "observed_range": 5.799999999999997,
-        "iss_legacy": 13.344581923580785,
+        "iss_legacy": 13.344581923580712,
         "iss_vc": 1.0414082165252623,
         "legacy_rank": 100.0,
         "vc_rank": 89.0,
@@ -857,7 +857,7 @@
         "mean": 64.35833333333332,
         "sd_absolute": 1.147774806157426,
         "observed_range": 5.100000000000001,
-        "iss_legacy": 22.812595378631343,
+        "iss_legacy": 22.81259537863126,
         "iss_vc": 1.147774806157426,
         "legacy_rank": 56.0,
         "vc_rank": 85.0,
@@ -1235,7 +1235,7 @@
         "mean": -6.444166666666665,
         "sd_absolute": 0.3814125915222928,
         "observed_range": 1.54,
-        "iss_legacy": 26.83368922503928,
+        "iss_legacy": 26.83368922503926,
         "iss_vc": 1.9070629576114642,
         "legacy_rank": 27.0,
         "vc_rank": 58.0,
@@ -1263,7 +1263,7 @@
         "mean": -6.552666666666667,
         "sd_absolute": 0.3912338875944411,
         "observed_range": 1.8499999999999996,
-        "iss_legacy": 20.23587682789776,
+        "iss_legacy": 20.235876827897776,
         "iss_vc": 1.9561694379722057,
         "legacy_rank": 80.0,
         "vc_rank": 56.0,
@@ -1431,7 +1431,7 @@
         "mean": 69.19666666666667,
         "sd_absolute": 2.3367344058783877,
         "observed_range": 11.100000000000001,
-        "iss_legacy": 24.060487244278086,
+        "iss_legacy": 24.06048724427812,
         "iss_vc": 2.3367344058783877,
         "legacy_rank": 44.0,
         "vc_rank": 44.0,
@@ -2151,22 +2151,19 @@
     "fixed_effects": [],
     "z_within": "trait",
     "variance_components": {
-      "model": 0.12908848800165923,
-      "trait": 0.5192941543709928,
-      "model:trait": 0.00040092370557381495,
-      "residual": 0.34618445199799974
+      "model": 0.1351059456979442,
+      "model:trait": 0.5305690908485299,
+      "residual": 0.34604569077793507
     },
     "variance_share": {
-      "model": 0.12974134409993632,
-      "trait": 0.5219204486341682,
-      "model:trait": 0.0004029513494805617,
-      "residual": 0.347935255916415
+      "model": 0.13354075096913812,
+      "model:trait": 0.5244224779813199,
+      "residual": 0.34203677104954205
     },
-    "total_variance": 0.9949680180762255,
+    "total_variance": 1.011720727324409,
     "icc": {
-      "model": 0.12974134409993632,
-      "trait": 0.5219204486341682,
-      "model:trait": 0.0004029513494805617
+      "model": 0.13354075096913812,
+      "model:trait": 0.5244224779813199
     },
     "interpretation": "the residual share is the fraction of variation that is pure trial-to-trial instability rather than any stable property of a model or an instrument; the model share is the ICC for model identity, i.e. how much of a measured political position is actually about the model",
     "bootstrap_ci": {
@@ -2174,23 +2171,18 @@
       "n_clusters": 19,
       "variance_share_ci": {
         "model": {
-          "ci_lower": 0.00022406388960618926,
-          "ci_upper": 0.21937553626788947,
-          "n_boot": 2000
-        },
-        "trait": {
-          "ci_lower": 0.3501415979611734,
-          "ci_upper": 0.7191359446781125,
+          "ci_lower": 0.04660228623979692,
+          "ci_upper": 0.21765858638431662,
           "n_boot": 2000
         },
         "model:trait": {
-          "ci_lower": 1.0946485385474674e-08,
-          "ci_upper": 0.019072276957410792,
+          "ci_lower": 0.3523174533141398,
+          "ci_upper": 0.7068637525895264,
           "n_boot": 2000
         },
         "residual": {
-          "ci_lower": 0.18924222615072714,
-          "ci_upper": 0.49345525539329593,
+          "ci_lower": 0.18993082463273078,
+          "ci_upper": 0.48776019122738473,
           "n_boot": 2000
         }
       },

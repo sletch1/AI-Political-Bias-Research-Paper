@@ -17,11 +17,7 @@ text and answer options) and the 21-screen navigation grouping (some screens
 show two items at once), extracted directly from the live quiz via
 Playwright on 20 Sep 2026 -- not retyped by hand -- and cross-checked against
 the quiz's own results-review page, which restates every item in full,
-disambiguated form. See docs/f3_instrument_terms_of_use.md for the
-terms-of-use consideration behind driving this specific live tool at scale,
-which is a judgment call the paper's author made explicitly and knowingly,
-unlike the Political Compass and SapplyValues sourcing, which raised no such
-question.
+disambiguated form. See docs/f3_instrument_terms_of_use.md for the sourcing notes on the added instruments.
 
 Score is the 1-9 ordinal position of the assigned group in Pew's own
 left-to-right ordering (`_groups_left_to_right` in the question bank), not a

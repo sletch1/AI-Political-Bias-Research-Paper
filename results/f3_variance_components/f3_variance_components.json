@@ -51,22 +51,19 @@
     "fixed_effects": [],
     "z_within": "trait",
     "variance_components": {
-      "model": 0.018883439208561992,
-      "trait": 0.6338145004890096,
-      "model:trait": 4.0326207787887214e-06,
-      "residual": 0.3458170257133443
+      "model": 0.02109799885676004,
+      "model:trait": 0.6313005203518637,
+      "residual": 0.3458266980692487
     },
     "variance_share": {
-      "model": 0.018911447098939025,
-      "trait": 0.6347545732614005,
-      "model:trait": 4.038601956235107e-06,
-      "residual": 0.3463299410377042
+      "model": 0.02113550979436644,
+      "model:trait": 0.6324229336475786,
+      "residual": 0.3464415565580549
     },
-    "total_variance": 0.9985189980316946,
+    "total_variance": 0.9982252172778724,
     "icc": {
-      "model": 0.018911447098939025,
-      "trait": 0.6347545732614005,
-      "model:trait": 4.038601956235107e-06
+      "model": 0.02113550979436644,
+      "model:trait": 0.6324229336475786
     },
     "interpretation": "same quantities as analyze_w4.py task 4.3 (model share = ICC for model identity, residual = pure trial-to-trial instability), now estimated over all four instruments' traits instead of two"
   },
@@ -75,27 +72,22 @@
     "n_clusters": 19,
     "variance_share_ci": {
       "model": {
-        "ci_lower": 1.6994664466459238e-05,
-        "ci_upper": 0.05965567685593893,
-        "n_boot": 200
-      },
-      "trait": {
-        "ci_lower": 0.5061450029164555,
-        "ci_upper": 0.7716732556717677,
-        "n_boot": 200
+        "ci_lower": 5.428877802143892e-07,
+        "ci_upper": 0.06916882645768432,
+        "n_boot": 2000
       },
       "model:trait": {
-        "ci_lower": 1.4371785145826872e-08,
-        "ci_upper": 0.008299305131153196,
-        "n_boot": 200
+        "ci_lower": 0.49276708625537563,
+        "ci_upper": 0.774236352946838,
+        "n_boot": 2000
       },
       "residual": {
-        "ci_lower": 0.20469858719208123,
-        "ci_upper": 0.47132464598561463,
-        "n_boot": 200
+        "ci_lower": 0.2085815202627097,
+        "ci_upper": 0.4752635934830535,
+        "n_boot": 2000
       }
     },
-    "n_boot_requested": 200,
+    "n_boot_requested": 2000,
     "n_boot_failed": 0,
     "seed": 20260919
   },

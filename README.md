@@ -26,25 +26,26 @@ and ordinary trial-to-trial noise)?
   Meta, Mistral, Alibaba, xAI, Cohere, Amazon, NVIDIA) were each administered
   the Political Compass and 8Values tests 60 times per instrument (2,280 total
   administrations), collected programmatically via the OpenRouter API.
-- **Instrument and axis choice accounts for 52% of variance in a measured
-  political score, and model identity for only 13%**: which questionnaire an
-  auditor picks moves a reported score roughly four times more than which
-  model is being audited, and trial-to-trial noise alone (35%) exceeds the
-  model term.
+- **Model identity that carries across instruments and axes accounts for only
+  13% of variance in a standardized political score (95% CI 5-22%); model
+  position that depends on the instrument and axis accounts for 52%
+  (35-71%)**: which questionnaire an auditor picks reorders the models about
+  four times more than the models differ in a way that transfers, and
+  trial-to-trial noise alone (34%) exceeds the portable model term.
 - **Crossing two further instruments** (SapplyValues; Pew Research Center's
   2026 Political Typology, scored by driving its live public quiz) into the
-  same variance-components model collapses the pooled model-identity share
-  further, to **1.89%**.
+  same variance-components model reduces the pooled model-identity share
+  further, to **2.1%** (95% CI 0-7%).
 - **The two original instruments fail the standard psychometric test of
   convergent validity**: constructs they both claim to measure correlate at
   $r=-0.26$ across models, versus $r=+0.52$ for distinct constructs measured
   by the same instrument (a multi-trait multi-method analysis). Their scores
   are therefore not interchangeable, even in principle.
 - **Three further measurement factors, each estimated in its own factorial
-  design, are larger than model identity too**: asker identity ($\eta^2=0.79$
-  vs. $0.56$–$0.73$ for model identity), instrument contamination (17 of 18
-  models shift under item inversion), and response format (39% vs. 23% for
-  model identity).
+  design**: asker identity (partial $\eta^2=0.79$ vs. $0.23$ for model identity
+  in the same design), instrument contamination (17 of 18 models shift under
+  item inversion), and response format (elicitation $0.39$ vs. $0.23$ for model
+  identity on average, though not on every axis).
 - The direction of the lean reproduces (every model left-of-centre
   economically and libertarian-of-centre socially on every axis), but the
   paper's claim is about the apparatus, not that the lean doesn't exist: the
@@ -97,7 +98,7 @@ required for its current claims.
 | `results/f3_variance_components/` | The four-instrument crossed variance-components model. |
 | `results/prompt_robustness/`, `results/posthoc/` | Prompt-robustness/open-ended-generation and Games-Howell/FDR post-hoc results. |
 | `docs/item_variant_review.md` | Sign-off record for the contamination-control (inverted/paraphrased) item banks. |
-| `docs/f3_instrument_terms_of_use.md` | Terms-of-use analysis and design notes for the third and fourth instruments. |
+| `docs/f3_instrument_terms_of_use.md` | Sourcing and design notes for the third and fourth instruments. |
 | `scoring/collect_*.py` | Collection pipelines (main run, asker identity, contamination items, response format, prompt variants, open-ended, Pew quiz). |
 | `scoring/score_*.py` | Authoritative scoring adapters (8Values, Political Compass, SapplyValues, Pew Typology). |
 | `scoring/variance_components.py` | Shared statistical model: crossed random-effects variance decomposition, cluster-bootstrap CIs, MTMM. |

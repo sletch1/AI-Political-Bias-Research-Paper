@@ -112,7 +112,7 @@ def fig6_error_budget(df: pd.DataFrame):
     instrument is held still. Both are true and the figure says which is which.
     """
     pooled = variance_decomposition(
-        df, value="value", random_effects=["model", "trait", "model:trait"], z_within="trait")
+        df, value="value", random_effects=["model", "model:trait"], z_within="trait")
     share = pooled["variance_share"]
     budget = per_axis_error_budget(df)
 
@@ -120,10 +120,11 @@ def fig6_error_budget(df: pd.DataFrame):
                                    gridspec_kw={"width_ratios": [1, 2.5]})
 
     # --- Panel A: pooled
-    order = ["trait", "model", "model:trait", "residual"]
-    labels = {"trait": "instrument / axis choice", "model": "model identity",
-              "model:trait": "model x axis", "residual": "trial-to-trial noise"}
-    colours = {"trait": "#c9c8c3", "model": BLUE, "model:trait": "#7fb3e8", "residual": MUTED}
+    order = ["model:trait", "model", "residual"]
+    labels = {"model": "model identity (portable across\ninstruments and axes)",
+              "model:trait": "model position that depends on\nthe instrument and axis",
+              "residual": "trial-to-trial noise"}
+    colours = {"model": BLUE, "model:trait": "#e8a35c", "residual": MUTED}
     bottom = 0.0
     for k in order:
         v = share.get(k, 0.0) * 100.0
@@ -140,7 +141,7 @@ def fig6_error_budget(df: pd.DataFrame):
     axA.set_ylim(0, 100)
     axA.set_ylabel("share of variance (%)")
     axA.set_title("A. All sources pooled", fontsize=9.5, loc="left", pad=8)
-    axA.annotate("instrument choice moves a score\nmore than model identity does",
+    axA.annotate("models are reordered by the\ninstrument more than they differ",
                  xy=(0.0, -0.16), xycoords="axes fraction", fontsize=8, color=MUTED)
     axA.legend(frameon=False, fontsize=7.5, loc="upper center",
                bbox_to_anchor=(0.5, -0.24), ncol=1)
@@ -305,8 +306,9 @@ def write_tables(budget: pd.DataFrame, mtmm_res: dict, pooled: dict) -> None:
     lines = [
         r"\begin{table}[H]", r"\centering",
         r"\caption{Error budget. Variance components from a crossed random-effects "
-        r"model on the 2{,}280 administrations. \textbf{Pooled over all axes}, instrument "
-        r"and axis choice accounts for " + f"{pooled['variance_share'].get('trait',0)*100:.0f}" +
+        r"model on the 2{,}280 administrations, scores standardised within instrument-axis. "
+        r"\textbf{Pooled over all axes}, model position that depends on the instrument "
+        r"and axis accounts for " + f"{pooled['variance_share'].get('model:trait',0)*100:.0f}" +
         r"\% of variance and model identity for only " +
         f"{pooled['variance_share'].get('model',0)*100:.0f}" +
         r"\%. The per-axis rows below are \emph{conditional on a fixed axis}, which removes "
@@ -360,7 +362,7 @@ def main() -> None:
         print(f"    {r['label']:>14s}  model {r['model']*100:5.1f}%   noise {r['residual']*100:5.1f}%")
     print(f"    within-axis mean model share: {budget['model'].mean()*100:.1f}%")
     ps = pooled["variance_share"]
-    print(f"    pooled: instrument/axis {ps.get('trait',0)*100:.1f}%  "
+    print(f"    pooled: model x trait {ps.get('model:trait',0)*100:.1f}%  "
           f"model {ps.get('model',0)*100:.1f}%  noise {ps.get('residual',0)*100:.1f}%")
 
     iss = fig7_iss_repair(df)

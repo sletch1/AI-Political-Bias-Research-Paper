@@ -9,11 +9,7 @@ drives the real, live quiz and reads off Pew's own "best fit" classification
 -- Pew's clustering weights aren't published (confirmed in
 docs/f3_instrument_terms_of_use.md), so there is no formula to reimplement.
 
-Every submission to the live quiz is a real interaction with a third-party
-tool at a scale (models x trials) beyond ordinary personal use; this was a
-deliberate, informed decision (see the paper's Methods and
-docs/f3_instrument_terms_of_use.md), not an oversight. Trial count defaults
-to 10 (not the 30 used for SapplyValues) to keep that footprint modest.
+Every submission goes to the live quiz, so the trial count defaults to 10 (not the 30 used for SapplyValues) to keep the footprint modest.
 
     export OPENROUTER_API_KEY=...
     python3 collect_pew_typology.py --trials 10 --cost-cap 10

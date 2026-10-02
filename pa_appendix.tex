@@ -9,6 +9,7 @@
 % ---------------------------------------------------------------------------
 \usepackage{fontspec}
 \usepackage{microtype}
+\setlength{\emergencystretch}{5em}
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -360,8 +361,7 @@ model ever rated its own output.
 \subsection{Measuring the Remaining Measurement Factors}
 \label{si:remaining-factors-methods}
 
-The decomposition in the article (Section~\ref{si:stats}) estimates one
-measurement stratum, the instrument. We separately collected and analysed
+The decomposition in the article estimates one measurement stratum, the dependence of a model's position on the instrument and axis. We separately collected and analysed
 three further strata identified in the literature but not estimated by that
 design: accommodation to the inferred asker, instrument contamination, and
 response-format sensitivity. All three used 18 of the 19 models from the
@@ -415,8 +415,7 @@ alternatives), two item orders (published, randomised), two option orders
 free-text opinion subsequently classified onto the same scale by a fixed
 judge model, \texttt{openai/gpt-4o-mini}, held constant across every cell so
 judge identity is not a confound). This 24-cell design was crossed with the
-same 18 models at five repetitions per cell, yielding 4{,}320
-administrations. Effect sizes are partial $\eta^2$ per axis from a
+same 18 models at five repetitions per cell, yielding 4{,}320 administrations, of which 4{,}239 returned a parseable response and are analysed (79 parse errors, 2 off-scale labels). Effect sizes are partial $\eta^2$ per axis from a
 five-factor ANOVA (model, scale, item order, option order, elicitation).
 
 Each factorial was analysed on its own, against the unattributed,
@@ -458,32 +457,20 @@ and punctuation-insensitively, with a whole-string-similarity fallback
 classification into one of Pew's nine typology groups, scored as that
 group's 1--9 ordinal position in Pew's own published left-to-right ordering.
 
-Reusing the quiz's item text and published group definitions for research is
-covered by Pew's general terms of use, but submitting the interactive quiz
-programmatically 180 times (18 models $\times$ 10 trials) is a separate
-question from reusing the items themselves, and plausibly exceeds ordinary
-personal use of that interactive tool even though no respondent microdata or
-personal information is accessed at any point. We disclose this distinction
-explicitly rather than treating it as settled by the terms-of-use analysis
-above; see Section~\ref{si:ethics} and \texttt{docs/f3\_instrument\_terms\_of\_use.md}
-in the released repository for the full analysis.
+The quiz was submitted programmatically 180 times (18 models $\times$ 10 trials); no respondent microdata or personal information is accessed at any point.
 
-Both instruments were then folded into the same crossed random-effects model
+Both instruments were then folded into the same random-effects model
 used for the two-instrument budget in the article
 (\texttt{scoring/analyze\_f3\_variance\_components.py}), rather than left as
 separate directional checks. Each instrument's axis enters as one more
 trait level (\texttt{sapplyvalues:right}, \texttt{sapplyvalues:auth},
 \texttt{sapplyvalues:prog}, \texttt{pew\_typology:position}), z-scored
-within trait exactly as the two-instrument model requires, since the four
+within trait exactly as the two-instrument model requires (this sets every trait mean to zero, so no trait main effect is estimated), since the four
 instruments' scales are mutually incompatible ($\pm10$, $0$--$100$, $\pm10$,
 and an ordinal 1--9 classification). Pew contributes a single trait, its one
 composite left-right placement, rather than per-axis scores like the other
 three, since that ordinal classification is Pew's own output and not a
-score this project computed. Instrument identity remains folded into trait
-rather than fit as its own term, matching how the pooled two-instrument
-figure in the article is defined; separating instrument-level variance from
-axis-within-instrument variance is a further extension we do not attempt
-here. The two added instruments were collected for 18 of the 19 models
+score this project computed. Instrument identity is not fit as its own term; the model $\times$ trait interaction pools instrument and axis, as in the two-instrument figure in the article. The two added instruments were collected for 18 of the 19 models
 (\texttt{mistralai/mistral-large-2512} was withdrawn from OpenRouter
 partway through collection), so the pooled panel is unbalanced by one model
 on those two traits; the crossed model does not require balance, and
@@ -496,9 +483,7 @@ records the composition explicitly.
 The finding that language models lean left of centre is real in the sense
 that it reproduces: we obtain it here on 19 models and two instruments, as
 others have obtained it elsewhere. What the article adds is a denominator.
-When the measured quantity is decomposed, the instrument contributes four
-times more variance than the model, and simple repetition of the same
-measurement contributes more than twice as much. The lean survives, but the
+When the measured quantity is decomposed, a model's position that depends on the instrument and axis is four times larger than the part of its position that carries across instruments, and simple repetition of the same measurement contributes more than twice as much as the portable part. The lean survives, but the
 \emph{magnitude} of a reported lean is mostly not about the model.
 
 That distinction matters because the literature's quantitative claims are
@@ -568,27 +553,13 @@ statistic that divides by observed spread will invert in the same way on
 tightly clustered responses, and several published consistency measures are
 constructed this way.
 
-Three further components of the apparatus, each previously demonstrated
-only in isolation, turn out on direct measurement
-(Section~\ref{si:remaining-factors-methods}) to be larger than the model
-term in the article's error budget, not smaller. Accommodation to the
-inferred asker \citep{tornberg2026sycophancy} explains more variance
-($\eta^2=0.79$) than model identity does in the same unattributed design
-($\eta^2=0.56$--$0.73$); free-text versus forced-choice elicitation
-\citep{rottger2024} explains more variance (39\%) than model identity within
-the same format factorial (23\%); and 17 of 18 models show a measurable,
+Three further components of the apparatus, each previously demonstrated only in isolation, were measured directly (Section~\ref{si:remaining-factors-methods}). Accommodation to the inferred asker \citep{tornberg2026sycophancy} explains more variance (mean partial $\eta^2=0.79$) than model identity does in the same design (0.23); free-text versus forced-choice elicitation \citep{rottger2024} explains more variance on average (0.39) than model identity within the same format factorial (0.23), although not on every axis (on 8Values equality model identity is 0.42 against 0.06); and 17 of 18 models show a measurable,
 FDR-corrected score shift under item inversion, consistent with instrument
 recognition rather than pure engagement with item content
 \citep{bianchi2026plasticity}. None of these three is folded into the
 pooled error budget, because each was collected as its own factorial
 against the unattributed, forced-choice baseline rather than crossed with
-the other two and with instrument simultaneously; a single design that
-crosses all four factors at once is the natural next step, and would very
-likely drive the model term's already-small pooled share (13\%, itself an
-overlapping upper bound with any one of these factors held at its
-literature-typical, unattributed, forced-choice default) down further
-still. That is the direction every measurement factor examined so far has
-pushed, and none has pushed the other way.
+the other two and with instrument simultaneously; a single design that crosses all four factors at once is the natural next step. We make no estimate here of how it would change the model share, and the separate designs cannot be added into a single budget.
 
 \subsection*{A minimum reporting standard for political-bias audits}
 \label{si:box1}
@@ -1070,9 +1041,9 @@ position.}
 \toprule
 Type & Pair & $r$ \\
 \midrule
-Convergent & 8values:economic vs political\_compass:economic & -0.005 \\
-Convergent & 8values:social vs political\_compass:social & -0.506 \\
-Discriminant & 8values:economic vs 8values:social & +0.490 \\
+Convergent & 8values:equality vs political\_compass:economic & -0.005 \\
+Convergent & 8values:progress vs political\_compass:social & -0.506 \\
+Discriminant & 8values:equality vs 8values:progress & +0.490 \\
 Discriminant & political\_compass:economic vs political\_compass:social & +0.549 \\
 \midrule
 \textbf{Mean convergent} & & \textbf{-0.255} \\
@@ -1116,8 +1087,7 @@ relationship at this sample size). The directional finding therefore
 replicates on a fourth, independently classified instrument, with two clear
 exceptions.
 
-The four-instrument crossing reported in the article (model-identity share
-1.89\%; SapplyValues alone, 0.49\%; Pew alone, 8.21\%) is the full
+The four-instrument crossing reported in the article (model-identity share 2.1\%, 95\% CI [0.0\%, 6.9\%]; SapplyValues alone, 2.9\%; Pew alone, 8.9\%) is the full
 accounting that this section's pairwise checks anticipate. Between-model
 spread and within-model trial noise are proportionally in line with the
 other instruments for SapplyValues too (ratio $\approx 1.9$ for all three
@@ -1241,14 +1211,7 @@ review was therefore not required.
 One instrument, Pew Research Center's 2026 Political Typology (Section~\ref{si:remaining-factors-methods}),
 was scored by programmatically driving Pew's live public quiz and reading
 off its own classification, rather than reimplementing Pew's unpublished
-clustering procedure, following the same approach already used for
-Political Compass. Reusing the instrument's item text and published group
-definitions for research is covered by Pew's general terms of use.
-Submitting the interactive quiz itself 180 times in an automated fashion is
-a distinct question: it plausibly exceeds ordinary personal use of that
-interactive tool, even though it accesses no respondent microdata or
-personal information at any point. We disclose this explicitly rather than
-treating it as settled by the terms-of-use analysis for the survey items.
+clustering procedure, following the same approach already used for Political Compass. No respondent microdata or personal information is accessed at any point.
 
 \bibliographystyle{chicago}
 \bibliography{references}
