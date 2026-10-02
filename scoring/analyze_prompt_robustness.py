@@ -1,5 +1,5 @@
 """Prompt-robustness and open-ended-generation checks (main.tex, Prompt-Robustness
-and Open-Ended-Generation Checks subsection; pa_appendix.tex Sections S6-S7).
+and Open-Ended-Generation Checks subsection; main.tex appendix Sections S6-S7).
 
 These two bounded validation arms (data/prompt_variants/, data/openended/) were
 collected by scoring/collect_prompt_variants.py and scoring/collect_openended.py,

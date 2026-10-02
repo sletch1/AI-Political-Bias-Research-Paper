@@ -4,10 +4,10 @@
 
 Code, data, and analysis supporting the paper **"An error budget for
 political-bias measurement in large language models"**, submitted as a
-Research Article to *Political Analysis*: `pa_article.tex` / `pa_article.pdf`
-(the manuscript), with full methods and extended results in the web
-appendix, submitted as supplementary material, `pa_appendix.tex` /
-`pa_appendix.pdf`. Target venue: see `impr.md` (private, not part of this
+Research Article to *Political Analysis*: `manuscript.tex` / `manuscript.pdf`
+(the manuscript), with full methods and extended results in the full paper
+including the web appendix, submitted as supplementary material, `main.tex` /
+`main.pdf`. Target venue: see `impr.md` (private, not part of this
 repository) for the current submission plan.
 
 This snapshot (release `v0.4.1`) is archived at Zenodo with DOI
@@ -83,8 +83,8 @@ required for its current claims.
 
 | Path | Description |
 |---|---|
-| `pa_article.tex` / `pa_article.pdf` | The manuscript (Political Analysis Research Article submission). |
-| `pa_appendix.tex` / `pa_appendix.pdf` | Web appendix / supplementary material: full methods, extended discussion, all supporting results. |
+| `manuscript.tex` / `manuscript.pdf` | The manuscript (Political Analysis Research Article submission). |
+| `main.tex` / `main.pdf` | The full paper: the manuscript followed by the web appendix (full methods, extended discussion, all supporting results). |
 | `pa_cover_letter.md` | Submission cover letter. |
 | `references.bib` | Bibliography. |
 | `.zenodo.json` | Metadata for the GitHub→Zenodo archival DOI. |
@@ -159,4 +159,4 @@ addresses directly.
 ## Citation
 
 If you use this code or data, please cite the accompanying paper (see
-`pa_article.tex` for full reference details).
+`manuscript.tex` for full reference details).

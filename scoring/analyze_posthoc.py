@@ -1,5 +1,5 @@
 """Pairwise post-hoc comparisons across the 19-model baseline (main.tex Statistical
-Analysis subsection; pa_appendix.tex Section S3).
+Analysis subsection; main.tex appendix Section S3).
 
 Like the prompt-robustness/open-ended checks, this computation (171 pairwise
 Games-Howell tests per axis, 1,026 across all six axes, Benjamini-Hochberg

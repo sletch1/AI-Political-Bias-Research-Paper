@@ -2,7 +2,7 @@
 
 Collected via `scoring/collect_data.py` against the OpenRouter API, scored by
 the authoritative adapters in `scoring/score_8values.py` and
-`scoring/score_political_compass.py`. See `pa_appendix.tex`'s Methods section
+`scoring/score_political_compass.py`. See `main.tex`'s Methods section
 ("Model Roster," "Data Collection Pipeline," "Statistical Analysis") for the
 full methodology.
 

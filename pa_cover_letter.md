@@ -42,8 +42,8 @@ as measurements, and proposes a minimum reporting standard that would
 make the existing literature's estimates comparable to one another for
 the first time.
 
-The manuscript is a Research Article (approximately 4,200 words by TeXcount, under the 6,000-word limit), with a
-web appendix, submitted as supplementary material, containing full
+The manuscript is a Research Article (approximately 4,200 words by TeXcount, under the 6,000-word limit), with the
+full paper including the web appendix (main.pdf), submitted as supplementary material, containing full
 methods, the complete four-instrument crossing, and supporting robustness
 checks. All data and code are released publicly and are cited in the
 manuscript's Data Availability Statement.
