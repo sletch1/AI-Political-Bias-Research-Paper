@@ -93,7 +93,6 @@ required for its current claims.
 | `cover_letter_research_and_politics.md` | Submission cover letter (generic AI statement). |
 | `references.bib` | Bibliography. |
 | `.zenodo.json` | Metadata for the GitHub→Zenodo archival DOI. |
-| `lit_review/` | Literature review notes, one file per paper, on competing and related work. |
 | `data/raw_trials/` | One JSON file per trial from the main run plus SapplyValues (filenames contain `sapplyvalues`): structured answers, score, exact API cost. |
 | `data/asker_identity/`, `data/item_variants/`, `data/format_factorial/` | Raw trials for the asker-identity, contamination, and response-format factorials. |
 | `data/pew_typology/` | Raw trials for the Pew 2026 Political Typology instrument. |
@@ -116,7 +115,6 @@ required for its current claims.
 | `scoring/analyze_prompt_robustness.py`, `analyze_posthoc.py` | Prompt-robustness/open-ended stats and the Games-Howell/FDR post-hoc family. |
 | `scoring/irt_analysis.py` | Item-response-theory reanalysis (graded-response model, avoidance model). |
 | `scoring/consolidate.py` | Builds `data/scores.csv` and `data/collection_summary.md` from `data/raw_trials/`. |
-| `mech/` | Mechanistic-interpretability exploration (probes, steering); not part of the current paper's scope. |
 
 ## Running the analysis
 
