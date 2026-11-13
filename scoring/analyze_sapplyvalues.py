@@ -1,7 +1,7 @@
 """SapplyValues baseline analysis -- a third instrument, checked but not yet
 fully integrated (oct_fix.md F3 / docs/f3_instrument_terms_of_use.md).
 
-Political Analysis's reviewers are expected to press on "a variance component
+Reviewers are expected to press on "a variance component
 estimated from two instruments is meaningless." A full fix needs >= 4
 instruments crossed into the same variance-components model used for the
 Political Compass / 8Values error budget (variance_components.py). That is
@@ -153,7 +153,7 @@ def main(out_dir="results/sapplyvalues"):
         "convergence_check": convergence_check(sv_means, other_means),
         "status": ("Preliminary triangulation check on one additional instrument, not yet "
                    "crossed into the shared variance-components model with Political Compass "
-                   "and 8Values; reaching the >= 4 instruments a Political Analysis reviewer "
+                   "and 8Values; reaching the >= 4 instruments a reviewer "
                    "would ask for is future work (docs/f3_instrument_terms_of_use.md)."),
     }
 

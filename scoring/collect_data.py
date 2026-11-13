@@ -63,6 +63,9 @@ if not API_KEY:
     raise SystemExit("Set OPENROUTER_API_KEY in the environment before running this.")
 
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
+# Sampling temperature for every call. The main study used 0.7; collect_temperature.py overrides
+# this module-level value for the temperature-sensitivity check.
+TEMPERATURE = 0.7
 RESULTS_DIR = Path(__file__).parent.parent / "data" / "raw_trials"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -123,7 +126,7 @@ def _post_with_backoff(model, prompt, transient_retries=4):
                 API_URL,
                 headers={"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"},
                 json={"model": model, "messages": [{"role": "user", "content": prompt}],
-                      "temperature": 0.7, "max_tokens": 4000},
+                      "temperature": TEMPERATURE, "max_tokens": 4000},
                 timeout=120,
             )
             if resp.status_code in _TRANSIENT_STATUSES and attempt < transient_retries:

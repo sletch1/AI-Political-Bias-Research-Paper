@@ -110,6 +110,8 @@ def load_responses() -> dict:
         rec = json.loads(path.read_text())
         if rec.get("status") != "ok" or not rec.get("answers"):
             continue
+        if rec["test"] not in CATEGORIES:
+            continue  # SapplyValues records share this directory; the IRT reanalysis covers the two original instruments
         rows[rec["test"]].append(rec)
 
     out = {}

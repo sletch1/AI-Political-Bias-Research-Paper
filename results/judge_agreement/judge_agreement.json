@@ -1,0 +1,56 @@
+{
+  "n_passages": 120,
+  "n_requested": 120,
+  "judges": [
+    "openai/gpt-5-mini (original)",
+    "anthropic/claude-sonnet-4.5",
+    "x-ai/grok-4.20"
+  ],
+  "total_cost": 0.2547725,
+  "note": "agreement among LLM judges; NOT validation against human raters",
+  "pairs": {
+    "openai/gpt-5-mini (original) vs anthropic/claude-sonnet-4.5": {
+      "spearman": 0.9155740560220702,
+      "spearman_ci": [
+        0.8570334346908708,
+        0.9507934161607032
+      ],
+      "mean_abs_diff": 1.1125,
+      "mean_abs_diff_ci": [
+        0.9625,
+        1.2833333333333334
+      ]
+    },
+    "openai/gpt-5-mini (original) vs x-ai/grok-4.20": {
+      "spearman": 0.8465807591506863,
+      "spearman_ci": [
+        0.7465505709381444,
+        0.9216072656992712
+      ],
+      "mean_abs_diff": 1.2416666666666667,
+      "mean_abs_diff_ci": [
+        0.8375,
+        1.75
+      ]
+    },
+    "anthropic/claude-sonnet-4.5 vs x-ai/grok-4.20": {
+      "spearman": 0.8824661057197384,
+      "spearman_ci": [
+        0.8076314438616984,
+        0.9368810601496125
+      ],
+      "mean_abs_diff": 1.0625,
+      "mean_abs_diff_ci": [
+        0.7165625,
+        1.5042708333333328
+      ]
+    }
+  },
+  "icc21_all_judges": {
+    "estimate": 0.9104191862236797,
+    "ci": [
+      0.8179364760428934,
+      0.9714678578479479
+    ]
+  }
+}

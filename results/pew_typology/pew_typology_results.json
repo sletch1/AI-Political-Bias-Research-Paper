@@ -47,9 +47,9 @@
       "n_models": 18,
       "expected_sign": 1,
       "why": "both use higher = more economically right",
-      "spearman_rho": 0.03611971104231166,
-      "ci_lower": -0.38906088751289986,
-      "ci_upper": 0.5108875128998965,
+      "spearman_rho": 0.04453680221264891,
+      "ci_lower": -0.39067612658492684,
+      "ci_upper": 0.5249738358018775,
       "agrees_with_expected_sign": true
     },
     {
@@ -58,9 +58,9 @@
       "n_models": 18,
       "expected_sign": -1,
       "why": "8Values equality is high when left/egalitarian, opposite pole from 'right'",
-      "spearman_rho": -0.027863777089783277,
-      "ci_lower": -0.5521155830753354,
-      "ci_upper": 0.5377192982456138,
+      "spearman_rho": -0.04246532303996756,
+      "ci_lower": -0.5509022404267706,
+      "ci_upper": 0.5376892783691184,
       "agrees_with_expected_sign": true
     }
   ],

@@ -26,7 +26,10 @@ def main():
         count, failed count, completion rate, and total API cost, plus a
         grand total.
     Trials with any other status (parse_error, score_error: ...) are counted
-    as failed in the summary and excluded from scores.csv."""
+    as failed in the summary and excluded from scores.csv. Records for other
+    instruments stored in the same directory (SapplyValues) appear in the
+    summary but not in scores.csv, which holds the two original instruments;
+    analyze_f3_variance_components.py reads those records directly."""
     rows = []
     status_by_model_test = defaultdict(lambda: {"ok": 0, "fail": 0, "cost": 0.0})
 
@@ -45,7 +48,7 @@ def main():
                     "axis3_name": "liberty", "axis3_value": scores["liberty"],
                     "axis4_name": "progress", "axis4_value": scores["progress"],
                 })
-            else:
+            elif d["test"] == "political_compass":
                 rows.append({
                     "model": d["model"], "test": "political_compass", "trial": d["trial"],
                     "axis1_name": "economic", "axis1_value": scores["economic"],

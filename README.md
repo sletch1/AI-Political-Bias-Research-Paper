@@ -3,14 +3,13 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22968158.svg)](https://doi.org/10.5281/zenodo.22968158)
 
 Code, data, and analysis supporting the paper **"An error budget for
-political-bias measurement in large language models"**, submitted as a
-Research Article to *Political Analysis*: `manuscript.tex` / `manuscript.pdf`
-(the manuscript), with full methods and extended results in the full paper
-including the web appendix, submitted as supplementary material, `main.tex` /
-`main.pdf`. Target venue: see `impr.md` (private, not part of this
-repository) for the current submission plan.
+political-bias measurement in large language models"**, prepared as a Research
+Article for *Research & Politics* (Sage; double-anonymized): `manuscript.tex` /
+`manuscript.pdf` (anonymized article, 4,000-word limit), `title_page.tex`
+(authors and declarations, not sent to reviewers), and the online appendix
+`main.tex` / `main.pdf`.
 
-This snapshot (release `v0.4.1`) is archived at Zenodo with DOI
+The release `v0.4.1` snapshot is archived at Zenodo with DOI
 [10.5281/zenodo.22968158](https://doi.org/10.5281/zenodo.22968158).
 
 **Research question:** Large language models are widely reported to lean
@@ -26,21 +25,26 @@ and ordinary trial-to-trial noise)?
   Meta, Mistral, Alibaba, xAI, Cohere, Amazon, NVIDIA) were each administered
   the Political Compass and 8Values tests 60 times per instrument (2,280 total
   administrations), collected programmatically via the OpenRouter API.
-- **Model identity that carries across instruments and axes accounts for only
-  13% of variance in a standardized political score (95% CI 5-22%); model
-  position that depends on the instrument and axis accounts for 52%
-  (35-71%)**: which questionnaire an auditor picks reorders the models about
-  four times more than the models differ in a way that transfers, and
-  trial-to-trial noise alone (34%) exceeds the portable model term.
+- **A nested variance-components model** (model, model x instrument,
+  model x axis within instrument, trial noise) on the 2,280 administrations of
+  the two original instruments gives: model identity that transfers across
+  instruments and axes **0.0% (95% CI 0.0-7.8%)**; model position specific to
+  the instrument **44.6% (25.5-57.2%)**; specific to the axis within the
+  instrument **21.2% (11.5-33.8%)**; trial noise **34.2% (20.3-51.2%)**. The
+  earlier two-term specification (instrument folded into trait) gave 13.4% /
+  52.4% / 34.2% and is kept for comparison. Intervals are similar when
+  resampling the 11 providers instead of the 19 models.
 - **Crossing two further instruments** (SapplyValues; Pew Research Center's
-  2026 Political Typology, scored by driving its live public quiz) into the
-  same variance-components model reduces the pooled model-identity share
-  further, to **2.1%** (95% CI 0-7%).
-- **The two original instruments fail the standard psychometric test of
-  convergent validity**: constructs they both claim to measure correlate at
-  $r=-0.26$ across models, versus $r=+0.52$ for distinct constructs measured
-  by the same instrument (a multi-trait multi-method analysis). Their scores
-  are therefore not interchangeable, even in principle.
+  2026 Political Typology, scored by driving its live public quiz) leaves the
+  transferable share at **0.0% (0.0-3.9%)**, with model x instrument 22.9%,
+  model x axis 42.2% and noise 34.9%. The split between instrument and axis is
+  not stable (instrument share 4-43% across leave-one-instrument-out fits);
+  the near-zero transferable share is stable in every leave-one-out check.
+- **The two original instruments show no convergent validity**: constructs
+  they both claim to measure correlate at r = -0.26 (SE 0.17, 95% CI
+  [-0.57, 0.07]) across models, versus r = +0.52 (SE 0.11) for distinct
+  constructs on one instrument; the difference is -0.77 (SE 0.24). Their scores
+  are therefore not interchangeable.
 - **Three further measurement factors, each estimated in its own factorial
   design**: asker identity (partial $\eta^2=0.79$ vs. $0.23$ for model identity
   in the same design), instrument contamination (17 of 18 models shift under
@@ -83,9 +87,10 @@ required for its current claims.
 
 | Path | Description |
 |---|---|
-| `manuscript.tex` / `manuscript.pdf` | The manuscript (Political Analysis Research Article submission). |
-| `main.tex` / `main.pdf` | The full paper: the manuscript followed by the web appendix (full methods, extended discussion, all supporting results). |
-| `pa_cover_letter.md` | Submission cover letter. |
+| `manuscript.tex` / `manuscript.pdf` | The anonymized article (Research & Politics Research Article). |
+| `title_page.tex` | Title page, acknowledgments and Statements and Declarations. |
+| `main.tex` / `main.pdf` | The web appendix (standalone: author block on page 1; full methods, extended discussion, all supporting results). |
+| `cover_letter_research_and_politics.md` | Submission cover letter (generic AI statement). |
 | `references.bib` | Bibliography. |
 | `.zenodo.json` | Metadata for the GitHub→Zenodo archival DOI. |
 | `lit_review/` | Literature review notes, one file per paper, on competing and related work. |
@@ -95,13 +100,17 @@ required for its current claims.
 | `data/prompt_variants/`, `data/openended/` | Raw trials for the prompt-robustness and open-ended-generation validation arms. |
 | `data/scores.csv` | Flattened, analysis-ready table built from `raw_trials/`. |
 | `results/w1/`, `results/w2/`, `results/w4/` | Re-analysis outputs: IRT, item entropy, ISS repair, MTMM, and status of the two uncollected behavioural-validity arms. |
-| `results/f3_variance_components/` | The four-instrument crossed variance-components model. |
+| `results/f3_variance_components/`, `results/nested_design/`, `results/se_supplement/` | Two-term four-instrument model; nested model with provider bootstrap and leave-one-out; SEs for every correlation. |
 | `results/prompt_robustness/`, `results/posthoc/` | Prompt-robustness/open-ended-generation and Games-Howell/FDR post-hoc results. |
 | `docs/item_variant_review.md` | Sign-off record for the contamination-control (inverted/paraphrased) item banks. |
 | `docs/f3_instrument_terms_of_use.md` | Sourcing and design notes for the third and fourth instruments. |
 | `scoring/collect_*.py` | Collection pipelines (main run, asker identity, contamination items, response format, prompt variants, open-ended, Pew quiz). |
 | `scoring/score_*.py` | Authoritative scoring adapters (8Values, Political Compass, SapplyValues, Pew Typology). |
 | `scoring/variance_components.py` | Shared statistical model: crossed random-effects variance decomposition, cluster-bootstrap CIs, MTMM. |
+| `scoring/analyze_nested_design.py` | Nested model x instrument x axis variance components, provider-clustered bootstrap, leave-one-instrument/provider-out. |
+| `scoring/analyze_se_supplement.py` | Standard errors and intervals for every correlation, and the neutral-point tests. |
+| `scoring/make_figures.py` | Submission figures (vector PDF and 300 dpi TIFF). |
+| `run_all.sh`, `REPLICATION.md` | One-command offline reproduction and replication guide. |
 | `scoring/analyze_f3_variance_components.py` | Crosses all four instruments into the shared variance-components model. |
 | `scoring/analyze_w1.py`, `analyze_w2.py`, `analyze_w4.py` | Re-analyses: validity-battery factorials, behavioural-validity status, baseline item/ISS/MTMM. |
 | `scoring/analyze_prompt_robustness.py`, `analyze_posthoc.py` | Prompt-robustness/open-ended stats and the Games-Howell/FDR post-hoc family. |
@@ -110,6 +119,14 @@ required for its current claims.
 | `mech/` | Mechanistic-interpretability exploration (probes, steering); not part of the current paper's scope. |
 
 ## Running the analysis
+
+The one-command route is `./run_all.sh` (offline, no API key); see
+[REPLICATION.md](REPLICATION.md) for what can and cannot be re-run, the
+display-item-to-script map, and licensing notes. The archived snapshot above
+predates the nested-design analysis; a new release is needed before the
+submission is final.
+
+Individual steps:
 
 Requires Python 3.9+ and:
 

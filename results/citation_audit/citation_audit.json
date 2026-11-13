@@ -1,0 +1,545 @@
+{
+  "n_references": 39,
+  "n_with_institution_data": 31,
+  "first_author_country_counts": [
+    [
+      "US",
+      11
+    ],
+    [
+      "GB",
+      4
+    ],
+    [
+      "NL",
+      2
+    ],
+    [
+      "DE",
+      1
+    ],
+    [
+      "ES",
+      1
+    ],
+    [
+      "BE",
+      1
+    ],
+    [
+      "IT",
+      1
+    ],
+    [
+      "NZ",
+      1
+    ],
+    [
+      "FI",
+      1
+    ],
+    [
+      "BD",
+      1
+    ],
+    [
+      "AR",
+      1
+    ],
+    [
+      "SG",
+      1
+    ]
+  ],
+  "last_author_country_counts": [
+    [
+      "US",
+      13
+    ],
+    [
+      "GB",
+      4
+    ],
+    [
+      "NL",
+      2
+    ],
+    [
+      "DE",
+      1
+    ],
+    [
+      "ES",
+      1
+    ],
+    [
+      "BE",
+      1
+    ],
+    [
+      "IT",
+      1
+    ],
+    [
+      "NZ",
+      1
+    ]
+  ],
+  "first_author_non_US": [
+    14,
+    25
+  ],
+  "last_author_non_US": [
+    9,
+    22
+  ],
+  "type_counts": [
+    [
+      "article",
+      19
+    ],
+    [
+      "misc",
+      8
+    ],
+    [
+      "unpublished",
+      5
+    ],
+    [
+      "inproceedings",
+      4
+    ],
+    [
+      "book",
+      3
+    ]
+  ],
+  "rows": [
+    {
+      "key": "motoki2024",
+      "type": "article",
+      "year": "2024",
+      "found": true,
+      "first_author_countries": [
+        "GB"
+      ],
+      "last_author_countries": [],
+      "n_authors": 3
+    },
+    {
+      "key": "hartmann2023",
+      "type": "misc",
+      "year": "2023",
+      "found": true,
+      "first_author_countries": [
+        "DE"
+      ],
+      "last_author_countries": [
+        "DE"
+      ],
+      "n_authors": 3
+    },
+    {
+      "key": "argyle2023",
+      "type": "article",
+      "year": "2023",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 6
+    },
+    {
+      "key": "hagendorff2023",
+      "type": "misc",
+      "year": "2023",
+      "found": false
+    },
+    {
+      "key": "miotto2022",
+      "type": "inproceedings",
+      "year": "2022",
+      "found": true,
+      "first_author_countries": [
+        "NL"
+      ],
+      "last_author_countries": [
+        "GB",
+        "NL"
+      ],
+      "n_authors": 3
+    },
+    {
+      "key": "serapiogarcia2023",
+      "type": "article",
+      "year": "2025",
+      "found": true,
+      "first_author_countries": [
+        "GB"
+      ],
+      "last_author_countries": [
+        "GB",
+        "US"
+      ],
+      "n_authors": 9
+    },
+    {
+      "key": "bisbee2024",
+      "type": "article",
+      "year": "2024",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 5
+    },
+    {
+      "key": "lemens2025asking",
+      "type": "article",
+      "year": "2025",
+      "found": true,
+      "first_author_countries": [
+        "ES"
+      ],
+      "last_author_countries": [
+        "ES"
+      ],
+      "n_authors": 2
+    },
+    {
+      "key": "values8_2019",
+      "type": "misc",
+      "year": "2019",
+      "found": false
+    },
+    {
+      "key": "buyl2026",
+      "type": "article",
+      "year": "2025",
+      "found": true,
+      "first_author_countries": [
+        "BE"
+      ],
+      "last_author_countries": [
+        "BE"
+      ],
+      "n_authors": 11
+    },
+    {
+      "key": "tukey1949",
+      "type": "article",
+      "year": "1949",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [],
+      "n_authors": 1
+    },
+    {
+      "key": "cohen1988",
+      "type": "book",
+      "year": "1988",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [],
+      "n_authors": 1
+    },
+    {
+      "key": "rottger2024",
+      "type": "inproceedings",
+      "year": "2024",
+      "found": true,
+      "first_author_countries": [
+        "IT"
+      ],
+      "last_author_countries": [
+        "IT"
+      ],
+      "n_authors": 7
+    },
+    {
+      "key": "anthropic2023",
+      "type": "misc",
+      "year": "2023",
+      "found": false
+    },
+    {
+      "key": "gallup2024values",
+      "type": "misc",
+      "year": "2024",
+      "found": false
+    },
+    {
+      "key": "deepseek2025",
+      "type": "misc",
+      "year": "2025",
+      "found": false
+    },
+    {
+      "key": "harris2020",
+      "type": "article",
+      "year": "2020",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 26
+    },
+    {
+      "key": "openai2023",
+      "type": "misc",
+      "year": "2023",
+      "found": false
+    },
+    {
+      "key": "rozado2024",
+      "type": "article",
+      "year": "2024",
+      "found": true,
+      "first_author_countries": [
+        "NZ"
+      ],
+      "last_author_countries": [
+        "NZ"
+      ],
+      "n_authors": 1
+    },
+    {
+      "key": "seabold2010",
+      "type": "inproceedings",
+      "year": "2010",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 2
+    },
+    {
+      "key": "politicalcompass_nd",
+      "type": "misc",
+      "year": "n.d.",
+      "found": false
+    },
+    {
+      "key": "virtanen2020",
+      "type": "article",
+      "year": "2020",
+      "found": true,
+      "first_author_countries": [
+        "FI"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 112
+    },
+    {
+      "key": "sakhawat2026polalign",
+      "type": "unpublished",
+      "year": "2026",
+      "found": true,
+      "first_author_countries": [
+        "BD"
+      ],
+      "last_author_countries": [],
+      "n_authors": 6
+    },
+    {
+      "key": "barmettler2026instrument",
+      "type": "unpublished",
+      "year": "2026",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [],
+      "n_authors": 1
+    },
+    {
+      "key": "tornberg2026sycophancy",
+      "type": "unpublished",
+      "year": "2026",
+      "found": true,
+      "first_author_countries": [
+        "NL"
+      ],
+      "last_author_countries": [
+        "NL"
+      ],
+      "n_authors": 2
+    },
+    {
+      "key": "wachter2025irt",
+      "type": "unpublished",
+      "year": "2025",
+      "found": false
+    },
+    {
+      "key": "bianchi2026plasticity",
+      "type": "unpublished",
+      "year": "2026",
+      "found": true,
+      "first_author_countries": [
+        "AR"
+      ],
+      "last_author_countries": [],
+      "n_authors": 4
+    },
+    {
+      "key": "fisher2026biasedai",
+      "type": "inproceedings",
+      "year": "2025",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [],
+      "n_authors": 9
+    },
+    {
+      "key": "hackenburg2025levers",
+      "type": "article",
+      "year": "2025",
+      "found": true,
+      "first_author_countries": [
+        "GB"
+      ],
+      "last_author_countries": [
+        "GB"
+      ],
+      "n_authors": 10
+    },
+    {
+      "key": "campbell1959",
+      "type": "article",
+      "year": "1959",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [],
+      "n_authors": 2
+    },
+    {
+      "key": "cronbach1972",
+      "type": "book",
+      "year": "1972",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [],
+      "n_authors": 5
+    },
+    {
+      "key": "brennan2001",
+      "type": "book",
+      "year": "2001",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 1
+    },
+    {
+      "key": "grimmer2013",
+      "type": "article",
+      "year": "2013",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 2
+    },
+    {
+      "key": "adcock2001",
+      "type": "article",
+      "year": "2001",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 2
+    },
+    {
+      "key": "clinton2004",
+      "type": "article",
+      "year": "2004",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 3
+    },
+    {
+      "key": "poole1985",
+      "type": "article",
+      "year": "1985",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 2
+    },
+    {
+      "key": "benoit2026",
+      "type": "article",
+      "year": "2026",
+      "found": true,
+      "first_author_countries": [
+        "GB",
+        "SG"
+      ],
+      "last_author_countries": [
+        "GB"
+      ],
+      "n_authors": 5
+    },
+    {
+      "key": "ornstein2025",
+      "type": "article",
+      "year": "2025",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 3
+    },
+    {
+      "key": "alvarez2025",
+      "type": "article",
+      "year": "2025",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 2
+    }
+  ],
+  "note": "Institutional affiliation only (OpenAlex); no gender, race or ethnicity inferred from names."
+}

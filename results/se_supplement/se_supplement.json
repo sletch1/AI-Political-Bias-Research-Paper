@@ -1,0 +1,183 @@
+{
+  "seed": 20260919,
+  "n_boot": 5000,
+  "mtmm_pairs": {
+    "n_models": 19,
+    "pairs": [
+      {
+        "type": "convergent",
+        "a": "8values:equality",
+        "b": "political_compass:economic",
+        "r": -0.004852294035862984,
+        "se_r": 0.24253276979829896,
+        "ci_fisher": [
+          -0.4580591681192978,
+          0.4503567211160533
+        ]
+      },
+      {
+        "type": "convergent",
+        "a": "8values:progress",
+        "b": "political_compass:social",
+        "r": -0.5058292447800855,
+        "se_r": 0.20921938599937012,
+        "ci_fisher": [
+          -0.7806798360868109,
+          -0.06700838836764031
+        ]
+      },
+      {
+        "type": "discriminant",
+        "a": "8values:equality",
+        "b": "8values:progress",
+        "r": 0.49019138009717095,
+        "se_r": 0.21139764744620518,
+        "ci_fisher": [
+          0.04627913465839342,
+          0.7724250692784042
+        ]
+      },
+      {
+        "type": "discriminant",
+        "a": "political_compass:economic",
+        "b": "political_compass:social",
+        "r": 0.5490122389053733,
+        "se_r": 0.20271474619627008,
+        "ci_fisher": [
+          0.1262883901460881,
+          0.802987398390282
+        ]
+      }
+    ]
+  },
+  "mtmm_means": {
+    "mean_convergent": {
+      "estimate": -0.25534076940797423,
+      "se": 0.16517996790876077,
+      "ci_lower": -0.5725936809455014,
+      "ci_upper": 0.07119817190391585,
+      "n_boot_ok": 5000
+    },
+    "mean_discriminant": {
+      "estimate": 0.5196018095012721,
+      "se": 0.10644185350959431,
+      "ci_lower": 0.31164320787131466,
+      "ci_upper": 0.7195157188140271,
+      "n_boot_ok": 5000
+    },
+    "convergent_minus_discriminant": {
+      "estimate": -0.7749425789092463,
+      "se": 0.23596295208368112,
+      "ci_lower": -1.224885347546479,
+      "ci_upper": -0.32157585185976734,
+      "n_boot_ok": 5000
+    },
+    "share_of_resamples_convergent_below_discriminant": 1.0,
+    "note": "bootstrap over models; the two convergent coefficients share the same 19 models so the SE of their mean is not the mean of their SEs"
+  },
+  "eightvalues_internal": {
+    "n_models": 19,
+    "mean_r": {
+      "estimate": 0.7144083134457292,
+      "se": 0.10516256763601617,
+      "ci_lower": 0.48654252071324267,
+      "ci_upper": 0.8775625139206439,
+      "n_boot_ok": 5000
+    },
+    "pairs": {
+      "8values:equality vs 8values:liberty": 0.5571067378453975,
+      "8values:equality vs 8values:peace": 0.8174882576887519,
+      "8values:equality vs 8values:progress": 0.49019138009717095,
+      "8values:liberty vs 8values:peace": 0.853067927047645,
+      "8values:liberty vs 8values:progress": 0.8479720197867379,
+      "8values:peace vs 8values:progress": 0.7206235582086719
+    }
+  },
+  "spearman": [
+    {
+      "a": "sapplyvalues:right",
+      "b": "political_compass:economic",
+      "n_models": 18,
+      "estimate": -0.48606811145510836,
+      "se": 0.19441688462294515,
+      "ci_lower": -0.7995876881145764,
+      "ci_upper": -0.047061034807765474,
+      "n_boot_ok": 5000
+    },
+    {
+      "a": "sapplyvalues:right",
+      "b": "8values:equality",
+      "n_models": 18,
+      "estimate": -0.5335397316821465,
+      "se": 0.21648544918290683,
+      "ci_lower": -0.8804240414077852,
+      "ci_upper": -0.032232862903226175,
+      "n_boot_ok": 5000
+    },
+    {
+      "a": "sapplyvalues:auth",
+      "b": "political_compass:social",
+      "n_models": 18,
+      "estimate": 0.23013415892672856,
+      "se": 0.24979526803292554,
+      "ci_lower": -0.31520387282167395,
+      "ci_upper": 0.6597155559742117,
+      "n_boot_ok": 5000
+    },
+    {
+      "a": "sapplyvalues:auth",
+      "b": "8values:liberty",
+      "n_models": 18,
+      "estimate": -0.021671826625386997,
+      "se": 0.2390666293556962,
+      "ci_lower": -0.49950683112139765,
+      "ci_upper": 0.42413719216044776,
+      "n_boot_ok": 5000
+    },
+    {
+      "a": "sapplyvalues:prog",
+      "b": "8values:progress",
+      "n_models": 18,
+      "estimate": 0.4406604747162023,
+      "se": 0.22726598880983281,
+      "ci_lower": -0.0665237166846609,
+      "ci_upper": 0.8066545537133774,
+      "n_boot_ok": 5000
+    },
+    {
+      "a": "pew_typology:position",
+      "b": "political_compass:economic",
+      "n_models": 18,
+      "estimate": 0.04453680221264891,
+      "se": 0.23755272526962914,
+      "ci_lower": -0.4014763000348629,
+      "ci_upper": 0.5147703663133584,
+      "n_boot_ok": 5000
+    },
+    {
+      "a": "pew_typology:position",
+      "b": "8values:equality",
+      "n_models": 18,
+      "estimate": -0.04246532303996757,
+      "se": 0.3015277767048351,
+      "ci_lower": -0.5870173739181643,
+      "ci_upper": 0.5833776438519475,
+      "n_boot_ok": 5000
+    }
+  ],
+  "neutral_point_check": {
+    "n_cells": 114,
+    "n_rejected_bh_fdr_05": 114,
+    "n_cells_with_finite_d": 113,
+    "min_abs_d": 1.4733178916828797,
+    "max_abs_d": 106.73870068168463,
+    "median_abs_d": {
+      "estimate": 11.916583133054537,
+      "se": 2.1165009175637084,
+      "ci_lower": 8.811299018527045,
+      "ci_upper": 16.748719562501854,
+      "n_boot_ok": 5000
+    },
+    "test": "one-sample t-test per model x axis cell against the instrument midpoint, BH-FDR across all cells; the midpoint is a convention, not a population estimate"
+  }
+}

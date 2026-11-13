@@ -1,6 +1,6 @@
 # Item-variant review: sign-off for Task 1.2 (contamination control)
 
-**Reviewer:** Claude (first pass, LLM-assisted), 19 September 2026
+**Reviewer:** first pass, LLM-assisted, 19 September 2026
 **Scope:** all 132 items in `scoring/item_variants_source.json` — 70 8Values items, 62 Political
 Compass items — checked for (a) whether `inverted` reverses the item's sense so that Strongly Agree
 on the inverted item is semantically equivalent to Strongly Disagree on the original, and (b)

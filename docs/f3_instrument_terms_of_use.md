@@ -7,8 +7,7 @@ reading Pew's own classification (`scoring/score_pew_typology.py`) rather than r
 unpublished clustering weights — see the "What actually happened" section below for what changed
 from the plan in this file's original text.
 
-`oct_fix.md` F3 requires the paper to use at least four instruments before it can go to
-*Political Analysis*, and names SapplyValues as the priority add (directly comparable to Sakhawat
+`oct_fix.md` F3 requires the paper to use at least four instruments before it can be submitted, and names SapplyValues as the priority add (directly comparable to Sakhawat
 et al. 2026, who already use it), then a validated human-survey instrument with population norms
 (ANES or Pew) as the second. This is the "confirm terms of use" step from the F3 checklist, done
 before writing scoring adapters.
@@ -63,7 +62,7 @@ model) to one of the 9 groups.
 Both candidates clear the terms-of-use check. Write adapters for SapplyValues first (comparable
 scoring pattern, comparable to the closest competitor), then Pew 2026 Typology (needs the
 methodology appendix read first to confirm the 24-item quiz reproduces the published groups). This
-reaches the required four-instrument minimum for *Political Analysis*.
+reaches the required four-instrument minimum.
 
 ## What actually happened (20 September)
 
@@ -104,7 +103,7 @@ where (the ρ=−0.49 MTMM disagreement already reported), not by Pew's coarsene
 Between-model spread and within-model trial noise are proportionally in line with the other
 instruments for SapplyValues too (ratio ≈1.9 for all three continuous instruments), so this is not a
 SapplyValues data-quality artefact — it is what "a variance component estimated from two instruments
-is meaningless" (the *Political Analysis* objection F3 exists to pre-empt) looks like quantitatively.
+is meaningless" (the objection F3 exists to pre-empt) looks like quantitatively.
 See `manuscript.tex` and `main.tex`'s "Multi-Trait Multi-Method Matrix" section for how this
 is written up.
 

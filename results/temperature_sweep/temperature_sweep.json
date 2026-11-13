@@ -1,0 +1,164 @@
+{
+  "models": [
+    "amazon/nova-pro-v1",
+    "deepseek/deepseek-v3.2",
+    "google/gemini-2.5-flash",
+    "meta-llama/llama-3.3-70b-instruct",
+    "meta-llama/llama-4-maverick",
+    "mistralai/mistral-small-3.2-24b-instruct",
+    "openai/gpt-4o-mini",
+    "qwen/qwen3-30b-a3b"
+  ],
+  "n_trials_per_cell": 20,
+  "n_boot": 500,
+  "temperatures": {
+    "0.0": {
+      "n_administrations": 160,
+      "pooled_share": {
+        "model": 0.5501360140995487,
+        "model:trait": 0.21320959361051298,
+        "residual": 0.23665439228993826
+      },
+      "pooled_share_ci": {
+        "model": [
+          0.3528534269754388,
+          0.7441751894163594
+        ],
+        "model:trait": [
+          0.060009665305268245,
+          0.3635270842730406
+        ],
+        "residual": [
+          0.09852978510390208,
+          0.43592499924346245
+        ]
+      },
+      "within_axis_model_share_mean": 0.7677663432593584,
+      "within_axis_model_share_mean_ci": [
+        0.5687006356501467,
+        0.9014075754828059
+      ],
+      "within_axis_model_share_by_axis": {
+        "equality": 0.9096270851006543,
+        "liberty": 0.6486817188454174,
+        "peace": 0.7483011741138431,
+        "progress": 0.7644553949775188
+      }
+    },
+    "0.7": {
+      "n_administrations": 160,
+      "pooled_share": {
+        "model": 0.5081296267641826,
+        "model:trait": 0.18166605042011041,
+        "residual": 0.3102043228157069
+      },
+      "pooled_share_ci": {
+        "model": [
+          0.2367634843814901,
+          0.6532632088431432
+        ],
+        "model:trait": [
+          0.07692447837179082,
+          0.3083665747293899
+        ],
+        "residual": [
+          0.22338995461473787,
+          0.46813384211071335
+        ]
+      },
+      "within_axis_model_share_mean": 0.694824902640805,
+      "within_axis_model_share_mean_ci": [
+        0.5371027915429516,
+        0.7792992471355279
+      ],
+      "within_axis_model_share_by_axis": {
+        "equality": 0.7557996043006914,
+        "liberty": 0.5794686336470684,
+        "peace": 0.6184717129533102,
+        "progress": 0.8255596596621501
+      }
+    },
+    "1.0": {
+      "n_administrations": 160,
+      "pooled_share": {
+        "model": 0.3728822564562918,
+        "model:trait": 0.15365091829515146,
+        "residual": 0.47346682524855666
+      },
+      "pooled_share_ci": {
+        "model": [
+          0.14496146391520606,
+          0.5905122658119166
+        ],
+        "model:trait": [
+          0.061048487919226894,
+          0.2646632589764668
+        ],
+        "residual": [
+          0.2441792231283387,
+          0.66772378346273
+        ]
+      },
+      "within_axis_model_share_mean": 0.5327649675434631,
+      "within_axis_model_share_mean_ci": [
+        0.3245403349038758,
+        0.7581652807940495
+      ],
+      "within_axis_model_share_by_axis": {
+        "equality": 0.6497358682172112,
+        "liberty": 0.40271989146105,
+        "peace": 0.37944204745996346,
+        "progress": 0.6991620630356279
+      }
+    }
+  },
+  "rank_agreement_of_model_means": {
+    "0.0_vs_0.7": {
+      "mean_spearman_over_axes": 0.9166666666666667,
+      "by_axis": {
+        "equality": 0.9761904761904763,
+        "liberty": 0.9047619047619048,
+        "peace": 0.9523809523809524,
+        "progress": 0.8333333333333335
+      }
+    },
+    "0.7_vs_1.0": {
+      "mean_spearman_over_axes": 0.875,
+      "by_axis": {
+        "equality": 0.9761904761904763,
+        "liberty": 0.8571428571428572,
+        "peace": 0.9047619047619048,
+        "progress": 0.7619047619047621
+      }
+    },
+    "0.0_vs_1.0": {
+      "mean_spearman_over_axes": 0.9107142857142857,
+      "by_axis": {
+        "equality": 0.9523809523809524,
+        "liberty": 0.9523809523809524,
+        "peace": 0.8571428571428572,
+        "progress": 0.880952380952381
+      }
+    }
+  },
+  "mean_axis_score_by_temperature": {
+    "0.0": {
+      "equality": 73.589375,
+      "liberty": 66.58687499999999,
+      "peace": 71.01625,
+      "progress": 73.5725
+    },
+    "0.7": {
+      "equality": 73.175625,
+      "liberty": 66.375,
+      "peace": 71.34375,
+      "progress": 74.309375
+    },
+    "1.0": {
+      "equality": 72.830625,
+      "liberty": 66.623125,
+      "peace": 71.07000000000001,
+      "progress": 73.83875
+    }
+  }
+}

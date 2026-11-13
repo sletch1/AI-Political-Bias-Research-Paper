@@ -243,6 +243,46 @@ def _cluster_resample(df: pd.DataFrame, cluster: str, clusters, rng) -> pd.DataF
     return pd.concat(parts, ignore_index=True)
 
 
+def _available_cores() -> int:
+    """Cores usable by this process, leaving one free; override with BOOT_WORKERS."""
+    import os
+    if os.environ.get("BOOT_WORKERS"):
+        return max(1, int(os.environ["BOOT_WORKERS"]))
+    try:
+        n = len(os.sched_getaffinity(0))
+    except AttributeError:
+        n = os.cpu_count() or 1
+    return max(1, n - 1)
+
+
+def _boot_fit(job):
+    df, value, random_effects, fixed_effects, z_within = job
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            return variance_decomposition(df, value=value, random_effects=list(random_effects),
+                                          fixed_effects=tuple(fixed_effects), z_within=z_within)
+    except Exception:
+        return None
+
+
+def _parallel_map(fn, jobs):
+    """Map over jobs on a process pool sized to the available cores (one BLAS thread each, so
+    the workers do not oversubscribe the CPUs); falls back to serial if a pool is unavailable."""
+    import os
+    n = min(_available_cores(), len(jobs))
+    if n <= 1 or len(jobs) < 4:
+        return [fn(j) for j in jobs]
+    for v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "VECLIB_MAXIMUM_THREADS", "MKL_NUM_THREADS"):
+        os.environ.setdefault(v, "1")
+    try:
+        from concurrent.futures import ProcessPoolExecutor
+        with ProcessPoolExecutor(max_workers=n) as ex:
+            return list(ex.map(fn, jobs, chunksize=max(1, len(jobs) // (n * 8))))
+    except Exception:
+        return [fn(j) for j in jobs]
+
+
 def cluster_bootstrap_variance_shares(df: pd.DataFrame, value: str, random_effects,
                                       cluster: str, fixed_effects=(), z_within=None,
                                       n_boot: int = 2000, alpha: float = 0.05,
@@ -269,14 +309,14 @@ def cluster_bootstrap_variance_shares(df: pd.DataFrame, value: str, random_effec
 
     draws: dict = {k: [] for k in point["variance_share"]}
     n_failed = 0
-    for _ in range(n_boot):
-        resample = _cluster_resample(df, cluster, clusters, rng)
-        try:
-            with warnings.catch_warnings():
-                warnings.simplefilter("ignore")
-                fit = variance_decomposition(resample, value=value, random_effects=random_effects,
-                                             fixed_effects=fixed_effects, z_within=z_within)
-        except Exception:
+    # Resamples are drawn serially from the one seeded RNG (so results are identical to the
+    # serial implementation for a given seed) and the model fits, which dominate the run time,
+    # are spread over the available cores.
+    resamples = [_cluster_resample(df, cluster, clusters, rng) for _ in range(n_boot)]
+    jobs = [(r, value, tuple(random_effects), tuple(fixed_effects), z_within) for r in resamples]
+    fits = _parallel_map(_boot_fit, jobs)
+    for fit in fits:
+        if fit is None:
             n_failed += 1
             continue
         for k, v in fit["variance_share"].items():

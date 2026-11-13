@@ -71,5 +71,5 @@
       "agrees_with_expected_sign": true
     }
   ],
-  "status": "Preliminary triangulation check on one additional instrument, not yet crossed into the shared variance-components model with Political Compass and 8Values; reaching the >= 4 instruments a Political Analysis reviewer would ask for is future work (docs/f3_instrument_terms_of_use.md)."
+  "status": "Preliminary triangulation check on one additional instrument, not yet crossed into the shared variance-components model with Political Compass and 8Values; reaching the >= 4 instruments a reviewer would ask for is future work (docs/f3_instrument_terms_of_use.md)."
 }

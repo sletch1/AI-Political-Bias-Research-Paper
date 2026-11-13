@@ -115,10 +115,11 @@ def convergence_check(positions: dict, other_means: dict) -> list:
             continue
 
         def _rho(a, b):
+            # average ranks for ties (mean ordinal positions tie often); the earlier
+            # argsort-of-argsort ranking broke ties arbitrarily and slightly biased rho
             import numpy as np
-            ra = np.argsort(np.argsort(a))
-            rb = np.argsort(np.argsort(b))
-            return float(np.corrcoef(ra, rb)[0, 1])
+            from scipy.stats import rankdata
+            return float(np.corrcoef(rankdata(a), rankdata(b))[0, 1])
 
         ci = bootstrap_ci(x, y, statistic=_rho, n_boot=2000)
         out.append({
