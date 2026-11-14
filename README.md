@@ -25,26 +25,45 @@ and ordinary trial-to-trial noise)?
   Meta, Mistral, Alibaba, xAI, Cohere, Amazon, NVIDIA) were each administered
   the Political Compass and 8Values tests 60 times per instrument (2,280 total
   administrations), collected programmatically via the OpenRouter API.
+- **Scores are direction-aligned before any cross-instrument estimate.** The
+  instruments score the left in opposite directions (high on 8Values, negative
+  on the Political Compass), so every axis is oriented so that higher means
+  further left, libertarian or progressive (`variance_components.orient`). An
+  earlier draft estimated the model without this alignment and reported a
+  transferable share of 0.0% and a convergent correlation of -0.26; both were
+  artefacts of the opposite scoring directions and are superseded.
 - **A nested variance-components model** (model, model x instrument,
   model x axis within instrument, trial noise) on the 2,280 administrations of
   the two original instruments gives: model identity that transfers across
-  instruments and axes **0.0% (95% CI 0.0-7.8%)**; model position specific to
-  the instrument **44.6% (25.5-57.2%)**; specific to the axis within the
-  instrument **21.2% (11.5-33.8%)**; trial noise **34.2% (20.3-51.2%)**. The
-  earlier two-term specification (instrument folded into trait) gave 13.4% /
-  52.4% / 34.2% and is kept for comparison. Intervals are similar when
-  resampling the 11 providers instead of the 19 models.
+  instruments and axes **17.2% (95% CI 0.0-40.0%)**; model position specific to
+  the instrument **27.7% (11.5-41.3%)**; specific to the axis within the
+  instrument **21.1% (11.4-34.0%)**; trial noise **34.0% (20.0-50.7%)**. The
+  two-term specification (instrument folded into trait) gives 30.2% to model
+  identity and is kept for comparison. Intervals are similar when resampling
+  the 11 providers instead of the 19 models.
 - **Crossing two further instruments** (SapplyValues; Pew Research Center's
-  2026 Political Typology, scored by driving its live public quiz) leaves the
-  transferable share at **0.0% (0.0-3.9%)**, with model x instrument 22.9%,
-  model x axis 42.2% and noise 34.9%. The split between instrument and axis is
-  not stable (instrument share 4-43% across leave-one-instrument-out fits);
-  the near-zero transferable share is stable in every leave-one-out check.
-- **The two original instruments show no convergent validity**: constructs
-  they both claim to measure correlate at r = -0.26 (SE 0.17, 95% CI
-  [-0.57, 0.07]) across models, versus r = +0.52 (SE 0.11) for distinct
-  constructs on one instrument; the difference is -0.77 (SE 0.24). Their scores
-  are therefore not interchangeable.
+  2026 Political Typology, scored by driving its live public quiz) puts the
+  transferable share at **2.0% (0.0-18.4%)**, with model x instrument 31.8%,
+  model x axis 31.3% and noise 34.9%. Across leave-one-instrument-out fits the
+  transferable share is 0.0-8.6% and across leave-one-provider-out fits
+  0.0-7.5%.
+- **Convergence between the two original instruments is partial**: the social
+  constructs correlate at r = +0.51 across models and the economic constructs
+  at r = +0.005; the mean convergent correlation is +0.26 (SE 0.17, 95% CI
+  [-0.07, 0.57]) against +0.52 (SE 0.11) for distinct constructs on one
+  instrument (difference -0.26, SE 0.14). SapplyValues' economic axis agrees
+  with 8Values equality (rho = +0.53) and disagrees with the Political Compass
+  economic axis (rho = -0.49).
+- **Positive control**: every model answers further left for a self-described
+  progressive than for a conservative on every axis of both instruments (108
+  of 108 cells), and the size of that shift correlates at r = 0.86 (95% CI
+  [0.63, 0.94]) across the two instruments, against 0.06 for no-asker
+  positions in the same design. The instruments agree on a large common
+  signal; what transfers poorly is the smaller difference between models'
+  default positions.
+- **Recovery simulation** on the real design (`scoring/simulate_recovery.py`)
+  shows what transferable share the nested estimator can detect; see the
+  Online Appendix.
 - **Three further measurement factors, each estimated in its own factorial
   design**: asker identity (partial $\eta^2=0.79$ vs. $0.23$ for model identity
   in the same design), instrument contamination (17 of 18 models shift under
@@ -108,6 +127,9 @@ required for its current claims.
 | `scoring/variance_components.py` | Shared statistical model: crossed random-effects variance decomposition, cluster-bootstrap CIs, MTMM. |
 | `scoring/analyze_nested_design.py` | Nested model x instrument x axis variance components, provider-clustered bootstrap, leave-one-instrument/provider-out. |
 | `scoring/analyze_se_supplement.py` | Standard errors and intervals for every correlation, and the neutral-point tests. |
+| `scoring/analyze_known_groups.py` | Known-groups positive control: progressive-versus-conservative asker shift and its agreement across instruments. |
+| `scoring/simulate_recovery.py` | Recovery of a known transferable share by the nested estimator on the real design. |
+| `scoring/make_paper_numbers.py` | Writes every quoted number and table (`results/paper/`) from the result files; both TeX files `\input` them. |
 | `scoring/make_figures.py` | Submission figures (vector PDF and 300 dpi TIFF). |
 | `run_all.sh`, `REPLICATION.md` | One-command offline reproduction and replication guide. |
 | `scoring/analyze_f3_variance_components.py` | Crosses all four instruments into the shared variance-components model. |

@@ -35,6 +35,10 @@ Software and run time are in `RUN_LOG.md` (written by the clean-environment test
 | Table 2 MTMM with SEs (and Online Appendix MTMM figure) | `scoring/analyze_se_supplement.py`, `scoring/analyze_w4.py` | `results/se_supplement/`, `results/w4/` |
 | Spearman checks, SapplyValues and Pew | `scoring/analyze_sapplyvalues.py`, `scoring/analyze_pew_typology.py`, `scoring/analyze_se_supplement.py` | `results/sapplyvalues/`, `results/pew_typology/` |
 | Neutral-point tests and effect sizes | `scoring/analyze_se_supplement.py` | `results/se_supplement/se_supplement.json` |
+| Known-groups positive control | `scoring/analyze_known_groups.py` | `results/known_groups/known_groups.json` |
+| Recovery simulation | `scoring/simulate_recovery.py` | `results/recovery_simulation/` |
+| Direction convention and its sensitivity | `scoring/variance_components.py` (`orient`), `scoring/analyze_nested_design.py` | `results/nested_design/nested_design.json` |
+| Numbers and tables quoted in the article and appendix | `scoring/make_paper_numbers.py` | `results/paper/` |
 | IRT reanalysis | `scoring/irt_analysis.py` | `results/w1/irt_results.json` |
 | Item entropy, ISS, appendix tables | `scoring/analyze_w4.py` | `results/w4/` |
 | Post-hoc comparisons | `scoring/analyze_posthoc.py` | `results/posthoc/` |

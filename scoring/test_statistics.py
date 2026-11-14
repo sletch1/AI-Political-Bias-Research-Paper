@@ -296,6 +296,32 @@ def test_orient_leaves_missing_responses_missing():
     assert out[0, 0] == -1 and out[0, 1] == 1
 
 
+def test_orient_reverses_only_the_listed_traits_and_is_its_own_inverse():
+    df = pd.DataFrame({"trait": ["8values:equality", "political_compass:economic", "sapplyvalues:auth"],
+                       "value": [70.0, -6.0, 1.5]})
+    out = vc.orient(df)
+    assert list(out["value"]) == [70.0, 6.0, -1.5]
+    assert list(df["value"]) == [70.0, -6.0, 1.5]          # input is not modified
+    assert list(vc.orient(out)["value"]) == list(df["value"])
+
+
+def test_a_shared_lean_is_only_recovered_after_direction_alignment():
+    """Two instruments that score the same latent position in opposite directions: the shared model
+    effect is estimated near zero on the raw scores and is recovered once the scales are aligned."""
+    rng = np.random.default_rng(11)
+    rows = []
+    for m in range(30):
+        lean = rng.normal()
+        for trial in range(6):
+            rows.append({"model": f"m{m}", "trait": "8values:equality", "value": 60 + 8 * lean + rng.normal()})
+            rows.append({"model": f"m{m}", "trait": "political_compass:economic", "value": -5 - 2 * lean + rng.normal(scale=0.25)})
+    df = pd.DataFrame(rows)
+    raw = vc.variance_decomposition(df, "value", ["model", "model:trait"], z_within="trait")
+    aligned = vc.variance_decomposition(vc.orient(df), "value", ["model", "model:trait"], z_within="trait")
+    assert raw["variance_share"]["model"] < 0.05
+    assert aligned["variance_share"]["model"] > 0.8
+
+
 def test_bland_altman_reports_zero_bias_on_z_scores():
     rng = np.random.default_rng(8)
     x = rng.normal(size=50)

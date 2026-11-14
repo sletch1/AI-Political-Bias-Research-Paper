@@ -13,7 +13,7 @@
       {
         "model": "anthropic/claude-sonnet-4.5",
         "instrument": "political_compass",
-        "mean_entropy": 0.026316202014178676,
+        "mean_entropy": 0.02631620201417868,
         "median_entropy": 0.0,
         "p90_entropy": 0.1222915970693747,
         "frac_unstable": 0.0,
@@ -40,7 +40,7 @@
       {
         "model": "meta-llama/llama-4-maverick",
         "instrument": "political_compass",
-        "mean_entropy": 0.05907792646236233,
+        "mean_entropy": 0.05907792646236234,
         "median_entropy": 0.0,
         "p90_entropy": 0.11006243736243707,
         "frac_unstable": 0.08064516129032258,
@@ -58,7 +58,7 @@
       {
         "model": "amazon/nova-pro-v1",
         "instrument": "political_compass",
-        "mean_entropy": 0.1099049560040227,
+        "mean_entropy": 0.10990495600402271,
         "median_entropy": 0.0,
         "p90_entropy": 0.46347771926071635,
         "frac_unstable": 0.08064516129032258,
@@ -67,7 +67,7 @@
       {
         "model": "mistralai/mistral-large-2512",
         "instrument": "political_compass",
-        "mean_entropy": 0.12446823954262387,
+        "mean_entropy": 0.12446823954262386,
         "median_entropy": 0.0,
         "p90_entropy": 0.5197027865043055,
         "frac_unstable": 0.12903225806451613,
@@ -85,7 +85,7 @@
       {
         "model": "anthropic/claude-haiku-4.5",
         "instrument": "8values",
-        "mean_entropy": 0.1692315728054435,
+        "mean_entropy": 0.16923157280544351,
         "median_entropy": 0.0,
         "p90_entropy": 0.7251386910183394,
         "frac_unstable": 0.2,
@@ -94,7 +94,7 @@
       {
         "model": "meta-llama/llama-3.3-70b-instruct",
         "instrument": "political_compass",
-        "mean_entropy": 0.16979003052324498,
+        "mean_entropy": 0.16979003052324496,
         "median_entropy": 0.1222915970693747,
         "p90_entropy": 0.514632067212803,
         "frac_unstable": 0.11290322580645161,
@@ -121,7 +121,7 @@
       {
         "model": "anthropic/claude-haiku-4.5",
         "instrument": "political_compass",
-        "mean_entropy": 0.20600893948376364,
+        "mean_entropy": 0.20600893948376361,
         "median_entropy": 0.0,
         "p90_entropy": 0.7219280948873623,
         "frac_unstable": 0.20967741935483872,
@@ -130,7 +130,7 @@
       {
         "model": "x-ai/grok-4.20",
         "instrument": "8values",
-        "mean_entropy": 0.22402024309617422,
+        "mean_entropy": 0.22402024309617424,
         "median_entropy": 0.0,
         "p90_entropy": 0.8202222799994556,
         "frac_unstable": 0.2,
@@ -139,7 +139,7 @@
       {
         "model": "amazon/nova-pro-v1",
         "instrument": "8values",
-        "mean_entropy": 0.25631698126167285,
+        "mean_entropy": 0.2563169812616728,
         "median_entropy": 0.1222915970693747,
         "p90_entropy": 0.9040545174136725,
         "frac_unstable": 0.2,
@@ -148,7 +148,7 @@
       {
         "model": "openai/gpt-4o",
         "instrument": "political_compass",
-        "mean_entropy": 0.26876131575232975,
+        "mean_entropy": 0.2687613157523297,
         "median_entropy": 0.0,
         "p90_entropy": 0.8917755243220364,
         "frac_unstable": 0.2903225806451613,
@@ -157,7 +157,7 @@
       {
         "model": "mistralai/mistral-small-3.2-24b-instruct",
         "instrument": "political_compass",
-        "mean_entropy": 0.27098932330153747,
+        "mean_entropy": 0.2709893233015374,
         "median_entropy": 0.1222915970693747,
         "p90_entropy": 0.7540340561971326,
         "frac_unstable": 0.20967741935483872,
@@ -175,7 +175,7 @@
       {
         "model": "openai/gpt-4o-mini",
         "instrument": "political_compass",
-        "mean_entropy": 0.2892062062896336,
+        "mean_entropy": 0.28920620628963367,
         "median_entropy": 0.0,
         "p90_entropy": 0.9340680553754911,
         "frac_unstable": 0.2903225806451613,
@@ -184,7 +184,7 @@
       {
         "model": "deepseek/deepseek-v3.2",
         "instrument": "political_compass",
-        "mean_entropy": 0.3142860633506562,
+        "mean_entropy": 0.3142860633506563,
         "median_entropy": 0.21084230031853216,
         "p90_entropy": 0.946677224772064,
         "frac_unstable": 0.24193548387096775,
@@ -193,7 +193,7 @@
       {
         "model": "deepseek/deepseek-chat",
         "instrument": "8values",
-        "mean_entropy": 0.31969695409952537,
+        "mean_entropy": 0.3196969540995253,
         "median_entropy": 0.06114579853468735,
         "p90_entropy": 0.9718424106743172,
         "frac_unstable": 0.34285714285714286,
@@ -202,7 +202,7 @@
       {
         "model": "google/gemini-2.5-flash",
         "instrument": "8values",
-        "mean_entropy": 0.33681067664786135,
+        "mean_entropy": 0.3368106766478614,
         "median_entropy": 0.2102538350548012,
         "p90_entropy": 0.8879696336670141,
         "frac_unstable": 0.32857142857142857,
@@ -211,7 +211,7 @@
       {
         "model": "deepseek/deepseek-chat",
         "instrument": "political_compass",
-        "mean_entropy": 0.34832573659932325,
+        "mean_entropy": 0.3483257365993232,
         "median_entropy": 0.21084230031853216,
         "p90_entropy": 0.9709505944546688,
         "frac_unstable": 0.3870967741935484,
@@ -256,7 +256,7 @@
       {
         "model": "openai/gpt-4o",
         "instrument": "8values",
-        "mean_entropy": 0.41360898018822734,
+        "mean_entropy": 0.4136089801882273,
         "median_entropy": 0.49434919004679334,
         "p90_entropy": 0.9020309952563035,
         "frac_unstable": 0.5,
@@ -274,7 +274,7 @@
       {
         "model": "qwen/qwen3-30b-a3b",
         "instrument": "political_compass",
-        "mean_entropy": 0.4296562054327379,
+        "mean_entropy": 0.42965620543273786,
         "median_entropy": 0.46899559358928117,
         "p90_entropy": 0.8576218189400938,
         "frac_unstable": 0.4838709677419355,
@@ -283,7 +283,7 @@
       {
         "model": "openai/gpt-5-mini",
         "instrument": "8values",
-        "mean_entropy": 0.4443191936791169,
+        "mean_entropy": 0.4443191936791168,
         "median_entropy": 0.4506950426666796,
         "p90_entropy": 0.8620868346690463,
         "frac_unstable": 0.4857142857142857,
@@ -328,7 +328,7 @@
       {
         "model": "qwen/qwen3-235b-a22b",
         "instrument": "8values",
-        "mean_entropy": 0.743143072185107,
+        "mean_entropy": 0.7431430721851072,
         "median_entropy": 0.7248847145527604,
         "p90_entropy": 0.9871377743721862,
         "frac_unstable": 0.9285714285714286,
@@ -2151,19 +2151,19 @@
     "fixed_effects": [],
     "z_within": "trait",
     "variance_components": {
-      "model": 0.1351059456979442,
-      "model:trait": 0.5305690908485299,
-      "residual": 0.34604569077793507
+      "model": 0.30800486412345257,
+      "model:trait": 0.3645133708879121,
+      "residual": 0.3460445810681998
     },
     "variance_share": {
-      "model": 0.13354075096913812,
-      "model:trait": 0.5244224779813199,
-      "residual": 0.34203677104954205
+      "model": 0.302391624022718,
+      "model:trait": 0.35787029050492875,
+      "residual": 0.3397380854723531
     },
-    "total_variance": 1.011720727324409,
+    "total_variance": 1.0185628160795646,
     "icc": {
-      "model": 0.13354075096913812,
-      "model:trait": 0.5244224779813199
+      "model": 0.302391624022718,
+      "model:trait": 0.35787029050492875
     },
     "interpretation": "the residual share is the fraction of variation that is pure trial-to-trial instability rather than any stable property of a model or an instrument; the model share is the ICC for model identity, i.e. how much of a measured political position is actually about the model",
     "bootstrap_ci": {
@@ -2171,18 +2171,18 @@
       "n_clusters": 19,
       "variance_share_ci": {
         "model": {
-          "ci_lower": 0.04660228623979692,
-          "ci_upper": 0.21765858638431662,
+          "ci_lower": 0.1538111019153127,
+          "ci_upper": 0.4654541211764508,
           "n_boot": 2000
         },
         "model:trait": {
-          "ci_lower": 0.3523174533141398,
-          "ci_upper": 0.7068637525895264,
+          "ci_lower": 0.23257635951253222,
+          "ci_upper": 0.49461683028548437,
           "n_boot": 2000
         },
         "residual": {
-          "ci_lower": 0.18993082463273078,
-          "ci_upper": 0.48776019122738473,
+          "ci_lower": 0.1858795830782847,
+          "ci_upper": 0.4852809529968695,
           "n_boot": 2000
         }
       },
@@ -2197,12 +2197,12 @@
       {
         "a": "8values:economic",
         "b": "political_compass:economic",
-        "r": -0.004852294035863153
+        "r": 0.004852294035863153
       },
       {
         "a": "8values:social",
         "b": "political_compass:social",
-        "r": -0.5058292447800855
+        "r": 0.5058292447800855
       }
     ],
     "discriminant_same_method": [
@@ -2221,15 +2221,15 @@
       {
         "a": "8values:economic",
         "b": "political_compass:social",
-        "r": 0.2387845406782312
+        "r": -0.2387845406782312
       },
       {
         "a": "8values:social",
         "b": "political_compass:economic",
-        "r": -0.324767038597464
+        "r": 0.324767038597464
       }
     ],
-    "convergent_mean_r": -0.25534076940797434,
+    "convergent_mean_r": 0.25534076940797434,
     "discriminant_mean_r": 0.5196018095012724,
     "campbell_fiske_passes": false,
     "trait_pairings": [

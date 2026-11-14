@@ -51,19 +51,19 @@
     "fixed_effects": [],
     "z_within": "trait",
     "variance_components": {
-      "model": 0.02109799885676004,
-      "model:trait": 0.6313005203518637,
-      "residual": 0.3458266980692487
+      "model": 0.1536506986736522,
+      "model:trait": 0.5148191964388004,
+      "residual": 0.3458459304465592
     },
     "variance_share": {
-      "model": 0.02113550979436644,
-      "model:trait": 0.6324229336475786,
-      "residual": 0.3464415565580549
+      "model": 0.15148210725093628,
+      "model:trait": 0.5075531540238685,
+      "residual": 0.34096473872519534
     },
-    "total_variance": 0.9982252172778724,
+    "total_variance": 1.0143158255590117,
     "icc": {
-      "model": 0.02113550979436644,
-      "model:trait": 0.6324229336475786
+      "model": 0.15148210725093628,
+      "model:trait": 0.5075531540238685
     },
     "interpretation": "same quantities as analyze_w4.py task 4.3 (model share = ICC for model identity, residual = pure trial-to-trial instability), now estimated over all four instruments' traits instead of two"
   },
@@ -72,22 +72,22 @@
     "n_clusters": 19,
     "variance_share_ci": {
       "model": {
-        "ci_lower": 5.428877802143892e-07,
-        "ci_upper": 0.06916882645768432,
-        "n_boot": 2000
+        "ci_lower": 0.04525805008568743,
+        "ci_upper": 0.27888365856374175,
+        "n_boot": 1000
       },
       "model:trait": {
-        "ci_lower": 0.49276708625537563,
-        "ci_upper": 0.774236352946838,
-        "n_boot": 2000
+        "ci_lower": 0.36016767499149527,
+        "ci_upper": 0.6662081386057785,
+        "n_boot": 1000
       },
       "residual": {
-        "ci_lower": 0.2085815202627097,
-        "ci_upper": 0.4752635934830535,
-        "n_boot": 2000
+        "ci_lower": 0.19675277565353874,
+        "ci_upper": 0.4750284208330009,
+        "n_boot": 1000
       }
     },
-    "n_boot_requested": 2000,
+    "n_boot_requested": 1000,
     "n_boot_failed": 0,
     "seed": 20260919
   },

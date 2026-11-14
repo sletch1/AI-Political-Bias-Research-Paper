@@ -1,0 +1,154 @@
+{
+ "seed": 20261114,
+ "n_boot": 5000,
+ "n_models": 18,
+ "direction": "high = left / libertarian / progressive on every axis",
+ "contrast": "progressive-asker mean minus conservative-asker mean, per model and axis",
+ "per_axis": {
+  "8values:equality": {
+   "mean_gap": {
+    "estimate": 48.07111111111111,
+    "se": 3.6248711838568495,
+    "ci_lower": 40.90902777777778,
+    "ci_upper": 54.988902777777774,
+    "n_boot_ok": 5000
+   },
+   "mean_gap_share_of_range": 0.4807111111111111,
+   "between_model_sd_no_asker": 4.999956470398755,
+   "mean_gap_in_between_model_sd": 9.614305923602842,
+   "min_gap": 14.070000000000007,
+   "share_of_models_positive": 1.0
+  },
+  "8values:liberty": {
+   "mean_gap": {
+    "estimate": 35.63833333333333,
+    "se": 3.1149007139995293,
+    "ci_lower": 29.49275,
+    "ci_upper": 41.71056944444444,
+    "n_boot_ok": 5000
+   },
+   "mean_gap_share_of_range": 0.3563833333333333,
+   "between_model_sd_no_asker": 3.4630507631617653,
+   "mean_gap_in_between_model_sd": 10.291022503174492,
+   "min_gap": 8.14,
+   "share_of_models_positive": 1.0
+  },
+  "8values:peace": {
+   "mean_gap": {
+    "estimate": 41.05166666666666,
+    "se": 3.510561349725557,
+    "ci_lower": 33.905430555555554,
+    "ci_upper": 47.61341666666666,
+    "n_boot_ok": 5000
+   },
+   "mean_gap_share_of_range": 0.41051666666666664,
+   "between_model_sd_no_asker": 4.0756775770929545,
+   "mean_gap_in_between_model_sd": 10.072353833236106,
+   "min_gap": 11.029999999999994,
+   "share_of_models_positive": 1.0
+  },
+  "8values:progress": {
+   "mean_gap": {
+    "estimate": 42.61722222222223,
+    "se": 3.655285811935422,
+    "ci_lower": 35.25365277777778,
+    "ci_upper": 49.664361111111106,
+    "n_boot_ok": 5000
+   },
+   "mean_gap_share_of_range": 0.42617222222222234,
+   "between_model_sd_no_asker": 5.729256758649932,
+   "mean_gap_in_between_model_sd": 7.438525452342399,
+   "min_gap": 12.429999999999993,
+   "share_of_models_positive": 1.0
+  },
+  "political_compass:economic": {
+   "mean_gap": {
+    "estimate": 9.59888888888889,
+    "se": 0.7821430912635329,
+    "ci_lower": 7.96385,
+    "ci_upper": 11.0299625,
+    "n_boot_ok": 5000
+   },
+   "mean_gap_share_of_range": 0.4799444444444445,
+   "between_model_sd_no_asker": 0.663144423292386,
+   "mean_gap_in_between_model_sd": 14.474809033652477,
+   "min_gap": 2.55,
+   "share_of_models_positive": 1.0
+  },
+  "political_compass:social": {
+   "mean_gap": {
+    "estimate": 6.369777777777778,
+    "se": 0.6358888680009257,
+    "ci_lower": 5.121468055555557,
+    "ci_upper": 7.5632777777777775,
+    "n_boot_ok": 5000
+   },
+   "mean_gap_share_of_range": 0.31848888888888893,
+   "between_model_sd_no_asker": 0.7882737655229717,
+   "mean_gap_in_between_model_sd": 8.0806669667001,
+   "min_gap": 1.0600000000000005,
+   "share_of_models_positive": 1.0
+  }
+ },
+ "share_of_cells_positive": 1.0,
+ "n_cells": 108,
+ "gap_in_between_model_sd_range": [
+  7.438525452342399,
+  14.474809033652477
+ ],
+ "asker_shift_correlations": {
+  "convergent_pairs": {
+   "8values:equality vs political_compass:economic": 0.8604257774760329,
+   "8values:progress vs political_compass:social": 0.8641634721862531
+  },
+  "mean_convergent": {
+   "estimate": 0.8622946248311429,
+   "se": 0.08110398059624008,
+   "ci_lower": 0.6261163404498683,
+   "ci_upper": 0.9440174751349465,
+   "n_boot_ok": 5000
+  },
+  "mean_all_cross_instrument": {
+   "estimate": 0.8523933133008521,
+   "se": 0.08518385360207102,
+   "ci_lower": 0.6148621631212844,
+   "ci_upper": 0.9397075823679454,
+   "n_boot_ok": 5000
+  },
+  "cross_instrument_range": [
+   0.8076841409056835,
+   0.8949996274366592
+  ]
+ },
+ "no_asker_position_correlations": {
+  "convergent_pairs": {
+   "8values:equality vs political_compass:economic": -0.2955748956149199,
+   "8values:progress vs political_compass:social": 0.41621333592461673
+  },
+  "mean_convergent": {
+   "estimate": 0.06031922015484842,
+   "se": 0.14365981949904075,
+   "ci_lower": -0.22405330088290165,
+   "ci_upper": 0.33927596742832333,
+   "n_boot_ok": 5000
+  },
+  "mean_all_cross_instrument": {
+   "estimate": 0.09157955572539765,
+   "se": 0.15995538872162748,
+   "ci_lower": -0.22031896064614576,
+   "ci_upper": 0.4050964013411514,
+   "n_boot_ok": 5000
+  },
+  "cross_instrument_range": [
+   -0.3163582093488919,
+   0.4667123984639754
+  ]
+ },
+ "convergent_shift_minus_position": {
+  "estimate": 0.8019754046762946,
+  "se": 0.17040601407484327,
+  "ci_lower": 0.45967414342795854,
+  "ci_upper": 1.1226525810157153,
+  "n_boot_ok": 5000
+ }
+}

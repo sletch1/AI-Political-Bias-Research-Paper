@@ -275,8 +275,9 @@ def task_4_3(df: pd.DataFrame) -> dict:
     the last being pure trial-to-trial instability, which is the quantity the
     manuscript calls stability.
     """
-    from variance_components import cluster_bootstrap_variance_shares, variance_decomposition
+    from variance_components import cluster_bootstrap_variance_shares, orient, variance_decomposition
 
+    df = orient(df)
     out = variance_decomposition(
         df, value="value", random_effects=["model", "model:trait"], z_within="trait"
     )
@@ -332,8 +333,9 @@ def task_4_4(df: pd.DataFrame) -> dict:
     structure -- they are a real finding, but folding them into the discriminant
     mean inflates it and is not Campbell-Fiske.
     """
-    from variance_components import mtmm
+    from variance_components import mtmm, orient
 
+    df = orient(df)
     mapping = {pc: name for name, pc, _ in TRAIT_PAIRS}
     mapping.update({ev: name for name, _, ev in TRAIT_PAIRS})
     d = df[df["trait"].isin(mapping)].copy()

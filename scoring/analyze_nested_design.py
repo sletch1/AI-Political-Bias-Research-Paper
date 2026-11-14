@@ -153,6 +153,29 @@ def main(n_boot: int, workers: int, out_dir: str = "results/nested_design") -> N
                           **{d: fit(sub, d)["share"] for d in DESIGNS}}
         print("LOPO", prov, loo_prov[prov]["original"], flush=True)
     result["leave_one_instrument_out_from_four"] = loo_inst
+
+    # Sensitivity to the direction convention (variance_components.orient). Two traits have no
+    # settled left/right polarity: 8Values peace and SapplyValues authority. Reversing either, or
+    # undoing the alignment altogether (scores as each instrument reports them), shows how much the
+    # transferable share depends on the convention.
+    from variance_components import FLIPPED_TRAITS
+    variants = {
+        "aligned": [],
+        "peace_reversed": ["8values:peace"],
+        "sapply_auth_reversed": ["sapplyvalues:auth"],
+        "peace_and_sapply_auth_reversed": ["8values:peace", "sapplyvalues:auth"],
+        "unaligned_as_scored": list(FLIPPED_TRAITS),
+    }
+    sens = {}
+    for pname, df in panels.items():
+        sens[pname] = {}
+        for vname, traits in variants.items():
+            d = df.copy()
+            sel = d.trait.isin(traits)
+            d.loc[sel, "value"] = -d.loc[sel, "value"]
+            sens[pname][vname] = fit(d, "nested")["share"]
+            print("ORIENT", pname, vname, sens[pname][vname], flush=True)
+    result["orientation_sensitivity_nested"] = sens
     result["leave_one_provider_out_four_instruments"] = loo_prov
 
     out = REPO / out_dir

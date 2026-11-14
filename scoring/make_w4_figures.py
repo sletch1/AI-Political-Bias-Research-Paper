@@ -39,7 +39,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from analyze_w4 import INSTRUMENT_RANGE, TRAIT_PAIRS, legacy_iss, load_long, load_raw_trials  # noqa: E402
 from analyze_w4 import normalised_entropy  # noqa: E402
 from make_result_figures import BLUE, FIG_DIR, GRID, INK, MUTED, ORANGE, SHORT_NAME  # noqa: E402
-from variance_components import mtmm, variance_decomposition  # noqa: E402
+from variance_components import mtmm, orient, variance_decomposition  # noqa: E402
 
 TABLE_DIR = Path(__file__).resolve().parent.parent / "results" / "w4"
 
@@ -112,7 +112,7 @@ def fig6_error_budget(df: pd.DataFrame):
     instrument is held still. Both are true and the figure says which is which.
     """
     pooled = variance_decomposition(
-        df, value="value", random_effects=["model", "model:trait"], z_within="trait")
+        orient(df), value="value", random_effects=["model", "model:trait"], z_within="trait")
     share = pooled["variance_share"]
     budget = per_axis_error_budget(df)
 
@@ -262,6 +262,7 @@ def fig8_item_entropy(raw: pd.DataFrame) -> pd.DataFrame:
 
 
 def fig_si_mtmm(df: pd.DataFrame) -> dict:
+    df = orient(df)  # high = left/libertarian/progressive on both instruments
     mapping = {pc: n for n, pc, _ in TRAIT_PAIRS}
     mapping.update({ev: n for n, _, ev in TRAIT_PAIRS})
     d = df[df["trait"].isin(mapping)].copy()

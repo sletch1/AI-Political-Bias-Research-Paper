@@ -23,5 +23,8 @@ $PY analyze_prompt_robustness.py
 $PY analyze_temperature_sweep.py --n-boot "$NBOOT"      # temperature sensitivity (archived sweep data)
 $PY validate_judge_agreement.py                      # inter-judge agreement from cached re-judgements (no API)
 $PY audit_citations.py || echo "citation audit skipped (needs network)"
+$PY analyze_known_groups.py --n-boot 5000              # known-groups positive control (asker-identity data)
+$PY simulate_recovery.py --reps "${NSIM:-200}"        # recovery of a known transferable share on the real design
+$PY make_paper_numbers.py                            # every quoted number and table -> results/paper/
 $PY make_w4_figures.py                               # appendix figures and LaTeX tables in results/w4
 $PY make_figures.py                                  # vector PDF + TIFF figures

@@ -28,3 +28,25 @@ clean copy. The data for both were collected with `collect_temperature.py` (320 
 `./run_all.sh 12` on a copy of the final repository, system Python 3.9.6, fresh virtualenv, no API key: exit 0 in about 13.5 min
 (12 bootstrap resamples for speed; the reported intervals are from the 1,000-resample runs). The temperature-sweep, judge-agreement
 (from cached re-judgements), SE-supplement and citation-audit steps all ran; point estimates agree with the committed results.
+
+## Direction alignment and added checks (2026-11-14)
+The instruments score the left in opposite directions (8Values high, Political Compass negative), and the cross-instrument
+estimates had been computed without aligning them. `variance_components.orient` now orients every axis so that higher means
+further left, libertarian or progressive before any cross-instrument estimate. Rerun after the change, in a fresh virtualenv
+(Python 3.14, packages from `requirements.txt`), offline:
+
+| Step | Setting | Result |
+|---|---|---|
+| `pytest` in `scoring/` | | 137 passed, 2 skipped (browser tests) |
+| `analyze_se_supplement.py` | 5,000 resamples | completed |
+| `analyze_w4.py`, `make_w4_figures.py` | 2,000 resamples | completed |
+| `analyze_f3_variance_components.py` | 1,000 resamples | completed |
+| `analyze_nested_design.py` | 1,000 resamples, 12 workers | 1,000 of 1,000 converged in each of the eight bootstraps |
+| `analyze_known_groups.py` (new) | 5,000 resamples | completed |
+| `simulate_recovery.py` (new) | 200 runs per condition | completed, about 45 min on a shared machine |
+| `make_paper_numbers.py` (new), `make_figures.py` | | completed |
+
+Effect on the headline numbers: transferable share 0.0% -> 17.2% (two instruments) and 0.0% -> 2.0% (four); mean convergent
+correlation -0.26 -> +0.26. Within-axis shares, partial eta-squared values, trial-noise shares and item-level results are
+unchanged. The other steps of `run_all.sh` were not rerun, and the full script was not rerun end to end in a clean copy after
+these changes.

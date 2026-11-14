@@ -51,7 +51,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from variance_components import cluster_bootstrap_variance_shares, variance_decomposition  # noqa: E402
+from variance_components import cluster_bootstrap_variance_shares, orient, variance_decomposition  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
 RAW_TRIALS = REPO / "data" / "raw_trials"
@@ -101,7 +101,7 @@ def load_pooled_long(instruments=("political_compass", "8values", "sapplyvalues"
             })
     df = pd.DataFrame(rows)
     df["trait"] = df["instrument"] + ":" + df["axis"]
-    return df
+    return orient(df)  # high = left/libertarian/progressive for every trait
 
 
 def panel_summary(df: pd.DataFrame) -> dict:

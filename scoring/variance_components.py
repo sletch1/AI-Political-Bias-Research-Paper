@@ -114,6 +114,28 @@ def variance_decomposition(df: pd.DataFrame, value: str, random_effects,
     return out
 
 
+# Direction convention for every trait: HIGH = left / libertarian / progressive.
+# The instruments score left in opposite directions (8Values equality, peace, liberty, progress and
+# SapplyValues "prog" are high for the left; Political Compass economic and social are negative for the
+# left and libertarian, SapplyValues "right" and "auth" are positive for the right and authoritarian,
+# and Pew's ordinal position runs from 1 = most left). A variance-components model with one shared
+# model effect, and any correlation across instruments, is only meaningful once the traits point the
+# same way, so this is applied before every cross-instrument estimate. 8Values peace has no
+# left/right polarity and is left as scored.
+FLIPPED_TRAITS = (
+    "political_compass:economic", "political_compass:social",
+    "sapplyvalues:right", "sapplyvalues:auth",
+    "pew_typology:position",
+)
+
+
+def orient(df: pd.DataFrame, value: str = "value", trait: str = "trait") -> pd.DataFrame:
+    """Return a copy with the FLIPPED_TRAITS sign-reversed so that high means left/libertarian/progressive."""
+    d = df.copy()
+    d.loc[d[trait].isin(FLIPPED_TRAITS), value] = -d.loc[d[trait].isin(FLIPPED_TRAITS), value]
+    return d
+
+
 def _safe(name: str) -> str:
     return "vc_" + name.replace(":", "_x_").replace(".", "_")
 
