@@ -48,5 +48,15 @@ further left, libertarian or progressive before any cross-instrument estimate. R
 
 Effect on the headline numbers: transferable share 0.0% -> 17.2% (two instruments) and 0.0% -> 2.0% (four); mean convergent
 correlation -0.26 -> +0.26. Within-axis shares, partial eta-squared values, trial-noise shares and item-level results are
-unchanged. The other steps of `run_all.sh` were not rerun, and the full script was not rerun end to end in a clean copy after
-these changes.
+unchanged.
+
+## Clean end-to-end rerun (2026-11-15)
+
+`run_all.sh` was run from start to finish in a fresh `git clone` of the repository (Python 3.14, current library versions,
+`NSIM=200`, default 1,000 bootstrap resamples) and exited with status 0. The test suite passed (137 passed, 2 skipped).
+Every file in `results/paper/` (all quoted numbers and tables) was reproduced identically. The rerun also showed that
+`data/collection_summary.md` had not been regenerated since SapplyValues was added, that the temperature-sweep intervals
+had been computed with 500 rather than 1,000 resamples, and that two messages in `results/w2/w2_results.json` held an
+absolute local path. All three were corrected; the appendix temperature table now carries the 1,000-resample intervals
+(point estimates unchanged). `make_result_figures.py` (appendix Figures 3-5) was added to `run_all.sh`. The remaining
+differences from the committed files are floating-point noise in the 12th decimal and PDF metadata.

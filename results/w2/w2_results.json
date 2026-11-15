@@ -5,10 +5,10 @@
   },
   "task_2_1_issuebench": {
     "available": false,
-    "reason": "no generations in /Users/sachinletchumanan/Desktop/Research/Research-Code/AI_Political_Bias/data/issuebench/generations"
+    "reason": "no generations in data/issuebench/generations"
   },
   "task_2_2_ballot": {
     "available": false,
-    "reason": "no votes in /Users/sachinletchumanan/Desktop/Research/Research-Code/AI_Political_Bias/data/ballot/votes"
+    "reason": "no votes in data/ballot/votes"
   }
 }

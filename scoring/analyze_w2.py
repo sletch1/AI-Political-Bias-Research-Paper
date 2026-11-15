@@ -128,7 +128,7 @@ def judge_validation() -> dict:
 
 def issuebench_arm(gens: pd.DataFrame, questionnaire: pd.DataFrame) -> dict:
     if gens.empty:
-        return {"available": False, "reason": f"no generations in {GEN_DIR}"}
+        return {"available": False, "reason": f"no generations in {GEN_DIR.relative_to(REPO) if GEN_DIR.is_relative_to(REPO) else GEN_DIR.name}"}
 
     source = "unknown"
     manifest = ISSUEBENCH_DIR / "prompt_set.json"
@@ -196,7 +196,7 @@ def ballot_arm(questionnaire: pd.DataFrame) -> dict:
     votes_dir = BALLOT_DIR / "votes"
     csv_path = BALLOT_DIR / "propositions.csv"
     if not votes_dir.exists() or not any(votes_dir.glob("*.json")):
-        return {"available": False, "reason": f"no votes in {votes_dir}"}
+        return {"available": False, "reason": f"no votes in {votes_dir.relative_to(REPO) if votes_dir.is_relative_to(REPO) else votes_dir.name}"}
     if not csv_path.exists():
         return {"available": False, "reason": f"{csv_path} not found"}
 

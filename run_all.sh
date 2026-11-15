@@ -27,4 +27,5 @@ $PY analyze_known_groups.py --n-boot 5000              # known-groups positive c
 $PY simulate_recovery.py --reps "${NSIM:-200}"        # recovery of a known transferable share on the real design
 $PY make_paper_numbers.py                            # every quoted number and table -> results/paper/
 $PY make_w4_figures.py                               # appendix figures and LaTeX tables in results/w4
+$PY make_result_figures.py                           # appendix Figures 3-5 (positions, 8Values dot plot, ISS distribution)
 $PY make_figures.py                                  # vector PDF + TIFF figures
