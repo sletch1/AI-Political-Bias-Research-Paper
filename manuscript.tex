@@ -192,7 +192,7 @@ Convergent coefficients, the same construct on both instruments, average $r=\Con
 \ConvCI); discriminant coefficients, different constructs on one instrument, average $r=\DiscMean$ ($SE=\DiscSE$).
 The Campbell--Fiske criterion requires the first to exceed the second; it is lower by \DiffAbs{} ($SE=\DiffSE$, 95\% CI
 \DiffCI). The two construct pairs differ. The social scales converge ($r=\ConvSoc$, $SE=\ConvSocSE$); the economic scales
-do not ($r=\ConvEcon$, $SE=\ConvEconSE$). Averaged, the criterion fails; the social pair converges and the economic pair does not, and the economic estimate is too imprecise to rule out a correlation near 0.45. The estimate rests on two construct pairs and 19 models.
+do not ($r=\ConvEcon$, $SE=\ConvEconSE$). Averaged, the criterion fails; the social pair converges and the economic pair does not, and the economic estimate is too imprecise to rule out a correlation near 0.45 (corrected for unreliability, $r=\EconCorr$, 95\% CI \EconCorrCI). Unreliability is not the explanation: a model's mean over 60 repetitions has reliability \RelMin\ on every axis, so correcting the correlations for attenuation leaves the mean convergent coefficient at $\ConvMeanCorr$ and the difference at $\DiffCorr$. The estimate rests on two construct pairs and 19 models.
 
 \begin{table}[H]
 \centering
@@ -224,7 +224,7 @@ the instrument-specific share ranges from \LoioMImin\% to \LoioMImax\% and the a
 to \LoioMAmax\%: the data show that little transfers across questionnaires more firmly than they apportion the rest
 between instrument and axis. I therefore claim that a model's position depends on instrument and axis jointly. Two axes have no settled left--right polarity (8Values peace,
 SapplyValues authority); reversing either or both puts the four-instrument transferable share between \OrientFourMin\%
-and \OrientFourMax\%, and reversing 8Values peace puts the two-instrument share at \OrientTwoMax\% rather than \NTwoM\%, because that reversal moves variance from the instrument term to the axis term (Online Appendix). A
+and \OrientFourMax\%, and reversing 8Values peace puts the two-instrument share at \OrientTwoMax\% rather than \NTwoM\%, because that reversal moves variance from the instrument term to the axis term (Online Appendix). An independent refit in R (\texttt{lme4}) reproduces the shares, and likelihood-profile and parametric-bootstrap intervals, which suit a variance at the boundary, also reach zero: the transferable share is \NTwoMr\% [0, 39] with two instruments and \NFourMr\% [0, 13] with four (Online Appendix). A
 re-administration of 8Values at temperatures 0 and 1.0 to eight models (20 trials each) finds trial noise rising from
 24\% to 31\% (0.7) to 47\% of variance while model rankings stay stable (mean Spearman 0.88--0.92): the noise share is
 conditional on temperature. A second and third language-model judge reproduce the open-ended arm's scores closely

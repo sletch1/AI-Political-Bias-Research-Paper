@@ -1,0 +1,35 @@
+Warning message:
+package ‘lme4’ was built under R version 4.6.1 
+
+== two-instrument panel (n=6840, 19 models) ==
+REML shares (lme4): model 17.2%  model x instrument 27.7%  model x axis 21.1%  noise 34.0%   singular=FALSE
+Likelihood-profile 95% intervals for the standard deviations (z-scale):
+                     2.5 % 97.5 %
+sd_(Intercept)|mt    0.396  0.550
+sd_(Intercept)|mi    0.346  0.808
+sd_(Intercept)|model 0.000  0.719
+sigma                0.578  0.598
+Parametric-bootstrap (1000 sims) 95% percentile intervals for shares, %:
+  model               17.2  [  0.0,  38.9]
+  model x instrument  27.7  [  9.4,  47.4]
+  model x axis        21.1  [ 14.2,  30.9]
+  noise               34.0  [ 26.2,  43.9]
+  share of bootstrap fits with model share < 0.5%: 7.6%
+
+== four-instrument panel (n=8640, 19 models) ==
+REML shares (lme4): model 2.0%  model x instrument 31.7%  model x axis 31.3%  noise 34.9%   singular=FALSE
+Likelihood-profile 95% intervals for the standard deviations (z-scale):
+                     2.5 % 97.5 %
+sd_(Intercept)|mt    0.490  0.639
+sd_(Intercept)|mi    0.405  0.722
+sd_(Intercept)|model 0.000  0.419
+sigma                0.579  0.597
+Parametric-bootstrap (1000 sims) 95% percentile intervals for shares, %:
+  model                2.0  [  0.0,  12.6]
+  model x instrument  31.7  [ 16.9,  43.3]
+  model x axis        31.3  [ 23.5,  40.3]
+  noise               34.9  [ 29.6,  41.2]
+  share of bootstrap fits with model share < 0.5%: 42.9%
+Warning messages:
+1: 'oldNames' is deprecated. Please use 'signames' instead. 
+2: 'oldNames' is deprecated. Please use 'signames' instead. 

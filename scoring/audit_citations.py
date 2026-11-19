@@ -11,7 +11,10 @@ from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-UA = {"User-Agent": "citation-audit (mailto:sachin.letchumanan@gmail.com)"}
+import os
+# OpenAlex asks polite clients for a contact address; set CONTACT_EMAIL in the environment to supply one.
+_contact = os.environ.get("CONTACT_EMAIL")
+UA = {"User-Agent": "citation-audit" + (f" (mailto:{_contact})" if _contact else "")}
 
 
 def get(url):

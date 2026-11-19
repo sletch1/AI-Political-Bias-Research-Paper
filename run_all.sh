@@ -25,6 +25,10 @@ $PY validate_judge_agreement.py                      # inter-judge agreement fro
 $PY audit_citations.py || echo "citation audit skipped (needs network)"
 $PY analyze_known_groups.py --n-boot 5000              # known-groups positive control (asker-identity data)
 $PY simulate_recovery.py --reps "${NSIM:-200}"        # recovery of a known transferable share on the real design
+$PY analyze_reliability_corrected.py 2000             # reliability-corrected convergent correlations
+if command -v Rscript >/dev/null 2>&1 && Rscript -e 'quit(status = !requireNamespace("lme4", quietly = TRUE))' >/dev/null 2>&1; then
+  $PY export_panels_for_r.py && Rscript crosscheck_lme4.R "${NSIM_LME4:-1000}" > ../results/lme4_check/lme4_check_1000.log   # independent lme4 refit (optional; needs R and lme4)
+else echo "lme4 cross-check skipped (needs R with lme4)"; fi
 $PY make_paper_numbers.py                            # every quoted number and table -> results/paper/
 $PY make_w4_figures.py                               # appendix figures and LaTeX tables in results/w4
 $PY make_result_figures.py                           # appendix Figures 3-5 (positions, 8Values dot plot, ISS distribution)

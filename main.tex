@@ -151,7 +151,7 @@ OpenRouter identifier & Provider prefix & Availability \\
 
 Test selection required instruments that generate quantifiable results, so
 that bias magnitude and cross-model comparisons could be made objectively
-rather than qualitatively. We selected the Political Compass and 8Values
+rather than qualitatively. I selected the Political Compass and 8Values
 \citep{politicalcompass_nd, values8_2019} for their clear, structured question
 formats. Each test consists of a series of statements, with users asked to
 indicate their agreement on a scale from ``Strongly Agree'' to ``Strongly
@@ -291,7 +291,7 @@ already-small standard deviation by an even smaller range inflates the
 relative measure. Section~\ref{si:consistency} reports where this arises and
 why ISS is not used as the article's measure of dispersion.
 
-\textit{Terminology note.} We use ``response variability'' rather than
+\textit{Terminology note.} I use ``response variability'' rather than
 ``model drift'' throughout, reserving the latter for its standard meaning in
 the machine-learning literature: a deployed model's behavior changing over
 \emph{calendar time} as a provider updates it. What ISS measures is
@@ -403,7 +403,7 @@ model ever rated its own output.
 \subsection{Measuring the Remaining Measurement Factors}
 \label{si:remaining-factors-methods}
 
-The decomposition in the article estimates one measurement stratum, the dependence of a model's position on the instrument and axis. We separately collected and analysed
+The decomposition in the article estimates one measurement stratum, the dependence of a model's position on the instrument and axis. I separately collected and analysed
 three further strata identified in the literature but not estimated by that
 design: accommodation to the inferred asker, instrument contamination, and
 response-format sensitivity. All three used 18 of the 19 models from the
@@ -484,10 +484,10 @@ its clustering procedure (weighted clustering around medoids) but does not
 publish the medoids, variable weights, or standardization constants needed
 to classify a new respondent independently of Pew's own systems;
 reimplementing an approximate classifier from the general method
-description was therefore not possible, so, as with Political Compass, we
+description was therefore not possible, so, as with Political Compass, I
 drove the live 24-item public quiz (\texttt{scoring/score\_pew\_typology.py})
 with each model's answers and read off the classification Pew's own site
-computes, rather than a score we derived ourselves. Item and option text (24
+computes, rather than a score I derived myself. Item and option text (24
 items across 21 navigation screens, 2--5 options each) was extracted
 directly from the live quiz and cross-checked against its own
 results-review page, which restates every item in full, disambiguated form.
@@ -726,7 +726,7 @@ standard deviation of the no-asker condition.}
 \input{results/paper/tab_known_groups.tex}
 \end{table}
 
-\paragraph{Temperature sensitivity.} The main design used temperature 0.7 only. We
+\paragraph{Temperature sensitivity.} The main design used temperature 0.7 only. I
 re-administered 8Values at temperatures 0 and 1.0 to eight inexpensive models spanning
 eight providers (20 trials per model and temperature,
 \texttt{scoring/collect\_temperature.py}, collected November 2026, 320
@@ -762,7 +762,7 @@ Temperature & Administrations & Trial noise, \% [95\% CI] & Within-axis model sh
 \paragraph{What is not tested.} The prompt-robustness arm varies the wrapper on five models only.
 
 \paragraph{Judge agreement.} The open-ended arm's 120 passages were scored by one language-model judge
-(\texttt{openai/gpt-5-mini}). Human ratings were not collected. As a partial check we re-scored all 120 stored
+(\texttt{openai/gpt-5-mini}). Human ratings were not collected. As a partial check I re-scored all 120 stored
 passages with two judges from other model families (\texttt{anthropic/claude-sonnet-4.5},
 \texttt{x-ai/grok-4.20}; \texttt{scoring/validate\_judge\_agreement.py}, November 2026, API cost \$0.26). On the
 $-10$ to $10$ scale the original judge's scores correlate with the two re-judges at Spearman $\rho=0.92$ (95\% CI
@@ -772,10 +772,38 @@ judges is $0.91$ ([0.82, 0.97]; bootstrap over passages). This shows the scores 
 it is agreement among language models, not validation against human raters, and the free-text elicitation judge in the
 response-format design (\texttt{openai/gpt-4o-mini}) was not re-checked.
 
+\subsection{Independent re-implementation and boundary-robust intervals}
+\label{si:lme4}
+Because the model had already been wrong once (the direction alignment), the nested model was refitted independently in R with
+\texttt{lme4} (REML, \texttt{y $\sim$ 1 + (1|model) + (1|model:instrument) + (1|model:trait)}, on the same aligned, within-trait
+z-scored data; \texttt{scoring/crosscheck\_lme4.R}). The variance shares agree with the Python (\texttt{statsmodels}) fit: with two
+instruments $17.2$, $27.7$, $21.1$ and $34.0\%$ for model, model $\times$ instrument, model $\times$ axis and noise (identical to one
+decimal), and with four instruments $2.0$, $31.7$, $31.3$ and $34.9\%$ ($31.8\%$ for model $\times$ instrument in the Python fit).
+Neither fit is singular. The percentile cluster bootstrap in the article is known to behave poorly for a variance that sits at zero,
+so two boundary-robust intervals are reported. Likelihood-profile intervals for the standard deviation of the model effect (on the
+z-scale) are $[0,\,0.72]$ with two instruments and $[0,\,0.42]$ with four, so the profile interval also reaches zero. A parametric
+bootstrap (1{,}000 simulated data sets from the fitted model, refitting each) gives $17.2\%$ [$0.0$, $38.9$] for the transferable
+share with two instruments, with $7.6\%$ of refits at the boundary, and $2.0\%$ [$0.0$, $12.6$] with four, with $42.9\%$ at the boundary;
+the other three shares have intervals [$9.4$, $47.4$] and [$16.9$, $43.3$] (model $\times$ instrument), [$14.2$, $30.9$] and [$23.5$, $40.3$]
+(model $\times$ axis) and [$26.2$, $43.9$] and [$29.6$, $41.2$] (noise). These intervals match the cluster-bootstrap intervals of the article
+for two instruments and are narrower at the top for four, so the article's wider intervals are the conservative ones; neither
+excludes zero.
+
+\subsection{Reliability-corrected correlations}
+\label{si:reliability}
+A low convergent correlation could reflect unreliable model means rather than disagreement between instruments. The reliability of a
+model's mean over its 60 repetitions, estimated as $\mathrm{ICC}(k)$ from a one-way analysis of variance over models, is
+$0.99$ on every one of the four Political Compass and 8Values axes used in the multitrait-multimethod matrix (split-half correlations
+of model means: $0.985$--$0.989$). Disattenuating each correlation by $r/\sqrt{\mathrm{rel}_x\,\mathrm{rel}_y}$, with the
+reliabilities recomputed in each bootstrap resample over models, leaves the results unchanged: the mean convergent coefficient is
+$\ConvMeanCorr$ (uncorrected $\ConvMean$), the difference from the discriminant mean is $\DiffCorr$ (95\% CI $[-0.56$, $-0.00]$), the economic pair
+is $\EconCorr$ (95\% CI \EconCorrCI) and the social pair $0.51$. Instrument disagreement, not trial noise, is what the multitrait-multimethod
+matrix shows (\texttt{scoring/analyze\_reliability\_corrected.py}).
+
 \section{Citation Audit}
 \label{si:citations}
 
-We audited the 39 references of the article and this appendix using institutional information only: OpenAlex
+I audited the 39 references of the article and this appendix using institutional information only: OpenAlex
 affiliations reported for the first and last author of each work (\texttt{scoring/audit\_citations.py}). No gender,
 race or ethnicity was inferred from names. Affiliation data were available for 31 references. Of the 25 with a recorded
 first-author affiliation, 11 were at institutions in the United States and 14 elsewhere (United Kingdom 4, the
@@ -789,7 +817,7 @@ coarse proxy for geographic diversity and not for any individual's identity.
 \label{si:scope}
 
 The finding that language models lean left of centre is real in the sense
-that it reproduces: we obtain it here on 19 models and two instruments, as
+that it reproduces: I obtain it here on 19 models and two instruments, as
 others have obtained it elsewhere. What the article adds is a denominator.
 When the measured quantity is decomposed in the nested model, the part of a model's position that depends on the instrument and axis (\NTwoApparatus\% of variance in the two-instrument panel, \NFourApparatus\% in the four-instrument panel) is larger than the estimated part that carries across instruments (\NTwoM\%, 95\% CI \NTwoMci, and \NFourM\% \NFourMci; both intervals include zero), and simple repetition of the same measurement (\NTwoEr\%) contributes more than that point estimate. The lean survives, but most of the variation in the \emph{magnitude} of a reported lean is not a property of the model that carries beyond the instrument used.
 
@@ -797,7 +825,7 @@ That distinction matters because the literature's quantitative claims are
 magnitude claims. Statements that one model is more partisan than another,
 that a provider's alignment procedure shifts a model's politics by some
 amount, or that lean has grown or shrunk across model generations, all
-require that scores be comparable across studies. Our multi-trait
+require that scores be comparable across studies. My multi-trait
 multi-method result says they mostly are not: across the same models the two
 most widely used instruments converge on the social construct
 ($r=\ConvSoc$) but not on the economic one ($r=\ConvEcon$), and the mean
@@ -807,8 +835,8 @@ Pooling or contrasting scores obtained with different instruments is
 therefore not a conservative approximation; on this evidence it is not a safe
 operation.
 
-We want to be precise about the scope of this claim, because it is easy to
-overstate. We are not arguing that political-bias audits are uninformative,
+I want to be precise about the scope of this claim, because it is easy to
+overstate. I am not arguing that political-bias audits are uninformative,
 nor that the models are politically neutral, nor that any particular
 published paper is wrong. Within a single study using a single instrument,
 model identity is clearly measurable and accounts for roughly two-thirds of
@@ -828,14 +856,14 @@ finds the LLM's synthetic responses show systematically \emph{less}
 variance than the human responses they are meant to approximate, that
 minor prompt-wording changes shift the resulting distribution, and that the
 same prompt produces significantly different results three months apart
-\citep{bisbee2024}. Our finding is the mirror image at a different level:
+\citep{bisbee2024}. My finding is the mirror image at a different level:
 even holding the prompt, the model, and the calendar date fixed, trial-to-trial
 variance within a single administration exceeds the variance between
 models that carries across instruments. Both results caution against treating a single LLM output, or a
 small unexamined sample of them, as a valid measurement without first
 characterizing its error.
 
-Nor are we claiming that a questionnaire score predicts what a model would
+Nor am I claiming that a questionnaire score predicts what a model would
 do given a real decision. A dual-instrument study comparing an abstract
 voting-advice questionnaire against real referendum outcomes finds that the
 two disagree: models cluster near the political centre on concrete votes
@@ -850,12 +878,12 @@ behavioural-validity arm, checking whether questionnaire scores predict
 downstream behaviour on concrete tasks, belongs in follow-up work rather
 than in this budget.
 
-Our own earlier analysis is among the work this corrects. The stability
-metric we previously reported normalised dispersion by each sample's own
+My own earlier analysis is among the work this corrects. The stability
+metric I previously reported normalised dispersion by each sample's own
 range, which assigns one of the worst stability scores in the cohort to a
-model whose answers varied by six hundredths of a point. We report that
+model whose answers varied by six hundredths of a point. I report that
 here (Section~\ref{si:consistency}) rather than quietly replacing it,
-because the failure mode is not unique to us: any scale-free consistency
+because the failure mode is not unique to me: any scale-free consistency
 statistic that divides by observed spread will invert in the same way on
 tightly clustered responses, and several published consistency measures are
 constructed this way.
@@ -866,12 +894,12 @@ recognition rather than pure engagement with item content
 \citep{bianchi2026plasticity}. None of these three is folded into the
 pooled error budget, because each was collected as its own factorial
 against the unattributed, forced-choice baseline rather than crossed with
-the other two and with instrument simultaneously; a single design that crosses all four factors at once is the natural next step. We make no estimate here of how it would change the model share, and the separate designs cannot be added into a single budget.
+the other two and with instrument simultaneously; a single design that crosses all four factors at once is the natural next step. I make no estimate here of how it would change the model share, and the separate designs cannot be added into a single budget.
 
 \subsection*{A minimum reporting standard for political-bias audits}
 \label{si:box1}
 
-On the evidence above, we suggest that a political-bias audit of a language
+On the evidence above, I suggest that a political-bias audit of a language
 model should report the following alongside any score. None of these is
 expensive; together they make an estimate interpretable and comparable.
 
@@ -1177,7 +1205,7 @@ absolute dispersion at only $\rho=0.46$.}
 \section{Comparison Against a Human-Population Reference Point}
 \label{si:human-baseline}
 
-Beyond comparing models to each other, we tested each of the 114 model-axis
+Beyond comparing models to each other, I tested each of the 114 model-axis
 combinations (19 models $\times$ 6 axes) against that instrument's own
 neutral center-point with a one-sample $t$-test over the 60 trials (against 0
 for the two Political Compass axes and against 50 for the four 8Values
@@ -1260,7 +1288,7 @@ a firm conclusion either way.
 
 The published Political Compass and 8Values scoring keys treat every item
 as equally informative and cannot separate a model declining to engage from
-a model holding a genuinely moderate position \citep{wachter2025irt}. We
+a model holding a genuinely moderate position \citep{wachter2025irt}. I
 refit a graded-response IRT model separately on each of the six axes (the
 four 8Values axes and the two Political Compass axes), using every
 item-level response in the baseline dataset (19 models $\times$ 60 trials),
@@ -1285,15 +1313,15 @@ other five axes rather than a general indictment of the scoring approach.
 Between 4 and 12 items (out of 11 to 50 per axis) carry half of each axis's
 total discrimination, and the top decile of items by discrimination
 carries 24--33\% of it. A small, identifiable subset of items is doing most
-of the work of separating models on every axis we fit, on both instruments.
+of the work of separating models on every axis I fit, on both instruments.
 
 \textbf{Neutral-response rates vary roughly six-fold across models on
 8Values} (9\% to 52\% of items answered at the scale midpoint), which is the
 avoidance behaviour \citet{wachter2025irt} predict: at least part of the
 apparent centrism in the most avoidant models is a refusal to commit to
 either pole rather than a moderate position, and it is not evenly
-distributed across the cohort. We do not have a validated way to convert a
-neutral-rate estimate into a bias correction for the published score, so we
+distributed across the cohort. I do not have a validated way to convert a
+neutral-rate estimate into a bias correction for the published score, so I
 report it as a per-model caveat rather than an adjustment.
 
 \begin{table}[H]
@@ -1399,7 +1427,7 @@ it showed which scale is the odd one out on the economic construct.
 
 A fourth instrument, Pew Research Center's 2026 Political Typology, gives
 an authoritative check of a different kind (Section~\ref{si:remaining-factors-methods}):
-rather than scoring an axis ourselves, we drove the live 24-item quiz with
+rather than scoring an axis myself, I drove the live 24-item quiz with
 each model's answers and read off the classification Pew's own site
 computes, since Pew's clustering weights are not published. Sixteen of 18
 models' modal classification falls left of centre (one of the four
