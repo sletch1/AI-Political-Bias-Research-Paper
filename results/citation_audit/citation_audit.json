@@ -1,22 +1,14 @@
 {
-  "n_references": 39,
-  "n_with_institution_data": 31,
+  "n_references": 42,
+  "n_with_institution_data": 34,
   "first_author_country_counts": [
     [
       "US",
-      11
+      14
     ],
     [
       "GB",
       4
-    ],
-    [
-      "NL",
-      2
-    ],
-    [
-      "DE",
-      1
     ],
     [
       "ES",
@@ -43,30 +35,34 @@
       1
     ],
     [
+      "NL",
+      1
+    ],
+    [
       "AR",
       1
     ],
     [
       "SG",
       1
+    ],
+    [
+      "DE",
+      1
     ]
   ],
   "last_author_country_counts": [
     [
       "US",
-      13
+      16
     ],
     [
       "GB",
-      4
-    ],
-    [
-      "NL",
-      2
+      3
     ],
     [
       "DE",
-      1
+      2
     ],
     [
       "ES",
@@ -83,32 +79,36 @@
     [
       "NZ",
       1
+    ],
+    [
+      "NL",
+      1
     ]
   ],
   "first_author_non_US": [
-    14,
-    25
+    13,
+    27
   ],
   "last_author_non_US": [
     9,
-    22
+    25
   ],
   "type_counts": [
     [
       "article",
-      19
+      20
     ],
     [
       "misc",
-      8
+      7
+    ],
+    [
+      "inproceedings",
+      7
     ],
     [
       "unpublished",
       5
-    ],
-    [
-      "inproceedings",
-      4
     ],
     [
       "book",
@@ -125,19 +125,6 @@
         "GB"
       ],
       "last_author_countries": [],
-      "n_authors": 3
-    },
-    {
-      "key": "hartmann2023",
-      "type": "misc",
-      "year": "2023",
-      "found": true,
-      "first_author_countries": [
-        "DE"
-      ],
-      "last_author_countries": [
-        "DE"
-      ],
       "n_authors": 3
     },
     {
@@ -158,20 +145,6 @@
       "type": "misc",
       "year": "2023",
       "found": false
-    },
-    {
-      "key": "miotto2022",
-      "type": "inproceedings",
-      "year": "2022",
-      "found": true,
-      "first_author_countries": [
-        "NL"
-      ],
-      "last_author_countries": [
-        "GB",
-        "NL"
-      ],
-      "n_authors": 3
     },
     {
       "key": "serapiogarcia2023",
@@ -378,7 +351,7 @@
     },
     {
       "key": "wachter2025irt",
-      "type": "unpublished",
+      "type": "inproceedings",
       "year": "2025",
       "found": false
     },
@@ -539,6 +512,69 @@
         "US"
       ],
       "n_authors": 2
+    },
+    {
+      "key": "ceron2024brittleness",
+      "type": "article",
+      "year": "2024",
+      "found": true,
+      "first_author_countries": [
+        "DE"
+      ],
+      "last_author_countries": [
+        "DE"
+      ],
+      "n_authors": 5
+    },
+    {
+      "key": "faulborn2025littleleft",
+      "type": "inproceedings",
+      "year": "2025",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [
+        "DE"
+      ],
+      "n_authors": 5
+    },
+    {
+      "key": "messing2026hidden",
+      "type": "unpublished",
+      "year": "2026",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 1
+    },
+    {
+      "key": "santurkar2023",
+      "type": "inproceedings",
+      "year": "2023",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 6
+    },
+    {
+      "key": "feng2023trails",
+      "type": "inproceedings",
+      "year": "2023",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 4
     }
   ],
   "note": "Institutional affiliation only (OpenAlex); no gender, race or ethnicity inferred from names."

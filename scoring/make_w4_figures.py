@@ -2,7 +2,7 @@
 
 Four figures plus two LaTeX tables, all from data already in the repository:
 
-  fig6_error_budget.png   updates/05_writing_and_submission.md Figure 1 -- "the paper's centrepiece".
+  fig6_error_budget.png   Error budget by axis, the paper's centrepiece figure.
                           Stacked variance decomposition per axis: how much of a
                           measured political position is the model, and how much
                           is the measurement. Built to take further strata
