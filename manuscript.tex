@@ -60,21 +60,20 @@ multitrait-multimethod; variance components; algorithmic fidelity
 
 \section{Introduction}
 
-Large language models mediate political information for hundreds of millions of people, and biased models can
-shift users' views \citep{fisher2026biasedai} and persuade \citep{hackenburg2025levers}. A large literature therefore
+Large language models mediate political information for hundreds of millions of people, so their political lean matters. A large literature therefore
 audits their political lean \citep{santurkar2023, feng2023trails}, usually by administering a questionnaire such as the
 Political Compass and reading off a score \citep{rozado2024, motoki2024, buyl2026}. Each assumption behind that practice has been
-challenged separately: models shift their political answers toward the stance a user expresses \citep{kaur2025echoes}; forced-choice
-answers differ from free responses \citep{rottger2024}; and paraphrasing the items changes the answers
-\citep{ceron2024brittleness}. Some work
+challenged separately: models shift their political answers toward the stance a user expresses \citep{sharma2024sycophancy, kaur2025echoes};
+forced-choice answers differ from free responses \citep{rottger2024}; option order and labels change survey answers
+\citep{dominguezolmedo2024}; and paraphrasing the items changes the answers \citep{ceron2024brittleness}. Some work
 proposes better-grounded measures \citep{faulborn2025littleleft, wachter2025irt}. To my knowledge no study has weighed these
 against one another, so there is no estimate of how much of a reported score is the model and how much is the apparatus.
 
-This is a measurement-error problem of the kind political methodology has long treated. Whether two measures of one
+This is a measurement-error problem of the kind political methodology has long treated: survey answers are themselves unstable draws \citep{achen1975, zaller1992}, and multiple measures reduce the error \citep{ansolabehere2008}. Whether two measures of one
 construct converge while measures of different constructs stay apart \citep{campbell1959}, whether a score's variance
 can be split between the object and the conditions of measurement \citep{cronbach1972, brennan2001}, and whether a
-concept is validly operationalized \citep{adcock2001} decide when scores can be pooled, in text-as-data \citep{grimmer2013, benoit2026, ornstein2025}, and in recent work that
-treats a language model's output as a measurement \citep{lemens2025asking, bisbee2024, alvarez2025}. A political-bias
+concept is validly operationalized \citep{adcock2001} decide when scores can be pooled, in text-as-data \citep{grimmer2013, benoit2026}, and in recent work that
+treats a language model's output as a measurement \citep{lemens2025asking, bisbee2024}. A political-bias
 audit is such a measurement, and the audit literature has not applied these tests to it. To my knowledge no audit administers several instruments repeatedly to many models, so none can separate trial noise from
 the instrument term.
 
@@ -124,7 +123,7 @@ k\in\{M,\,MI,\,MA,\,\varepsilon\}.
 \end{equation}
 Components are estimated by REML. Intervals are 95\% percentile intervals from a cluster bootstrap over models (1,000
 resamples, a repeated model counted as a distinct unit) and, because models from one provider are not independent
-draws, over providers. Convergent and discriminant validity use the multitrait-multimethod matrix
+draws, over providers \citep{cameron2008}. Convergent and discriminant validity use the multitrait-multimethod matrix
 \citep{campbell1959}; each Pearson $r$ across models carries $SE(r)=\sqrt{(1-r^2)/(n-2)}$ with $n=19$, and means of
 correlations, their difference and every Spearman $\rho$ carry a bootstrap standard error over models (5,000
 resamples). Two checks bound the estimate. A simulation keeps the real design, plants a known transferable share and
@@ -172,7 +171,7 @@ Two-instrument panel: 2,280 administrations, 19 models (July 2026); four-instrum
 \end{table}
 
 The lean itself is not in question. All 114 model-axis cells differ from their instrument's midpoint (one-sample
-$t$-tests, Benjamini--Hochberg false discovery rate 5\%), with a median standardized effect of 11.9 (95\% CI
+$t$-tests, Benjamini--Hochberg false discovery rate 5\% \citep{benjamini1995}), with a median standardized effect of 11.9 (95\% CI
 [8.8, 16.7]). The midpoint is a convention, not a population estimate \citep{gallup2024values}.
 
 \textbf{Convergent validity.} If instrument choice moves scores this much, one defence is that both instruments are
@@ -213,7 +212,7 @@ the instrument-specific share ranges from \LoioMImin\% to \LoioMImax\% and the a
 to \LoioMAmax\%: the data show that little transfers across questionnaires more firmly than they apportion the rest
 between instrument and axis, so I claim only that a position depends on both jointly. Two axes have no settled left--right polarity (8Values peace,
 SapplyValues authority); reversing either or both puts the four-instrument transferable share between \OrientFourMin\%
-and \OrientFourMax\%, and reversing 8Values peace puts the two-instrument share at \OrientTwoMax\% rather than \NTwoM\%, because that reversal moves variance from the instrument term to the axis term (Online Appendix). An independent \texttt{lme4} refit reproduces the shares, and profile and parametric-bootstrap intervals, which suit a variance at the boundary, also reach zero: the transferable share is \NTwoMr\% [0, 39] with two instruments and \NFourMr\% [0, 13] with four (Online Appendix). Trial noise
+and \OrientFourMax\%, and reversing 8Values peace puts the two-instrument share at \OrientTwoMax\% rather than \NTwoM\%, because that reversal moves variance from the instrument term to the axis term (Online Appendix). An independent \texttt{lme4} refit \citep{bates2015} reproduces the shares, and profile and parametric-bootstrap intervals, which suit a variance at the boundary, also reach zero: the transferable share is \NTwoMr\% [0, 39] with two instruments and \NFourMr\% [0, 13] with four (Online Appendix). Trial noise
 rises from 24\% to 47\% of variance between temperatures 0 and 1.0 while model rankings stay stable (mean Spearman
 0.88--0.92), so the noise share is conditional on temperature (Online Appendix).
 

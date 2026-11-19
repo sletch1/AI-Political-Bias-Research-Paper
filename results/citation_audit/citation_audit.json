@@ -1,14 +1,14 @@
 {
-  "n_references": 35,
-  "n_with_institution_data": 28,
+  "n_references": 39,
+  "n_with_institution_data": 32,
   "first_author_country_counts": [
     [
       "US",
-      11
+      12
     ],
     [
       "GB",
-      4
+      3
     ],
     [
       "ES",
@@ -37,16 +37,20 @@
     [
       "DE",
       1
+    ],
+    [
+      "IL",
+      1
     ]
   ],
   "last_author_country_counts": [
     [
       "US",
-      13
+      14
     ],
     [
       "GB",
-      3
+      2
     ],
     [
       "DE",
@@ -67,24 +71,32 @@
     [
       "NZ",
       1
+    ],
+    [
+      "IL",
+      1
+    ],
+    [
+      "CA",
+      1
     ]
   ],
   "first_author_non_US": [
     10,
-    21
+    22
   ],
   "last_author_non_US": [
-    8,
-    21
+    9,
+    23
   ],
   "type_counts": [
     [
       "article",
-      18
+      21
     ],
     [
       "inproceedings",
-      8
+      9
     ],
     [
       "misc",
@@ -297,30 +309,6 @@
       "found": false
     },
     {
-      "key": "fisher2026biasedai",
-      "type": "inproceedings",
-      "year": "2025",
-      "found": true,
-      "first_author_countries": [
-        "US"
-      ],
-      "last_author_countries": [],
-      "n_authors": 9
-    },
-    {
-      "key": "hackenburg2025levers",
-      "type": "article",
-      "year": "2025",
-      "found": true,
-      "first_author_countries": [
-        "GB"
-      ],
-      "last_author_countries": [
-        "GB"
-      ],
-      "n_authors": 10
-    },
-    {
       "key": "campbell1959",
       "type": "article",
       "year": "1959",
@@ -392,32 +380,6 @@
       "n_authors": 5
     },
     {
-      "key": "ornstein2025",
-      "type": "article",
-      "year": "2025",
-      "found": true,
-      "first_author_countries": [
-        "US"
-      ],
-      "last_author_countries": [
-        "US"
-      ],
-      "n_authors": 3
-    },
-    {
-      "key": "alvarez2025",
-      "type": "article",
-      "year": "2025",
-      "found": true,
-      "first_author_countries": [
-        "US"
-      ],
-      "last_author_countries": [
-        "US"
-      ],
-      "n_authors": 2
-    },
-    {
       "key": "ceron2024brittleness",
       "type": "article",
       "year": "2024",
@@ -475,6 +437,98 @@
       "first_author_countries": [],
       "last_author_countries": [],
       "n_authors": 1
+    },
+    {
+      "key": "benjamini1995",
+      "type": "article",
+      "year": "1995",
+      "found": true,
+      "first_author_countries": [
+        "IL"
+      ],
+      "last_author_countries": [
+        "IL"
+      ],
+      "n_authors": 2
+    },
+    {
+      "key": "bates2015",
+      "type": "article",
+      "year": "2015",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "CA"
+      ],
+      "n_authors": 4
+    },
+    {
+      "key": "cameron2008",
+      "type": "article",
+      "year": "2008",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 3
+    },
+    {
+      "key": "zaller1992",
+      "type": "article",
+      "year": "1992",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [],
+      "n_authors": 2
+    },
+    {
+      "key": "achen1975",
+      "type": "article",
+      "year": "1975",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 1
+    },
+    {
+      "key": "ansolabehere2008",
+      "type": "article",
+      "year": "2008",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [
+        "US"
+      ],
+      "n_authors": 3
+    },
+    {
+      "key": "sharma2024sycophancy",
+      "type": "inproceedings",
+      "year": "2024",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [],
+      "n_authors": 19
+    },
+    {
+      "key": "dominguezolmedo2024",
+      "type": "inproceedings",
+      "year": "2024",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [],
+      "n_authors": 3
     }
   ],
   "note": "Institutional affiliation only (OpenAlex); no gender, race or ethnicity inferred from names."
