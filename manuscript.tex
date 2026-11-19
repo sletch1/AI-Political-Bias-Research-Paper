@@ -61,13 +61,13 @@ multitrait-multimethod; variance components; algorithmic fidelity
 
 \section{Introduction}
 
-Large language models mediate political information for hundreds of millions of people, so their political lean matters. A large literature therefore
+Large language models mediate political information for hundreds of millions of people. A large literature therefore
 audits their political lean \citep{santurkar2023, feng2023trails}, usually by administering a questionnaire such as the
-Political Compass and reading off a score \citep{rozado2024, motoki2024, buyl2026}. Each assumption behind that practice has been
+Political Compass and reading off a score \citep{rozado2024, motoki2024, buyl2026, peng2026beyond}. Each assumption behind that practice has been
 challenged separately: models shift their political answers toward the stance a user expresses \citep{sharma2024sycophancy, kaur2025echoes};
 forced-choice answers differ from free responses \citep{rottger2024}; option order and labels change survey answers
 \citep{dominguezolmedo2024}; and paraphrasing the items changes the answers \citep{ceron2024brittleness}. Some work
-proposes better-grounded measures \citep{faulborn2025littleleft, wachter2025irt}. To my knowledge no study has weighed these
+proposes better-grounded measures \citep{faulborn2025littleleft, wachter2025irt, rottger2026issuebench}. To my knowledge no study has weighed these
 against one another, so there is no estimate of how much of a reported score is the model and how much is the apparatus.
 
 This is a measurement-error problem of the kind political methodology has long treated: survey answers are themselves unstable draws \citep{achen1975, zaller1992}, and multiple measures reduce the error \citep{ansolabehere2008}. Whether two measures of one
@@ -86,16 +86,14 @@ not carry from one instrument to another, and that an error budget should accomp
 
 \section{Design and methods}
 
-\textbf{Models and instruments.} Nineteen models from 11 providers (OpenAI, Anthropic, DeepSeek, Google, Meta,
-Mistral, Alibaba, xAI, Cohere, Amazon, NVIDIA), closed and open-weight, were administered the Political Compass
+\textbf{Models and instruments.} Nineteen closed and open-weight models from 11 providers were administered the Political Compass
 \citep{politicalcompass_nd} and 8Values \citep{values8_2019} 60 times each through one API gateway (2,280
 administrations, collected July 2026). SapplyValues and Pew Research Center's 2026 Political Typology were added for 18
 models (30 trials for SapplyValues, 10 for Pew), giving 3,000 administrations. Each call was a single user message with the full battery,
 no system prompt, temperature 0.7, a 4,000-token cap and default routing; the upstream host and call times were not
 logged. Because hosted models change and are withdrawn (one was removed between rounds), the archived raw trials, not
 a re-collection, are the replication object. Political Compass and Pew were scored by driving each site's live quiz
-and reading its own result; 8Values and SapplyValues by a lossless port of their open-source scoring. Model
-identifiers and dates are in the Online Appendix.
+and reading its own result; 8Values and SapplyValues by a lossless port of their open-source scoring.
 
 \textbf{Further factors.} Three further apparatus factors were measured in separate designs on 18 of the 19 models: asker
 identity (six preambles crossed with both instruments, 10 repetitions per cell, 2,160 administrations); instrument
@@ -136,15 +134,14 @@ whether the instruments can agree when there is a common signal.
 
 \textbf{The error budget.} Administered as the field administers them, one unattributed asker and 60 repetitions,
 both original instruments place all 19 models in the same quadrant: economically left and socially libertarian, and
-toward equality, peace, liberty and progress on 8Values. This reproduces the published finding. Its contents are
+toward equality, peace, liberty and progress on 8Values. Its contents are
 different (Figure~\ref{fig:budget}, Table~\ref{tab:budget}). With two instruments, model identity that transfers
 across instruments and axes accounts for \NTwoM\% of variance (95\% CI \NTwoMci). Model position specific to the
 instrument accounts for \NTwoMI\% (\NTwoMIci), position specific to the axis within the instrument for \NTwoMA\%
 (\NTwoMAci), and trial noise for \NTwoE\% (\NTwoEci). With four instruments the transferable share is \NFourM\%
 (\NFourMci). By the point estimates, between half and two-thirds of a score moves with the questionnaire, under a fifth carries across questionnaires, and noise alone exceeds the transferable part. The transferable share is also the
 least precisely estimated term: its interval reaches zero in both panels. A two-term specification that folds instrument into
-trait gives \OTwoM\% to model identity, but it cannot tell consistency across the axes of one instrument from transfer
-between instruments, and the nested estimate is the one I rely on. The simulation shows what the design can detect:
+trait gives \OTwoM\% to model identity but cannot separate consistency across axes from transfer between instruments. The simulation shows what the design can detect:
 with a true transferable share of 20\%, an estimate as low as the four-instrument one occurs in \SimFourTwentyBelowN{} of
 \SimReps{} runs, and with a true share of zero, one as high as the two-instrument estimate occurs in \SimTwoZeroAboveN{}
 of \SimReps{} (Online Appendix). A transferable share of 20\% or more is hard to reconcile with the four-instrument panel; a share of 5--10\% is
@@ -221,13 +218,11 @@ rises from 24\% to 47\% of variance between temperatures 0 and 1.0 while model r
 $\eta^2$ 0.77--0.84 across the six axes, mean 0.79, against 0.16--0.35, mean 0.23); accommodation is asymmetric, moving
 scores 2.9--6.7 times further for a conservative framing than a progressive one. Sense-inverting items yields a Contamination Index averaging 0.046 of the instrument's range (95\% CI
 [0.038, 0.055]); the memorisation probe finds 16.6\% verbatim and 20.6\% near-verbatim completions. Free-text versus forced-label
-elicitation explains more variance on average (0.39 against 0.23), though not on every axis: on 8Values equality model
-identity is larger (0.42 against 0.06). Each factor was its own factorial, not crossed with instrument, so these designs cannot be added into one budget.
+elicitation explains more variance on average (0.39 against 0.23), though not on every axis. Each factor was its own factorial, not crossed with instrument, so these designs cannot be added into one budget.
 
 \textbf{Item-level reliability.} Per item, 44.8\% of model--item cells are perfectly stable across all 60
-repetitions, and inconsistency is concentrated in a minority of contested items. Scale-free consistency statistics that divide by observed spread invert on tightly clustered
-responses, which is why I use a variance-components estimate. A graded-response item-response analysis shows that some apparent centrism is avoidance: the
-most neutral model answers 52\% of 8Values items at the midpoint against 9\% for the least.
+repetitions; inconsistency is concentrated in a minority of contested items. A graded-response analysis shows that some
+apparent centrism is avoidance: the most neutral model answers 52\% of 8Values items at the midpoint, against 9\% for the least.
 
 \section{Discussion}
 
@@ -239,7 +234,7 @@ a property of the model that carries beyond the instrument used. That matters be
 grown across generations) and these require scores comparable across studies; the two most widely used instruments converge on the social scale only. The failure is one of transportability, not of auditing: within a single instrument model identity is clearly measurable. A single output is not safe to treat as a measurement without characterizing how it fails \citep{bisbee2024}.
 
 I do not claim that a questionnaire score predicts behaviour; that is a behavioural-validity question this design does not test. The limits are
-real: English-language administrations on US-built instruments at one time point; 19 models from 11 providers are a small
+real: English-language administrations on US-built instruments at one time point, though bias varies with prompt language and model origin \citep{lim2026bias}; 19 models from 11 providers are a small
 sample; the main design used one temperature and one prompt wrapper; the direction alignment treats left, libertarian and
 progressive as one pole, a convention; and the language-model judges were not validated against humans.
 
@@ -250,8 +245,7 @@ decomposition across whatever was varied; the model version, route, date and sam
 archived; a contamination check; and item-level results. The same logic applies to any study that treats a language
 model's answers to a survey scale or coding scheme as a measure \citep{argyle2023, serapiogarcia2023}: the instrument
 is a random facet, one instrument confounds model identity with instrument-specific position, and repetition is
-required. Researchers who position texts with a model face the same choice of prompt wrapper and scoring rule, the validation
-stage \citet{lemens2025asking} advise readers not to skip.
+required.
 
 \textbf{Use of generative AI and replication.} AI assistance is disclosed on the title page; it generated no data. All raw trials,
 scoring adapters and analysis code reproduce every number reported here offline; the archive is cited on the title page.

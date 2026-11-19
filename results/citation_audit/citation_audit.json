@@ -1,14 +1,18 @@
 {
-  "n_references": 39,
-  "n_with_institution_data": 32,
+  "n_references": 42,
+  "n_with_institution_data": 35,
   "first_author_country_counts": [
     [
       "US",
-      12
+      13
     ],
     [
       "GB",
-      3
+      5
+    ],
+    [
+      "IT",
+      2
     ],
     [
       "ES",
@@ -16,10 +20,6 @@
     ],
     [
       "BE",
-      1
-    ],
-    [
-      "IT",
       1
     ],
     [
@@ -50,7 +50,11 @@
     ],
     [
       "GB",
-      2
+      3
+    ],
+    [
+      "IT",
+      3
     ],
     [
       "DE",
@@ -62,10 +66,6 @@
     ],
     [
       "BE",
-      1
-    ],
-    [
-      "IT",
       1
     ],
     [
@@ -82,21 +82,21 @@
     ]
   ],
   "first_author_non_US": [
-    10,
-    22
+    12,
+    25
   ],
   "last_author_non_US": [
-    9,
-    23
+    11,
+    25
   ],
   "type_counts": [
     [
       "article",
-      21
+      23
     ],
     [
       "inproceedings",
-      9
+      10
     ],
     [
       "misc",
@@ -529,6 +529,45 @@
       "first_author_countries": [],
       "last_author_countries": [],
       "n_authors": 3
+    },
+    {
+      "key": "rottger2026issuebench",
+      "type": "article",
+      "year": "2026",
+      "found": true,
+      "first_author_countries": [
+        "GB",
+        "IT"
+      ],
+      "last_author_countries": [
+        "IT"
+      ],
+      "n_authors": 7
+    },
+    {
+      "key": "lim2026bias",
+      "type": "inproceedings",
+      "year": "2026",
+      "found": true,
+      "first_author_countries": [
+        "GB"
+      ],
+      "last_author_countries": [
+        "GB",
+        "IT"
+      ],
+      "n_authors": 2
+    },
+    {
+      "key": "peng2026beyond",
+      "type": "article",
+      "year": "2026",
+      "found": true,
+      "first_author_countries": [
+        "US"
+      ],
+      "last_author_countries": [],
+      "n_authors": 7
     }
   ],
   "note": "Institutional affiliation only (OpenAlex); no gender, race or ethnicity inferred from names."
