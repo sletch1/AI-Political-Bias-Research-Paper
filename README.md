@@ -109,7 +109,6 @@ required for its current claims.
 | `manuscript.tex` / `manuscript.pdf` | The anonymized article (Research & Politics Research Article). |
 | `title_page.tex` | Title page, acknowledgments and Statements and Declarations. |
 | `main.tex` / `main.pdf` | The web appendix (standalone: author block on page 1; full methods, extended discussion, all supporting results). |
-| `cover_letter_research_and_politics.md` | Submission cover letter (generic AI statement). |
 | `references.bib` | Bibliography. |
 | `.zenodo.json` | Metadata for the GitHub→Zenodo archival DOI. |
 | `data/raw_trials/` | One JSON file per trial from the main run plus SapplyValues (filenames contain `sapplyvalues`): structured answers, score, exact API cost. |
