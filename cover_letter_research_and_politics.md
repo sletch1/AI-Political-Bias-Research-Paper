@@ -24,7 +24,7 @@ largely not comparable across studies. The article offers a minimum reporting st
 models as measurement instruments. It is short (about 3,700 words including references; one figure, two tables) and
 comes with an online appendix, and all data, scoring code and analysis scripts reproduce every number offline from the
 archived raw trials. I state plainly what the data do not show, including that the transferable share is imprecisely
-estimated and that instrument and axis effects are not cleanly separable.
+estimated (it is 7% rather than 17% on the two original instruments if one contested axis is reversed) and that instrument and axis effects are not cleanly separable.
 
 Declarations. The manuscript is not under review elsewhere and has not been published; a preprint may be posted and its
 DOI entered at submission. I have no competing interests. Writing and coding assistance from a commercial AI tool is

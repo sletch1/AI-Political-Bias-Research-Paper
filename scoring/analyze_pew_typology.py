@@ -1,5 +1,5 @@
 """Pew 2026 Political Typology analysis -- the fourth instrument
-(oct_fix.md F3; see docs/f3_instrument_terms_of_use.md).
+(the study plan F3; see docs/f3_instrument_terms_of_use.md).
 
 Unlike Political Compass / 8Values / SapplyValues, this instrument has no
 continuous per-axis score to decompose: each administration returns one of

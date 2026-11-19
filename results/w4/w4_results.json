@@ -2351,6 +2351,6 @@
         "cohort_spread_as_frac_of_reference": null
       }
     },
-    "caveat": "Denominator is the instrument's full range, not a party/human spread. Substitute reference_spread once a calibrated human distribution exists (updates/03_experiments.md Task 1.5, human-norm instrument) and the fractions will shrink, strengthening the claim."
+    "caveat": "Denominator is the instrument's full range, not a party/human spread. Substitute reference_spread once a calibrated human distribution exists (the study plan Task 1.5, human-norm instrument) and the fractions will shrink, strengthening the claim."
   }
 }

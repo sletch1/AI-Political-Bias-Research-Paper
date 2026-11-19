@@ -4,7 +4,7 @@ Replaces the manuscript's 5-model/4-paraphrase robustness check with a full
 factorial over response scale, item order, option order and elicitation mode
 (see format_design.py for the design and the scale mappings).
 
-Design (updates/03_experiments.md Task 1.3): 24 configurations x 19 models x 2 instruments x 5
+Design (the study plan Task 1.3): 24 configurations x 19 models x 2 instruments x 5
 trials = 4,560 administrations.
 
     export OPENROUTER_API_KEY=...

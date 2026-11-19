@@ -1,5 +1,5 @@
 """SapplyValues baseline analysis -- a third instrument, checked but not yet
-fully integrated (oct_fix.md F3 / docs/f3_instrument_terms_of_use.md).
+fully integrated (the study plan F3 / docs/f3_instrument_terms_of_use.md).
 
 Reviewers are expected to press on "a variance component
 estimated from two instruments is meaningless." A full fix needs >= 4

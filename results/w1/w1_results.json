@@ -63,7 +63,7 @@
       ],
       "worst_drift_as_frac_of_scale": 0.03230000000000018,
       "anchor_holds": true,
-      "note": "A drift above 5% of scale means the anchor cell no longer reproduces data/raw_trials/; investigate model version drift (updates/03_experiments.md Task 3.1 (drift)) before interpreting any condition effect."
+      "note": "A drift above 5% of scale means the anchor cell no longer reproduces data/raw_trials/; investigate model version drift (the study plan Task 3.1 (drift)) before interpreting any condition effect."
     },
     "per_axis": [
       {

@@ -1,6 +1,6 @@
 """Tests for the Task 1.3 response-format design and its scale mappings.
 
-updates/03_experiments.md Task 1.3 requires the mapping from non-native response scales
+The study plan Task 1.3 requires the mapping from non-native response scales
 back to each instrument's own scale to be documented *and unit-tested*. It is
 the part of the factorial most likely to be silently wrong: a bad mapping still
 produces numbers, and those numbers still correlate with something.
@@ -27,7 +27,7 @@ from score_8values import score_8values  # noqa: E402
 # the design
 # ---------------------------------------------------------------------------
 def test_full_factorial_is_24_cells():
-    # updates/03_experiments.md budgets 24 configs. 3 x 2 x 2 x 2 = 24: the "full" design and the
+    # The study plan budgets 24 configs. 3 x 2 x 2 x 2 = 24: the "full" design and the
     # plan's "fractional" design are the same size, which is why FULL is default.
     assert len(fd.full_factorial()) == 24
 
@@ -132,7 +132,7 @@ def test_unknown_option_order_rejected():
 
 
 # ---------------------------------------------------------------------------
-# scale mapping -- the part updates/03_experiments.md explicitly requires tested
+# scale mapping -- the part the study plan explicitly requires tested
 # ---------------------------------------------------------------------------
 def test_multipliers_are_monotone_and_span_the_full_range():
     for scale in fd.SCALES:

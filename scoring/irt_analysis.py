@@ -1,7 +1,7 @@
 """Workstream 1, Task 1.4 -- item-response-theory re-analysis of existing data.
 
 Zero API calls: this runs entirely on the 2,280 administrations already in
-data/raw_trials/. updates/03_experiments.md Task 1.4 covers writing it up. It is the highest value-per-dollar task in the
+data/raw_trials/. The study plan Task 1.4 covers writing it up. It is the highest value-per-dollar task in the
 plan, and it answers two distinct reviewer objections:
 
   * Wachter et al.: the published scoring treats every item as equally

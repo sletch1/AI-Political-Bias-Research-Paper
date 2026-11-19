@@ -7,7 +7,7 @@ reading Pew's own classification (`scoring/score_pew_typology.py`) rather than r
 unpublished clustering weights — see the "What actually happened" section below for what changed
 from the plan in this file's original text.
 
-`oct_fix.md` F3 requires the paper to use at least four instruments before it can be submitted, and names SapplyValues as the priority add (directly comparable to Sakhawat
+`the study plan` F3 requires the paper to use at least four instruments before it can be submitted, and names SapplyValues as the priority add (directly comparable to Sakhawat
 et al. 2026, who already use it), then a validated human-survey instrument with population norms
 (ANES or Pew) as the second. This is the "confirm terms of use" step from the F3 checklist, done
 before writing scoring adapters.
@@ -94,16 +94,14 @@ Pew as separate directional/convergence checks. Each instrument's axis is one mo
 within trait as before so the four incompatible scales (±10, 0–100, ±10, ordinal 1–9) don't dominate
 each other.
 
-The result is not a stronger version of the two-instrument finding; it is a different one. Pooled
-over all four instruments, model identity's variance share falls from 12.97% (Political Compass +
-8Values only) to **1.89%**. A per-instrument breakdown shows why: adding SapplyValues alone drops it
-to 0.49%, while adding Pew alone (a coarser, single-axis instrument) only drops it to 8.21% — so the
-collapse is driven by SapplyValues actively disagreeing with Political Compass on which models rank
-where (the ρ=−0.49 MTMM disagreement already reported), not by Pew's coarseness diluting the signal.
-Between-model spread and within-model trial noise are proportionally in line with the other
-instruments for SapplyValues too (ratio ≈1.9 for all three continuous instruments), so this is not a
-SapplyValues data-quality artefact — it is what "a variance component estimated from two instruments
-is meaningless" (the objection F3 exists to pre-empt) looks like quantitatively.
+The result is not a stronger version of the two-instrument finding; it is a different one. After every
+axis is oriented so that higher means further left (the paper's Methods; the earlier, unaligned estimates are
+superseded), the nested model puts the share of variance that is model identity transferring across instruments
+at 17.2% (95% CI [0, 40]) with Political Compass and 8Values only and at 2.0% ([0, 18]) with all four. Dropping
+any one instrument in turn leaves it between 0.0% and 8.6%, so no single instrument drives the result. Between-model
+spread and within-model trial noise are proportionally in line with the other instruments for SapplyValues too, so
+this is not a SapplyValues data-quality artefact. SapplyValues' economic axis orders models like 8Values equality
+(rho = +0.53) and unlike the Political Compass economic axis (rho = -0.49), the disagreement reported in the paper.
 See `manuscript.tex` and `main.tex`'s "Multi-Trait Multi-Method Matrix" section for how this
 is written up.
 

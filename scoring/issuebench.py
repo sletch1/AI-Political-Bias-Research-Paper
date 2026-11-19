@@ -1,4 +1,4 @@
-"""IssueBench access, with a documented fallback (updates/03_experiments.md Task 2.1, IssueBench risk).
+"""IssueBench access, with a documented fallback (the study plan Task 2.1, IssueBench risk).
 
 Rottger et al. (2025) released 2.49M prompts built from real user-interaction
 templates across 212 political issues. Using their benchmark rather than a
@@ -16,7 +16,7 @@ it, and it is by the author of that critique.
   3. the fallback below
 
 The fallback is *our own construction from the published template scheme*, not
-IssueBench. updates/03_experiments.md Task 2.1 (IssueBench risk) allows it explicitly; what it does not allow is calling
+IssueBench. The study plan Task 2.1 (IssueBench risk) allows it explicitly; what it does not allow is calling
 it IssueBench. Every prompt carries `source`, and analyze_w2.py reports which
 source the numbers came from, so a reviewer can never mistake one for the other.
 """
@@ -167,7 +167,7 @@ def _sample(rows, source: str, n_issues: int, n_templates: int, seed: int) -> di
             "warning": None if source.startswith("issuebench")
             else ("These prompts are OUR OWN construction from IssueBench's published "
                   "template scheme, not IssueBench itself. Report them as such "
-                  "(updates/03_experiments.md Task 2.1 (IssueBench risk)) and do not cite them as Rottger et al.'s benchmark.")}
+                  "(the study plan Task 2.1 (IssueBench risk)) and do not cite them as Rottger et al.'s benchmark.")}
 
 
 if __name__ == "__main__":

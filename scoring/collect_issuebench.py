@@ -2,7 +2,7 @@
 
 Does a model's questionnaire score predict what it actually writes when a user
 asks it an ordinary question? This is the single most-cited objection to the
-whole genre of questionnaire audits, and updates/03_experiments.md Task 2.1 answers it with
+whole genre of questionnaire audits, and the study plan Task 2.1 answers it with
 IssueBench (see issuebench.py for how the prompts are obtained, and for the
 fallback's labelling requirements).
 
@@ -17,11 +17,11 @@ Results land in data/issuebench/generations/ as
     {model}__{prompt_id}.json
 
 This arm REPLACES the manuscript's section 4.7 open-ended arm (n = 5 models,
-p = 0.32 / 0.67). updates/03_experiments.md is explicit that an underpowered null raises the
+p = 0.32 / 0.67). The study plan is explicit that an underpowered null raises the
 objection without answering it; at n = 19 this arm is powered to detect
 r >= 0.6, which is the effect size Gate B is stated in.
 
-Human validation (updates/03_experiments.md Task 2.1) is not optional: export a 200-item
+Human validation (the study plan Task 2.1) is not optional: export a 200-item
 random subsample with `--export-validation-sample`, have a human label it, and
 report Cohen's kappa. analyze_w2.py computes kappa from the returned file.
 """
@@ -191,7 +191,7 @@ def export_validation_sample(n: int = 200, seed: int = 20260909) -> Path:
 
     The human labels the same -10..+10 lean the judge did, in the `human_lean`
     column, and analyze_w2.py reports Cohen's kappa on the trichotomised
-    labels. updates/03_experiments.md targets kappa > 0.7; below that the judge is not a usable
+    labels. The study plan targets kappa > 0.7; below that the judge is not a usable
     measurement and the arm's correlation cannot be interpreted.
     """
     files = sorted(GEN_DIR.glob("*.json"))

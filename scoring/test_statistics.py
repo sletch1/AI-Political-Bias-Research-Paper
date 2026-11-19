@@ -1,4 +1,4 @@
-"""Tests for the shared statistical layer (updates/04_analysis.md) and the IRT fit.
+"""Tests for the shared statistical layer (the study plan) and the IRT fit.
 
 These run on synthetic data with a known answer, which is the only way to tell
 a variance decomposition that is right from one that merely returns numbers.
@@ -136,7 +136,7 @@ def test_bootstrap_ci_brackets_a_known_correlation():
 
 
 def test_bootstrap_ci_is_wide_at_n_equals_19():
-    """updates/04_analysis.md insists on intervals because n = 19 models is small.
+    """The study plan insists on intervals because n = 19 models is small.
     This is the test that keeps that honest."""
     rng = np.random.default_rng(4)
     x = rng.normal(size=19)
@@ -151,7 +151,7 @@ def test_bootstrap_ci_rejects_mismatched_pairs():
 
 
 # ---------------------------------------------------------------------------
-# cluster bootstrap over models (oct_fix.md F4)
+# cluster bootstrap over models (the study plan F4)
 # ---------------------------------------------------------------------------
 def test_cluster_bootstrap_brackets_a_dominant_model_share():
     df = synthetic_panel(model_sd=3.0, noise=0.5)

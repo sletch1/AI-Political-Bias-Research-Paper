@@ -1,5 +1,5 @@
 """F3/F4 crossing: fold SapplyValues and Pew's 2026 Political Typology into the
-shared variance-components model (oct_fix.md F3 + F4; docs/f3_instrument_terms_of_use.md).
+shared variance-components model (the study plan F3 + F4; docs/f3_instrument_terms_of_use.md).
 
 analyze_w4.py task 4.3 already crosses Political Compass and 8Values through
 variance_components.variance_decomposition; analyze_sapplyvalues.py and

@@ -41,18 +41,16 @@
 
 \begin{abstract}
 \noindent
-Large language models are widely reported to lean left of centre. How much of a reported score reflects the model
-rather than the measurement? We administered the Political Compass and 8Values to 19 models 60 times each (2,280
-administrations) and added SapplyValues and Pew's 2026 Political Typology in a second panel. With every axis aligned so
-that higher means further left, a nested random-effects model separates variance from model identity that transfers
-across instruments (\NTwoMr\%; 95\% CI \NTwoMcir), model position specific to the instrument (\NTwoMIr\% \NTwoMIcir),
-specific to the axis within an instrument (\NTwoMAr\% \NTwoMAcir), and trial noise (\NTwoEr\% \NTwoEcir). With four
-instruments the transferable share is \NFourMr\% \NFourMcir. Constructs shared by the two original instruments correlate at
-$r=\ConvMean$ ($SE=\ConvSE$), no higher than distinct constructs on one instrument ($r=\DiscMean$, $SE=\DiscSE$): the
-social scales converge and the economic scales do not. The instruments can agree, since each model's shift between a
-progressive and a conservative asker correlates at $r=\KGShift$ across them. Differences between models in default
-position are therefore largely not comparable across instruments. We propose a minimum reporting standard for audits that use
-language models as measurement instruments.
+Large language models are widely reported to lean left, but such scores shift with question format, paraphrase and the
+asker's inferred identity. How much of a reported position belongs to the model, and how much to the instrument, is unmeasured. I administered the Political Compass and 8Values to 19 models 60 times each (2,280 administrations) and
+added SapplyValues and Pew's 2026 Typology in a second panel. With every axis aligned so that higher means
+further left, between \NTwoApparatus\% and \NFourApparatus\% of the variance depends on the instrument and the axis within it,
+about a third is trial noise, and a stable model trait that transfers across instruments accounts for only \NTwoMr\%
+(95\% CI \NTwoMcir) with two instruments and \NFourMr\% (\NFourMcir) with four. Social-scale constructs correlate across the two original
+instruments ($r=\ConvSoc$) but economic ones show no detectable correlation ($r=\ConvEcon$), yet each model's shift between a progressive and a conservative asker
+correlates at $r=\KGShift$ across them, so the instruments can agree. Responsiveness is measured consistently; default
+position is not. Claims that a model ``leans left'', and rankings by lean, should not be generalized beyond the
+instrument used. I propose a minimum reporting standard.
 \end{abstract}
 
 \noindent\textbf{Keywords:} large language models; political bias; measurement validity; generalizability theory;
@@ -68,8 +66,10 @@ audits their political lean, usually by administering a questionnaire such as th
 score \citep{rozado2024, motoki2024, hartmann2023, buyl2026}. Each assumption behind that practice has been
 challenged separately: models accommodate the identity they infer for the asker \citep{tornberg2026sycophancy};
 the instruments appear in training data \citep{bianchi2026plasticity}; forced-choice answers differ from free
-responses \citep{rottger2024}. To our knowledge no study has weighed these against one another, so there is no estimate of how much
-of a reported score is the model and how much is the apparatus.
+responses \citep{rottger2024}; paraphrasing the items changes the answers \citep{ceron2024brittleness}; and a model's
+position on a questionnaire does not predict how it votes on concrete policies \citep{barmettler2026instrument}. Some work
+proposes better-grounded measures \citep{faulborn2025littleleft, wachter2025irt}. To my knowledge no study has weighed these
+against one another, so there is no estimate of how much of a reported score is the model and how much is the apparatus.
 
 This is a measurement-error problem of the kind political methodology has long treated. Whether two measures of one
 construct converge while measures of different constructs stay apart \citep{campbell1959}, whether a score's variance
@@ -79,13 +79,16 @@ concept is validly operationalized \citep{adcock2001} decide when scores can be 
 treats a language model's output as a measurement \citep{lemens2025asking, bisbee2024, alvarez2025}. A political-bias
 audit is such a measurement, and the audit literature has not applied these tests to it. The closest study
 administers three instruments to 26 models but measures each cell once, so trial noise cannot be separated from the
-instrument term \citep{sakhawat2026polalign}.
+instrument term \citep{sakhawat2026polalign}. It reports that model identity dominates variance across prompt variants
+within an instrument, which does not bear on whether a model's position transfers between instruments, and that economic
+scales agree across instruments, where I find they do not. Variance-components designs have begun to appear elsewhere in
+LLM measurement \citep{messing2026hidden}, but not for political position.
 
-We supply the missing estimate. We decompose a measured political position into variance from model identity that
+I supply the missing estimate. I decompose a measured political position into variance from model identity that
 transfers across instruments, model position specific to the instrument and to the axis, and trial noise; test
 convergent validity, with a known-groups contrast as a positive control; check robustness to the choice of models,
-instruments, providers and sampling temperature; and measure three further apparatus factors in their own designs. We do
-not argue that models have no political lean. We argue that differences between models in a published score mostly do
+instruments, providers and sampling temperature; and measure three further apparatus factors in their own designs. I do
+not argue that models have no political lean. I argue that differences between models in a published score mostly do
 not carry from one instrument to another, and that an error budget should accompany any such audit.
 
 \section{Design and methods}
@@ -144,16 +147,15 @@ whether the instruments can agree when there is a common signal.
 
 \textbf{The error budget.} Administered as the field administers them, one unattributed asker and 60 repetitions,
 both original instruments place all 19 models in the same quadrant: economically left and socially libertarian, and
-toward equality, peace, liberty and progress on 8Values. We reproduce the published finding. Its contents are
+toward equality, peace, liberty and progress on 8Values. This reproduces the published finding. Its contents are
 different (Figure~\ref{fig:budget}, Table~\ref{tab:budget}). With two instruments, model identity that transfers
 across instruments and axes accounts for \NTwoM\% of variance (95\% CI \NTwoMci). Model position specific to the
 instrument accounts for \NTwoMI\% (\NTwoMIci), position specific to the axis within the instrument for \NTwoMA\%
 (\NTwoMAci), and trial noise for \NTwoE\% (\NTwoEci). With four instruments the transferable share is \NFourM\%
-(\NFourMci). By the point estimates, between half and two-thirds of a score moves with the questionnaire, a sixth or
-less carries across questionnaires, and noise alone exceeds the transferable part. The transferable share is also the
+(\NFourMci). By the point estimates, between half and two-thirds of a score moves with the questionnaire, under a fifth carries across questionnaires, and noise alone exceeds the transferable part. The transferable share is also the
 least precisely estimated term: its interval reaches zero in both panels. A two-term specification that folds instrument into
 trait gives \OTwoM\% to model identity, but it cannot tell consistency across the axes of one instrument from transfer
-between instruments, and the nested estimate is the one we rely on. The simulation shows what the design can detect:
+between instruments, and the nested estimate is the one I rely on. The simulation shows what the design can detect:
 with a true transferable share of 20\%, an estimate as low as the four-instrument one occurs in \SimFourTwentyBelowN{} of
 \SimReps{} runs, and with a true share of zero, one as high as the two-instrument estimate occurs in \SimTwoZeroAboveN{}
 of \SimReps{} (Online Appendix). A transferable share of 20\% or more is hard to reconcile with the four-instrument panel; a share of 5--10\% is
@@ -185,12 +187,12 @@ $t$-tests, Benjamini--Hochberg false discovery rate 5\%), with a median standard
 [8.8, 16.7]). The midpoint is a convention, not a population estimate \citep{gallup2024values}.
 
 \textbf{Convergent validity.} If instrument choice moves scores this much, one defence is that both instruments are
-noisy measures of one position. The multitrait-multimethod analysis supports it only in part (Table~\ref{tab:mtmm}).
+noisy measures of one position. The multitrait-multimethod analysis does not support it (Table~\ref{tab:mtmm}).
 Convergent coefficients, the same construct on both instruments, average $r=\ConvMean$ ($SE=\ConvSE$, 95\% CI
 \ConvCI); discriminant coefficients, different constructs on one instrument, average $r=\DiscMean$ ($SE=\DiscSE$).
 The Campbell--Fiske criterion requires the first to exceed the second; it is lower by \DiffAbs{} ($SE=\DiffSE$, 95\% CI
 \DiffCI). The two construct pairs differ. The social scales converge ($r=\ConvSoc$, $SE=\ConvSocSE$); the economic scales
-do not ($r=\ConvEcon$, $SE=\ConvEconSE$). The estimate rests on two construct pairs and 19 models.
+do not ($r=\ConvEcon$, $SE=\ConvEconSE$). Averaged, the criterion fails; the social pair converges and the economic pair does not, and the economic estimate is too imprecise to rule out a correlation near 0.45. The estimate rests on two construct pairs and 19 models.
 
 \begin{table}[H]
 \centering
@@ -220,9 +222,9 @@ positions.
 share between \LopoMmin\% and \LopoMmax\%. Dropping each instrument leaves it between \LoioMmin\% and \LoioMmax\%, while
 the instrument-specific share ranges from \LoioMImin\% to \LoioMImax\% and the axis-specific share from \LoioMAmin\%
 to \LoioMAmax\%: the data show that little transfers across questionnaires more firmly than they apportion the rest
-between instrument and axis. We therefore claim that a model's position depends on instrument and axis jointly. Two axes have no settled left--right polarity (8Values peace,
+between instrument and axis. I therefore claim that a model's position depends on instrument and axis jointly. Two axes have no settled left--right polarity (8Values peace,
 SapplyValues authority); reversing either or both puts the four-instrument transferable share between \OrientFourMin\%
-and \OrientFourMax\% (Online Appendix). A
+and \OrientFourMax\%, and reversing 8Values peace puts the two-instrument share at \OrientTwoMax\% rather than \NTwoM\%, because that reversal moves variance from the instrument term to the axis term (Online Appendix). A
 re-administration of 8Values at temperatures 0 and 1.0 to eight models (20 trials each) finds trial noise rising from
 24\% to 31\% (0.7) to 47\% of variance while model rankings stay stable (mean Spearman 0.88--0.92): the noise share is
 conditional on temperature. A second and third language-model judge reproduce the open-ended arm's scores closely
@@ -236,14 +238,14 @@ the instrument's range (95\% CI [0.038, 0.055]), with 17 of 18 models shifting o
 the memorisation probe finds 16.6\% verbatim and 20.6\% near-verbatim completions. Free-text versus forced-label
 elicitation explains more variance on average (0.39 against 0.23), though not on every axis: on 8Values equality model
 identity is larger (0.42 against 0.06). Each factor was collected as its own factorial rather than crossed with instrument,
-so these designs cannot be added into one budget, and we do not estimate how a single crossed design would change the
+so these designs cannot be added into one budget, and I do not estimate how a single crossed design would change the
 model share.
 
 \textbf{Item-level reliability.} Measured per item, 44.8\% of model--item cells are perfectly stable across all 60
 repetitions, and the most volatile decile of items carries under 16\% of response entropy on either instrument:
 inconsistency is concentrated in a minority of contested items. A range-normalized stability metric used in earlier work
 assigns one of the worst instability scores to a model whose answers varied by six hundredths of a point; any scale-free
-consistency statistic that divides by observed spread inverts on tightly clustered responses, which is why we use a
+consistency statistic that divides by observed spread inverts on tightly clustered responses, which is why I use a
 variance-components estimate. A graded-response item-response analysis shows that some apparent centrism is avoidance: the
 most neutral model answers 52\% of 8Values items at the midpoint against 9\% for the least.
 
@@ -261,7 +263,7 @@ within a single instrument model identity is clearly measurable, and both instru
 alike. The remedy has precedent in this literature, where a single
 output is not safe to treat as a measurement without characterizing how it fails \citep{bisbee2024}.
 
-We do not claim that a questionnaire score predicts behaviour. A study comparing a voting-advice questionnaire with real
+I do not claim that a questionnaire score predicts behaviour. A study comparing a voting-advice questionnaire with real
 referendum outcomes finds models near the centre on concrete votes despite a left-leaning profile on the questionnaire
 \citep{barmettler2026instrument}; that is a behavioural-validity question this design does not test. The limits are
 real: English-language administrations on US-built instruments at one time point; 19 models from 11 providers are a small

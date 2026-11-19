@@ -10,7 +10,7 @@ writes one JSON record per trial to data/raw_trials/.
 
 TESTS defaults to the two published-baseline instruments
 (8values, political_compass); sapplyvalues is registered in TEST_CONFIG
-(oct_fix.md F3: instrument 3 of 4, see docs/f3_instrument_terms_of_use.md)
+(the study plan F3: instrument 3 of 4, see docs/f3_instrument_terms_of_use.md)
 but not yet in TESTS, since the downstream analysis modules
 (consolidate.py, variance_components.py-based scripts) still assume exactly
 two instruments and need their own, separate extension before a third
@@ -284,7 +284,7 @@ def main(models, n_trials_per_test=3, max_workers=8, cost_cap=None,
     per-trial progress line as each task completes and a final summary.
 
     `questions_8v_path` / `questions_pc_path` / `questions_sv_path` select an
-    alternate item bank (updates/03_experiments.md Task 1.2 needs the
+    alternate item bank (the study plan Task 1.2 needs the
     inverted and paraphrased banks run through this same pipeline);
     `results_dir` keeps those runs out of the baseline data/raw_trials/
     directory. All default to the main run's."""

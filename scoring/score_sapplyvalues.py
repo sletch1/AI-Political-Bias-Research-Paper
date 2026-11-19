@@ -8,7 +8,7 @@ permission is required to administer the items or reimplement the scoring).
 of that repo's `questions.js` -- parsed with `json.loads` on the array
 literal, not retyped by hand -- so the 46 per-question axis weights below are
 byte-for-byte identical to the live site's. This is instrument 3 of 4 for
-oct_fix.md F3 (docs/f3_instrument_terms_of_use.md): Sakhawat et al. 2026 use
+The study plan F3 (docs/f3_instrument_terms_of_use.md): Sakhawat et al. 2026 use
 the same three instruments (Political Compass, 8Values, SapplyValues), so
 adding it here makes our results directly comparable to theirs.
 

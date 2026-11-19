@@ -1,4 +1,4 @@
-"""Build the inverted and paraphrased question banks for updates/03_experiments.md Task 1.2.
+"""Build the inverted and paraphrased question banks for the study plan Task 1.2.
 
 Task 1.2 tests whether models recognise the Political Compass and 8Values
 rather than answering their items. That needs three item conditions:
@@ -47,7 +47,7 @@ INSTRUMENTS = [
 
 VARIANTS = ("inverted", "paraphrased")
 
-# Cheap red flags for the classes of drafting error updates/03_experiments.md Task 1.2 step 1 warns about.
+# Cheap red flags for the classes of drafting error the study plan Task 1.2 step 1 warns about.
 # These do not replace human review; they catch the mechanical mistakes so the
 # reviewer's attention goes to semantics.
 _NEGATORS = (
@@ -113,7 +113,7 @@ def validate(instrument: str, originals: list, entries: list) -> list:
             if not text.endswith((".", "?", "!", "”", '"')):
                 warnings.append(f"{instrument} {idx} {variant}: no terminal punctuation")
         # A double negative is the single most common way an inversion goes
-        # wrong (updates/03_experiments.md Task 1.2 step 1); flag any inversion that stacks negations.
+        # wrong (the study plan Task 1.2 step 1); flag any inversion that stacks negations.
         inv_neg = count_negations(entry["inverted"])
         if inv_neg >= 2:
             warnings.append(
@@ -187,7 +187,7 @@ def main() -> int:
     for path in written:
         print(f"wrote {path.relative_to(HERE.parent)}")
 
-    print("\nREMINDER (updates/03_experiments.md Task 1.2 step 1): these banks are drafted, not verified. "
+    print("\nREMINDER (the study plan Task 1.2 step 1): these banks are drafted, not verified. "
           "Hand-check every inversion and have a second reader check a 20-item "
           "sample before spending API budget on them.")
     return 0

@@ -1,6 +1,6 @@
-"""The paper's primary statistical model (updates/04_analysis.md), in one place.
+"""The paper's primary statistical model (the study plan), in one place.
 
-updates/04_analysis.md replaces the manuscript's ANOVA / Kruskal-Wallis / Games-Howell battery
+The study plan replaces the manuscript's ANOVA / Kruskal-Wallis / Games-Howell battery
 with a variance-components model, because the old battery answers "do models
 differ?" -- which nobody doubts -- while the new question is "of the variance in
 a measured political position, how much is the model and how much is the
@@ -27,7 +27,7 @@ Reported quantities:
   * residual variance -- the defensible replacement for the ISS
   * partial eta-squared for fixed factors, and BH-corrected p-values
 
-Deliberately absent: pairwise Hedges' g. updates/04_analysis.md drops it, and section 4.3 of
+Deliberately absent: pairwise Hedges' g. The study plan drops it, and section 4.3 of
 the current manuscript already documents why its own g values are inflated.
 """
 
@@ -160,7 +160,7 @@ def _moments(d: pd.DataFrame, factors) -> dict:
 def partial_eta_squared(df: pd.DataFrame, value: str, factors) -> dict:
     """Partial eta-squared per factor from a Type-II ANOVA.
 
-    Gate A (updates/04_analysis.md) is stated in these units (asker or format eta-squared
+    Gate A (the study plan) is stated in these units (asker or format eta-squared
     above 0.10 confirms the thesis), so this is the quantity that decides
     whether the project proceeds to Phase 3.
     """
@@ -204,7 +204,7 @@ def partial_eta_squared(df: pd.DataFrame, value: str, factors) -> dict:
 # --------------------------------------------------------------------------
 def benjamini_hochberg(p_values, alpha: float = 0.05) -> dict:
     """BH step-up FDR control. The manuscript's existing implementation is
-    correct and updates/04_analysis.md says to keep it; this is the same procedure exposed
+    correct and the study plan says to keep it; this is the same procedure exposed
     for the new analyses so the whole family is corrected together."""
     p = np.asarray(list(p_values), dtype=float)
     n = len(p)
@@ -226,7 +226,7 @@ def bootstrap_ci(x, y=None, statistic=None, n_boot: int = 10000,
 
     Defaults to Pearson r when `y` is given, which is what Gates B and C are
     stated in. n = 19 models is small enough that a point estimate without an
-    interval would be actively misleading, and updates/04_analysis.md makes that
+    interval would be actively misleading, and the study plan makes that
     explicit.
     """
     rng = np.random.default_rng(seed)
@@ -311,7 +311,7 @@ def cluster_bootstrap_variance_shares(df: pd.DataFrame, value: str, random_effec
                                       seed: int = 20260919) -> dict:
     """95% CIs on every variance share, by resampling whole clusters.
 
-    updates/03_experiments.md Task A / oct_fix.md F4 asks for a cluster
+    the study plan Task A / the study plan F4 asks for a cluster
     bootstrap over models (n = 19, so intervals will be wide -- report them
     anyway), not an i.i.d. bootstrap over rows: rows within a model are not
     independent, so resampling rows would understate the interval. Each
@@ -373,7 +373,7 @@ def cluster_bootstrap_eta_squared(df: pd.DataFrame, value: str, factors,
     each resample.
 
     The asker-identity, contamination, and response-format arms
-    (oct_fix.md checklist: "every variance share has a 95% CI") report
+    (the study plan checklist: "every variance share has a 95% CI") report
     partial eta-squared from a fixed-effects ANOVA rather than the
     random-effects variance shares `cluster_bootstrap_variance_shares`
     handles, so this is a separate function rather than a variant call --

@@ -1,7 +1,7 @@
 """Workstream 1 analysis -- the validity battery.
 
 Consumes whatever W1 data exists and produces the error-budget numbers that
-Gate A (updates/04_analysis.md) turns on. Every arm is optional: an arm whose data has not
+Gate A (the study plan) turns on. Every arm is optional: an arm whose data has not
 been collected is reported as absent rather than silently skipped, so the
 output doubles as a progress report on the workstream.
 
@@ -117,7 +117,7 @@ def anchor_check(asker: pd.DataFrame, baseline: pd.DataFrame) -> dict:
 
     The whole factorial hangs on this. If the anchor cell drifts from
     data/raw_trials/ then either the prompt is not byte-identical after all or
-    the model versions have moved under us (updates/03_experiments.md Task 3.1 (drift)), and in either case the
+    the model versions have moved under us (the study plan Task 3.1 (drift)), and in either case the
     new conditions cannot be compared to the published baseline.
     """
     anchor = asker[asker.condition == "none"]
@@ -144,7 +144,7 @@ def anchor_check(asker: pd.DataFrame, baseline: pd.DataFrame) -> dict:
             "anchor_holds": bool(worst < 0.05),
             "note": ("A drift above 5% of scale means the anchor cell no longer "
                      "reproduces data/raw_trials/; investigate model version drift "
-                     "(updates/03_experiments.md Task 3.1 (drift)) before interpreting any condition effect.")}
+                     "(the study plan Task 3.1 (drift)) before interpreting any condition effect.")}
 
 
 def asker_arm(asker: pd.DataFrame, baseline: pd.DataFrame) -> dict:
@@ -192,7 +192,7 @@ def asker_arm(asker: pd.DataFrame, baseline: pd.DataFrame) -> dict:
 
 
 def _gate_a(etas) -> str:
-    """updates/04_analysis.md, Gate A, stated in its own thresholds."""
+    """The study plan, Gate A, stated in its own thresholds."""
     if not etas:
         return "no data"
     m = float(np.max(etas))
@@ -225,7 +225,7 @@ def contamination_arm(variants: pd.DataFrame, baseline: pd.DataFrame) -> dict:
     else:
         original = baseline.assign(condition="original")
         out["original_source"] = ("data/raw_trials/ baseline -- comparison spans "
-                                  "time as well as condition; see updates/03_experiments.md Task 3.1 (drift)")
+                                  "time as well as condition; see the study plan Task 3.1 (drift)")
 
     rows, p_values = [], []
     for (model, trait), grp in variants.groupby(["model", "trait"]):

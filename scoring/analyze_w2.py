@@ -1,4 +1,4 @@
-"""Workstream 2 analysis -- ecological validity, and Gate B (updates/04_analysis.md).
+"""Workstream 2 analysis -- ecological validity, and Gate B (the study plan).
 
     python3 scoring/analyze_w2.py [--out results/w2]
 
@@ -14,7 +14,7 @@ Task 2.2  Do model votes on real ballot measures track real outcomes and party
           party's endorsement, and the correlation between a model's
           questionnaire lean and its partisan agreement rate.
 
-Gate B (updates/04_analysis.md) is evaluated and printed. Both directions are wins:
+Gate B (the study plan) is evaluated and printed. Both directions are wins:
 |r| > 0.6 rehabilitates questionnaire audits, |r| < 0.3 confirms Rottger and
 strengthens the error budget. The one outcome to avoid is an ambiguous middle
 reported as if it were a finding, so an ambiguous result is labelled as
@@ -115,14 +115,14 @@ def judge_validation() -> dict:
     if len(pairs) < 30:
         return {"available": False,
                 "reason": f"only {len(pairs)} of {len(rows)} rows have a human label; "
-                          "updates/03_experiments.md asks for 200"}
+                          "the study plan asks for 200"}
     judge, human = zip(*pairs)
     k = cohens_kappa(judge, human)
     r, p = pearsonr(judge, human)
     k.update({"available": True, "pearson_r": float(r), "pearson_p": float(p),
               "n_labelled": len(pairs), "n_exported": len(rows),
               "meets_target": bool(k["kappa"] > 0.7),
-              "target": "updates/03_experiments.md Task 2.1 targets kappa > 0.7"})
+              "target": "the study plan Task 2.1 targets kappa > 0.7"})
     return k
 
 
@@ -141,7 +141,7 @@ def issuebench_arm(gens: pd.DataFrame, questionnaire: pd.DataFrame) -> dict:
            "n_issues": int(gens.issue.nunique()), "correlations": []}
     if not source.startswith("issuebench"):
         out["warning"] = ("Prompts were our own construction, not IssueBench itself. "
-                          "Report accordingly (updates/03_experiments.md Task 2.1 (IssueBench risk)).")
+                          "Report accordingly (the study plan Task 2.1 (IssueBench risk)).")
 
     for gen_axis, targets in AXIS_MAP.items():
         stance = by_model_axis.xs(gen_axis, level="axis") if gen_axis in \
@@ -186,7 +186,7 @@ def _gate_b(abs_rs, n_models: int) -> dict:
                    "the stronger error-budget result and confirms Rottger and Barmettler.")
     else:
         verdict = (f"UNDERPOWERED at n = {n_models} models. Do NOT report this as a "
-                   "finding (updates/04_analysis.md Gate B names this as the section 4.7 mistake). "
+                   "finding (the study plan Gate B names this as the section 4.7 mistake). "
                    "Either expand the roster to ~30 models or report as inconclusive "
                    "with an explicit power analysis.")
     return {"max_abs_pearson_r": best, "n_models": n_models, "verdict": verdict}

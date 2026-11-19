@@ -7,7 +7,7 @@ on the inverted item is semantically equivalent to Strongly Disagree on the orig
 whether `paraphrased` preserves both the meaning and the polarity of the original while breaking
 verbatim string match.
 
-**This is not the human verification `updates/03_experiments.md` Task 1.2 step 1 requires.** That
+**This is not the human verification the study plan Task 1.2 step 1 requires.** That
 step calls for a full-day hand-check by a human plus an independent second human reader on a
 20-item sample, with sign-off recorded here before any collection run. This document is a
 first-pass LLM read that can narrow what the human reviewer needs to focus on; it does not replace

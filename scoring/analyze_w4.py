@@ -264,7 +264,7 @@ def task_4_3(df: pd.DataFrame) -> dict:
     """Crossed random-effects decomposition of the 2,280 administrations.
 
     Delegates to variance_components.variance_decomposition, which is the
-    paper's single statistical model (updates/04_analysis.md). Rolling a second
+    paper's single statistical model (the study plan). Rolling a second
     decomposition here would let W4 and the manuscript quote different error
     budgets computed two different ways, which is exactly the failure the
     shared module exists to prevent.
@@ -288,7 +288,7 @@ def task_4_3(df: pd.DataFrame) -> dict:
         "political position is actually about the model"
     )
 
-    # oct_fix.md F4 / updates/04_analysis.md Gate A: every variance share needs a
+    # The study plan F4 / the study plan Gate A: every variance share needs a
     # 95% CI before it goes in the abstract. Cluster bootstrap over the 19 models
     # (>= 2000 resamples, seed recorded) -- resampling rows instead of models
     # would understate the interval, since rows from one model are not independent.
@@ -378,7 +378,7 @@ def task_4_4(df: pd.DataFrame) -> dict:
 def task_4_5(df: pd.DataFrame) -> dict:
     """Cohort spread as a fraction of the instrument's full range.
 
-    updates/04_analysis.md asks for the spread as a fraction of the *human/party* spread. No
+    the study plan asks for the spread as a fraction of the *human/party* spread. No
     party-calibrated reference distribution ships with this repository, so the
     denominator here is the instrument's own full range, which is a strictly
     conservative stand-in: it makes the cohort look *wider* than a party-spread
@@ -407,7 +407,7 @@ def task_4_5(df: pd.DataFrame) -> dict:
         "caveat": (
             "Denominator is the instrument's full range, not a party/human spread. "
             "Substitute reference_spread once a calibrated human distribution exists "
-            "(updates/03_experiments.md Task 1.5, human-norm instrument) and the fractions will shrink, strengthening the claim."
+            "(the study plan Task 1.5, human-norm instrument) and the fractions will shrink, strengthening the claim."
         ),
     }
 

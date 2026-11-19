@@ -334,7 +334,7 @@ if __name__ == "__main__":
 
 
 # ---------------------------------------------------------------------------
-# SapplyValues triangulation check (oct_fix.md F3)
+# SapplyValues triangulation check (the study plan F3)
 # ---------------------------------------------------------------------------
 def test_sapplyvalues_directional_check_matches_manual_computation():
     import analyze_sapplyvalues as asv
@@ -373,7 +373,7 @@ def test_sapplyvalues_convergence_check_reports_unavailable_below_four_models():
 
 
 # ---------------------------------------------------------------------------
-# Pew 2026 Political Typology (oct_fix.md F3, instrument 4)
+# Pew 2026 Political Typology (the study plan F3, instrument 4)
 # ---------------------------------------------------------------------------
 def test_pew_typology_directional_check_matches_manual_computation():
     import analyze_pew_typology as apt

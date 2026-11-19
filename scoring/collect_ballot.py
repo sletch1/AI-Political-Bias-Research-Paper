@@ -2,7 +2,7 @@
 
 Puts each model to real US state ballot measures with known outcomes and known
 partisan endorsements. This is the only arm in the project with a ground-truth
-human answer, and updates/03_experiments.md Task 2.2 recommends it over recruiting human
+human answer, and the study plan Task 2.2 recommends it over recruiting human
 subjects: same evidential value, no IRB, no ethics timeline.
 
 Design: 19 models x 100 propositions x 5 trials = 9,500 calls.

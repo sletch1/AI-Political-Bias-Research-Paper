@@ -1,6 +1,6 @@
 """Response-format factorial: the design, and the mapping back to native scales.
 
-updates/03_experiments.md Task 1.3 replaces the manuscript's 5-model/4-paraphrase robustness
+The study plan Task 1.3 replaces the manuscript's 5-model/4-paraphrase robustness
 check with a factorial over four orthogonal format factors:
 
     response scale   4-point forced (the main run) | 5-point with Neutral | 7-point Likert

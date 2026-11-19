@@ -1,4 +1,4 @@
-# Ballot-proposition ground truth (updates/03_experiments.md Task 2.2)
+# Ballot-proposition ground truth (the study plan Task 2.2)
 
 This arm needs something the rest of the project does not have: **a real human
 baseline with a known answer.** A model's questionnaire score is compared to a
@@ -19,7 +19,7 @@ numbers are true. Download them from a primary source instead.
 | MIT Election Data and Science Lab (Harvard Dataverse) | Tidy state-level returns | Best starting point for bulk download |
 | State party platforms / endorsement records | Partisan endorsement per measure | Needed for the endorsement comparison |
 
-Target set per updates/03_experiments.md: **~200 US state ballot measures, 2016-2024**, with
+Target set per the study plan: **~200 US state ballot measures, 2016-2024**, with
 published results and a partisan endorsement record. 100 are enough to run the
 arm; the plan budgets 100 propositions x 19 models x 5 trials = 9,500 calls.
 
@@ -53,7 +53,7 @@ python3 scoring/collect_ballot.py --validate-only
 
 ## Why this arm is worth the trouble
 
-It is updates/03_experiments.md Task 2.2: a ground-truth human baseline with **no human
+It is the study plan Task 2.2: a ground-truth human baseline with **no human
 subjects, no IRB, and no ethics timeline**. It replaces the manuscript's
 current baseline (a one-sample test against an instrument centre-point,
 motivated by a Gallup categorical poll), which reviewers will correctly call a

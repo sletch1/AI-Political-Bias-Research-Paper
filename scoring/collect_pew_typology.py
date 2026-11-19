@@ -1,4 +1,4 @@
-"""Collect the Pew 2026 Political Typology baseline (oct_fix.md F3, instrument
+"""Collect the Pew 2026 Political Typology baseline (the study plan F3, instrument
 4 of 4 -- see docs/f3_instrument_terms_of_use.md).
 
 Unlike 8Values/Political Compass/SapplyValues, this instrument's 24 items

@@ -1,6 +1,6 @@
 """Scoring helpers for the Task 1.2 item-variant conditions.
 
-The contamination control (updates/03_experiments.md Task 1.2) needs an inverted item bank whose
+The contamination control (the study plan Task 1.2) needs an inverted item bank whose
 scores are directly comparable to the original bank's. The plan's step 4 is
 emphatic that the scoring engines must not change, so that every condition
 stays comparable to the published 2,280-administration baseline. This module
@@ -127,7 +127,7 @@ def contamination_index(mean_original: float, mean_inverted_aligned: float,
     Zero under genuine item-by-item answering: mirroring the items and
     mirroring the answers should cancel, leaving the same position. A non-zero
     index means the model's answer depends on the *form* of the item, not only
-    its content -- the signature of instrument recognition (updates/03_experiments.md Task 1.2,
+    its content -- the signature of instrument recognition (the study plan Task 1.2,
     after Bianchi et al. 2026).
 
     Deviation from the original design, deliberate and reported in Methods: the plan gives
