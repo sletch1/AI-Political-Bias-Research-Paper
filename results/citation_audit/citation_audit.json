@@ -1,10 +1,10 @@
 {
-  "n_references": 42,
-  "n_with_institution_data": 34,
+  "n_references": 40,
+  "n_with_institution_data": 32,
   "first_author_country_counts": [
     [
       "US",
-      14
+      12
     ],
     [
       "GB",
@@ -54,7 +54,7 @@
   "last_author_country_counts": [
     [
       "US",
-      16
+      14
     ],
     [
       "GB",
@@ -87,16 +87,16 @@
   ],
   "first_author_non_US": [
     13,
-    27
+    25
   ],
   "last_author_non_US": [
     9,
-    25
+    23
   ],
   "type_counts": [
     [
       "article",
-      20
+      18
     ],
     [
       "misc",
@@ -438,32 +438,6 @@
       "key": "adcock2001",
       "type": "article",
       "year": "2001",
-      "found": true,
-      "first_author_countries": [
-        "US"
-      ],
-      "last_author_countries": [
-        "US"
-      ],
-      "n_authors": 2
-    },
-    {
-      "key": "clinton2004",
-      "type": "article",
-      "year": "2004",
-      "found": true,
-      "first_author_countries": [
-        "US"
-      ],
-      "last_author_countries": [
-        "US"
-      ],
-      "n_authors": 3
-    },
-    {
-      "key": "poole1985",
-      "type": "article",
-      "year": "1985",
       "found": true,
       "first_author_countries": [
         "US"

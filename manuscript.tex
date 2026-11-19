@@ -74,20 +74,16 @@ against one another, so there is no estimate of how much of a reported score is 
 This is a measurement-error problem of the kind political methodology has long treated. Whether two measures of one
 construct converge while measures of different constructs stay apart \citep{campbell1959}, whether a score's variance
 can be split between the object and the conditions of measurement \citep{cronbach1972, brennan2001}, and whether a
-concept is validly operationalized \citep{adcock2001} decide when scores can be pooled, in the scaling of legislators
-\citep{poole1985, clinton2004}, in text-as-data \citep{grimmer2013, benoit2026, ornstein2025}, and in recent work that
+concept is validly operationalized \citep{adcock2001} decide when scores can be pooled, in text-as-data \citep{grimmer2013, benoit2026, ornstein2025}, and in recent work that
 treats a language model's output as a measurement \citep{lemens2025asking, bisbee2024, alvarez2025}. A political-bias
 audit is such a measurement, and the audit literature has not applied these tests to it. The closest study
 administers three instruments to 26 models but measures each cell once, so trial noise cannot be separated from the
-instrument term \citep{sakhawat2026polalign}. It reports that model identity dominates variance across prompt variants
-within an instrument, which does not bear on whether a model's position transfers between instruments, and that economic
-scales agree across instruments, where I find they do not. Variance-components designs have begun to appear elsewhere in
-LLM measurement \citep{messing2026hidden}, but not for political position.
+instrument term \citep{sakhawat2026polalign}; it finds that economic scales agree across instruments, where I find they do
+not. Variance-components designs have begun to appear in LLM measurement \citep{messing2026hidden}, but not for political position.
 
 I supply the missing estimate. I decompose a measured political position into variance from model identity that
-transfers across instruments, model position specific to the instrument and to the axis, and trial noise; test
-convergent validity, with a known-groups contrast as a positive control; check robustness to the choice of models,
-instruments, providers and sampling temperature; and measure three further apparatus factors in their own designs. I do
+transfers across instruments, position specific to the instrument and to the axis, and trial noise; test convergent
+validity, with a known-groups positive control; check robustness; and measure three further apparatus factors. I do
 not argue that models have no political lean. I argue that differences between models in a published score mostly do
 not carry from one instrument to another, and that an error budget should accompany any such audit.
 
@@ -105,21 +101,17 @@ and reading its own result; 8Values and SapplyValues by a lossless port of their
 identifiers and dates are in the Online Appendix.
 
 \textbf{Further factors.} Three further apparatus factors were measured in separate designs on 18 of the 19 models: asker
-identity (six preambles, none, researcher, conservative, progressive, apolitical or journalist, crossed with both
-instruments, 10 repetitions per cell, 2,160 administrations); instrument contamination (sense-inverted and paraphrased
-items against a verbatim baseline, 1,080 administrations, plus a memorisation probe that gives each model half of a
-masked item); and response format (four response scales, two item orders, two option orders and two elicitation modes,
-a forced label versus free text judged onto the same scale by a fixed model, five repetitions per cell, 4,239 parseable
-administrations). Effects are partial $\eta^2$ per axis with bootstrap intervals over models. A prompt-wrapper arm
-(five models) and an open-ended-generation arm (eight policy topics, judge-scored) corroborate the main design.
+identity (six preambles crossed with both instruments, 10 repetitions per cell, 2,160 administrations); instrument
+contamination (sense-inverted and paraphrased items against a verbatim baseline, 1,080 administrations, plus a
+memorisation probe); and response format (scales, item and option orders, forced label versus free text judged onto the
+same scale, 4,239 parseable administrations). Effects are partial $\eta^2$ per axis with bootstrap intervals over models.
 
 \textbf{Error-budget model.} The instruments score the left in opposite directions (high on 8Values, negative on the
 Political Compass), so every axis is first oriented so that higher means further left, libertarian or progressive; the
 Political Compass axes, SapplyValues' right and authority axes and Pew's ordinal position are reversed. A shared model
 effect and a convergent correlation are defined only once instruments point the same way. Scores are then z-scored within
-instrument $\times$ axis so that incompatible scales do not dominate; this sets every trait's mean to zero, so the
-decomposition cannot say that one instrument reads more left than another, only whether models keep the same relative
-position across traits. Let $y_{ijar}$ be the standardized score of model $i$ on axis $a$ of instrument $j$ in trial $r$. Following
+instrument $\times$ axis; this sets every trait's mean to zero, so the decomposition says whether models keep the same
+relative position across traits, not whether one instrument reads more left than another. Let $y_{ijar}$ be the standardized score of model $i$ on axis $a$ of instrument $j$ in trial $r$. Following
 generalizability theory \citep{cronbach1972, brennan2001}, with axes nested in instruments,
 \begin{equation}
 y_{ijar} = \mu + m_i + (mI)_{ij} + (mA)_{ija} + \varepsilon_{ijar},
@@ -191,8 +183,8 @@ noisy measures of one position. The multitrait-multimethod analysis does not sup
 Convergent coefficients, the same construct on both instruments, average $r=\ConvMean$ ($SE=\ConvSE$, 95\% CI
 \ConvCI); discriminant coefficients, different constructs on one instrument, average $r=\DiscMean$ ($SE=\DiscSE$).
 The Campbell--Fiske criterion requires the first to exceed the second; it is lower by \DiffAbs{} ($SE=\DiffSE$, 95\% CI
-\DiffCI). The two construct pairs differ. The social scales converge ($r=\ConvSoc$, $SE=\ConvSocSE$); the economic scales
-do not ($r=\ConvEcon$, $SE=\ConvEconSE$). Averaged, the criterion fails; the social pair converges and the economic pair does not, and the economic estimate is too imprecise to rule out a correlation near 0.45 (corrected for unreliability, $r=\EconCorr$, 95\% CI \EconCorrCI). Unreliability is not the explanation: a model's mean over 60 repetitions has reliability \RelMin\ on every axis, so correcting the correlations for attenuation leaves the mean convergent coefficient at $\ConvMeanCorr$ and the difference at $\DiffCorr$. The estimate rests on two construct pairs and 19 models.
+\DiffCI). The social scales converge ($r=\ConvSoc$, $SE=\ConvSocSE$); the economic scales
+do not ($r=\ConvEcon$, $SE=\ConvEconSE$). The criterion fails on average, and the economic estimate is too imprecise to rule out a correlation near 0.45 (corrected for unreliability, $r=\EconCorr$, 95\% CI \EconCorrCI). Unreliability is not the explanation: a model's mean over 60 repetitions has reliability \RelMin\ on every axis, so correcting the correlations for attenuation leaves the mean convergent coefficient at $\ConvMeanCorr$ and the difference at $\DiffCorr$.
 
 \begin{table}[H]
 \centering
@@ -222,31 +214,22 @@ positions.
 share between \LopoMmin\% and \LopoMmax\%. Dropping each instrument leaves it between \LoioMmin\% and \LoioMmax\%, while
 the instrument-specific share ranges from \LoioMImin\% to \LoioMImax\% and the axis-specific share from \LoioMAmin\%
 to \LoioMAmax\%: the data show that little transfers across questionnaires more firmly than they apportion the rest
-between instrument and axis. I therefore claim that a model's position depends on instrument and axis jointly. Two axes have no settled left--right polarity (8Values peace,
+between instrument and axis, so I claim only that a position depends on both jointly. Two axes have no settled left--right polarity (8Values peace,
 SapplyValues authority); reversing either or both puts the four-instrument transferable share between \OrientFourMin\%
-and \OrientFourMax\%, and reversing 8Values peace puts the two-instrument share at \OrientTwoMax\% rather than \NTwoM\%, because that reversal moves variance from the instrument term to the axis term (Online Appendix). An independent refit in R (\texttt{lme4}) reproduces the shares, and likelihood-profile and parametric-bootstrap intervals, which suit a variance at the boundary, also reach zero: the transferable share is \NTwoMr\% [0, 39] with two instruments and \NFourMr\% [0, 13] with four (Online Appendix). A
-re-administration of 8Values at temperatures 0 and 1.0 to eight models (20 trials each) finds trial noise rising from
-24\% to 31\% (0.7) to 47\% of variance while model rankings stay stable (mean Spearman 0.88--0.92): the noise share is
-conditional on temperature. A second and third language-model judge reproduce the open-ended arm's scores closely
-(Spearman 0.85--0.92), which is agreement among models, not validation against human raters (Online Appendix).
+and \OrientFourMax\%, and reversing 8Values peace puts the two-instrument share at \OrientTwoMax\% rather than \NTwoM\%, because that reversal moves variance from the instrument term to the axis term (Online Appendix). An independent \texttt{lme4} refit reproduces the shares, and profile and parametric-bootstrap intervals, which suit a variance at the boundary, also reach zero: the transferable share is \NTwoMr\% [0, 39] with two instruments and \NFourMr\% [0, 13] with four (Online Appendix). Trial noise
+rises from 24\% to 47\% of variance between temperatures 0 and 1.0 while model rankings stay stable (mean Spearman
+0.88--0.92), so the noise share is conditional on temperature (Online Appendix).
 
 \textbf{Three further factors.} In their own designs, asker identity explains more variance than model identity (partial
 $\eta^2$ 0.77--0.84 across the six axes, mean 0.79, against 0.16--0.35, mean 0.23); accommodation is asymmetric, moving
-scores 2.9--6.7 times further from baseline for a conservative framing than a progressive one, on top of a baseline that
-already leans left. Sense-inverting items with the scoring key flipped yields a Contamination Index averaging 0.046 of
-the instrument's range (95\% CI [0.038, 0.055]), with 17 of 18 models shifting on at least one axis after correction;
-the memorisation probe finds 16.6\% verbatim and 20.6\% near-verbatim completions. Free-text versus forced-label
+scores 2.9--6.7 times further for a conservative framing than a progressive one. Sense-inverting items yields a Contamination Index averaging 0.046 of the instrument's range (95\% CI
+[0.038, 0.055]); the memorisation probe finds 16.6\% verbatim and 20.6\% near-verbatim completions. Free-text versus forced-label
 elicitation explains more variance on average (0.39 against 0.23), though not on every axis: on 8Values equality model
-identity is larger (0.42 against 0.06). Each factor was collected as its own factorial rather than crossed with instrument,
-so these designs cannot be added into one budget, and I do not estimate how a single crossed design would change the
-model share.
+identity is larger (0.42 against 0.06). Each factor was its own factorial, not crossed with instrument, so these designs cannot be added into one budget.
 
-\textbf{Item-level reliability.} Measured per item, 44.8\% of model--item cells are perfectly stable across all 60
-repetitions, and the most volatile decile of items carries under 16\% of response entropy on either instrument:
-inconsistency is concentrated in a minority of contested items. A range-normalized stability metric used in earlier work
-assigns one of the worst instability scores to a model whose answers varied by six hundredths of a point; any scale-free
-consistency statistic that divides by observed spread inverts on tightly clustered responses, which is why I use a
-variance-components estimate. A graded-response item-response analysis shows that some apparent centrism is avoidance: the
+\textbf{Item-level reliability.} Per item, 44.8\% of model--item cells are perfectly stable across all 60
+repetitions, and inconsistency is concentrated in a minority of contested items. Scale-free consistency statistics that divide by observed spread invert on tightly clustered
+responses, which is why I use a variance-components estimate. A graded-response item-response analysis shows that some apparent centrism is avoidance: the
 most neutral model answers 52\% of 8Values items at the midpoint against 9\% for the least.
 
 \section{Discussion}
@@ -255,21 +238,15 @@ The finding that models lean left reproduces here as elsewhere. What this paper 
 two-thirds of a score depends on the instrument and axis. The share that carries across instruments is estimated at
 \NFourMr\% to \NTwoMr\% depending on which instruments are used, with intervals that include zero, and repetition
 alone contributes more than that point estimate. The lean survives, but most of the variation in a reported lean is not
-a property of the model that carries beyond the instrument used. That matters because the field's
-quantitative claims are magnitude claims: that one model is more partisan than another, that alignment shifts a model by
-some amount, or that lean has grown across generations all require scores comparable across studies, and the two most
-widely used instruments converge on the social scale only. The failure is one of transportability, not of auditing:
-within a single instrument model identity is clearly measurable, and both instruments register a change of asker
-alike. The remedy has precedent in this literature, where a single
-output is not safe to treat as a measurement without characterizing how it fails \citep{bisbee2024}.
+a property of the model that carries beyond the instrument used. That matters because the field's claims are magnitude claims (one model is more partisan than another, alignment shifts a model, lean has
+grown across generations) and these require scores comparable across studies; the two most widely used instruments converge on the social scale only. The failure is one of transportability, not of auditing: within a single instrument model identity is clearly measurable. A single output is not safe to treat as a measurement without characterizing how it fails \citep{bisbee2024}.
 
 I do not claim that a questionnaire score predicts behaviour. A study comparing a voting-advice questionnaire with real
 referendum outcomes finds models near the centre on concrete votes despite a left-leaning profile on the questionnaire
 \citep{barmettler2026instrument}; that is a behavioural-validity question this design does not test. The limits are
 real: English-language administrations on US-built instruments at one time point; 19 models from 11 providers are a small
-sample of a population of models; the main design used one temperature and one prompt wrapper; the direction alignment
-treats left, libertarian and progressive as one pole, which is the direction of the models' common lean but a convention;
-and the language-model judges were not validated against humans.
+sample; the main design used one temperature and one prompt wrapper; the direction alignment treats left, libertarian and
+progressive as one pole, a convention; and the language-model judges were not validated against humans.
 
 \textbf{A minimum reporting standard.} A political-bias audit of a language model should report: the instrument, named,
 with its items; the asker condition, including the absence of one, since an unattributed prompt is a condition, not a
@@ -278,18 +255,11 @@ decomposition across whatever was varied; the model version, route, date and sam
 archived; a contamination check; and item-level results. The same logic applies to any study that treats a language
 model's answers to a survey scale or coding scheme as a measure \citep{argyle2023, serapiogarcia2023}: the instrument
 is a random facet, one instrument confounds model identity with instrument-specific position, and repetition is
-required. Researchers who position texts or respondents with a model face the same choice of prompt wrapper and scoring
-rule, which is the validation stage \citet{lemens2025asking} advise readers not to skip. Adopting even the first few
-items would make the existing literature's estimates comparable, which at present they mostly are not.
+required. Researchers who position texts with a model face the same choice of prompt wrapper and scoring rule, the validation
+stage \citet{lemens2025asking} advise readers not to skip.
 
-\textbf{Use of generative AI.} A commercial generative AI assistant was used interactively to draft and revise parts of
-the prose and to write and refactor the collection, scoring, analysis and figure code. It generated no data. The author
-verified its output, re-derived every reported number from the archived raw trials with the released scripts in a clean
-environment, and is responsible for the content; the tool and dates are named on the title page.
-
-\textbf{Replication.} All raw trials, scoring adapters and analysis code reproduce every number reported here offline
-without API access; collection itself cannot be re-run identically. The archive and its data citation are given on the title
-page and will be deposited in the journal's Dataverse on acceptance.
+\textbf{Use of generative AI and replication.} AI assistance is disclosed on the title page; it generated no data. All raw trials,
+scoring adapters and analysis code reproduce every number reported here offline; the archive is cited on the title page.
 
 \clearpage
 \bibliographystyle{agsm}
