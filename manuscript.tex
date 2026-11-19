@@ -42,15 +42,15 @@
 
 \begin{abstract}
 \noindent
-Large language models are widely reported to lean left, but such scores shift with question format, paraphrase and the
-asker's inferred identity. How much of a reported position belongs to the model, and how much to the instrument, is unmeasured. I administered the Political Compass and 8Values to 19 models 60 times each (2,280 administrations) and
+Large language models are reported to lean left, but such scores shift with question format, paraphrase and the
+asker's inferred identity. How much of a reported position belongs to the model, and how much to the instrument, is unmeasured. I administered the Political Compass and 8Values to 19 models 60 times each and
 added SapplyValues and Pew's 2026 Typology in a second panel. With every axis aligned so that higher means
 further left, between \NTwoApparatus\% and \NFourApparatus\% of the variance depends on the instrument and the axis within it,
-about a third is trial noise, and a stable model trait that transfers across instruments accounts for only \NTwoMr\%
-(95\% CI \NTwoMcir) with two instruments and \NFourMr\% (\NFourMcir) with four. Social-scale constructs correlate across the two original
-instruments ($r=\ConvSoc$) but economic ones show no detectable correlation ($r=\ConvEcon$), yet each model's shift between a progressive and a conservative asker
-correlates at $r=\KGShift$ across them, so the instruments can agree. Responsiveness is measured consistently; default
-position is not. Claims that a model ``leans left'', and rankings by lean, should not be generalized beyond the
+each with an interval above zero, and about a third is trial noise. The share of a model's position that
+transfers across instruments is imprecise (\NTwoMr\%, 95\% CI \NTwoMcir, with two instruments; \NFourMr\%, \NFourMcir, with four),
+though four instruments are hard to reconcile with a share of 20\% or more. Social-scale constructs correlate across the original
+instruments ($r=\ConvSoc$) but economic ones do not detectably ($r=\ConvEcon$), yet each model's shift between a progressive and a conservative asker
+correlates at $r=\KGShift$ across them. Lean claims and rankings should not be generalized beyond the
 instrument used. I propose a minimum reporting standard.
 \end{abstract}
 
@@ -80,9 +80,9 @@ the instrument term.
 
 I supply the missing estimate. I decompose a measured political position into variance from model identity that
 transfers across instruments, position specific to the instrument and to the axis, and trial noise; test convergent
-validity, with a known-groups positive control; check robustness; and measure three further apparatus factors. I do
-not argue that models have no political lean. I argue that differences between models in a published score mostly do
-not carry from one instrument to another, and that an error budget should accompany any such audit.
+validity, with a known-groups positive control; check robustness; and measure three further apparatus factors. The paper makes one firm claim and one bounded claim. Firm: instrument- and axis-specific variance and trial noise are large and well
+estimated. Bounded: the share that transfers across instruments is imprecise, so I report it as an upper bound, not a point
+estimate. I do not argue that models have no political lean; I argue that an error budget should accompany any such audit.
 
 \section{Design and methods}
 
@@ -215,27 +215,22 @@ rises from 24\% to 47\% of variance between temperatures 0 and 1.0 while model r
 0.88--0.92), so the noise share is conditional on temperature (Online Appendix).
 
 \textbf{Three further factors.} In their own designs, asker identity explains more variance than model identity (partial
-$\eta^2$ 0.77--0.84 across the six axes, mean 0.79, against 0.16--0.35, mean 0.23); accommodation is asymmetric, moving
+$\eta^2$ 0.77--0.84 across the six axes, mean 0.79, against 0.16--0.35, mean 0.24); accommodation is asymmetric, moving
 scores 2.9--6.7 times further for a conservative framing than a progressive one. Sense-inverting items yields a Contamination Index averaging 0.046 of the instrument's range (95\% CI
-[0.038, 0.055]); the memorisation probe finds 16.6\% verbatim and 20.6\% near-verbatim completions. Free-text versus forced-label
-elicitation explains more variance on average (0.39 against 0.23), though not on every axis. Each factor was its own factorial, not crossed with instrument, so these designs cannot be added into one budget.
-
-\textbf{Item-level reliability.} Per item, 44.8\% of model--item cells are perfectly stable across all 60
-repetitions; inconsistency is concentrated in a minority of contested items. A graded-response analysis shows that some
-apparent centrism is avoidance: the most neutral model answers 52\% of 8Values items at the midpoint, against 9\% for the least.
+[0.038, 0.055]). Free-text versus forced-label elicitation explains more variance on average (0.39 against 0.23). Each factor was its own factorial, not crossed with instrument, so these designs cannot be added into one budget.
 
 \section{Discussion}
 
-The finding that models lean left reproduces here as elsewhere. What this paper adds is a denominator. Between half and
-two-thirds of a score depends on the instrument and axis. The share that carries across instruments is estimated at
-\NFourMr\% to \NTwoMr\% depending on which instruments are used, with intervals that include zero, and repetition
-alone contributes more than that point estimate. The lean survives, but most of the variation in a reported lean is not
-a property of the model that carries beyond the instrument used. That matters because the field's claims are magnitude claims (one model is more partisan than another, alignment shifts a model, lean has
+The finding that models lean left reproduces here as elsewhere. What this paper adds is a denominator. Two results are firm: between half
+and two-thirds of a score depends on the instrument and axis, and repetition alone contributes about a third. One is bounded: the share
+that carries across instruments is estimated at \NFourMr\% to \NTwoMr\%, with intervals that include zero, so the data support an upper
+bound, not a point estimate. The lean survives, but most of the variation in a reported lean is not a property of the model
+that carries beyond the instrument used. That matters because the field's claims are magnitude claims (one model is more partisan than another, alignment shifts a model, lean has
 grown across generations) and these require scores comparable across studies; the two most widely used instruments converge on the social scale only. The failure is one of transportability, not of auditing: within a single instrument model identity is clearly measurable. A single output is not safe to treat as a measurement without characterizing how it fails \citep{bisbee2024}.
 
 I do not claim that a questionnaire score predicts behaviour; that is a behavioural-validity question this design does not test. The limits are
 real: English-language administrations on US-built instruments at one time point, though bias varies with prompt language and model origin \citep{lim2026bias}; 19 models from 11 providers are a small
-sample; the main design used one temperature and one prompt wrapper; the direction alignment treats left, libertarian and
+sample, and the convergent-validity test rests on two construct pairs, so it is suggestive, not decisive; the main design used one temperature and one prompt wrapper; the direction alignment treats left, libertarian and
 progressive as one pole, a convention; and the language-model judges were not validated against humans.
 
 \textbf{A minimum reporting standard.} A political-bias audit of a language model should report: the instrument, named,
