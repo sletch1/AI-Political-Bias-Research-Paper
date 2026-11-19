@@ -5,8 +5,7 @@
 Code, data, and analysis supporting the paper **"An error budget for
 political-bias measurement in large language models"**, prepared as a Research
 Article for *Research & Politics* (Sage; double-anonymized): `manuscript.tex` /
-`manuscript.pdf` (anonymized article, 4,000-word limit), `title_page.tex`
-(authors and declarations, not sent to reviewers), and the online appendix
+`manuscript.pdf` (anonymized article, 4,000-word limit) and the online appendix
 `main.tex` / `main.pdf`.
 
 The release `v0.5.0` snapshot, which matches the article, is archived at Zenodo. The concept DOI
@@ -107,7 +106,6 @@ required for its current claims.
 | Path | Description |
 |---|---|
 | `manuscript.tex` / `manuscript.pdf` | The anonymized article (Research & Politics Research Article). |
-| `title_page.tex` | Title page, acknowledgments and Statements and Declarations. |
 | `main.tex` / `main.pdf` | The web appendix (standalone: author block on page 1; full methods, extended discussion, all supporting results). |
 | `references.bib` | Bibliography. |
 | `.zenodo.json` | Metadata for the GitHub→Zenodo archival DOI. |
