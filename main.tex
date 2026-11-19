@@ -59,7 +59,7 @@ This study employs a quantitative, comparative design: every model is
 administered the same standardized instruments under the same protocol, so
 that bias magnitude and trial-to-trial consistency can be compared directly
 across models rather than assessed qualitatively per model. This follows a
-design paradigm sometimes called ``machine psychology'' \citep{hagendorff2023},
+design paradigm sometimes called ``machine psychology'',
 administering instruments designed for human respondents directly to LLMs and
 analyzing the results with the same psychometric tools used for human data.
 Treating an LLM's answers to a human-designed instrument as meaningful,
@@ -417,7 +417,7 @@ run's condition, and serving as an anchor cell), academic researcher,
 conservative, progressive, politically disengaged (apolitical), and
 journalist. Crossed with 18 models and both instruments at ten repetitions
 per cell, this yielded 2{,}160 administrations, plus a 180-call
-direct-elicitation probe (Törnberg and Schimmel's ``who do you think is
+direct-elicitation probe (``who do you think is
 asking?'', not analysed quantitatively here). Each axis was analysed with a
 two-way ANOVA (model, condition) and partial $\eta^2$ reported per axis; the
 accommodation asymmetry ratio is the conservative-condition shift from the
@@ -802,13 +802,13 @@ matrix shows (\texttt{scoring/analyze\_reliability\_corrected.py}).
 \section{Citation Audit}
 \label{si:citations}
 
-I audited the 40 references of the article and this appendix using institutional information only: OpenAlex
+I audited the 35 references of the article and this appendix using institutional information only: OpenAlex
 affiliations reported for the first and last author of each work (\texttt{scoring/audit\_citations.py}). No gender,
-race or ethnicity was inferred from names. Affiliation data were available for 32 references. Of the 25 with a recorded
-first-author affiliation, 12 were at institutions in the United States and 13 elsewhere (United Kingdom 4, and one each in
-Germany, Spain, Belgium, Italy, New Zealand, Finland, Bangladesh, the Netherlands, Argentina and Singapore; one work lists
-two countries); of the 23 with a recorded last-author affiliation, 14 were in the United States, 3 in the United Kingdom,
-2 in Germany and one each in Spain, Belgium, Italy, New Zealand and the Netherlands (one work lists two countries). The list is concentrated in the
+race or ethnicity was inferred from names. Affiliation data were available for 28 references. Of the 21 with a recorded
+first-author affiliation, 11 were at institutions in the United States and 10 elsewhere (United Kingdom 4, and one each in
+Germany, Spain, Belgium, Italy, New Zealand, Finland and Singapore; one work lists two countries); of the 21 with a recorded
+last-author affiliation, 13 were in the United States and 8 elsewhere (United Kingdom 3, Germany 2, and one each in Spain,
+Belgium, Italy and New Zealand; one work lists two countries). The list is concentrated in the
 United States and Western Europe, as is the literature on language-model political bias, and affiliation country is a
 coarse proxy for geographic diversity and not for any individual's identity.
 
@@ -863,12 +863,7 @@ small unexamined sample of them, as a valid measurement without first
 characterizing its error.
 
 Nor am I claiming that a questionnaire score predicts what a model would
-do given a real decision. A dual-instrument study comparing an abstract
-voting-advice questionnaire against real referendum outcomes finds that the
-two disagree: models cluster near the political centre on concrete votes
-despite a left-leaning profile on the questionnaire, and at least part of
-the questionnaire signal may reflect change-aversion rather than ideology
-\citep{barmettler2026instrument}. That is a claim about behavioural validity,
+do given a real decision. That is a claim about behavioural validity,
 which this design does not test and does not need to in order for the
 instrument-comparability problem above to hold; an error budget for a
 questionnaire score is not an argument that the score predicts behaviour,
@@ -887,10 +882,9 @@ statistic that divides by observed spread will invert in the same way on
 tightly clustered responses, and several published consistency measures are
 constructed this way.
 
-Three further components of the apparatus, each previously demonstrated only in isolation, were measured directly (Section~\ref{si:remaining-factors-methods}). Accommodation to the inferred asker \citep{tornberg2026sycophancy} explains more variance (mean partial $\eta^2=0.79$) than model identity does in the same design (0.23); free-text versus forced-choice elicitation \citep{rottger2024} explains more variance on average (0.39) than model identity within the same format factorial (0.23), although not on every axis (on 8Values equality model identity is 0.42 against 0.06); and 17 of 18 models show a measurable,
+Three further components of the apparatus, each previously demonstrated only in isolation, were measured directly (Section~\ref{si:remaining-factors-methods}). Accommodation to the asker's stated identity, which parallels accommodation of an expressed stance \citep{kaur2025echoes}, explains more variance (mean partial $\eta^2=0.79$) than model identity does in the same design (0.23); free-text versus forced-choice elicitation \citep{rottger2024} explains more variance on average (0.39) than model identity within the same format factorial (0.23), although not on every axis (on 8Values equality model identity is 0.42 against 0.06); and 17 of 18 models show a measurable,
 FDR-corrected score shift under item inversion, consistent with instrument
-recognition rather than pure engagement with item content
-\citep{bianchi2026plasticity}. None of these three is folded into the
+recognition rather than pure engagement with item content. None of these three is folded into the
 pooled error budget, because each was collected as its own factorial
 against the unattributed, forced-choice baseline rather than crossed with
 the other two and with instrument simultaneously; a single design that crosses all four factors at once is the natural next step. I make no estimate here of how it would change the model share, and the separate designs cannot be added into a single budget.

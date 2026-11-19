@@ -64,10 +64,9 @@ Large language models mediate political information for hundreds of millions of 
 shift users' views \citep{fisher2026biasedai} and persuade \citep{hackenburg2025levers}. A large literature therefore
 audits their political lean \citep{santurkar2023, feng2023trails}, usually by administering a questionnaire such as the
 Political Compass and reading off a score \citep{rozado2024, motoki2024, buyl2026}. Each assumption behind that practice has been
-challenged separately: models accommodate the identity they infer for the asker \citep{tornberg2026sycophancy};
-the instruments appear in training data \citep{bianchi2026plasticity}; forced-choice answers differ from free
-responses \citep{rottger2024}; paraphrasing the items changes the answers \citep{ceron2024brittleness}; and a model's
-position on a questionnaire does not predict how it votes on concrete policies \citep{barmettler2026instrument}. Some work
+challenged separately: models shift their political answers toward the stance a user expresses \citep{kaur2025echoes}; forced-choice
+answers differ from free responses \citep{rottger2024}; and paraphrasing the items changes the answers
+\citep{ceron2024brittleness}. Some work
 proposes better-grounded measures \citep{faulborn2025littleleft, wachter2025irt}. To my knowledge no study has weighed these
 against one another, so there is no estimate of how much of a reported score is the model and how much is the apparatus.
 
@@ -76,10 +75,8 @@ construct converge while measures of different constructs stay apart \citep{camp
 can be split between the object and the conditions of measurement \citep{cronbach1972, brennan2001}, and whether a
 concept is validly operationalized \citep{adcock2001} decide when scores can be pooled, in text-as-data \citep{grimmer2013, benoit2026, ornstein2025}, and in recent work that
 treats a language model's output as a measurement \citep{lemens2025asking, bisbee2024, alvarez2025}. A political-bias
-audit is such a measurement, and the audit literature has not applied these tests to it. The closest study
-administers three instruments to 26 models but measures each cell once, so trial noise cannot be separated from the
-instrument term \citep{sakhawat2026polalign}; it finds that economic scales agree across instruments, where I find they do
-not. Variance-components designs have begun to appear in LLM measurement \citep{messing2026hidden}, but not for political position.
+audit is such a measurement, and the audit literature has not applied these tests to it. To my knowledge no audit administers several instruments repeatedly to many models, so none can separate trial noise from
+the instrument term.
 
 I supply the missing estimate. I decompose a measured political position into variance from model identity that
 transfers across instruments, position specific to the instrument and to the axis, and trial noise; test convergent
@@ -241,9 +238,7 @@ alone contributes more than that point estimate. The lean survives, but most of 
 a property of the model that carries beyond the instrument used. That matters because the field's claims are magnitude claims (one model is more partisan than another, alignment shifts a model, lean has
 grown across generations) and these require scores comparable across studies; the two most widely used instruments converge on the social scale only. The failure is one of transportability, not of auditing: within a single instrument model identity is clearly measurable. A single output is not safe to treat as a measurement without characterizing how it fails \citep{bisbee2024}.
 
-I do not claim that a questionnaire score predicts behaviour. A study comparing a voting-advice questionnaire with real
-referendum outcomes finds models near the centre on concrete votes despite a left-leaning profile on the questionnaire
-\citep{barmettler2026instrument}; that is a behavioural-validity question this design does not test. The limits are
+I do not claim that a questionnaire score predicts behaviour; that is a behavioural-validity question this design does not test. The limits are
 real: English-language administrations on US-built instruments at one time point; 19 models from 11 providers are a small
 sample; the main design used one temperature and one prompt wrapper; the direction alignment treats left, libertarian and
 progressive as one pole, a convention; and the language-model judges were not validated against humans.

@@ -1,10 +1,10 @@
 {
-  "n_references": 40,
-  "n_with_institution_data": 32,
+  "n_references": 35,
+  "n_with_institution_data": 28,
   "first_author_country_counts": [
     [
       "US",
-      12
+      11
     ],
     [
       "GB",
@@ -31,18 +31,6 @@
       1
     ],
     [
-      "BD",
-      1
-    ],
-    [
-      "NL",
-      1
-    ],
-    [
-      "AR",
-      1
-    ],
-    [
       "SG",
       1
     ],
@@ -54,7 +42,7 @@
   "last_author_country_counts": [
     [
       "US",
-      14
+      13
     ],
     [
       "GB",
@@ -79,19 +67,15 @@
     [
       "NZ",
       1
-    ],
-    [
-      "NL",
-      1
     ]
   ],
   "first_author_non_US": [
-    13,
-    25
+    10,
+    21
   ],
   "last_author_non_US": [
-    9,
-    23
+    8,
+    21
   ],
   "type_counts": [
     [
@@ -99,16 +83,12 @@
       18
     ],
     [
-      "misc",
-      7
-    ],
-    [
       "inproceedings",
-      7
+      8
     ],
     [
-      "unpublished",
-      5
+      "misc",
+      6
     ],
     [
       "book",
@@ -139,12 +119,6 @@
         "US"
       ],
       "n_authors": 6
-    },
-    {
-      "key": "hagendorff2023",
-      "type": "misc",
-      "year": "2023",
-      "found": false
     },
     {
       "key": "serapiogarcia2023",
@@ -317,54 +291,10 @@
       "n_authors": 112
     },
     {
-      "key": "sakhawat2026polalign",
-      "type": "unpublished",
-      "year": "2026",
-      "found": true,
-      "first_author_countries": [
-        "BD"
-      ],
-      "last_author_countries": [],
-      "n_authors": 6
-    },
-    {
-      "key": "barmettler2026instrument",
-      "type": "unpublished",
-      "year": "2026",
-      "found": true,
-      "first_author_countries": [],
-      "last_author_countries": [],
-      "n_authors": 1
-    },
-    {
-      "key": "tornberg2026sycophancy",
-      "type": "unpublished",
-      "year": "2026",
-      "found": true,
-      "first_author_countries": [
-        "NL"
-      ],
-      "last_author_countries": [
-        "NL"
-      ],
-      "n_authors": 2
-    },
-    {
       "key": "wachter2025irt",
       "type": "inproceedings",
       "year": "2025",
       "found": false
-    },
-    {
-      "key": "bianchi2026plasticity",
-      "type": "unpublished",
-      "year": "2026",
-      "found": true,
-      "first_author_countries": [
-        "AR"
-      ],
-      "last_author_countries": [],
-      "n_authors": 4
     },
     {
       "key": "fisher2026biasedai",
@@ -512,19 +442,6 @@
       "n_authors": 5
     },
     {
-      "key": "messing2026hidden",
-      "type": "unpublished",
-      "year": "2026",
-      "found": true,
-      "first_author_countries": [
-        "US"
-      ],
-      "last_author_countries": [
-        "US"
-      ],
-      "n_authors": 1
-    },
-    {
       "key": "santurkar2023",
       "type": "inproceedings",
       "year": "2023",
@@ -549,6 +466,15 @@
         "US"
       ],
       "n_authors": 4
+    },
+    {
+      "key": "kaur2025echoes",
+      "type": "inproceedings",
+      "year": "2025",
+      "found": true,
+      "first_author_countries": [],
+      "last_author_countries": [],
+      "n_authors": 1
     }
   ],
   "note": "Institutional affiliation only (OpenAlex); no gender, race or ethnicity inferred from names."
