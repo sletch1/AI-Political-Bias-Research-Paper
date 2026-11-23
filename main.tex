@@ -240,10 +240,7 @@ administration that returned a parseable response was scored and retained.
 \textit{Midpoint comparison.} Each model's mean score on each axis was
 additionally tested against that instrument's own neutral center-point (0
 for the two Political Compass axes, 50 for the four 8Values axes) using a
-one-sample $t$-test, accompanied by a one-sample Cohen's $d$ for each test so
-that statistical significance, which $n=60$ trials per test makes easy to
-achieve for even a small deviation, can be distinguished from practical
-effect size \citep{cohen1988}.
+one-sample $t$-test and a one-sample Cohen's $d$.
 
 \textit{Reproducibility.} Every trial in this dataset was collected
 programmatically via the OpenRouter API with pinned model identifiers,
@@ -653,8 +650,7 @@ axes), controlling the false discovery rate across all 114 tests at 5\%
 (Benjamini--Hochberg). All 114 reject. The center-point is a convention, not
 an estimate of any population, so this is a statement about where each model
 sits relative to the scale's midpoint. Every model in this study, without
-exception, differs significantly from that midpoint, in the same direction
-identified in the between-model comparisons above: left of center
+exception, differs significantly from that midpoint: left of center
 economically and libertarian of center socially.
 
 Statistical significance alone is a weak claim at $n=60$ trials per test,
@@ -662,14 +658,10 @@ since even a small, practically unremarkable deviation from center would
 clear $p<0.05$ at that sample size. The effect sizes rule this out:
 computing a one-sample Cohen's $d$ for each of the 114 tests (the
 standardized deviation of a model's mean from the instrument's
-center-point) finds every finite value at $|d|\geq 1.47$, comfortably past
-Cohen's conventional threshold for a ``large'' effect ($|d|\geq 0.8$)
-\citep{cohen1988}, with a median $|d|$ of $11.92$ (bootstrap over models: $SE=2.12$, 95\% CI
+center-point) finds every finite value at $|d|\geq 1.47$, with a median $|d|$ of $11.92$ (bootstrap over models: $SE=2.12$, 95\% CI
 [$8.81$, $16.75$]) and a maximum of $106.74$
 (one model-axis combination is excluded from these summary statistics for
-having an effectively zero within-model standard deviation). The deviation from the neutral center-point
-is therefore not merely statistically detectable but, on average, an order
-of magnitude larger than the conventional threshold for a large effect.
+having an effectively zero within-model standard deviation).
 
 \section{Multi-Trait Multi-Method Matrix}
 \label{si:mtmm}
