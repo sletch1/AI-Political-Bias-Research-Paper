@@ -56,16 +56,16 @@ ORCID: \href{https://orcid.org/0009-0002-2216-4252}{0009-0002-2216-4252}
 \begin{abstract}
 \noindent
 That large language models lean left is one of the most widely reported findings in the literature. Yet their scores
-move with question format, paraphrasing, and the asker's inferred identity. So the question is this: how much of a
-reported position belongs to the model, and how much belongs to the instrument used to measure it? To answer it, the researcher administered the Political Compass and 8Values to 19 models, 60 times each,
+move with question format, paraphrasing, and the asker's inferred identity. How much of a
+reported position belongs to the model, and how much belongs to the instrument used to measure it? The researcher administered the Political Compass and 8Values to 19 models, 60 times each,
 and added SapplyValues and Pew's 2026 Typology in a second panel. Every axis was scored so that higher values mean
-further left. On that scale, the instrument and its axis account for between \NTwoApparatus\% and \NFourApparatus\% of
+further left. The instrument and its axis account for between \NTwoApparatus\% and \NFourApparatus\% of
 the variance, with each component's interval excluding zero. Trial-to-trial noise accounts for about a third. The share
 of a model's position that carries over from one instrument to another is estimated imprecisely; however, with four
 instruments, the data are hard to reconcile with a share of 20\% or more. On the two original instruments, social-axis
-scores correlate ($r=\ConvSoc$), but economic-axis scores do not ($r=\ConvEcon$). Despite this, each model's shift
+scores correlate ($r=\ConvSoc$), but economic-axis scores do not ($r=\ConvEcon$). Yet each model's shift
 between a progressive and a conservative asker correlates strongly across instruments ($r=+\KGShift$). The instruments
-can agree, but only when there is a common signal to agree on. Therefore, claims about model ideology, and rankings of
+can agree, but only when there is a common signal to agree on. Claims about model ideology, and rankings of
 models by ideology, should not be generalized beyond the instrument that produced them. The researcher recommends a
 minimum reporting standard.
 \end{abstract}
@@ -99,7 +99,7 @@ recent work that treats a language model's output as a measurement
 not applied these tests to it. No published audit administers several instruments repeatedly to many models, so none can separate
 trial noise from the instrument's contribution.
 
-This study supplies the missing estimate. The researcher decomposes a measured political position into three parts:
+The researcher decomposes a measured political position into three parts:
 variance from model identity that transfers across instruments, variance specific to the instrument and axis, and trial
 noise. The researcher also tests convergent validity with a known-groups positive control, checks robustness, and
 measures three further apparatus factors. The paper makes one firm claim and one bounded claim. The firm claim is that
@@ -129,7 +129,7 @@ intervals computed over models.
 
 \textbf{Error-budget model.} The instruments score the left in opposite directions: higher is further left on 8Values,
 while more negative is further left on the Political Compass. Every axis is therefore oriented first so that a higher
-score means further left, more libertarian, or more progressive, depending on the axis. This requires reversing both
+score means further left, more libertarian, or more progressive. This requires reversing both
 Political Compass axes, SapplyValues' right and authority axes, and Pew's ordinal position. A shared model effect and a
 convergent correlation make sense only once all instruments point the same way. Scores are then z-scored within each
 instrument $\times$ axis combination (hereafter a trait). Because this sets every trait's mean to zero, the
@@ -158,18 +158,17 @@ $SE(r)=\sqrt{(1-r^2)/(n-2)}$, with $n=19$. Means of correlations, their differen
 bootstrap standard error over models (5,000 resamples). Two checks bound the transferable-share estimate. The first is
 a simulation that keeps the real design, plants a known transferable share, and refits the model (\SimReps{} runs per
 condition). The second is a known-groups contrast based on the asker-identity design. The gap between a model's scores
-for a self-described progressive asker and a self-described conservative asker has a known direction, so it tests
+for a self-described progressive asker and a conservative asker has a known direction, so it tests
 whether the instruments can agree when a common signal is present.
 
 \section{Results}
 
-\textbf{The error budget.} Administered the way the field usually administers them, with a single unattributed asker
+\textbf{The error budget.} With a single unattributed asker
 and 60 repetitions, both original instruments place all 19 models in the same quadrant. Every model is economically
 left and socially libertarian on the Political Compass, and leans toward equality, peace, liberty, and progress on
 8Values. The lean itself is not in doubt. All 114 model-axis cells differ from their instrument's midpoint (one-sample
 $t$-tests, Benjamini--Hochberg false discovery rate of 5\% \citep{benjamini1995}), with a median standardized effect of
-11.9 (95\% CI [8.8, 16.7]). This agrees with the existing consensus that large language models lean left both socially
-and economically \citep{rozado2024, motoki2024}. Note, however, that the lean is measured against each instrument's midpoint, which is a convention,
+11.9 (95\% CI [8.8, 16.7]). This agrees with the consensus that models lean left socially and economically \citep{rozado2024, motoki2024}. However, the lean is measured against each instrument's midpoint, which is a convention,
 not a population estimate \citep{gallup2024values}.
 
 The two instruments agree on the quadrant, but their scores are built from very different sources of variance
@@ -177,20 +176,19 @@ The two instruments agree on the quadrant, but their scores are built from very 
 instruments and axes accounts for \NTwoM\% of the variance (95\% CI \NTwoMci). Model position specific to the
 instrument accounts for \NTwoMI\% (\NTwoMIci), position specific to the axis within the instrument for \NTwoMA\%
 (\NTwoMAci), and trial noise for \NTwoE\% (\NTwoEci). In the four-instrument panel, the transferable share falls to
-\NFourM\% (\NFourMci). Going by the point estimates, between half and two-thirds of a score moves with the
+\NFourM\% (\NFourMci). By the point estimates, between half and two-thirds of a score moves with the
 questionnaire, less than a fifth carries over between questionnaires, and trial noise alone is larger than the
 transferable part. The transferable share is also the least precisely estimated term, with an interval that reaches
 zero in both panels. A two-term specification that folds the instrument into trait assigns \OTwoM\% to model identity,
 but it cannot tell consistency across axes apart from transfer between instruments.
 
-The simulation shows what the design can detect. When the true transferable share is 20\%, an estimate as low as the
+When the true transferable share is 20\%, an estimate as low as the
 four-instrument value occurs in \SimFourTwentyBelowN{} of \SimReps{} runs. When the true share is zero, an estimate as
 high as the two-instrument value occurs in \SimTwoZeroAboveN{} of \SimReps{} runs (Online Appendix \S 3). A transferable
-share of 20\% or more is therefore hard to reconcile with the four-instrument panel, while a share of 5--10\% is
+share of 20\% or more is hard to reconcile with the four-instrument panel, while a share of 5--10\% is
 compatible with both panels.
 
-Within a single axis, model identity explains 57--73\% of the variance (Figure~\ref{fig:budget}b). Once the instrument
-is fixed, models are clearly separable. Rankings within one study are therefore meaningful, but comparisons across
+Within a single axis, model identity explains 57--73\% of the variance (Figure~\ref{fig:budget}b). Rankings within one study are therefore meaningful, but comparisons across
 studies mostly are not.
 
 \begin{figure}[H]
@@ -218,16 +216,15 @@ instruments may simply be noisy measures of one underlying position. The multitr
 support this explanation (Table~\ref{tab:mtmm}). Convergent coefficients, which correlate the same construct across the
 two instruments, average $r=\ConvMean$ ($SE=\ConvSE$, 95\% CI \ConvCI). Discriminant coefficients, which correlate
 different constructs within one instrument, average $r=\DiscMean$ ($SE=\DiscSE$). The Campbell--Fiske criterion
-requires the first to exceed the second. Here, it falls short by \DiffAbs{} ($SE=\DiffSE$, 95\% CI \DiffCI). In other
-words, two different axes on the same questionnaire agree more closely than the same construct does across
+requires the first to exceed the second. Here, it falls short by \DiffAbs{} ($SE=\DiffSE$, 95\% CI \DiffCI). Two different axes on the same questionnaire agree more closely than the same construct does across
 questionnaires.
 
-Specifically, the failure is uneven across domains. The social scales converge ($r=\ConvSoc$, $SE=\ConvSocSE$), but the
+The failure is uneven across domains. The social scales converge ($r=\ConvSoc$, $SE=\ConvSocSE$), but the
 economic scales do not ($r=\ConvEcon$, $SE=\ConvEconSE$). The economic estimate is imprecise, and its interval (95\% CI
 \EconCorrCI) cannot rule out a true correlation near 0.45. Even so, the criterion fails on average.
 
 Could unreliability explain the gap? It cannot. A model's mean over 60 repetitions has a reliability of \RelMin{} on
-every axis. Therefore, correcting the correlations for attenuation leaves the mean convergent coefficient at
+every axis. Correcting the correlations for attenuation leaves the mean convergent coefficient at
 $\ConvMeanCorr$ and the difference at $\DiffCorr$.
 
 \begin{table}[H]
@@ -242,26 +239,25 @@ errors over models.}
 
 SapplyValues shows where the disagreement lies. Its economic axis ranks models much like the 8Values equality axis
 ($\rho=\RhoSapEq$, $SE=\RhoSapEqSE$), but opposite to the Political Compass economic axis ($\rho=\RhoSapPC$,
-$SE=\RhoSapPCSE$). Of the three economic scales, therefore, the Political Compass is the one that orders models
-differently. Pew's ordinal position, by contrast, is unrelated to both ($\rho=\RhoPewPC$, $SE=\RhoPewPCSE$;
+$SE=\RhoSapPCSE$). Of the three economic scales, the Political Compass is the one that orders models
+differently. Pew's ordinal position is unrelated to both ($\rho=\RhoPewPC$, $SE=\RhoPewPCSE$;
 $\rho=\RhoPewEq$, $SE=\RhoPewEqSE$). On Pew's own typology, 16 of the 18 models fall left of center. The remaining two,
 DeepSeek Chat and Grok 4.20, fall in the \emph{Pragmatic and Polite Right}.
 
-\textbf{A positive control.} The instruments can agree, and the asker-identity design shows it. On every axis of both
+\textbf{A positive control.} On every axis of both
 instruments, every model answers further left for a progressive asker than for a conservative one (\KGPositive{} of
 \KGCells{} model-axis cells). The shift is large: \KGRangeLo--\KGRangeHi\% of the instrument's range, or
-\KGSdLo--\KGSdHi{} times the spread between models when no asker is described. The two instruments also agree on how
-large each model's shift is. A model's shift on one instrument tracks its shift on the other (mean convergent
+\KGSdLo--\KGSdHi{} times the spread between models when no asker is described. A model's shift on one instrument tracks its shift on the other (mean convergent
 $r=+\KGShift$, 95\% CI \KGShiftCI). By contrast, the same models' no-asker positions in that design barely correlate
-($r=+\KGBase$, \KGBaseCI). In other words, both questionnaires pick up a large common signal in the same way. What fails
+($r=+\KGBase$, \KGBaseCI). Both questionnaires pick up a large common signal in the same way. What fails
 to transfer is the much smaller difference between models' default positions.
 
-\textbf{Robustness.} The main estimates hold up under several robustness checks. First, dropping each provider in turn
+\textbf{Robustness.} First, dropping each provider in turn
 from the four-instrument panel leaves the transferable share between \LopoMmin\% and \LopoMmax\%. Second, dropping each
 instrument in turn leaves it between \LoioMmin\% and \LoioMmax\%. The other shares move much more: the
 instrument-specific share ranges from \LoioMImin\% to \LoioMImax\%, and the axis-specific share from \LoioMAmin\% to
-\LoioMAmax\%. In other words, the data establish that little transfers across questionnaires more firmly than they
-divide the remainder between instrument and axis. The researcher therefore claims only that a position depends on the
+\LoioMAmax\%. The data establish that little transfers across questionnaires more firmly than they
+divide the remainder between instrument and axis. The researcher claims only that a position depends on the
 instrument and the axis jointly.
 
 Third, two axes have no settled left--right polarity: 8Values peace and SapplyValues authority. Reversing either or both
@@ -270,11 +266,9 @@ puts the two-instrument share at \OrientTwoMax\% rather than \NTwoM\%, because t
 instrument term to the axis term (Online Appendix \S 3).
 
 Fourth, an independent refit in \texttt{lme4} \citep{bates2015} reproduces the shares. Profile and parametric-bootstrap
-intervals, which are better suited to a variance near its boundary of zero, also reach zero. Specifically, the
-transferable share is \NTwoMr\% [0, 39] with two instruments and \NFourMr\% [0, 13] with four (Online Appendix \S 3.1).
+intervals, which are better suited to a variance near its boundary of zero, also reach zero. The transferable share is \NTwoMr\% [0, 39] with two instruments and \NFourMr\% [0, 13] with four (Online Appendix \S 3.1).
 
-\textbf{Three further factors.} The three further apparatus factors were each tested in a separate factorial design,
-not crossed with instrument. Their effects therefore cannot be added into a single error budget, but each can be
+\textbf{Three further factors.} These factors were each tested in a separate design, not crossed with instrument. Their effects therefore cannot be added into a single error budget, but each can be
 compared with model identity within its own design. First, asker identity explains more variance than model identity.
 Across the six axes, its partial eta-squared ranges from 0.77 to 0.84 (mean 0.79), against 0.16 to 0.35 (mean 0.24)
 for model identity. The accommodation is also asymmetric: a conservative framing moves scores 2.9--6.7 times further
@@ -284,21 +278,21 @@ versus forced-label elicitation has a mean partial eta-squared of 0.39, against 
 
 \section{Discussion}
 
-The finding that models lean left reproduces here, as it has elsewhere. What this paper adds is a denominator. Two
+The finding that models lean left reproduces here. What this paper adds is a denominator. Two
 results are firm. Between half and two-thirds of a score depends on the instrument and axis, and repetition alone
 contributes about a third. One result is bounded. The share that carries across instruments is estimated at
 \NFourMr\% to \NTwoMr\%, with intervals that include zero, so the data support an upper bound rather than a point
-estimate. In other words, the lean survives, but most of the variation in a reported lean is not a property of the
+estimate. The lean survives, but most of the variation in a reported lean is not a property of the
 model that carries beyond the instrument used.
 
 This matters because the field's claims are magnitude claims: one model is more partisan than another, alignment shifts
 a model, or lean has grown across model generations. Each of these requires scores that are comparable across studies.
-Yet the two most widely used instruments converge only on the social scale. The failure, however, is one of
+Yet the two most widely used instruments converge only on the social scale. The failure is one of
 transportability, not of auditing itself. Within a single instrument, model identity is clearly measurable. What is not
 safe is treating a single output as a measurement without first characterizing how it fails \citep{bisbee2024}.
 
 The researcher does not claim that a questionnaire score predicts behavior. That is a question of behavioral validity,
-which this design does not test. The study also has several limitations. First, all administrations were in English and
+which this design does not test. First, all administrations were in English and
 used US-built instruments at a single point in time, although bias varies with prompt language and model origin
 \citep{lim2026bias}. Second, 19 models from 11 providers is a small sample. The convergent-validity test also rests on
 only two construct pairs, so it is suggestive rather than decisive. Third, the main design used a single temperature and
@@ -306,15 +300,15 @@ a single prompt wrapper. Fourth, the direction alignment treats left, libertaria
 a convention rather than an established fact. Finally, the language-model judges used to score free-text responses were
 not validated against human raters.
 
-\textbf{A minimum reporting standard.} A political-bias audit of a language model should therefore report seven items:
+\textbf{A minimum reporting standard.} A political-bias audit of a language model should report seven items:
 (i) the instrument, named, with its items; (ii) the asker condition, including the absence of one, since an
 unattributed prompt is itself a condition rather than a neutral baseline; (iii) the repetition count and the dispersion
 in the instrument's own units; (iv) an error budget, or at least a variance decomposition across whatever was varied;
 (v) the model version, route, date, and sampling settings, with raw outputs archived; (vi) a contamination check; and
 (vii) item-level results.
 
-The same logic extends beyond political audits. It applies to any study that treats a language model's answers to a
-survey scale or coding scheme as a measure \citep{serapiogarcia2023}. In such studies, the instrument is a
+The same logic applies to any study that treats a language model's answers to a
+survey scale or coding scheme as a measure \citep{serapiogarcia2023}. There, the instrument is a
 random facet of measurement. A single instrument therefore confounds model identity with instrument-specific position,
 and repetition is required to separate either from noise.
 
