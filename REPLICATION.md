@@ -51,7 +51,9 @@ Software and run time are in `RUN_LOG.md` (written by the clean-environment test
 
 `data/raw_trials/` etc. hold one JSON file per administration (structured answers,
 score, cost, status). `data/README.md` describes each directory. Model identifiers and
-collection windows are in appendix Table S1.
+collection windows are in appendix Table S1. The OpenRouter activity log (generation IDs,
+timestamps, models, costs) is archived by the author and available on request; see the
+"API activity log" paragraph in `README.md`.
 
 ## Licensing and redistribution
 

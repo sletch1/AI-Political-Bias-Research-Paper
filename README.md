@@ -187,6 +187,16 @@ All collection scripts are resumable: each trial is written atomically and
 skipped on re-run if it already exists, so an interrupted run can simply be
 restarted.
 
+**API activity log.** The raw trial files carry no per-call timestamp or
+generation ID. The OpenRouter activity log for the study's API keys (15,679
+generations, 26 July to 10 November 2026: generation ID, timestamp, model,
+upstream provider, token counts and cost; US$65.38 in total) was exported on
+2026-11-23 and is archived by the author. It is not in this repository because
+it records the network location of each call; it is available from the author
+on request. SHA-256 of the archived file
+(`openrouter_activity_research_2026-07-26_to_2026-11-10.csv`):
+`969f6f51287694e0ed0620b03b7870a105d814038331ee32bbf9bf37463f149a`.
+
 ## Limitations
 
 See the paper's Discussion for the full account. In brief: the design does
