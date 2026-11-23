@@ -11,6 +11,16 @@ verbatim string match.
 The review below is the author's read of every item. An independent second reader then checked
 a 20-item sample; that check is logged in the Sign-off section.
 
+> **Correction to earlier versions of this record (23 November 2026).** In releases v0.2 through
+> v0.5.0, including the Zenodo-archived v0.4 and v0.4.1 snapshots, this file gave the reviewer as
+> "first pass, LLM-assisted", called itself a "first-pass LLM read", and said a separate human
+> verification was still required. `scoring/item_variants_source.json` had the status "DRAFTED, NOT YET
+> HUMAN-VERIFIED". Those labels were wrong. The author wrote all 132 inverted and paraphrased items.
+> No language model drafted or reviewed them. The author reviewed every item and signed off
+> before collection on 19 September 2026. The only change to the substance of the record is the
+> second-reader check. The study plan called for it before collection, but it happened afterwards,
+> on 22 November 2026. It is logged below and stated in the online appendix.
+
 ## Automated check
 
 `python3 scoring/build_item_variants.py --check` passes structurally for both banks (70/62 items
