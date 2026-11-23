@@ -62,7 +62,7 @@ how much of their response varies with the instrument and the question asked.
 \subsection{Model Roster}
 \label{si:model-roster}
 
-Nineteen models spanning 11 organizations were selected via the OpenRouter
+Nineteen models spanning eleven organizations were selected via the OpenRouter
 API, a single gateway providing uniform access to models from many providers
 (Table~\ref{tab:model-ids}).
 
@@ -162,6 +162,10 @@ question, a model can verify its own coverage while generating, and on the
 rare miscount the pipeline's retry logic reports exactly which question
 numbers are missing rather than only the wrong total count. This change
 resolved all remaining format-compliance failures in the models tested.
+An explicit output-token ceiling (\texttt{max\_tokens=4000}) is set on every
+request, since the default was found to silently truncate a 70-answer
+response for at least one model, producing an unparseable partial JSON
+object.
 
 \subsubsection{Data volume, cost, exclusions, and release}
 The full run collected 60 trials per test per model across all 19 models:
