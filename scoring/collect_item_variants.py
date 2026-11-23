@@ -1,10 +1,10 @@
-"""Workstream 1, Task 1.2 -- instrument-contamination / item-inversion control.
+"""Instrument-contamination / item-inversion control.
 
 Tests whether models are recognising the Political Compass and 8Values rather
 than answering their items, which is the threat Bianchi et al. (2026) raise and
 which updates/02_where_the_paper_stands.md identifies as fatal-if-uncontrolled.
 
-Design (the study plan Task 1.2): 3 item conditions x 19 models x 2 instruments x 10
+Design (contamination control): 3 item conditions x 19 models x 2 instruments x 10
 trials = 1,140 administrations, plus a 380-call memorisation probe.
 
     export OPENROUTER_API_KEY=...
@@ -19,7 +19,7 @@ and memorisation probes as
 Scoring goes through variant_scoring.score_response, which mirrors an inverted
 condition's answers and hands them to the *unmodified* authoritative engine, so
 every condition is directly comparable to the published baseline and no scoring
-code changes for this experiment (the study plan Task 1.2).
+code changes for this experiment (the contamination control).
 
 Analysis lives in analyze_w1.py.
 """
@@ -49,8 +49,7 @@ RESULTS_DIR = Path(__file__).resolve().parent.parent / "data" / "item_variants"
 INSTRUMENTS = ("8values", "political_compass")
 
 # Half of an item, given back to the model to complete. A verbatim completion
-# is direct evidence that the item is in pretraining data (the study plan Task 1.2
-# step 5) -- much stronger evidence than an inferred score shift.
+# is direct evidence that the item is in pretraining data -- much stronger evidence than an inferred score shift.
 N_PROBE_ITEMS = 20
 PROBE_SEED = 20260909  # fixed so the probe item set is reproducible and citable
 

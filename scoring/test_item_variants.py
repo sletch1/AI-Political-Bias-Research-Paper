@@ -1,4 +1,4 @@
-"""Tests for the Task 1.2 item-variant banks and their scoring.
+"""Tests for the item-variant banks and their scoring.
 
 The contamination control is only as good as its banks. A silently broken
 inversion does not fail loudly at collection time -- it produces a plausible

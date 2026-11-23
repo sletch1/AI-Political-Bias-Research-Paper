@@ -284,7 +284,7 @@ def contamination_arm(variants: pd.DataFrame, baseline: pd.DataFrame) -> dict:
 
 
 def memorisation_arm(directory: Path) -> dict:
-    """Verbatim-completion rate from the Task 1.2 memorisation probe.
+    """Verbatim-completion rate from the contamination-control memorisation probe.
 
     Similarity is computed here rather than at collection time so the metric
     can be revised without re-spending API budget. Two thresholds are reported:

@@ -284,7 +284,7 @@ def main(models, n_trials_per_test=3, max_workers=8, cost_cap=None,
     per-trial progress line as each task completes and a final summary.
 
     `questions_8v_path` / `questions_pc_path` / `questions_sv_path` select an
-    alternate item bank (the study plan Task 1.2 needs the
+    alternate item bank (the contamination control needs the
     inverted and paraphrased banks run through this same pipeline);
     `results_dir` keeps those runs out of the baseline data/raw_trials/
     directory. All default to the main run's."""
