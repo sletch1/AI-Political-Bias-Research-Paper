@@ -90,8 +90,9 @@ cases #46 and #55, and the least literal paraphrase, #24)
 
 - [x] Author sign-off to proceed on this review (Sachin Letchumanan, 19 September 2026): reviewed
       this document's findings and authorized collection to proceed.
-- [x] 8Values #19 decision: kept as-is for this collection run (not edited). Revisit before
-      submission per the "optional revision" note above.
+- [x] 8Values #19 decision: kept as-is for this collection run (not edited). Revisited by the author
+      before submission (November 2026): kept as collected; it is the one item in the bank with a
+      modality-shifted inversion.
 - [x] Cleared to run `python scoring/build_item_variants.py` and
       `python -m pytest scoring/test_item_variants.py scoring/test_scoring.py`, then
       `python scoring/collect_item_variants.py --probe`
