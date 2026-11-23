@@ -52,32 +52,27 @@ sensitivity checks, and the data, code, and declarations statements.
 
 \subsection{Research Design}
 
-This study employs a quantitative, comparative design: every model is
-administered the same standardized instruments under the same protocol, so
-that bias magnitude and trial-to-trial consistency can be compared directly
-across models rather than assessed qualitatively per model. The purpose of
-this study is to understand how models lean, how consistently they lean, and
-how much of their response varies with the instrument and the question asked.
+This study uses a quantitative, comparative design. Every model completes the same standardized
+instruments under the same protocol. As a result, the size of each model's lean and its consistency from
+trial to trial can be compared directly across models, rather than judged qualitatively one model at a
+time. The purpose of this study is threefold: to measure which way models lean, how consistently they
+lean, and how much of their response depends on the instrument and the question asked.
 
 \subsection{Model Roster}
 \label{si:model-roster}
 
-Nineteen models spanning eleven organizations were selected via the OpenRouter
-API, a single gateway providing uniform access to models from many providers
-(Table~\ref{tab:model-ids}).
+Nineteen models from eleven providers were accessed through the OpenRouter API, a single gateway
+that gives uniform access to models from many providers (Table~\ref{tab:model-ids}).
 
-The roster spans both closed and open-weight models, four countries (United
-States, China, France, and Canada), and roughly two orders of magnitude in
-per-token price, chosen to approximate the model diversity of comparable
-published studies rather than relying on a small, convenience-sampled set of
-flagship models.
+The roster was built for diversity rather than convenience. It spans closed- and open-weight models, four
+countries (the United States, China, France, and Canada), and roughly two orders of magnitude in
+per-token price. The goal was to match the model diversity of comparable published studies, rather than
+rely on a small, convenience-sampled set of flagship models.
 
-One additional model, \texttt{google/gemini-2.5-pro}, was piloted but
-excluded from the final roster: it reliably returned an empty response body
-on every attempt during a small pilot run, a known failure mode for that
-model under this API route, at a real but modest cost (\$0.12 across four
-failed attempts) before the decision was made to drop it. Google remains
-represented in the final roster via \texttt{gemini-2.5-flash}.
+One additional model, \texttt{google/gemini-2.5-pro}, was piloted but excluded. During a small pilot run, it
+returned an empty response body on every attempt (four attempts, \$0.12 in total), which is a known
+failure mode for that model on this API route. Google remains represented in the final roster through
+\texttt{gemini-2.5-flash}.
 
 
 \begin{table}[H]
@@ -132,53 +127,41 @@ instrument), \texttt{consolidate.py} (flattens raw trials into
 analysis).
 
 \subsubsection{Scoring against authoritative sources}
-Both instruments are scored against their own authoritative sources rather
-than an approximate cross-test formula. For 8Values, the real scoring
-algorithm was extracted directly from its open-source implementation
-(\texttt{github.com/8values/8values.github.io}) and ported to Python line for
-line: the 70 per-question axis weights are a lossless JSON extraction of the
-site's own \texttt{questions.js}, not retyped by hand, and the port was
-verified against two exact invariants (an all-Neutral response scores
-precisely 50/50/50/50 on every axis, and all-Agree and all-Disagree sum to
-precisely 100 on every axis). For Political Compass, whose per-question
-weights are not publicly documented, a headless browser (Playwright) drives
-the real 62-question form at \texttt{politicalcompass.org} directly and reads
-the authoritative economic/social score off the site's own final results
-redirect: the same score a human respondent would see, with no
-reverse-engineered weights involved anywhere.
+Each instrument is scored against its own authoritative source rather than an approximate cross-test
+formula. For 8Values, the scoring algorithm was taken directly from its open-source implementation
+(\texttt{github.com/8values/8values.github.io}) and ported to Python line for line. The 70 per-question axis
+weights were extracted losslessly from the site's own \texttt{questions.js} file, not retyped by hand. The port was
+then checked against two exact invariants. First, an all-Neutral response scores exactly 50 on every axis.
+Second, on every axis, the all-Agree score and the all-Disagree score sum to exactly 100. The Political
+Compass is a different case, because its per-question weights are not publicly documented. A headless
+browser (Playwright) therefore fills in the real 62-question form at \texttt{politicalcompass.org} and reads the
+economic and social scores from the site's own results page. These are the same scores a human
+respondent would see, and no reverse-engineered weights are involved at any point.
 
 \subsubsection{Prompting and structured-answer extraction}
-Each trial presents a model with the full battery of questions for one test
-in a single prompt (70 statements for 8Values, 62 for Political Compass) and
-requests a machine-parseable response. Two response formats were tried
-during pipeline development. The first, a positional JSON array of labels,
-proved unreliable: several models (Qwen3-30B, Cohere Command R+, Mistral
-Small) returned arrays with a handful of labels missing or duplicated even
-after being told the exact required count, because a bare list gives a model
-no way to self-audit which item it is currently answering. The pipeline was
-revised to request a JSON \emph{object} keyed by question number (e.g.\
-\texttt{\{"1": "SA", "2": "A", ...\}}); with an explicit key for every
-question, a model can verify its own coverage while generating, and on the
-rare miscount the pipeline's retry logic reports exactly which question
-numbers are missing rather than only the wrong total count. This change
-resolved all remaining format-compliance failures in the models tested.
-An explicit output-token ceiling (\texttt{max\_tokens=4000}) is set on every
-request, since the default was found to silently truncate a 70-answer
-response for at least one model, producing an unparseable partial JSON
-object.
+Each trial gives a model the full battery of questions for one test in a single prompt, with 70 statements
+for 8Values and 62 for the Political Compass, and asks for a response that can be parsed by machine. Two
+response formats were tried while the pipeline was being developed. The first was a positional JSON
+array of labels, and it proved unreliable. Several models (Qwen3-30B, Cohere Command R+, and Mistral
+Small) returned arrays with a few labels missing or duplicated, even after being told the exact number
+required. A likely reason is that a bare list gives a model no way to check which item it is currently
+answering. The pipeline was therefore revised to request a JSON object keyed by question number (e.g.,
+\texttt{\{"1": "SA", "2": "A", ...\}}). With an explicit key for every question, a model can track its own coverage as it
+generates. On the rare occasion that a model still miscounts, the pipeline's retry logic reports exactly
+which question numbers are missing, not just that the total is wrong. This change resolved every
+remaining format-compliance failure among the models tested. Finally, every request sets an explicit
+output-token ceiling (\texttt{max\_tokens=4000}). The default ceiling was found to silently cut off a 70-answer
+response for at least one model, leaving an incomplete JSON object that could not be parsed.
 
 \subsubsection{Data volume, cost, exclusions, and release}
-The full run collected 60 trials per test per model across all 19 models:
-2{,}280 total administrations. Every one of the 2{,}280 administrations
-completed successfully and was scored (100\% completion rate for every model
-on both tests, Table~\ref{stab:collection-summary}): across the full run,
-zero trials ended in a parse error or a score error, so the released dataset and every analysis in this paper
-include all 2{,}280 attempted administrations, with none excluded. Total API
-cost for the entire collection was \$9.30, using the OpenRouter API with a
-pre-funded, capped budget. All raw per-trial responses (the model's
-structured JSON answers, the resulting score, and the exact API cost of that
-call) are released in \texttt{data/raw\_trials/}, with a flattened,
-analysis-ready table in \texttt{data/scores.csv}.
+The full run collected 60 trials per test for each of the 19 models, for a total of 2{,}280 administrations.
+Every administration completed and was scored, so every model had a 100\% completion rate on both
+tests (Table~\ref{stab:collection-summary}). Not a single trial ended in a parse error or a scoring error. As a result, the released
+dataset and every analysis in this paper include all 2{,}280 administrations, with none excluded. The entire
+collection cost \$9.30 in API fees, paid through OpenRouter from a pre-funded, capped budget. All raw
+per-trial responses are released in \texttt{data/raw\_trials/}. Each record contains the model's structured JSON
+answers, the resulting score, and the exact API cost of that call. A flattened, analysis-ready table is
+provided in \texttt{data/scores.csv}.
 
 \begin{table}[H]
 \centering
@@ -228,155 +211,135 @@ analysis decisions and for the correctness of the released code.
 \subsection{Statistical Analysis}
 \label{si:stats}
 
-The statistical analysis phase began after data collection completed. The
-first step was calculating general descriptive statistics for each model on
-each of the six scored axes (equality, peace, liberty, and progress from
-8Values; economic and social from Political Compass), including the mean,
-median, standard deviation, and range, computed directly from
-\texttt{data/scores.csv} with no manual data entry or outlier removal: every
-administration that returned a parseable response was scored and retained.
+The statistical analysis began once data collection was complete. The first step was to compute
+descriptive statistics for each model on each of the six scored axes: equality, peace, liberty, and progress
+from 8Values, and economic and social from the Political Compass. For each, the mean, median,
+standard deviation, and range were computed directly from \texttt{data/scores.csv}. No data were entered by
+hand and no outliers were removed. Every administration returned a parseable response, so all 2{,}280
+were scored and retained.
 
-\textit{Midpoint comparison.} Each model's mean score on each axis was
-additionally tested against that instrument's own neutral center-point (0
-for the two Political Compass axes, 50 for the four 8Values axes) using a
-one-sample $t$-test and a one-sample Cohen's $d$.
+\textit{Midpoint comparison.} Each model's mean score on each axis was then tested against that instrument's
+own neutral midpoint, which is 0 for the two Political Compass axes and 50 for the four 8Values axes.
+Each test was a one-sample $t$-test, with effect size reported as a one-sample Cohen's $d$.
 
-\textit{Reproducibility.} Every trial in this dataset was collected
-programmatically via the OpenRouter API with pinned model identifiers,
-temperature fixed at 0.7, and the full raw
-trial-level data, not only post-hoc-cleaned score arrays, is released
-alongside this paper in \texttt{data/raw\_trials/}.
+\textit{Reproducibility.} Every trial was collected programmatically through the OpenRouter API, with pinned
+model identifiers and temperature fixed at 0.7. The full raw trial-level data, not just post-hoc cleaned
+score arrays, is released with this paper in \texttt{data/raw\_trials/}.
 
 \subsection{Measuring the Remaining Measurement Factors}
 \label{si:remaining-factors-methods}
 
-The decomposition in the article estimates one measurement stratum, the dependence of a model's position on the instrument and axis. I separately collected and analysed
-three further strata identified in the literature but not estimated by that
-design: accommodation to the inferred asker, instrument contamination, and
-response-format sensitivity. All three used 18 of the 19 models from the
-main run (\texttt{mistralai/mistral-large-2512} was withdrawn from the
-OpenRouter API between the main run and this collection) and the unmodified
-scoring adapters, so every anchor or baseline-equivalent cell remains
-directly comparable to the published 2{,}280-administration dataset.
+The decomposition in the article estimates one measurement stratum: how much a model's position
+depends on the instrument and the axis. The literature identifies three further strata that this design
+cannot estimate, which are accommodation to the inferred asker, instrument contamination, and
+sensitivity to response format. The researcher therefore collected and analyzed each one separately. All
+three designs used 18 of the 19 models from the main run, because \texttt{mistralai/mistral-large-2512} had
+been withdrawn from the OpenRouter API by the time of this collection. All three also used the
+unmodified scoring adapters. As a result, every anchor or baseline-equivalent cell remains directly
+comparable to the published dataset of 2{,}280 administrations.
 
-Asker identity was realised as a six-level fixed factor, a preamble
-prepended to the existing prompt template: no preamble (reproducing the main
-run's condition, and serving as an anchor cell), academic researcher,
-conservative, progressive, politically disengaged (apolitical), and
-journalist. Crossed with 18 models and both instruments at ten repetitions
-per cell, this yielded 2{,}160 administrations, plus a 180-call
-direct-elicitation probe (``who do you think is
-asking?'', not analysed quantitatively here). Each axis was analysed with a
-two-way ANOVA (model, condition) and partial $\eta^2$ reported per axis; the
-accommodation asymmetry ratio is the conservative-condition shift from the
-anchor divided by the progressive-condition shift, both in absolute value.
+\paragraph{Asker identity.} Asker identity was a six-level fixed factor, implemented as a preamble added to the front
+of the existing prompt template. The six levels were no preamble, academic researcher, conservative,
+progressive, politically disengaged (apolitical), and journalist. The no-preamble level reproduces the
+main run's condition and serves as the anchor cell. Crossing the six levels with 18 models and both
+instruments, at ten repetitions per cell, produced 2{,}160 administrations. A further 180-call
+direct-elicitation probe asked each model ``who do you think is asking?'' and is not analyzed
+quantitatively here. Each axis was analyzed with a two-way ANOVA (model $\times$ condition), and partial $\eta^2$ is
+reported per axis. The accommodation asymmetry ratio is the absolute shift of the conservative
+condition from the anchor divided by the absolute shift of the progressive condition.
 
-Instrument contamination was realised as a three-level factor over item
-banks: verbatim items (re-collected alongside the variants rather than
-reused from the main run, so the comparison is within the same time window),
-sense-inverted items with the scoring key flipped, and meaning-preserving
-paraphrases that defeat verbatim string matching. Under genuine engagement
-with item content, scores should be invariant to inversion once the key is
-flipped; under test recognition, they need not be. The 132 inverted and
-paraphrased items (70 8Values, 62 Political Compass) were written by the
-author and checked against the automated double-negation and identity
-heuristics in \texttt{scoring/build\_item\_variants.py}, and the author
-reviewed every item for polarity and signed off before collection
-(\texttt{docs/item\_variant\_review.md}). After collection, a colleague
-independently checked a 20-item sample weighted toward edge cases and agreed
-with the author's inversions and paraphrases on all 20; the remaining 112
-items rest on the author's review alone. Crossed with the same 18 models
-and both instruments at ten repetitions per cell, this yielded 1{,}080
-administrations. The Contamination Index for a model-axis cell is the
-absolute score difference between the original and inverted conditions
-after un-flipping the inverted condition's key, normalised by the
-instrument's own score range; significance is a paired $t$-test per cell,
-Benjamini-Hochberg corrected across all 108 model-axis cells. A companion
-memorisation probe gave each of the 18 models the first half (by word count,
-minimum three words) of 20 items (10 per instrument, seeded selection) and
-asked for a verbatim completion, scored by sequence similarity to the true
-completion; 0.90 similarity is reported as ``near-verbatim.'' Two of the 18
-models (\texttt{anthropic/claude-sonnet-4.5},
-\texttt{nvidia/nemotron-3-ultra-550b-a55b}) returned a response the
-pipeline could not parse on this probe and are excluded from the rates
-reported below, which are therefore computed over 16 models.
+\paragraph{Instrument contamination.} The logic of this test is simple. A model that engages with each item's content
+should give the same score when an item's meaning is inverted and its scoring key is flipped. A model
+that recognizes the test may not. Contamination was therefore a three-level factor over item banks. The
+first level used verbatim items, which were collected again alongside the variants rather than reused
+from the main run, so that all three levels share the same time window. The second used sense-inverted
+items with the scoring key flipped. The third used meaning-preserving paraphrases that defeat verbatim
+string matching. The researcher wrote the 132 inverted and paraphrased items (70 for 8Values, 62 for
+the Political Compass). Each item was checked against the automated double-negation and identity
+heuristics in \texttt{scoring/build\_item\_variants.py}, and the researcher reviewed every item for polarity and
+signed off before collection (\texttt{docs/item\_variant\_review.md}). After collection, a colleague independently
+checked a 20-item sample weighted toward edge cases and agreed with all 20 inversions and
+paraphrases. The other 112 items rest on the researcher's review alone. Crossing the three levels with
+the same 18 models and both instruments, at ten repetitions per cell, produced 1{,}080 administrations.
+For each model-axis cell, the Contamination Index is the absolute difference between the verbatim and
+inverted scores, taken after the inverted condition's key is flipped back and normalized by the
+instrument's own score range. Significance is tested with a paired $t$-test per cell, with
+Benjamini--Hochberg correction across all 108 model-axis cells.
 
-Response format was realised as a fractional factorial over four response
-scales (the instrument's own native scale, and three- and seven-point
-alternatives), two item orders (published, randomised), two option orders
-(published, reversed), and two elicitation modes (a forced label, and a
-free-text opinion subsequently classified onto the same scale by a fixed
-judge model, \texttt{openai/gpt-4o-mini}, held constant across every cell so
-judge identity is not a confound). This 24-cell design was crossed with the
-same 18 models at five repetitions per cell, yielding 4{,}320 administrations, of which 4{,}239 returned a parseable response and are analysed (79 parse errors, 2 off-scale labels). Effect sizes are partial $\eta^2$ per axis from a
+A companion memorization probe gave each of the 18 models the first half of 20 items, measured by
+word count with a minimum of three words. The items were 10 per instrument, chosen with a fixed
+seed. Each model was asked to complete the item verbatim, and its completion was scored by sequence
+similarity to the true text. A similarity of 0.90 or higher is reported as ``near-verbatim.'' On this probe,
+two models (\texttt{anthropic/claude-sonnet-4.5} and \texttt{nvidia/nemotron-3-ultra-550b-a55b}) returned responses
+that the pipeline could not parse. The memorization rates reported below are therefore computed over
+the remaining 16 models.
+
+\paragraph{Response format.} Response format was tested with a factorial design over four factors. The first was the
+response scale: the instrument's native scale, a three-point alternative, or a seven-point alternative. The
+second was item order (published or randomized), and the third was option order (published or
+reversed). The fourth was elicitation mode: a forced label, or a free-text opinion that a fixed judge model
+(\texttt{openai/gpt-4o-mini}) then classified onto the same scale. The judge was held constant across every cell,
+so judge identity is not a confound. The 24-cell design was crossed with the same 18 models at five
+repetitions per cell, for 4{,}320 administrations. Of these, 4{,}239 returned a parseable response and are
+analyzed; 79 failed to parse and 2 returned off-scale labels. Effect sizes are partial $\eta^2$ per axis from a
 five-factor ANOVA (model, scale, item order, option order, elicitation).
 
-Each factorial was analysed on its own, against the unattributed,
-forced-choice baseline as the reference condition, rather than crossed with
-the other two factors and with instrument simultaneously; a single design
-crossing all four factors at once, at a cost proportional to their product
-rather than their sum, is future work.
+Each factorial was analyzed on its own, against the unattributed, forced-choice baseline as the reference
+condition. None was crossed with the other two factors and the instrument at the same time. Such a
+fully crossed design would cost in proportion to the product of the factor levels rather than their sum, so
+it is left for future work.
 
-A third instrument, SapplyValues, was administered to the same 18 models at
-its own native scale (46 items, three axes, $-10$ to $+10$ each), 30 trials
-per model, following the same lossless-port scoring approach as the other
-two instruments (\texttt{scoring/score\_sapplyvalues.py}, ported from the
-instrument's own open-source scoring code). Each model's mean position is
-compared against the instrument's own neutral point and, where an axis
-claims to share a construct with an existing instrument, against that
-axis's model-level mean via Spearman correlation with a percentile bootstrap
-CI (2{,}000 resamples), following the same procedure as the bootstrap
-intervals in \ref{si:stats}.
+\paragraph{SapplyValues.} A third instrument, SapplyValues, was administered to the same 18 models on its native
+scale (46 items, three axes, each from $-10$ to $+10$), with 30 trials per model. It was scored the same way
+as 8Values, through a lossless port of the instrument's open-source scoring code
+(\texttt{scoring/score\_sapplyvalues.py}). Each model's mean position is compared with the instrument's neutral
+point. Where a SapplyValues axis claims to measure the same construct as an axis on another
+instrument, the two axes' model-level means are also compared with a Spearman correlation. That
+correlation carries a percentile bootstrap confidence interval (2{,}000 resamples), computed with the
+same procedure as the bootstrap intervals in \ref{si:stats}.
 
-A fourth instrument, Pew Research Center's 2026 Political Typology, was
-administered to the same 18 models, 10 trials per model (180
-administrations). Pew's methodology appendix for this typology describes
-its clustering procedure (weighted clustering around medoids) but does not
-publish the medoids, variable weights, or standardization constants needed
-to classify a new respondent independently of Pew's own systems;
-reimplementing an approximate classifier from the general method
-description was therefore not possible, so, as with Political Compass, I
-drove the live 24-item public quiz (\texttt{scoring/score\_pew\_typology.py})
-with each model's answers and read off the classification Pew's own site
-computes, rather than a score I derived myself. Item and option text (24
-items across 21 navigation screens, 2--5 options each) was extracted
-directly from the live quiz and cross-checked against its own
-results-review page, which restates every item in full, disambiguated form.
-Because response options vary in wording by item, a model was asked to
-reply with the verbatim text of its chosen option per item rather than a
-shared code; the reply was matched to the live quiz's option elements case-
-and punctuation-insensitively, with a whole-string-similarity fallback
-($\geq 0.85$) for near-verbatim paraphrases. The outcome is each model's
-classification into one of Pew's nine typology groups, scored as that
-group's 1--9 ordinal position in Pew's own published left-to-right ordering.
+\paragraph{Pew Political Typology.} A fourth instrument, Pew Research Center's 2026 Political Typology, was
+administered to the same 18 models with 10 trials each (180 administrations). The researcher could not
+score it independently. Pew's methodology appendix describes the clustering procedure (weighted
+clustering around medoids), but it does not publish the medoids, variable weights, or standardization
+constants needed to classify a new respondent. An approximate classifier rebuilt from the general
+method description would not reproduce Pew's own classification. Instead, as with the Political
+Compass, the researcher entered each model's answers into the live 24-item public quiz
+(\texttt{scoring/score\_pew\_typology.py}) and recorded the classification that Pew's site computed.
 
-The quiz was submitted programmatically 180 times (18 models $\times$ 10 trials); no respondent microdata or personal information is accessed at any point.
+The item and option text (24 items across 21 navigation screens, with 2--5 options each) was extracted
+directly from the live quiz. It was then cross-checked against the quiz's results-review page, which
+restates every item in full, unambiguous form. Because option wording differs from item to item, models
+were asked to reply with the exact text of their chosen option rather than a shared code. Each reply was
+matched to the quiz's option elements, ignoring case and punctuation. Near-verbatim paraphrases were
+matched with a whole-string similarity fallback ($\geq 0.85$). The outcome is each model's classification into
+one of Pew's nine typology groups, scored as that group's ordinal position (1--9) in Pew's published
+left-to-right ordering.
 
-Both instruments were then folded into the same random-effects model
-used for the two-instrument budget in the article
-(\texttt{scoring/analyze\_f3\_variance\_components.py}), rather than left as
-separate directional checks. Each instrument's axis enters as one more
-trait level (\texttt{sapplyvalues:right}, \texttt{sapplyvalues:auth},
-\texttt{sapplyvalues:prog}, \texttt{pew\_typology:position}), z-scored
-within trait exactly as the two-instrument model requires (this sets every trait mean to zero, so no trait main effect is estimated), since the four
-instruments' scales are mutually incompatible ($\pm10$, $0$--$100$, $\pm10$,
-and an ordinal 1--9 classification). Pew contributes a single trait, its one
-composite left-right placement, rather than per-axis scores like the other
-three, since that ordinal classification is Pew's own output and not a
-score this project computed. In this two-term specification instrument identity is not fit as its own term: the model $\times$ trait interaction pools instrument and axis. The nested specification reported in the article (Equation~(1)) separates them; see \ref{si:nested}. The two added instruments were collected for 18 of the 19 models
-(\texttt{mistralai/mistral-large-2512} was withdrawn from OpenRouter
-partway through collection), so the pooled panel is unbalanced by one model
-on those two traits; the crossed model does not require balance, and
-\texttt{results/f3\_variance\_components/f3\_variance\_components.json}
-records the composition explicitly.
+The quiz was submitted programmatically 180 times (18 models $\times$ 10 trials), and no
+respondent microdata or personal information was accessed at any point.
+
+\paragraph{Pooling the added instruments.} SapplyValues and Pew were then added to the same random-effects
+model used for the two-instrument variance budget in the article
+(\texttt{scoring/analyze\_f3\_variance\_components.py}). They were not left as separate directional checks. Each
+added axis enters as one more trait level: \texttt{sapplyvalues:right}, \texttt{sapplyvalues:auth}, \texttt{sapplyvalues:prog}, and
+\texttt{pew\_typology:position}. Every trait is z-scored within itself, exactly as in the two-instrument model. This
+step is necessary because the four instruments use incompatible scales ($\pm 10$, 0--100, $\pm 10$, and an ordinal
+1--9 classification). It also sets every trait's mean to zero, so no trait main effect is estimated. Pew
+contributes a single trait rather than separate axes, because its one composite left--right placement is
+Pew's own output and not a score this project computed. In this two-term specification, instrument
+identity is not a separate term, and the model $\times$ trait interaction pools instrument and axis together. The
+nested specification in the article (Equation~1) separates them; see \ref{si:nested}. Because the two added
+instruments were collected for only 18 of the 19 models, the pooled panel is unbalanced by one model
+on those traits. The crossed model does not require balance, and
+\path{results/f3_variance_components/f3_variance_components.json} records the composition explicitly.
 
 \section{Per-Axis Effect Sizes for the Factorial Designs}
 \label{si:eta}
 
-Table~\ref{stab:eta-asker} and Table~\ref{stab:eta-format} give the partial
-$\eta^2$ values summarized in the three-factors paragraph of the article's Results, per axis,
-with 95\% percentile intervals from a cluster bootstrap over the 18 models
-(2,000 resamples). Both designs were collected in September 2026.
+Table~\ref{stab:eta-asker} and Table~\ref{stab:eta-format} give the partial $\eta^2$ values summarized in the three-factors paragraph of the article's
+Results, per axis, with 95\% percentile intervals from a cluster bootstrap over the 18 models (2{,}000
+resamples). Both designs were collected in September 2026.
 
 \begin{table}[H]
 \centering
@@ -435,35 +398,31 @@ instruments. The panels are unbalanced (19 models on the first two
 instruments, 18 on the added two, because \texttt{mistral-large-2512} was
 withdrawn between collection rounds); the mixed model does not require balance.
 
-\paragraph{Direction alignment.} The instruments report the left in opposite
-directions: on 8Values a high score is the egalitarian, peaceful, libertarian
-or progressive pole, while on the Political Compass a negative score is the
-economically left or socially libertarian pole, on SapplyValues positive
-\texttt{right} and \texttt{auth} are the right-wing and authoritarian poles,
-and Pew's ordinal position runs from 1 (furthest left) to 9. Equation~(1) has
-one model effect that moves every trait in the same direction, and a
-convergent correlation is positive only when two scales point the same way,
-so both are defined only after the scales are aligned. Every axis is
-therefore oriented so that higher means further left, libertarian or
-progressive, which is also the direction in which the models lean on every
-axis: the Political Compass axes, SapplyValues \texttt{right} and
-\texttt{auth}, and Pew's position are sign-reversed
-(\texttt{variance\_components.orient}); 8Values and SapplyValues
-\texttt{prog} are left as scored. Within-axis quantities, partial $\eta^2$
-values and trial-noise shares do not depend on the convention.
-Table~\ref{stab:orient} reports the sensitivity. Two axes have no settled
-left--right polarity, 8Values peace and SapplyValues authority; reversing
-either or both puts the four-instrument transferable share between
-\OrientFourMin\% and \OrientFourMax\%. With two instruments, reversing
-8Values peace lowers the share from \NTwoM\% to \OrientTwoMin\%; peace
-correlates positively with the other 8Values axes across models (mean
-$r=\EightInternal$ among the four), so the reported orientation is the one
-the data support. With no alignment at all the
-transferable share is estimated at \UnalignedTwoM\% with two instruments and
-\UnalignedFourM\% with four, because a model that is further left than the
-others on both instruments then appears above average on one and below
-average on the other, which a shared model effect cannot represent; an
-earlier draft of this work reported those unaligned estimates.
+\paragraph{Direction alignment.} The four instruments do not agree on which direction is ``left.'' On 8Values, a high score marks the
+egalitarian, peaceful, libertarian, or progressive pole. On the Political Compass, a negative score marks
+the economically left or socially libertarian pole. On SapplyValues, positive scores on the \texttt{right} and \texttt{auth}
+axes mark the right-wing and authoritarian poles, and Pew's ordinal position runs from 1 (furthest left) to 9.
+
+This matters for two reasons. First, Equation~(1) has a single model effect that moves every trait in the
+same direction. Second, a convergent correlation is positive only when two scales point the same way.
+Both quantities are therefore meaningful only after the scales are aligned. Every axis is oriented so that
+higher means further left, more libertarian, or more progressive, which is also the direction the models
+lean on every axis. To achieve this, the Political Compass axes, SapplyValues \texttt{right} and \texttt{auth}, and Pew's
+position are sign-reversed (\texttt{variance\_components.orient}). 8Values and SapplyValues \texttt{prog} are left as
+scored. The convention does not affect within-axis quantities: partial $\eta^2$ values and trial-noise shares are
+the same either way.
+
+Table~\ref{stab:orient} reports how sensitive the results are to this choice. Two axes have no settled left--right polarity:
+8Values peace and SapplyValues \texttt{auth}. With four instruments, reversing either or both of them leaves the
+transferable share between \OrientFourMin\% and \OrientFourMax\%. With two instruments, reversing 8Values peace lowers the
+share from \NTwoM\% to \OrientTwoMin\%. However, peace correlates positively with the other 8Values axes across
+models (mean $r=\EightInternal$ among the four), so the data support the reported orientation.
+
+Skipping alignment entirely is not a neutral choice. Without it, the transferable share is estimated at
+\UnalignedTwoM\% with both two and four instruments. The reason is mechanical: a model that is further left than the
+others on both instruments would then score above average on one and below average on the other,
+and a shared model effect cannot represent that. An earlier draft of this work reported these unaligned
+estimates.
 
 \begin{table}[H]
 \centering
@@ -508,27 +467,22 @@ two-term specification.}
 \input{results/paper/tab_lopo.tex}
 \end{table}
 
-\paragraph{Recovery simulation.} With 19 models and two to four instruments,
-could the nested estimate miss a transferable share that is really there, or
-produce one that is not? The simulation
-(\texttt{scoring/simulate\_recovery.py}) keeps the real design exactly, the same
-models, instruments, axes and number of trials in every cell, draws scores from
-Equation~(1) with a known transferable share, splits the remainder between the
-other three terms in the proportions estimated from the data, and refits the
-same model with the same code (\SimReps{} runs per condition;
-Table~\ref{stab:recovery}). The estimator is close to unbiased away from the
-boundary; at a true share of zero the estimate cannot be negative, so its mean
-is \SimTwoZeroMean\% with two instruments and \SimFourZeroMean\% with four.
-In the four-instrument panel a true share of 20\% produces an estimate at or
-below the observed \NFourM\% in \SimFourTwentyBelowN{} of \SimReps{} runs and a
-true share of 10\% in \SimFourTenBelowN, so the four-instrument estimate is
-hard to reconcile with a large transferable share. In the two-instrument panel
-a true share of zero produces an estimate at or above the observed \NTwoM\% in
-\SimTwoZeroAboveN{} of \SimReps{} runs, a true share of 5\% in
-\SimTwoFiveAboveN, and a true share of 30\% produces one at or below it in
-\SimTwoThirtyBelowN. Neither estimate is unusual under a true share of 5 to
-10\%: the two panels differ in their point estimates far more than the
-simulation says they can distinguish.
+\paragraph{Recovery simulation.} With 19 models and only two to four instruments, the nested estimate could miss a transferable share
+that really exists, or produce one that does not. A simulation (\texttt{scoring/simulate\_recovery.py}) tests both
+risks. It keeps the real design exactly, with the same models, instruments, and axes and the same
+number of trials in every cell. Each run draws scores from Equation~(1) with a known transferable share.
+The remaining variance is split among the other three terms in the proportions estimated from the data,
+and the same model is refit with the same code (\SimReps{} runs per condition; Table~\ref{stab:recovery}).
+
+Away from the boundary, the estimator is close to unbiased. At a true share of zero, however, the
+estimate cannot fall below zero, so its mean is \SimTwoZeroMean\% with two instruments and \SimFourZeroMean\% with four. In the
+four-instrument panel, an estimate at or below the observed \NFourM\% occurs in \SimFourTwentyBelowN{} of \SimReps{} runs when the true
+share is 20\%, and in \SimFourTenBelowN{} of \SimReps{} when it is 10\%. The four-instrument estimate is therefore hard to reconcile
+with a large transferable share. In the two-instrument panel, an estimate at or above the observed \NTwoM\%
+occurs in \SimTwoZeroAboveN{} of \SimReps{} runs when the true share is zero and in \SimTwoFiveAboveN{} of \SimReps{} when it is 5\%. When the true share is
+30\%, an estimate at or below \NTwoM\% occurs in \SimTwoThirtyBelowN{} of \SimReps{} runs. Neither observed estimate is unusual if the
+true share is 5--10\%. The two panels' point estimates look far apart, but the gap is well within what the
+design can produce by chance.
 
 \begin{table}[H]
 \centering
@@ -543,26 +497,22 @@ estimate is below 1\% and at or below the estimate observed in the data
 \input{results/paper/tab_recovery.tex}
 \end{table}
 
-\paragraph{Known-groups check.} The asker-identity design gives a contrast
-whose direction is known in advance: the same model asked by a self-described
-progressive Democrat and by a self-described conservative Republican
-(\KGModels{} models, both original instruments, 10 trials per cell;
-\texttt{scoring/analyze\_known\_groups.py}). On direction-aligned scores the
-progressive-minus-conservative gap is positive in \KGPositive{} of \KGCells{}
-model--axis cells (Table~\ref{stab:known}). The gaps are
-\KGRangeLo--\KGRangeHi\% of the instrument's range, \KGSdLo--\KGSdHi{} times
-the standard deviation between models with no asker stated. Across models,
-the gap on one instrument tracks the gap on the other: the two convergent
-pairs correlate at $r=\KGShiftEcon$ (economic) and $r=\KGShiftSoc$ (social),
-mean \KGShift{} (95\% CI \KGShiftCI, bootstrap over models), and all eight
-cross-instrument axis pairs lie between \KGShiftAllLo{} and \KGShiftAllHi{}.
-For the no-asker positions of the same models in the same design the
-convergent mean is \KGBase{} (\KGBaseCI); the difference is \KGDiff{}
-(\KGDiffCI). The two questionnaires therefore register a large common signal
-in the same direction and to a proportionate degree. The small transferable
-share in the main design is not a sign that the instruments cannot agree; it
-reflects how small the differences between models' default positions are
-relative to instrument-specific and axis-specific variation.
+\paragraph{Known-groups check.} The asker-identity design provides a contrast whose direction is known in advance. Each model is asked
+once by a self-described progressive Democrat and once by a self-described conservative Republican,
+with 18 models, both original instruments, and 10 trials per cell (\texttt{scoring/analyze\_known\_groups.py}). On
+direction-aligned scores, the progressive-minus-conservative gap is positive in all \KGCells{} model--axis cells
+(Table~\ref{stab:known}). The gaps are also large. They span \KGRangeLo--\KGRangeHi\% of each instrument's range, which is \KGSdLo--\KGSdHi{} times
+the standard deviation between models when no asker is stated.
+
+More importantly, the gap on one instrument tracks the gap on the other. Across models, the economic
+convergent pair correlates at $r=\KGShiftEcon$ and the social pair also at $r=\KGShiftSoc$, for a mean of \KGShift{} (95\% CI \KGShiftCI,
+bootstrap over models). All eight cross-instrument axis pairs fall between \KGShiftAllLo{} and \KGShiftAllHi. By
+contrast, the no-asker positions of the same models in the same design have a convergent mean of only
+\KGBase{} (\KGBaseCI), a difference of \KGDiff{} (\KGDiffCI). When a common signal is present, the two
+questionnaires register it in the same direction and to a proportionate degree. The small transferable
+share in the main design therefore does not show that the instruments cannot agree. Instead, it shows
+how small the differences between models' default positions are compared with instrument-specific and
+axis-specific variation.
 
 \begin{table}[H]
 \centering
@@ -612,20 +562,27 @@ Temperature & Administrations & Trial noise, \% [95\% CI] & Within-axis model sh
 
 \subsection{Independent re-implementation and boundary-robust intervals}
 \label{si:lme4}
-Because the model had already been wrong once (the direction alignment), the nested model was refitted independently in R with
-\texttt{lme4} (REML, \texttt{y $\sim$ 1 + (1|model) + (1|model:instrument) + (1|model:trait)}, on the same aligned, within-trait
-z-scored data; \texttt{scoring/crosscheck\_lme4.R}). The variance shares agree with the Python (\texttt{statsmodels}) fit: with two
-instruments $17.2$, $27.7$, $21.1$ and $34.0\%$ for model, model $\times$ instrument, model $\times$ axis and noise (identical to one
-decimal), and with four instruments $2.0$, $31.7$, $31.3$ and $34.9\%$ ($31.8\%$ for model $\times$ instrument in the Python fit).
-Neither fit is singular. The percentile cluster bootstrap in the article is known to behave poorly for a variance that sits at zero,
-so two boundary-robust intervals are reported. Likelihood-profile intervals for the standard deviation of the model effect (on the
-z-scale) are $[0,\,0.72]$ with two instruments and $[0,\,0.42]$ with four, so the profile interval also reaches zero. A parametric
-bootstrap (1{,}000 simulated data sets from the fitted model, refitting each) gives $17.2\%$ [$0.0$, $38.9$] for the transferable
-share with two instruments, with $7.6\%$ of refits at the boundary, and $2.0\%$ [$0.0$, $12.6$] with four, with $42.9\%$ at the boundary;
-the other three shares have intervals [$9.4$, $47.4$] and [$16.9$, $43.3$] (model $\times$ instrument), [$14.2$, $30.9$] and [$23.5$, $40.3$]
-(model $\times$ axis) and [$26.2$, $43.9$] and [$29.6$, $41.2$] (noise). These intervals match the cluster-bootstrap intervals of the article
-for two instruments and are narrower at the top for four, so the article's wider intervals are the conservative ones; neither
-excludes zero.
+An earlier version of this analysis contained an error in direction alignment. As a safeguard, the nested
+model was therefore refit independently in R with \texttt{lme4}, using REML and the specification \texttt{y $\sim$ 1 +
+(1|model) + (1|model:instrument) + (1|model:trait)} on the same aligned, within-trait z-scored data
+(\texttt{scoring/crosscheck\_lme4.R}). The two fits agree. With two instruments, \texttt{lme4} gives 17.2\% for model,
+27.7\% for model $\times$ instrument, 21.1\% for model $\times$ axis, and 34.0\% for noise, identical to the Python
+(\texttt{statsmodels}) fit to one decimal place. With four instruments, it gives 2.0\%, 31.7\%, 31.3\%, and 34.9\%,
+and the only difference from the Python fit is model $\times$ instrument, which \texttt{statsmodels} puts at 31.8\%.
+Neither fit is singular.
+
+The percentile cluster bootstrap used in the article is known to behave poorly when a variance lies at
+zero, so two boundary-robust intervals are also reported. The first is a likelihood-profile interval for the
+standard deviation of the model effect on the z-scale. It is $[0,\,0.72]$ with two instruments and $[0,\,0.42]$
+with four, so it too reaches zero. The second is a parametric bootstrap that simulates 1{,}000 data sets
+from the fitted model and refits each one. With two instruments, it places the transferable share at
+17.2\% [0.0, 38.9], with 7.6\% of refits at the boundary. The other shares are 27.7\% [9.4, 47.4] for model $\times$
+instrument, 21.1\% [14.2, 30.9] for model $\times$ axis, and 34.0\% [26.2, 43.9] for noise. With four instruments,
+the transferable share is 2.0\% [0.0, 12.6], with 42.9\% of refits at the boundary. The other shares are
+31.7\% [16.9, 43.3] for model $\times$ instrument, 31.3\% [23.5, 40.3] for model $\times$ axis, and 34.9\% [29.6, 41.2] for
+noise. These intervals match the article's cluster-bootstrap intervals in the two-instrument panel and are
+narrower at the top in the four-instrument panel. The article's wider intervals are therefore the
+conservative choice. Under every method, the interval for the transferable share includes zero.
 
 \subsection{Reliability-corrected correlations}
 \label{si:reliability}
@@ -641,26 +598,22 @@ matrix shows (\texttt{scoring/analyze\_reliability\_corrected.py}).
 \section{Comparison Against Each Instrument's Midpoint}
 \label{si:human-baseline}
 
-Beyond comparing models to each other, I tested each of the 114 model-axis
-combinations (19 models $\times$ 6 axes) against that instrument's own
-neutral center-point with a one-sample $t$-test over the 60 trials (against 0
-for the two Political Compass axes and against 50 for the four 8Values
-axes), controlling the false discovery rate across all 114 tests at 5\%
-(Benjamini--Hochberg). All 114 reject. The center-point is a convention, not
-an estimate of any population, so this is a statement about where each model
-sits relative to the scale's midpoint. Every model in this study, without
-exception, differs significantly from that midpoint: left of center
-economically and libertarian of center socially.
+Beyond comparing models with one another, the researcher tested each of the 114 model-axis
+combinations (19 models $\times$ 6 axes) against the instrument's neutral center point. Each test was a
+one-sample $t$-test over the 60 trials, against 0 for the two Political Compass axes and against 50 for the
+four 8Values axes. The false discovery rate across all 114 tests was controlled at 5\%
+(Benjamini--Hochberg). All 114 tests were rejected. The center-point is a convention, not an estimate of
+any population, so the result describes where each model sits relative to the scale's midpoint, not
+relative to the public. On that basis, every model in the study differs significantly from the midpoint,
+without exception. Each one is left of center economically and libertarian of center socially.
 
-Statistical significance alone is a weak claim at $n=60$ trials per test,
-since even a small, practically unremarkable deviation from center would
-clear $p<0.05$ at that sample size. The effect sizes rule this out:
-computing a one-sample Cohen's $d$ for each of the 114 tests (the
-standardized deviation of a model's mean from the instrument's
-center-point) finds every finite value at $|d|\geq 1.47$, with a median $|d|$ of $11.92$ (bootstrap over models: $SE=2.12$, 95\% CI
-[$8.81$, $16.75$]) and a maximum of $106.74$
-(one model-axis combination is excluded from these summary statistics for
-having an effectively zero within-model standard deviation).
+Significance alone, however, is a weak claim with 60 trials per test, because at that sample size even a
+small and practically unremarkable deviation from center would clear $p<0.05$. The effect sizes rule this
+out. For each of the 114 tests, we computed a one-sample Cohen's $d$ as the standardized deviation of
+the model's mean from the instrument's center-point. Every finite value has $|d|\geq 1.47$. The median $|d|$
+is 11.92 (bootstrap over models: $SE=2.12$, 95\% CI [8.81, 16.75]), and the maximum is 106.74. One
+model-axis combination is excluded from these summaries because its within-model standard deviation
+is effectively zero, which makes its $d$ undefined.
 
 \section{Multi-Trait Multi-Method Matrix}
 \label{si:mtmm}
