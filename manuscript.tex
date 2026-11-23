@@ -4,7 +4,7 @@
 % Research & Politics (Sage) Research Article. DOUBLE-ANONYMIZED: this file contains no author
 % names, affiliations, acknowledgements, funding or identifying links; those are in title_page.tex.
 % Limit: 4,000 words including notes and references, excluding figures, tables and online appendices.
-% Citation style: Sage Harvard (author-year); natbib with plainnat as the closest available style.
+% Citation style: Sage Harvard (author-year), via sageh.bst (generated with custom-bib from sageh.dbj).
 % ---------------------------------------------------------------------------
 \usepackage{fontspec}
 \usepackage{microtype}
@@ -19,14 +19,10 @@
 \usepackage{setspace}
 \usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
 \usepackage{xurl}
-\usepackage{harvard}
-\renewcommand{\harvardurl}[1]{\textbf{URL:} \url{#1}}
-\citationmode{abbr}\citationstyle{agsm}
-% harvard + agsm.bst is the closest available match to Sage Harvard; natbib commands mapped below
-\makeatletter
-\newcommand{\citep}[1]{{\edef\cpkeys{\zap@space #1 \@empty}\expandafter\cite\expandafter{\cpkeys}}}
-\newcommand{\citet}[1]{{\edef\cpkeys{\zap@space #1 \@empty}\expandafter\citeasnoun\expandafter{\cpkeys}}}
-\makeatother
+\usepackage[round,sort]{natbib}   % Sage Harvard: (Author, year); semicolons; alphabetical within brackets
+\setcitestyle{aysep={,},yysep={,}}
+\providecommand{\urlprefix}{}\renewcommand{\urlprefix}{Available at: }
+\newcommand{\doi}{DOI: \begingroup\urlstyle{rm}\Url}   % Sage Harvard prints "DOI: 10.xxxx"
 
 % Preprint switch: compile with  xelatex "\def\preprintmode{1}\input{manuscript}"  to add author, ORCID and the
 % AI-use disclosure inside the PDF body (preprint servers need these in the file; the journal copy stays anonymous).
@@ -323,7 +319,7 @@ Claude Opus 5.5 (Anthropic) was used as a coding tool, interactively between May
 \fi
 
 \clearpage
-\bibliographystyle{agsm}
+\bibliographystyle{sageh}
 \bibliography{references}
 
 \end{document}

@@ -16,14 +16,8 @@
 \usepackage{enumitem}
 \usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
 \usepackage{xurl}
-\usepackage{harvard}
-\renewcommand{\harvardurl}[1]{\textbf{URL:} \url{#1}}
-\citationmode{abbr}\citationstyle{agsm}
-% harvard + agsm.bst is the closest available match to Sage Harvard; natbib commands mapped below
-\makeatletter
-\newcommand{\citep}[1]{{\edef\cpkeys{\zap@space #1 \@empty}\expandafter\cite\expandafter{\cpkeys}}}
-\newcommand{\citet}[1]{{\edef\cpkeys{\zap@space #1 \@empty}\expandafter\citeasnoun\expandafter{\cpkeys}}}
-\makeatother
+\usepackage[round,sort]{natbib}   % Sage Harvard author-year (the appendix itself cites nothing)
+\setcitestyle{aysep={,},yysep={,}}
 
 \doublespacing
 \setlength{\parindent}{0pt}

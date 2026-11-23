@@ -1,0 +1,51 @@
+%% Driver file to produce sageh.bst from merlin.mbs
+%% Generated with makebst, version 4.1 (2003/09/08)
+%% Produced on 2026/11/23 at 17:09
+%% 
+\input docstrip
+
+\preamble
+----------------------------------------
+***  ***
+
+\endpreamble
+
+\postamble
+End of customized bst file
+\endpostamble
+
+\keepsilent
+
+\askforoverwritefalse
+\def\MBopts{\from{merlin.mbs}{%
+  ay,%
+  nat,%
+  nm-rvx,%
+  ed-rev,%
+  jnrlst,%
+  nmlm,%
+  x3,%
+  m3,%
+  dt-beg,%
+  yr-par,%
+  yrp-x,%
+  jxper,%
+  volp-sp,%
+  jnm-x,%
+  add-pub,%
+  pre-pub,%
+  doi,%
+  in-col,%
+  pp,%
+  ed,%
+  abr,%
+  mth-bare,%
+  xedn,%
+  and-xcom,%
+  etal-rm,%
+  url,%
+  url-blk,%
+  nfss,%
+  }}
+\generate{\file{sageh.bst}{\MBopts}}
+\endbatchfile
