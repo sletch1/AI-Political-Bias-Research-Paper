@@ -38,3 +38,7 @@ cover_letter_research_and_politics.*
 title_page.tex
 title_page.pdf
 ALT_TEXT.md
+
+# Submission packages -- kept locally only
+submission_R&P/
+submission_SocArXiv/
