@@ -8,8 +8,9 @@ Article for *Research & Politics* (Sage; double-anonymized): `manuscript.tex` /
 `manuscript.pdf` (anonymized article, 4,000-word limit) and the online appendix
 `main.tex` / `main.pdf`.
 
-The release `v0.5.1` snapshot, which matches the article, is archived at Zenodo. The concept DOI
-[10.5281/zenodo.22968157](https://doi.org/10.5281/zenodo.22968157) always resolves to the latest version.
+The latest version archived at Zenodo is `v0.4.1`. A snapshot that matches the current article
+will be archived there before publication. The concept DOI
+[10.5281/zenodo.22968157](https://doi.org/10.5281/zenodo.22968157) always resolves to the latest archived version.
 
 **Correction:** releases up to `v0.5.0` mislabelled the review of the item-inversion and paraphrase
 variants as "LLM-assisted". The author wrote and reviewed all 132 items. See the correction note in
