@@ -8,8 +8,8 @@ Article for *Research & Politics* (Sage; double-anonymized): `manuscript.tex` /
 `manuscript.pdf` (anonymized article, 4,000-word limit) and the online appendix
 `main.tex` / `main.pdf`.
 
-The snapshot that matches the submitted article is archived at Zenodo as `v0.5.2`
-([10.5281/zenodo.24483546](https://doi.org/10.5281/zenodo.24483546), 23 November 2026); the concept DOI
+The snapshot that matches the submitted article is archived at Zenodo as `v0.5.3`
+([10.5281/zenodo.24483878](https://doi.org/10.5281/zenodo.24483878), 23 November 2026); the concept DOI
 [10.5281/zenodo.24483545](https://doi.org/10.5281/zenodo.24483545) resolves to the latest archived version.
 
 **Correction:** releases up to `v0.5.0` mislabelled the review of the item-inversion and paraphrase
