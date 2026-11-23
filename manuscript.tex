@@ -57,8 +57,7 @@ ORCID: \href{https://orcid.org/0009-0002-2216-4252}{0009-0002-2216-4252}
 \noindent
 That large language models lean left is one of the most widely reported findings in the literature. Yet their scores
 move with question format, paraphrasing, and the asker's inferred identity. So the question is this: how much of a
-reported position belongs to the model, and how much belongs to the instrument used to measure it? No study has yet
-measured this. To answer it, the researcher administered the Political Compass and 8Values to 19 models, 60 times each,
+reported position belongs to the model, and how much belongs to the instrument used to measure it? To answer it, the researcher administered the Political Compass and 8Values to 19 models, 60 times each,
 and added SapplyValues and Pew's 2026 Typology in a second panel. Every axis was scored so that higher values mean
 further left. On that scale, the instrument and its axis account for between \NTwoApparatus\% and \NFourApparatus\% of
 the variance, with each component's interval excluding zero. Trial-to-trial noise accounts for about a third. The share
@@ -78,7 +77,7 @@ multitrait-multimethod; variance components; survey-instrument validity
 
 \section{Introduction}
 
-As large language models compete with search engines such as Google for general information queries, they mediate
+Large language models mediate
 political information for hundreds of millions of people. A growing literature therefore audits their political
 leanings \citep{santurkar2023, feng2023trails, buyl2026}, usually by administering a questionnaire such as the Political Compass
 and reading off a score \citep{rozado2024, motoki2024, peng2026beyond}. Each assumption behind this practice
@@ -86,7 +85,7 @@ has been challenged, but only separately. Models shift their political answers t
 \citep{kaur2025echoes}; forced-choice answers differ from free responses \citep{rottger2024};
 option order and labels change survey answers \citep{dominguezolmedo2024}; and paraphrased items produce different
 answers \citep{ceron2024brittleness}. Other work proposes better-grounded measures \citep{faulborn2025littleleft,
-wachter2025irt, rottger2026issuebench}. No study has weighed these sources of error against one another, so there is no
+wachter2025irt, rottger2026issuebench}. No published study has weighed these sources of error against one another, so there is no
 estimate of how much of a reported score reflects the model and how much reflects the apparatus.
 
 This is a measurement-error problem that political methodology has long addressed. Survey answers are themselves
@@ -94,10 +93,10 @@ unstable draws \citep{achen1975, zaller1992}, and combining multiple measures re
 \citep{ansolabehere2008}. Three established tests decide when scores can be pooled. The first asks whether measures of
 one construct converge while measures of different constructs stay apart \citep{campbell1959}. The second asks whether
 a score's variance can be split between the object and the conditions of measurement \citep{cronbach1972, brennan2001}.
-The third asks whether a concept is validly operationalized \citep{adcock2001}. These tests are used in text-as-data
-research \citep{grimmer2013, benoit2026} and in recent work that treats a language model's output as a measurement
-\citep{lemens2025asking, bisbee2024}. A political-bias audit is also such a measurement, yet the audit literature has
-not applied these tests to it. No audit administers several instruments repeatedly to many models, so none can separate
+The third asks whether a concept is validly operationalized \citep{adcock2001}. These tests apply to
+recent work that treats a language model's output as a measurement
+\citep{lemens2025asking, bisbee2024}. A political-bias audit is also such a measurement, yet the audits cited here have
+not applied these tests to it. No published audit administers several instruments repeatedly to many models, so none can separate
 trial noise from the instrument's contribution.
 
 This study supplies the missing estimate. The researcher decomposes a measured political position into three parts:
@@ -120,7 +119,7 @@ of 0.7, a 4,000-token cap, and default routing. The upstream host and call times
 Pew results were obtained by entering each model's answers into the site's live quiz and recording the result it
 reported. 8Values and SapplyValues were scored with a lossless port of their open-source scoring code.
 
-\textbf{Further factors.} Three further apparatus factors were each tested in a separate design The first was asker
+\textbf{Further factors.} Three further apparatus factors were each tested in a separate design. The first was asker
 identity: six user preambles were crossed with both instruments, with 10 repetitions per cell (2,160 administrations).
 The second was instrument contamination: sense-inverted and paraphrased items were compared against a verbatim baseline
 (1,080 administrations), and a separate memorization probe was run. The third was response format: the designs varied
@@ -319,7 +318,8 @@ survey scale or coding scheme as a measure \citep{serapiogarcia2023}. In such st
 random facet of measurement. A single instrument therefore confounds model identity with instrument-specific position,
 and repetition is required to separate either from noise.
 
-\textbf{Replication.} No language model generated any data in this study. All raw trials, scoring adapters and analysis
+\textbf{Replication.} An AI coding assistant helped write the code that collected the models' answers through the
+OpenRouter API; it generated no data. All raw trials, scoring adapters and analysis
 code reproduce every number reported here offline; the archive is cited on the title page.
 
 \ifpreprint
