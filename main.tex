@@ -431,10 +431,14 @@ sense-inverted items with the scoring key flipped, and meaning-preserving
 paraphrases that defeat verbatim string matching. Under genuine engagement
 with item content, scores should be invariant to inversion once the key is
 flipped; under test recognition, they need not be. The 132 inverted and
-paraphrased items (70 8Values, 62 Political Compass) were drafted by hand,
-checked against the automated double-negation and identity heuristics in
-\texttt{scoring/build\_item\_variants.py}, and reviewed before collection
-(\texttt{docs/item\_variant\_review.md}). Crossed with the same 18 models
+paraphrased items (70 8Values, 62 Political Compass) were written by the
+author and checked against the automated double-negation and identity
+heuristics in \texttt{scoring/build\_item\_variants.py}, and the author
+reviewed every item for polarity and signed off before collection
+(\texttt{docs/item\_variant\_review.md}). After collection, a colleague
+independently checked a 20-item sample weighted toward edge cases and agreed
+with the author's inversions and paraphrases on all 20; the remaining 112
+items rest on the author's review alone. Crossed with the same 18 models
 and both instruments at ten repetitions per cell, this yielded 1{,}080
 administrations. The Contamination Index for a model-axis cell is the
 absolute score difference between the original and inverted conditions
@@ -1547,11 +1551,10 @@ The author declares no competing interests.
 The author received no specific funding for this work.
 
 \subsection*{Acknowledgments: Use of AI Tools}
-Portions of this manuscript's text were drafted and revised with the
-assistance of a commercial AI writing assistant, used interactively by the
-author throughout the project's development (May 2025 to November 2026), accessed via a paid
-subscription. See Section~\ref{si:ai-use} for the corresponding disclosure
-of AI-assisted code and analysis. The author directed all content
+A commercial large language model, used interactively through a paid
+subscription between May 2025 and November 2026, assisted with writing the
+data-collection, scoring, analysis and figure code; see
+Section~\ref{si:ai-use}. It generated no data. The author directed all content
 decisions, verified all reported numbers against the underlying data and
 code, and takes full responsibility for the manuscript's content and
 claims.

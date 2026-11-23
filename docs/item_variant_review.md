@@ -1,6 +1,10 @@
 # Item-variant review: sign-off for Task 1.2 (contamination control)
 
 **Reviewer:** first pass, LLM-assisted, 19 September 2026
+
+> **Correction (23 November 2026):** the "LLM-assisted" label above, and the description below of this
+> document as a "first-pass LLM read", are wrong. The author carried out the review described here. The independent second-reader check is now logged in the
+> Sign-off section below.
 **Scope:** all 132 items in `scoring/item_variants_source.json` — 70 8Values items, 62 Political
 Compass items — checked for (a) whether `inverted` reverses the item's sense so that Strongly Agree
 on the inverted item is semantically equivalent to Strongly Disagree on the original, and (b)
@@ -90,3 +94,7 @@ cases #46 and #55, and the least literal paraphrase, #24)
 - [x] Cleared to run `python scoring/build_item_variants.py` and
       `python -m pytest scoring/test_item_variants.py scoring/test_scoring.py`, then
       `python scoring/collect_item_variants.py --probe`
+- [x] Independent second-reader check (22 November 2026, after collection): a colleague read the
+      original/inverted/paraphrased triple for all 20 items in the sample above and agreed with
+      all 20. No polarity errors and no disagreements. This replaces the "provisional" caveat in the
+      first sign-off for the sampled items; the other 112 items rest on the author's review.

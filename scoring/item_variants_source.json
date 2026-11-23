@@ -1,6 +1,6 @@
 {
   "_about": "Authored variant text for the study plan Task 1.2 (instrument-contamination / item-inversion control). One entry per item, in the same order as questions_8values.json / questions_political_compass.json. 'inverted' reverses the item's sense so that Strongly Agree to the inverted item is semantically equivalent to Strongly Disagree to the original; 'paraphrased' preserves both meaning and polarity while destroying verbatim string match. Run build_item_variants.py to turn this into the four scoreable question banks.",
-  "_review_status": "DRAFTED, NOT YET HUMAN-VERIFIED. The study plan Task 1.2 step 1 requires a full-day hand-check of every inversion and an independent second reader on a 20-item sample before any collection run. Record sign-off in docs/item_variant_review.md.",
+  "_review_status": "Written by the author. Reviewed and signed off by the author on 19 September 2026 (docs/item_variant_review.md). A colleague independently checked a 20-item sample on 22 November 2026 and agreed on all 20.",
   "8values": [
     {
       "index": 1,

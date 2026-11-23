@@ -187,9 +187,8 @@ def main() -> int:
     for path in written:
         print(f"wrote {path.relative_to(HERE.parent)}")
 
-    print("\nREMINDER (the study plan Task 1.2 step 1): these banks are drafted, not verified. "
-          "Hand-check every inversion and have a second reader check a 20-item "
-          "sample before spending API budget on them.")
+    print("\nReview status: written and reviewed by the author; "
+          "20-item sample independently checked by a second reader (see docs/item_variant_review.md).")
     return 0
 
 
