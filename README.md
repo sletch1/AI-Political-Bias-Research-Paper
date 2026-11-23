@@ -11,8 +11,6 @@ Article for *Research & Politics* (Sage; double-anonymized): `manuscript.tex` /
 The snapshot that matches the submitted article is archived at Zenodo as `v0.5.2`
 ([10.5281/zenodo.24483546](https://doi.org/10.5281/zenodo.24483546), 23 November 2026); the concept DOI
 [10.5281/zenodo.24483545](https://doi.org/10.5281/zenodo.24483545) resolves to the latest archived version.
-Earlier snapshots (up to `v0.4.1`) are in a separate Zenodo record,
-[10.5281/zenodo.22968157](https://doi.org/10.5281/zenodo.22968157), made by the GitHub integration, which no longer archives releases.
 
 **Correction:** releases up to `v0.5.0` mislabelled the review of the item-inversion and paraphrase
 variants as "LLM-assisted". The author wrote and reviewed all 132 items. See the correction note in
@@ -118,7 +116,7 @@ required for its current claims.
 | `manuscript.tex` / `manuscript.pdf` | The anonymized article (Research & Politics Research Article). |
 | `main.tex` / `main.pdf` | The web appendix (standalone: author block on page 1; full methods, sensitivity checks, all supporting results). |
 | `references.bib` | Bibliography. |
-| `.zenodo.json` | Metadata for the GitHub→Zenodo archival DOI. |
+| `.zenodo.json` | Metadata (title, description, keywords) for the Zenodo archive, uploaded manually as a zip. |
 | `data/raw_trials/` | One JSON file per trial from the main run plus SapplyValues (filenames contain `sapplyvalues`): structured answers, score, exact API cost. |
 | `data/asker_identity/`, `data/item_variants/`, `data/format_factorial/` | Raw trials for the asker-identity, contamination, and response-format factorials. |
 | `data/pew_typology/` | Raw trials for the Pew 2026 Political Typology instrument. |
