@@ -82,10 +82,6 @@ Claude Opus 5.5 (Anthropic) was used only as a coding tool, interactively betwee
   paper's claim is about the apparatus, not that the lean doesn't exist: the
   published *magnitudes* are not comparable across studies that used
   different instruments, askers, contamination levels, or elicitation formats.
-- A previously reported range-normalized stability metric is shown to be
-  invalid (it assigns one of the worst "instability" scores in the cohort to
-  a model whose answers varied by six hundredths of a point) and replaced
-  with a variance-components estimate.
 - The paper proposes a minimum reporting standard for political-bias audits:
   name the instrument, state the asker condition, report repetition count and
   dispersion, report a variance decomposition or error budget, run a
@@ -102,9 +98,11 @@ each site's own results page.
 Everything reported in the paper is collected and analyzed: the main
 2,280-administration baseline, the asker-identity/contamination/format
 factorials, the SapplyValues and Pew Political Typology instruments (crossed
-into the shared variance-components model), and the IRT reanalysis. The
-prompt-robustness and open-ended-generation arms were also collected; their data
-and scripts remain in the repository but are not reported in the paper or appendix. Two further
+into the shared variance-components model). Several earlier analyses (the
+prompt-robustness and open-ended-generation arms, the IRT reanalysis, the
+range-normalized stability score (ISS), item entropy, the Games-Howell post-hoc
+family and the citation audit) remain in the repository but are not reported in
+the paper or appendix. Two further
 behavioural-validity checks have collection pipelines built but no data
 collected (`data/ballot/README.md`, `results/w2/w2_results.json`): an
 IssueBench-based arm and a ballot-proposition/referendum comparison in the
