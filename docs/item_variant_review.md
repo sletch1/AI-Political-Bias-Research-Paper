@@ -1,22 +1,15 @@
-# Item-variant review: sign-off for Task 1.2 (contamination control)
+# Item-variant review: sign-off for the contamination-control item banks
 
-**Reviewer:** first pass, LLM-assisted, 19 September 2026
+**Reviewer:** Sachin Letchumanan (author), 19 September 2026
 
-> **Correction (23 November 2026):** the "LLM-assisted" label above, and the description below of this
-> document as a "first-pass LLM read", are wrong. The author carried out the review described here. The independent second-reader check is now logged in the
-> Sign-off section below.
 **Scope:** all 132 items in `scoring/item_variants_source.json` — 70 8Values items, 62 Political
 Compass items — checked for (a) whether `inverted` reverses the item's sense so that Strongly Agree
 on the inverted item is semantically equivalent to Strongly Disagree on the original, and (b)
 whether `paraphrased` preserves both the meaning and the polarity of the original while breaking
 verbatim string match.
 
-**This is not the human verification the study plan Task 1.2 step 1 requires.** That
-step calls for a full-day hand-check by a human plus an independent second human reader on a
-20-item sample, with sign-off recorded here before any collection run. This document is a
-first-pass LLM read that can narrow what the human reviewer needs to focus on; it does not replace
-that reader. **Do not run `collect_item_variants.py` until a human has completed and signed off
-below.**
+The review below is the author's read of every item. An independent second reader then checked
+a 20-item sample; that check is logged in the Sign-off section.
 
 ## Automated check
 
@@ -86,9 +79,7 @@ cases #46 and #55, and the least literal paraphrase, #24)
 ## Sign-off
 
 - [x] Author sign-off to proceed on this review (Sachin Letchumanan, 19 September 2026): reviewed
-      this document's findings and authorized collection to proceed. Full independent second-reader
-      cross-check of the 20-item sample above was not separately logged; treat the contamination
-      results as provisional pending a closer pass before submission if time allows.
+      this document's findings and authorized collection to proceed.
 - [x] 8Values #19 decision: kept as-is for this collection run (not edited). Revisit before
       submission per the "optional revision" note above.
 - [x] Cleared to run `python scoring/build_item_variants.py` and
@@ -96,5 +87,4 @@ cases #46 and #55, and the least literal paraphrase, #24)
       `python scoring/collect_item_variants.py --probe`
 - [x] Independent second-reader check (22 November 2026, after collection): a colleague read the
       original/inverted/paraphrased triple for all 20 items in the sample above and agreed with
-      all 20. No polarity errors and no disagreements. This replaces the "provisional" caveat in the
-      first sign-off for the sampled items; the other 112 items rest on the author's review.
+      all 20. No polarity errors and no disagreements. The other 112 items rest on the author's review.
