@@ -1,6 +1,6 @@
 # An error budget for political-bias measurement in large language models
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22968157.svg)](https://doi.org/10.5281/zenodo.22968157)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24483545.svg)](https://doi.org/10.5281/zenodo.24483545)
 
 Code, data, and analysis supporting the paper **"An error budget for
 political-bias measurement in large language models"**, prepared as a Research
@@ -8,9 +8,11 @@ Article for *Research & Politics* (Sage; double-anonymized): `manuscript.tex` /
 `manuscript.pdf` (anonymized article, 4,000-word limit) and the online appendix
 `main.tex` / `main.pdf`.
 
-The latest version archived at Zenodo is `v0.4.1`. A snapshot that matches the current article
-will be archived there before publication. The concept DOI
-[10.5281/zenodo.22968157](https://doi.org/10.5281/zenodo.22968157) always resolves to the latest archived version.
+The snapshot that matches the submitted article is archived at Zenodo as `v0.5.2`
+([10.5281/zenodo.24483546](https://doi.org/10.5281/zenodo.24483546), 23 November 2026); the concept DOI
+[10.5281/zenodo.24483545](https://doi.org/10.5281/zenodo.24483545) resolves to the latest archived version.
+Earlier snapshots (up to `v0.4.1`) are in a separate Zenodo record,
+[10.5281/zenodo.22968157](https://doi.org/10.5281/zenodo.22968157), made by the GitHub integration, which no longer archives releases.
 
 **Correction:** releases up to `v0.5.0` mislabelled the review of the item-inversion and paraphrase
 variants as "LLM-assisted". The author wrote and reviewed all 132 items. See the correction note in
