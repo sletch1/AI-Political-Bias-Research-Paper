@@ -30,6 +30,7 @@
 
 % Preprint switch: compile with  xelatex "\def\preprintmode{1}\input{manuscript}"  to add author, ORCID and the
 % AI-use disclosure inside the PDF body (preprint servers need these in the file; the journal copy stays anonymous).
+\renewcommand{\thesection}{\S\arabic{section}}
 \newif\ifpreprint
 \ifdefined\preprintmode\preprinttrue\fi
 
@@ -185,7 +186,7 @@ but it cannot tell consistency across axes apart from transfer between instrumen
 
 The simulation shows what the design can detect. When the true transferable share is 20\%, an estimate as low as the
 four-instrument value occurs in \SimFourTwentyBelowN{} of \SimReps{} runs. When the true share is zero, an estimate as
-high as the two-instrument value occurs in \SimTwoZeroAboveN{} of \SimReps{} runs (Online Appendix). A transferable
+high as the two-instrument value occurs in \SimTwoZeroAboveN{} of \SimReps{} runs (Online Appendix \S 3). A transferable
 share of 20\% or more is therefore hard to reconcile with the four-instrument panel, while a share of 5--10\% is
 compatible with both panels.
 
@@ -267,11 +268,11 @@ instrument and the axis jointly.
 Third, two axes have no settled left--right polarity: 8Values peace and SapplyValues authority. Reversing either or both
 puts the four-instrument transferable share between \OrientFourMin\% and \OrientFourMax\%. Reversing 8Values peace alone
 puts the two-instrument share at \OrientTwoMax\% rather than \NTwoM\%, because the reversal shifts variance from the
-instrument term to the axis term (Online Appendix).
+instrument term to the axis term (Online Appendix \S 3).
 
 Fourth, an independent refit in \texttt{lme4} \citep{bates2015} reproduces the shares. Profile and parametric-bootstrap
 intervals, which are better suited to a variance near its boundary of zero, also reach zero. Specifically, the
-transferable share is \NTwoMr\% [0, 39] with two instruments and \NFourMr\% [0, 13] with four (Online Appendix).
+transferable share is \NTwoMr\% [0, 39] with two instruments and \NFourMr\% [0, 13] with four (Online Appendix \S 3.1).
 
 \textbf{Three further factors.} The three further apparatus factors were each tested in a separate factorial design,
 not crossed with instrument. Their effects therefore cannot be added into a single error budget, but each can be
